@@ -1,4 +1,4 @@
-# *The Great British Stats Off*: A Statistical Look at *The Great British Bake Off*, Series 5–12
+# *The Great British Stats Off*: A Statistical Look at *The Great British Bake Off*, Series 5–12 on Netflix
 
 ---
 
@@ -101,16 +101,15 @@ Together, AUROC and AUPRC indicate that the models do reasonably well predicting
   <img src="results/sb_mod_plot.png" alt="Star Baker model odds ratios by round" width="600">
 </p>
 
-The result is not subtle if you look at the units: **the Showstopper dominates Star Baker selection**.
+The result is in the units: **the Showstopper dominates Star Baker selection**.
 
 - The fitted odds ratio corresponds to the change in the odds of receiving Star Baker for a one-unit increase in the Showstopper sum score, holding the baker's other modeled scores fixed and comparing within the same episode risk set.
   - The Showstopper score is the sum of the flavor, taste, and bake components.
   - So a one-unit increase has a concrete interpretation: one component moves up by one scoring level, for example from neutral $(0)$ to good $(1)$ in Showstopper flavor, holding the other components fixed.
 
-- The Showstopper association is much larger than the Signature or Technical associations across essentially the whole season. The panels use different y-axis scales because otherwise the Technical trend would be visually flattened by the size of the Showstopper effect.
-
 - Signature and Technical performance still matter, but mainly as supporting evidence. If the question is who wins Star Baker, the Showstopper is usually doing the most work.
 
+- In fact just looking at those with the highest showstopper sums in each round, $88.7\%$ of the time this group (if there are more than one perfect showstopper) this group contains the star baker! So we honestly dont need fancy models for star baker prediction
 ---
 
 ## Question 3: Which Challenges Matter Most for Avoiding Elimination?
@@ -191,9 +190,7 @@ The bottom of the list should be read much more cautiously, so I leave it out of
 These effects also track elimination:
 
 - Bakers with larger fitted effects tended to survive longer, even though the baker effects were estimated from judging scores and not from elimination outcomes.
-- But the relationship should not be perfect.
-- Contestants are not eliminated based on their average performance.
-- They are eliminated based on the current week, conditional on who is still in the tent.
+- But the relationship should not be perfect as bakers are not eliminated based on their average performance. Instead they are eliminated based on the current week, conditional on who is still in the tent.
 
 That is exactly why the mismatch cases are interesting.
 
@@ -226,7 +223,7 @@ That is exactly why the mismatch cases are interesting.
 
 The pattern is pretty clear:
 
-- In six of eight seasons, the winner was ranked first in their season by the fitted baker effect.
+- In six of eight seasons, the winner was ranked first in their season by the fitted baker effect. (this agrees with the perfomrance from our conditional logistic model)
 - David was second in Series 7.
 - The clear exceptions are Matty and Georgie.
 
@@ -319,7 +316,7 @@ We can also look at each series by how spread out the fitted baker effects are. 
 
 ## Limitations
 
-Given the conclusions above, the main limitation is simple: the models are observational, and they are still *models* subject to assumptions.
+Given the conclusions above, the main limitation is simple: the models are observational, and subject to the data collection process and possible issues therin. However, they are still *models* subject to assumptions.
 
 What they do:
 

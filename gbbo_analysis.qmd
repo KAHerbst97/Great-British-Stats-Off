@@ -121,8 +121,8 @@ judging <- judging_raw %>%
       across(c(showstopper_bake, showstopper_flavor, showstopper_looks)),
       na.rm = TRUE
     ),
-    sig = sig_raw / 3,
-    show_stopper = show_stopper_raw / 3,
+    sig = sig_raw,
+    show_stopper = show_stopper_raw,
     sig_ss = sig + show_stopper
   ) %>%
   group_by(series, round) %>%
@@ -411,7 +411,7 @@ ggplot(round_slopes_sb, aes(x = round, y = exp_slope)) +
     color = "red",
     size = 3
   ) +
-  facet_wrap(~ term, scales = "free_y") +
+  facet_wrap(~ term) +
   labs(
     x = "Round",
     y = "Round-specific odds ratio",
@@ -431,6 +431,35 @@ the key issue is avoiding one of the weakest overall performances in the episode
 A baker may survive a poor component if another baker performs worse, if their
 overall episode is stronger, or if the judges place more weight on the
 showstopper, as suggested by the round-specific patterns in the plots.
+
+Just as a quick gut check we check what proprotion of those taht scored highest in the showstopper sum win star baker, we filter by each round by the best showstopper scores required and see how many of those groupings include star baker,
+ 
+```{r}
+tmp <- judging %>% 
+  group_by(series, round) %>% 
+  mutate(
+    best_show_stopper = as.integer(show_stopper == max(show_stopper, na.rm = TRUE)),
+    best_sig = as.integer(sig == max(sig, na.rm = TRUE))
+  ) %>%
+  ungroup()
+
+showstopper_group_contains_star_baker <- tmp %>%
+  group_by(series, round) %>%
+  summarise(
+    n_best_showstopper = sum(best_show_stopper),
+    star_baker_in_best_showstopper_group = any(best_show_stopper == 1 & star_baker == 1),
+    .groups = "drop"
+  )
+
+showstopper_group_contains_star_baker %>%
+  summarise(
+    n_episodes = n(),
+    n_contained_star_baker = sum(star_baker_in_best_showstopper_group),
+    prop_contained_star_baker = mean(star_baker_in_best_showstopper_group)
+  )
+```
+
+that's pretty high just from looking at who scored the best in each episodes showstopper!!!! That is just looking at their showstopper we can almost predict the exact star baker about 90\% of the time!
 
 #### Model Prediction Evaluation
 
@@ -824,11 +853,13 @@ showstopper, and scaled technical performance, rather than as a pure measure of
 judged component-score ability.
 
 For baker $i$ in series $s$ and episode $e$, the score model can be written as
+
 $$
 Y_{ise}
 =
 X_{ise}^{\top}\beta + \theta_i + v_e + \varepsilon_{ise},
 $$
+
 where $Y_{ise}$ is the scaled score outcome and $X_{ise}$ contains the fixed
 effect indicators for series and component type.
 
@@ -855,10 +886,13 @@ effect indicators for series and component type.
   \item Together, the random intercepts decompose the residual score tendency
   into baker-level and episode-level components. The total random-intercept
   contribution is
+
   $$
   \theta_i + v_e,
   $$
+
   where
+
   $$
   \theta_i \sim N(0,\sigma_\theta^2), \qquad
   v_e \sim N(0,\sigma_v^2), \qquad
@@ -866,11 +900,79 @@ effect indicators for series and component type.
   $$
 \end{itemize}
 
-In the frequentist fit, the random effects are estimated as conditional modes,
-or empirical-Bayes/BLUP-style estimates. Thus, the fitted baker and episode
-random effects should be understood as shrunken model-based estimates of
-relative adjusted performance or episode-level scoring tendency, not as directly
-observed performance summaries.
+In matrix form, the fitted mixed model can be written as
+
+$$
+Y = X\beta + Zb + \varepsilon,
+$$
+
+where $X\beta$ is the fixed-effect part of the model, $Zb$ is the
+random-effect part, and $b$ contains the baker and episode random effects. The
+model assumes
+
+$$
+b \sim N(0, G), \qquad
+\varepsilon \sim N(0, R),
+$$
+
+so that the marginal covariance of the observed scores is
+
+$$
+V = ZGZ^\top + R.
+$$
+
+The fixed effects and variance components are estimated first, typically by
+restricted maximum likelihood. Once the covariance structure has been estimated,
+the fitted random effects are predicted from the fixed-effect residuals using
+
+$$
+\hat b
+=
+\hat G Z^\top \hat V^{-1}(Y - X\hat\beta).
+$$
+
+These fitted random effects are empirical-Bayes predictions, also called
+BLUP-style estimates in the linear mixed-model setting. They are not raw baker
+averages or unrestricted baker fixed effects. They are shrunken estimates: a
+baker's fitted random effect is pulled toward zero unless their observed
+residual performance is consistently above or below average. Bakers with fewer
+observations or noisier records are shrunk more strongly toward the population
+mean, while bakers with more consistent evidence are allowed to deviate more.
+
+Equivalently, the fitted random effects can be understood as the solution to a
+penalized least-squares problem: the model tries to explain residual scoring
+patterns using baker and episode deviations, while penalizing deviations that are
+too large relative to the estimated between-baker and between-episode variance.
+This is the partial-pooling mechanism.
+
+For prediction, the interpretation depends on whether the baker or episode was
+observed in the fitted data. For an existing baker, predictions can include that
+baker's fitted random effect, giving a subject-specific prediction:
+
+$$
+\widehat Y_{ise}
+=
+X_{ise}^{\top}\hat\beta + \hat\theta_i + \hat v_e.
+$$
+
+For a brand-new baker with no observed scores, there is no fitted baker-specific
+random effect yet. In that case, the natural population-level prediction sets the
+new baker effect to zero:
+
+$$
+\hat\theta_{\mathrm{new}} = 0.
+$$
+
+If the new baker later accumulates observed scores, their random effect could be
+predicted using the same empirical-Bayes/BLUP logic: compare their observed
+scores with the fixed-effect prediction and shrink that residual information
+toward the population average according to the estimated covariance structure.
+
+Thus, the fitted baker and episode random effects should be understood as
+shrunken model-based estimates of relative adjusted performance or episode-level
+scoring tendency, not as directly observed performance summaries. The resulting
+baker rankings are useful descriptive summaries of latent performance under this
+model, but they are not definitive measures of true intrinsic baking ability.
 
 ```{r, echo = FALSE}
 score_long <- judging %>%
