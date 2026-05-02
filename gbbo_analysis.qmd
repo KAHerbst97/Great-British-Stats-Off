@@ -159,6 +159,14 @@ judging <- judging_raw %>%
   ungroup() %>%
   mutate(baker_id = interaction(series, contestant, drop = TRUE))
 
+judging_sb <- judging
+
+judging_elim <- judging %>%
+  filter(round <= 9) %>%
+  group_by(episode) %>%
+  filter(sum(eliminated == 1, na.rm = TRUE) == 1) %>%
+  ungroup()
+
 ```
 
 # Some Thoughts
@@ -222,14 +230,14 @@ Because we condition on the episode-specific event totals, this is a likelihood 
 ```{r, echo = FALSE}
 fit_elim_clogit <- clogit(
   eliminated ~ sig + show_stopper + tech_scaled + strata(episode),
-  data = judging %>% filter(round != 10)
+  data = judging_elim
 )
 
 summary(fit_elim_clogit)
 
 fit_sb_clogit <- clogit(
   star_baker ~ sig + show_stopper + tech_scaled + strata(episode),
-  data = judging
+  data = judging_sb
 )
 
 summary(fit_sb_clogit)
@@ -246,9 +254,6 @@ library(tidyverse)
 library(broom)
 library(ggplot2)
 
-judging_elim_r1_9 <- judging %>%
-  filter(round <= 9)
-
 fit_elim_round_interact <- clogit(
   eliminated ~ 
     sig +
@@ -258,7 +263,7 @@ fit_elim_round_interact <- clogit(
     show_stopper:round +
     tech_scaled:round +
     strata(episode),
-  data = judging_elim_r1_9
+  data = judging_elim
 )
 
 summary(fit_elim_round_interact)
@@ -266,7 +271,7 @@ summary(fit_elim_round_interact)
 coef_elim <- coef(fit_elim_round_interact)
 vcov_elim <- vcov(fit_elim_round_interact)
 
-round_grid <- tibble(round = sort(unique(judging_elim_r1_9$round)))
+round_grid <- tibble(round = sort(unique(judging_elim$round)))
 
 get_round_slope <- function(main, interaction, label) {
   beta <- coef_elim[main]
@@ -345,7 +350,7 @@ fit_sb_round_interact <- clogit(
     show_stopper:round +
     tech_scaled:round +
     strata(episode),
-  data = judging
+  data = judging_sb
 )
 
 summary(fit_sb_round_interact)
@@ -356,7 +361,7 @@ library(broom)
 coef_sb <- coef(fit_sb_round_interact)
 vcov_sb <- vcov(fit_sb_round_interact)
 
-round_grid <- tibble(round = sort(unique(judging$round)))
+round_grid <- tibble(round = sort(unique(judging_sb$round)))
 
 get_round_slope_sb <- function(main, interaction, label) {
   beta <- coef_sb[main]
@@ -432,10 +437,10 @@ A baker may survive a poor component if another baker performs worse, if their
 overall episode is stronger, or if the judges place more weight on the
 showstopper, as suggested by the round-specific patterns in the plots.
 
-Just as a quick gut check we check what proprotion of those taht scored highest in the showstopper sum win star baker, we filter by each round by the best showstopper scores required and see how many of those groupings include star baker,
+Just as a quick gut check we check what proportion of those that scored highest in the showstopper sum win star baker, we filter by each round by the best showstopper scores required and see how many of those groupings include star baker,
  
 ```{r}
-tmp <- judging %>% 
+tmp <- judging_sb %>% 
   group_by(series, round) %>% 
   mutate(
     best_show_stopper = as.integer(show_stopper == max(show_stopper, na.rm = TRUE)),
@@ -459,7 +464,7 @@ showstopper_group_contains_star_baker %>%
   )
 ```
 
-that's pretty high just from looking at who scored the best in each episodes showstopper!!!! That is just looking at their showstopper we can almost predict the exact star baker about 90\% of the time!
+that's pretty high just from looking at who scored the best in each episodes showstopper!!!! That is just looking at their showstopper we can almost predict the group the star baker is in almost $90\%$ of the time!
 
 #### Model Prediction Evaluation
 
@@ -494,15 +499,6 @@ library(purrr)
 library(survival)
 library(yardstick)
 library(tidyr)
-
-# ------------------------------------------------------------
-# Analysis datasets
-# ------------------------------------------------------------
-
-judging_sb <- judging
-
-judging_elim <- judging %>%
-  filter(round <= 9)
 
 # ------------------------------------------------------------
 # In-sample prediction from fitted conditional logit model
@@ -729,7 +725,16 @@ ranking_metric_table <- bind_rows(
 ranking_metric_table[, -c(1, 11:13)]
 ```
 
-we also particularly look at how the model performs in the final stage - given those last three contestants
+- AUROC has a direct ranking interpretation: it is the probability that the model assigns a higher predicted probability to a randomly selected true event case than to a randomly selected non-event case.
+  - For Star Baker, AUROC is the probability that an actual Star Baker is ranked above a non-Star Baker by predicted Star Baker probability.
+  - For elimination, AUROC is the probability that an eliminated baker is ranked above a non-eliminated baker by predicted elimination probability.
+
+- AUPRC summarizes the precision-recall tradeoff.
+  - Precision asks: among the bakers the model assigns high predicted probability, how many were actually selected?
+  - Recall asks: among the bakers who were actually selected, how many did the model successfully flag?
+  - This is especially relevant here because each episode has only one Star Baker and usually one eliminated baker, so the event class is rare within each weekly risk set.
+  
+We also particularly look at how the model performs in the final stage - given those last three contestants
 
 ```{r}
 # ------------------------------------------------------------

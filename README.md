@@ -21,7 +21,7 @@ The basic idea is that *Bake Off* is not a collection of independent scores. Eac
 
 ## Question 1: How Well Can We Predict Star Baker and Elimination?
 
-The conditional-logit models perform reasonably well at predicting who will be Star Baker or eliminated in a given episode, using leave-one-episode-out cross-validation. For elimination, Round 10 is excluded because the final does not have a standard weekly elimination decision.
+The conditional-logit models perform reasonably well at predicting who will be Star Baker or eliminated in a given episode, using leave-one-episode-out cross-validation. For elimination, Round 10 is excluded because the final is unique and whoever isnt "star baker" is eliminated (2 eliminations), similarly we exclude weeks where 0 or 2 people were eliminated. This reduces the epsidoe count for these omdels to $64$ from $80$ (10 across all 8 seasons included)
 
 <p align="center"><strong>Prediction accuracy: leave-one-episode-out cross-validation</strong></p>
 
@@ -43,9 +43,9 @@ The conditional-logit models perform reasonably well at predicting who will be S
     </tr>
     <tr>
       <td align="left" style="padding-left: 18px; padding-right: 18px;">Elimination</td>
-      <td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>56.9%</strong></td>
-      <td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>80.6%</strong></td>
-      <td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>95.8%</strong></td>
+      <td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>59.4%</strong></td>
+      <td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>84.4%</strong></td>
+      <td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>95.3%</strong></td>
     </tr>
   </tbody>
 </table>
@@ -54,7 +54,7 @@ Immediately:
 
 - For Star Baker, the model ranks the actual Star Baker first in 67.5% of held-out episodes, in the top two in 87.5%, and in the top three in 98.8%.
   - Restricting to the eight finale episodes, the model ranks the eventual series winner highest among the finalists in six out of eight seasons in the dataset: **75% of the time**, using cross-validation where the final episode itself is held out.
-- For elimination, excluding Round 10, the model ranks the eliminated baker first in 56.9% of held-out episodes, in the top two in 80.6%, and in the top three in 95.8%.
+- For elimination, excluding Round 10 and any rounds throughout seasons 5-12 that had no eliminations (sickness etc.), the model ranks the eliminated baker first in 59.4% of held-out episodes, in the top two in 84.4%, and in the top three in 95.3%.
 
 Discrimination is also strong.
 
@@ -76,26 +76,19 @@ Discrimination is also strong.
     </tr>
     <tr>
       <td align="left" style="padding-left: 22px; padding-right: 22px;">Elimination</td>
-      <td align="center" style="padding-left: 22px; padding-right: 22px;"><strong>0.918</strong></td>
-      <td align="center" style="padding-left: 22px; padding-right: 22px;"><strong>0.561</strong></td>
+      <td align="center" style="padding-left: 22px; padding-right: 22px;"><strong>0.921</strong></td>
+      <td align="center" style="padding-left: 22px; padding-right: 22px;"><strong>0.587</strong></td>
     </tr>
   </tbody>
 </table>
 
-- AUROC has a direct ranking interpretation: it is the probability that the model assigns a higher predicted probability to a randomly selected true event case than to a randomly selected non-event case.
-  - For Star Baker, AUROC is the probability that an actual Star Baker is ranked above a non-Star Baker by predicted Star Baker probability.
-  - For elimination, AUROC is the probability that an eliminated baker is ranked above a non-eliminated baker by predicted elimination probability.
-
-- AUPRC summarizes the precision-recall tradeoff.
-  - Precision asks: among the bakers the model assigns high predicted probability, how many were actually selected?
-  - Recall asks: among the bakers who were actually selected, how many did the model successfully flag?
-  - This is especially relevant here because each episode has only one Star Baker and usually one eliminated baker, so the event class is rare within each weekly risk set.
-
-Together, AUROC and AUPRC indicate that the models do reasonably well predicting both elimination and Star Baker, or at least identifying who is seriously in contention by the top two or top three rankings. Star Baker seems a bit easier to predict than elimination. This makes sense. Star Baker often goes to the obvious standout, while elimination is usually a close call among weaker performances and can depend heavily on episode-specific context.
+Together, all these metrics indicate the models do reasonably well predicting both elimination and Star Baker, or at least identifying who is seriously in contention by the top two or top three rankings. Star Baker seems a bit easier to predict than elimination. This makes sense. Star Baker often goes to the obvious standout, while elimination is usually a close call among weaker performances and can depend heavily on episode-specific context.
 
 ---
 
 ## Question 2: Which Challenges Matter Most for Star Baker?
+
+Here higher values indicate increased odds of being star baker
 
 <p align="center">
   <img src="results/sb_mod_plot.png" alt="Star Baker model odds ratios by round" width="600">
@@ -109,16 +102,19 @@ The result is in the units: **the Showstopper dominates Star Baker selection**.
 
 - Signature and Technical performance still matter, but mainly as supporting evidence. If the question is who wins Star Baker, the Showstopper is usually doing the most work.
 
-- In fact just looking at those with the highest showstopper sums in each round, $88.7\%$ of the time this group (if there are more than one perfect showstopper) this group contains the star baker! So we honestly dont need fancy models for star baker prediction
+- In fact just looking at those with the highest showstopper sums in each round, 88.7% of the time this group (if there are more than one perfect showstopper) contains the star baker! So we honestly dont need fancy models for star baker prediction
+
 ---
 
 ## Question 3: Which Challenges Matter Most for Avoiding Elimination?
+
+Here higher values indicate increased odds of being eliminated so the lowest values indicate the the strongest interpretable effects -  lowering the elimination odds
 
 <p align="center">
   <img src="results/elim_mod_plot.png" alt="Elimination model odds ratios by round" width="600">
 </p>
 
-The elimination model gives a different but compatible picture. For elimination, the model is fit only on Rounds 1--9, excluding the final.
+The elimination model gives a different but compatible picture. For elimination, the model is fit on rounds with one elimination, excluding the final and the one off episodes where $0$ or $2$ bakers are eliminated
 
 **Signature performance is most protective early. Showstopper performance becomes more important around the middle and later parts of the competition.**
 
@@ -295,9 +291,9 @@ We can also look at each series by how spread out the fitted baker effects are. 
     </tr>
   </thead>
   <tbody>
-    <tr><td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>9</strong></td><td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>0.224</strong></td><td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>0.598</strong></td><td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>0.502</strong></td></tr>
-    <tr><td align="center" style="padding-left: 18px; padding-right: 18px;">10</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.180</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.573</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.375</td></tr>
-    <tr><td align="center" style="padding-left: 18px; padding-right: 18px;">7</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.158</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.526</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.357</td></tr>
+    <tr><td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>9</strong></td><td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>0.224</strong></td><td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>0.597</strong></td><td align="center" style="padding-left: 18px; padding-right: 18px;"><strong>0.503</strong></td></tr>
+    <tr><td align="center" style="padding-left: 18px; padding-right: 18px;">10</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.180</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.573</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.374</td></tr>
+    <tr><td align="center" style="padding-left: 18px; padding-right: 18px;">7</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.158</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.526</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.356</td></tr>
     <tr><td align="center" style="padding-left: 18px; padding-right: 18px;">12</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.158</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.598</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.261</td></tr>
     <tr><td align="center" style="padding-left: 18px; padding-right: 18px;">8</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.154</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.502</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.332</td></tr>
     <tr><td align="center" style="padding-left: 18px; padding-right: 18px;">11</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.154</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.496</td><td align="center" style="padding-left: 18px; padding-right: 18px;">0.324</td></tr>
