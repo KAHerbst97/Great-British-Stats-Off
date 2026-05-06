@@ -1,0 +1,679 @@
+uk_airdate,episode,series,round,viewers_7day,channels_rank,baker_id,contestant,age,gender,hometown,occupation,tech_rank_scaled,sig_sum,showstopper_sum,tech_rank,n_remaining,series_winner,eliminated_round,signature_bake,signature_flavor,signature_looks,first_half_review,showstopper_bake,showstopper_flavor,showstopper_looks,second_half_review,star_baker,eliminated,sig_ss_sum
+2017-08-29,5.1,5,1,9.46,1,5.Chris,Chris,50,M,Bristol,Software developer,-3,1,-1,12,12,0,2,0,1,0,NA,-1,1,-1,-1,0,0,0
+2017-08-29,5.1,5,1,9.46,1,5.Flo,Flo,71,F,Merseyside,Retired,-1.3636363636363638,3,3,9,12,0,3,1,1,1,NA,1,1,1,1,0,0,6
+2017-08-29,5.1,5,1,9.46,1,5.James,James,46,M,"Brentwood, Essex",Banker,2.454545454545454,-2,-1,2,12,0,5,-1,0,-1,NA,-1,1,-1,NA,0,0,-3
+2017-08-29,5.1,5,1,9.46,1,5.Julia,Julia,21,F,"Crawley, West Sussex",Aviation Broker,1.9090909090909092,-1,-1,3,12,0,6,-1,0,0,NA,-1,-1,1,NA,0,0,-2
+2017-08-29,5.1,5,1,9.46,1,5.Kate,Kate,29,F,Merseyside,Health and safety inspector,3,-2,2,1,12,0,10,0,-1,-1,NA,1,1,0,NA,0,0,0
+2017-08-29,5.1,5,1,9.46,1,5.Liam,Liam,19,M,North London,Student,-0.8181818181818181,-2,3,8,12,0,8,-1,-1,0,NA,1,1,1,NA,0,0,1
+2017-08-29,5.1,5,1,9.46,1,5.Peter,Peter,52,M,"Southend, Essex",IT programme manager,-1.9090909090909094,-2,-1,10,12,0,1,-1,-1,0,NA,-1,1,-1,-1,0,1,-3
+2017-08-29,5.1,5,1,9.46,1,5.Sophie,Sophie,33,F,"West Molesey, Surrey",Former army officer and trainee stuntwoman,0.8181818181818181,3,1,5,12,1,10,1,1,1,NA,-1,1,1,1,0,0,4
+2017-08-29,5.1,5,1,9.46,1,5.Stacey,Stacey,42,F,"Radlett, Hertfordshire",Former school teacher,-2.454545454545454,-1,1,11,12,0,9,0,-1,0,NA,1,1,-1,-1,0,0,0
+2017-08-29,5.1,5,1,9.46,1,5.Steven,Steven,34,M,"Watford, Hertfordshire",Marketer,0.2727272727272728,3,3,6,12,0,10,1,1,1,NA,1,1,1,1,1,0,6
+2017-08-29,5.1,5,1,9.46,1,5.Tom,Tom,29,M,Edinburgh,Architect,-0.2727272727272725,0,0,7,12,0,4,-1,0,1,NA,0,1,-1,NA,0,0,0
+2017-08-29,5.1,5,1,9.46,1,5.Yan,Yan,46,F,North London,Laboratory research scientist,1.3636363636363638,1,1,4,12,0,7,1,0,0,NA,-1,1,1,NA,0,0,2
+2017-09-05,5.2,5,2,9.23,2,5.Chris,Chris,50,M,Bristol,Software developer,-3,0,-1,11,11,0,2,0,0,0,NA,-1,0,0,-1,0,1,-1
+2017-09-05,5.2,5,2,9.23,2,5.Flo,Flo,71,F,Merseyside,Retired,-2.4000000000000004,1,-1,10,11,0,3,-1,1,1,NA,1,-1,-1,-1,0,0,0
+2017-09-05,5.2,5,2,9.23,2,5.James,James,46,M,"Brentwood, Essex",Banker,1.7999999999999998,2,2,3,11,0,5,1,1,0,NA,1,1,0,NA,0,0,4
+2017-09-05,5.2,5,2,9.23,2,5.Julia,Julia,21,F,"Crawley, West Sussex",Aviation Broker,1.2000000000000002,-1,1,4,11,0,6,0,-1,0,NA,1,1,-1,NA,0,0,0
+2017-09-05,5.2,5,2,9.23,2,5.Kate,Kate,29,F,Merseyside,Health and safety inspector,-1.1999999999999997,0,-2,8,11,0,10,-1,1,0,NA,0,-1,-1,-1,0,0,-2
+2017-09-05,5.2,5,2,9.23,2,5.Liam,Liam,19,M,North London,Student,-0.5999999999999999,1,1,7,11,0,8,-1,1,1,NA,1,1,-1,NA,0,0,2
+2017-09-05,5.2,5,2,9.23,2,5.Sophie,Sophie,33,F,"West Molesey, Surrey",Former army officer and trainee stuntwoman,2.4000000000000004,3,3,2,11,1,10,1,1,1,NA,1,1,1,1,0,0,6
+2017-09-05,5.2,5,2,9.23,2,5.Stacey,Stacey,42,F,"Radlett, Hertfordshire",Former school teacher,-1.8000000000000003,3,-1,9,11,0,9,1,1,1,NA,-1,-1,1,-1,0,0,2
+2017-09-05,5.2,5,2,9.23,2,5.Steven,Steven,34,M,"Watford, Hertfordshire",Marketer,0,2,3,6,11,0,10,1,1,0,NA,1,1,1,1,1,0,5
+2017-09-05,5.2,5,2,9.23,2,5.Tom,Tom,29,M,Edinburgh,Architect,0.5999999999999999,3,1,5,11,0,4,1,1,1,NA,-1,1,1,1,0,0,4
+2017-09-05,5.2,5,2,9.23,2,5.Yan,Yan,46,F,North London,Laboratory research scientist,3,2,-2,1,11,0,7,0,1,1,NA,-1,0,-1,NA,0,0,0
+2017-09-12,5.3,5,3,8.68,2,5.Flo,Flo,71,F,Merseyside,Retired,-0.9999999999999998,-2,0,7,10,0,3,-1,-1,0,-1,1,-1,0,-1,0,1,-2
+2017-09-12,5.3,5,3,8.68,2,5.James,James,46,M,"Brentwood, Essex",Banker,-2.333333333333333,2,1,9,10,0,5,1,1,0,NA,1,-1,1,NA,0,0,3
+2017-09-12,5.3,5,3,8.68,2,5.Julia,Julia,21,F,"Crawley, West Sussex",Aviation Broker,2.3333333333333335,1,3,2,10,0,6,0,1,0,1,1,1,1,1,1,0,4
+2017-09-12,5.3,5,3,8.68,2,5.Kate,Kate,29,F,Merseyside,Health and safety inspector,-3,-1,3,10,10,0,10,-1,1,-1,NA,1,1,1,NA,0,0,2
+2017-09-12,5.3,5,3,8.68,2,5.Liam,Liam,19,M,North London,Student,0.3333333333333335,-2,-1,5,10,0,8,-1,0,-1,-1,-1,1,-1,-1,0,0,-3
+2017-09-12,5.3,5,3,8.68,2,5.Sophie,Sophie,33,F,"West Molesey, Surrey",Former army officer and trainee stuntwoman,-0.3333333333333335,1,-1,6,10,1,10,1,0,0,NA,-1,1,-1,NA,0,0,0
+2017-09-12,5.3,5,3,8.68,2,5.Stacey,Stacey,42,F,"Radlett, Hertfordshire",Former school teacher,3,0,1,1,10,0,9,0,0,0,1,1,-1,1,NA,0,0,1
+2017-09-12,5.3,5,3,8.68,2,5.Steven,Steven,34,M,"Watford, Hertfordshire",Marketer,1.6666666666666667,-2,3,3,10,0,10,-1,0,-1,-1,1,1,1,1,0,0,1
+2017-09-12,5.3,5,3,8.68,2,5.Tom,Tom,29,M,Edinburgh,Architect,1,3,-1,4,10,0,4,1,1,1,1,0,-1,0,NA,0,0,2
+2017-09-12,5.3,5,3,8.68,2,5.Yan,Yan,46,F,North London,Laboratory research scientist,-1.6666666666666667,0,0,8,10,0,7,-1,1,0,NA,1,0,-1,NA,0,0,0
+2017-09-19,5.4,5,4,8.55,3,5.James,James,46,M,"Brentwood, Essex",Banker,2.25,-1,-1,2,9,0,5,-1,1,-1,-1,-1,1,-1,-1,0,0,-2
+2017-09-19,5.4,5,4,8.55,3,5.Julia,Julia,21,F,"Crawley, West Sussex",Aviation Broker,-3,-1,3,9,9,0,6,1,-1,-1,-1,1,1,1,NA,0,0,2
+2017-09-19,5.4,5,4,8.55,3,5.Kate,Kate,29,F,Merseyside,Health and safety inspector,-0.75,3,3,6,9,0,10,1,1,1,1,1,1,1,1,1,0,6
+2017-09-19,5.4,5,4,8.55,3,5.Liam,Liam,19,M,North London,Student,1.5,3,3,3,9,0,8,1,1,1,1,1,1,1,1,0,0,6
+2017-09-19,5.4,5,4,8.55,3,5.Sophie,Sophie,33,F,"West Molesey, Surrey",Former army officer and trainee stuntwoman,0.75,-1,3,4,9,1,10,-1,1,-1,NA,1,1,1,NA,0,0,2
+2017-09-19,5.4,5,4,8.55,3,5.Stacey,Stacey,42,F,"Radlett, Hertfordshire",Former school teacher,3,0,2,1,9,0,9,0,-1,1,1,1,1,0,NA,0,0,2
+2017-09-19,5.4,5,4,8.55,3,5.Steven,Steven,34,M,"Watford, Hertfordshire",Marketer,-1.5,1,-1,7,9,0,10,0,0,1,NA,-1,-1,1,NA,0,0,0
+2017-09-19,5.4,5,4,8.55,3,5.Tom,Tom,29,M,Edinburgh,Architect,0,0,-3,5,9,0,4,0,1,-1,NA,-1,-1,-1,-1,0,1,-3
+2017-09-19,5.4,5,4,8.55,3,5.Yan,Yan,46,F,North London,Laboratory research scientist,-2.25,1,1,8,9,0,7,-1,1,1,-1,-1,1,1,NA,0,0,2
+2017-09-26,5.5,5,5,8.61,4,5.James,James,46,M,"Brentwood, Essex",Banker,-2.1428571428571423,2,-2,7,8,0,5,0,1,1,-1,-1,-1,0,-1,0,1,0
+2017-09-26,5.5,5,5,8.61,4,5.Julia,Julia,21,F,"Crawley, West Sussex",Aviation Broker,1.2857142857142858,1,-1,3,8,0,6,0,1,0,NA,-1,-1,1,-1,0,0,0
+2017-09-26,5.5,5,5,8.61,4,5.Kate,Kate,29,F,Merseyside,Health and safety inspector,-3,-1,3,8,8,0,10,0,-1,0,-1,1,1,1,NA,0,0,2
+2017-09-26,5.5,5,5,8.61,4,5.Liam,Liam,19,M,North London,Student,2.142857142857143,1,-2,2,8,0,8,-1,1,1,NA,0,-1,-1,-1,0,0,-1
+2017-09-26,5.5,5,5,8.61,4,5.Sophie,Sophie,33,F,"West Molesey, Surrey",Former army officer and trainee stuntwoman,3,-1,3,1,8,1,10,-1,1,-1,NA,1,1,1,1,1,0,2
+2017-09-26,5.5,5,5,8.61,4,5.Stacey,Stacey,42,F,"Radlett, Hertfordshire",Former school teacher,0.4285714285714287,3,3,4,8,0,9,1,1,1,1,1,1,1,1,0,0,6
+2017-09-26,5.5,5,5,8.61,4,5.Steven,Steven,34,M,"Watford, Hertfordshire",Marketer,-0.4285714285714284,3,1,5,8,0,10,1,1,1,1,-1,1,1,NA,0,0,4
+2017-09-26,5.5,5,5,8.61,4,5.Yan,Yan,46,F,North London,Laboratory research scientist,-1.2857142857142858,3,1,6,8,0,7,1,1,1,1,-1,1,1,NA,0,0,4
+2017-10-03,5.6,5,6,8.61,4,5.Julia,Julia,21,F,"Crawley, West Sussex",Aviation Broker,-3,-2,-3,7,7,0,6,-1,-1,0,-1,-1,-1,-1,-1,0,1,-5
+2017-10-03,5.6,5,6,8.61,4,5.Kate,Kate,29,F,Merseyside,Health and safety inspector,-0.9999999999999998,-3,3,5,7,0,10,-1,-1,-1,-1,1,1,1,NA,0,0,0
+2017-10-03,5.6,5,6,8.61,4,5.Liam,Liam,19,M,North London,Student,0,3,1,4,7,0,8,1,1,1,1,1,1,-1,1,1,0,4
+2017-10-03,5.6,5,6,8.61,4,5.Sophie,Sophie,33,F,"West Molesey, Surrey",Former army officer and trainee stuntwoman,2,3,3,2,7,1,10,1,1,1,1,1,1,1,1,0,0,6
+2017-10-03,5.6,5,6,8.61,4,5.Stacey,Stacey,42,F,"Radlett, Hertfordshire",Former school teacher,-2,3,-3,6,7,0,9,1,1,1,-1,-1,-1,-1,-1,0,0,0
+2017-10-03,5.6,5,6,8.61,4,5.Steven,Steven,34,M,"Watford, Hertfordshire",Marketer,1,2,0,3,7,0,10,1,1,0,NA,0,-1,1,NA,0,0,2
+2017-10-03,5.6,5,6,8.61,4,5.Yan,Yan,46,F,North London,Laboratory research scientist,3,-3,3,1,7,0,7,-1,-1,-1,NA,1,1,1,1,0,0,0
+2017-10-10,5.7,5,7,9.01,3,5.Kate,Kate,29,F,Merseyside,Health and safety inspector,-3,0,0,6,6,0,10,0,1,-1,-1,0,1,-1,-1,0,0,0
+2017-10-10,5.7,5,7,9.01,3,5.Liam,Liam,19,M,North London,Student,1.7999999999999998,2,3,2,6,0,8,0,1,1,1,1,1,1,1,0,0,5
+2017-10-10,5.7,5,7,9.01,3,5.Sophie,Sophie,33,F,"West Molesey, Surrey",Former army officer and trainee stuntwoman,0.5999999999999999,3,3,3,6,1,10,1,1,1,1,1,1,1,1,0,0,6
+2017-10-10,5.7,5,7,9.01,3,5.Stacey,Stacey,42,F,"Radlett, Hertfordshire",Former school teacher,-0.5999999999999999,0,-1,4,6,0,9,-1,1,0,NA,-1,1,-1,-1,0,0,-1
+2017-10-10,5.7,5,7,9.01,3,5.Steven,Steven,34,M,"Watford, Hertfordshire",Marketer,3,3,3,1,6,0,10,1,1,1,1,1,1,1,1,1,0,6
+2017-10-10,5.7,5,7,9.01,3,5.Yan,Yan,46,F,North London,Laboratory research scientist,-1.8000000000000003,-1,1,5,6,0,7,-1,1,-1,-1,0,1,0,-1,0,1,0
+2017-10-17,5.8,5,8,8.950000000000001,4,5.Kate,Kate,29,F,Merseyside,Health and safety inspector,1.5,-2,-1,2,5,0,10,-1,0,-1,-1,0,0,-1,-1,0,0,-3
+2017-10-17,5.8,5,8,8.950000000000001,4,5.Liam,Liam,19,M,North London,Student,-3,1,-3,5,5,0,8,-1,1,1,-1,-1,-1,-1,-1,0,1,-2
+2017-10-17,5.8,5,8,8.950000000000001,4,5.Sophie,Sophie,33,F,"West Molesey, Surrey",Former army officer and trainee stuntwoman,-1.5,1,2,4,5,1,10,1,1,-1,-1,0,1,1,NA,0,0,3
+2017-10-17,5.8,5,8,8.950000000000001,4,5.Stacey,Stacey,42,F,"Radlett, Hertfordshire",Former school teacher,0,3,3,3,5,0,9,1,1,1,1,1,1,1,1,1,0,6
+2017-10-17,5.8,5,8,8.950000000000001,4,5.Steven,Steven,34,M,"Watford, Hertfordshire",Marketer,3,-1,3,1,5,0,10,-1,-1,1,1,1,1,1,1,0,0,2
+2017-10-24,5.9,5,9,9.03,4,5.Kate,Kate,29,F,Merseyside,Health and safety inspector,-3,3,2,4,4,0,10,1,1,1,NA,1,1,0,1,0,0,5
+2017-10-24,5.9,5,9,9.03,4,5.Sophie,Sophie,33,F,"West Molesey, Surrey",Former army officer and trainee stuntwoman,3,1,2,1,4,1,10,-1,1,1,NA,1,1,0,1,1,0,3
+2017-10-24,5.9,5,9,9.03,4,5.Stacey,Stacey,42,F,"Radlett, Hertfordshire",Former school teacher,1,-3,1,2,4,0,9,-1,-1,-1,-1,0,0,1,-1,0,1,-2
+2017-10-24,5.9,5,9,9.03,4,5.Steven,Steven,34,M,"Watford, Hertfordshire",Marketer,-0.9999999999999998,-1,-1,3,4,0,10,-1,1,-1,NA,-1,1,-1,-1,0,0,-2
+2017-10-31,5.10,5,10,10.04,4,5.Kate,Kate,29,F,Merseyside,Health and safety inspector,-3,3,3,3,3,0,10,1,1,1,0,1,1,1,NA,0,1,6
+2017-10-31,5.10,5,10,10.04,4,5.Sophie,Sophie,33,F,"West Molesey, Surrey",Former army officer and trainee stuntwoman,0,1,3,2,3,1,10,-1,1,1,0,1,1,1,NA,1,0,4
+2017-10-31,5.10,5,10,10.04,4,5.Steven,Steven,34,M,"Watford, Hertfordshire",Marketer,3,-1,-1,1,3,0,10,-1,1,-1,0,-1,1,-1,NA,0,1,-2
+2018-08-28,6.1,6,1,9.55,3,6.Antony,Antony,30,M,London,Banker,-3,3,3,12,12,0,3,1,1,1,NA,1,1,1,NA,0,0,6
+2018-08-28,6.1,6,1,9.55,3,6.Briony,Briony,33,F,Bristol,Stay at home parent,2.454545454545454,3,1,2,12,0,9,1,1,1,NA,1,-1,1,1,0,0,4
+2018-08-28,6.1,6,1,9.55,3,6.Dan,Dan,36,M,London,Stay at home parent,1.3636363636363638,-1,3,4,12,0,6,-1,1,-1,NA,1,1,1,NA,0,0,2
+2018-08-28,6.1,6,1,9.55,3,6.Imelda,Imelda,33,F,County Tyrone,Countryside recreation officer,-2.454545454545454,3,-3,11,12,0,1,1,1,1,NA,-1,-1,-1,-1,0,1,0
+2018-08-28,6.1,6,1,9.55,3,6.Jon,Jon,47,M,Newport,Blood courier,0.8181818181818181,-3,1,5,12,0,7,-1,-1,-1,NA,1,1,-1,NA,0,0,-2
+2018-08-28,6.1,6,1,9.55,3,6.Karen,Karen,60,F,Wakefield,In-store sampling assistant,0.2727272727272728,2,0,6,12,0,5,0,1,1,NA,0,-1,1,NA,0,0,2
+2018-08-28,6.1,6,1,9.55,3,6.Kim-Joy,Kim-Joy,27,F,Leeds,Mental health specialist,-1.9090909090909094,3,1,10,12,0,10,1,1,1,NA,0,0,1,NA,0,0,4
+2018-08-28,6.1,6,1,9.55,3,6.Luke,Luke,30,M,Sheffield,Civil servant/house and techno DJ,-0.8181818181818181,1,1,8,12,0,2,0,0,1,NA,-1,1,1,NA,0,0,2
+2018-08-28,6.1,6,1,9.55,3,6.Manon,Manon,26,F,London,Software project manager,1.9090909090909092,3,3,3,12,0,8,1,1,1,NA,1,1,1,1,1,0,6
+2018-08-28,6.1,6,1,9.55,3,6.Rahul,Rahul,30,M,Rotherham,Research scientist,-0.2727272727272725,1,3,7,12,1,10,0,0,1,NA,1,1,1,NA,0,0,4
+2018-08-28,6.1,6,1,9.55,3,6.Ruby,Ruby,29,F,London,Project manager,3,-1,-3,1,12,0,10,-1,0,0,NA,-1,-1,-1,-1,0,0,-4
+2018-08-28,6.1,6,1,9.55,3,6.Terry,Terry,56,M,West Midlands,Retired air steward,-1.3636363636363638,-1,3,9,12,0,5,-1,1,-1,NA,1,1,1,-1,0,0,2
+2018-09-04,6.2,6,2,9.31,3,6.Antony,Antony,30,M,London,Banker,-1.8000000000000003,1,0,9,11,0,3,1,1,-1,NA,0,-1,1,NA,0,0,1
+2018-09-04,6.2,6,2,9.31,3,6.Briony,Briony,33,F,Bristol,Stay at home parent,0.5999999999999999,1,1,5,11,0,9,1,1,-1,1,-1,1,1,-1,0,0,2
+2018-09-04,6.2,6,2,9.31,3,6.Dan,Dan,36,M,London,Stay at home parent,1.7999999999999998,3,3,3,11,0,6,1,1,1,1,1,1,1,1,0,0,6
+2018-09-04,6.2,6,2,9.31,3,6.Jon,Jon,47,M,Newport,Blood courier,3,2,3,1,11,0,7,1,0,1,1,1,1,1,1,0,0,5
+2018-09-04,6.2,6,2,9.31,3,6.Karen,Karen,60,F,Wakefield,In-store sampling assistant,-3,-1,3,11,11,0,5,-1,-1,1,-1,1,1,1,NA,0,0,2
+2018-09-04,6.2,6,2,9.31,3,6.Kim-Joy,Kim-Joy,27,F,Leeds,Mental health specialist,1.2000000000000002,3,0,4,11,0,10,1,1,1,NA,-1,0,1,NA,0,0,3
+2018-09-04,6.2,6,2,9.31,3,6.Luke,Luke,30,M,Sheffield,Civil servant/house and techno DJ,-0.5999999999999999,-2,-1,7,11,0,2,-1,0,-1,-1,-1,1,-1,-1,0,1,-3
+2018-09-04,6.2,6,2,9.31,3,6.Manon,Manon,26,F,London,Software project manager,0,-2,3,6,11,0,8,-1,-1,0,-1,1,1,1,NA,0,0,1
+2018-09-04,6.2,6,2,9.31,3,6.Rahul,Rahul,30,M,Rotherham,Research scientist,2.4000000000000004,3,3,2,11,1,10,1,1,1,NA,1,1,1,1,1,0,6
+2018-09-04,6.2,6,2,9.31,3,6.Ruby,Ruby,29,F,London,Project manager,-2.4000000000000004,0,3,10,11,0,10,1,0,-1,-1,1,1,1,NA,0,0,3
+2018-09-04,6.2,6,2,9.31,3,6.Terry,Terry,56,M,West Midlands,Retired air steward,-1.1999999999999997,2,0,8,11,0,5,1,1,0,-1,0,-1,1,-1,0,0,2
+2018-09-11,6.3,6,3,8.91,2,6.Antony,Antony,30,M,London,Banker,-1.6666666666666667,1,-1,8,10,0,3,-1,1,1,-1,-1,0,0,-1,0,1,0
+2018-09-11,6.3,6,3,8.91,2,6.Briony,Briony,33,F,Bristol,Stay at home parent,-2.333333333333333,1,-3,9,10,0,9,1,1,-1,-1,-1,-1,-1,-1,0,0,-2
+2018-09-11,6.3,6,3,8.91,2,6.Dan,Dan,36,M,London,Stay at home parent,-0.3333333333333335,3,1,6,10,0,6,1,1,1,1,1,-1,1,1,0,0,4
+2018-09-11,6.3,6,3,8.91,2,6.Jon,Jon,47,M,Newport,Blood courier,2.3333333333333335,1,-1,2,10,0,7,-1,1,1,NA,-1,1,-1,NA,0,0,0
+2018-09-11,6.3,6,3,8.91,2,6.Karen,Karen,60,F,Wakefield,In-store sampling assistant,0.3333333333333335,3,-1,5,10,0,5,1,1,1,NA,-1,-1,1,NA,0,0,2
+2018-09-11,6.3,6,3,8.91,2,6.Kim-Joy,Kim-Joy,27,F,Leeds,Mental health specialist,-3,3,1,10,10,0,10,1,1,1,-1,-1,1,1,NA,0,0,4
+2018-09-11,6.3,6,3,8.91,2,6.Manon,Manon,26,F,London,Software project manager,1.6666666666666667,1,-1,3,10,0,8,-1,1,1,NA,-1,-1,1,NA,0,0,0
+2018-09-11,6.3,6,3,8.91,2,6.Rahul,Rahul,30,M,Rotherham,Research scientist,1,2,3,4,10,1,10,1,1,0,1,1,1,1,1,1,0,5
+2018-09-11,6.3,6,3,8.91,2,6.Ruby,Ruby,29,F,London,Project manager,-0.9999999999999998,-1,3,7,10,0,10,-1,0,0,-1,1,1,1,NA,0,0,2
+2018-09-11,6.3,6,3,8.91,2,6.Terry,Terry,56,M,West Midlands,Retired air steward,3,3,1,1,10,0,5,1,1,1,NA,-1,1,1,NA,0,0,4
+2018-09-18,6.4,6,4,8.88,3,6.Briony,Briony,33,F,Bristol,Stay at home parent,-0.4285714285714284,-1,1,5,8,0,9,-1,1,-1,-1,1,1,-1,-1,0,0,0
+2018-09-18,6.4,6,4,8.88,3,6.Dan,Dan,36,M,London,Stay at home parent,3,3,2,1,8,0,6,1,1,1,1,1,1,0,1,1,0,5
+2018-09-18,6.4,6,4,8.88,3,6.Jon,Jon,47,M,Newport,Blood courier,1.2857142857142858,3,3,3,8,0,7,1,1,1,1,1,1,1,1,0,0,6
+2018-09-18,6.4,6,4,8.88,3,6.Karen,Karen,60,F,Wakefield,In-store sampling assistant,-2.1428571428571423,-2,2,7,8,0,5,-1,0,-1,-1,1,0,1,-1,0,0,0
+2018-09-18,6.4,6,4,8.88,3,6.Kim-Joy,Kim-Joy,27,F,Leeds,Mental health specialist,-1.2857142857142858,0,3,6,8,0,10,0,1,-1,-1,1,1,1,NA,0,0,3
+2018-09-18,6.4,6,4,8.88,3,6.Manon,Manon,26,F,London,Software project manager,-3,2,3,8,8,0,8,1,1,0,-1,1,1,1,NA,0,0,5
+2018-09-18,6.4,6,4,8.88,3,6.Rahul,Rahul,30,M,Rotherham,Research scientist,0.4285714285714287,0,3,4,8,1,10,-1,1,0,1,1,1,1,1,0,0,3
+2018-09-18,6.4,6,4,8.88,3,6.Ruby,Ruby,29,F,London,Project manager,2.142857142857143,3,-3,2,8,0,10,1,1,1,1,-1,-1,-1,NA,0,0,0
+2018-09-25,6.5,6,5,8.67,3,6.Briony,Briony,33,F,Bristol,Stay at home parent,-0.75,-1,0,6,9,0,9,-1,-1,1,-1,0,0,0,-1,0,0,-1
+2018-09-25,6.5,6,5,8.67,3,6.Dan,Dan,36,M,London,Stay at home parent,2.25,-2,0,2,9,0,6,-1,0,-1,NA,0,-1,1,NA,0,0,-2
+2018-09-25,6.5,6,5,8.67,3,6.Jon,Jon,47,M,Newport,Blood courier,-1.5,1,1,7,9,0,7,-1,1,1,NA,1,1,-1,-1,0,0,2
+2018-09-25,6.5,6,5,8.67,3,6.Karen,Karen,60,F,Wakefield,In-store sampling assistant,-3,-2,-1,9,9,0,5,-1,-1,0,-1,0,-1,0,-1,0,1,-3
+2018-09-25,6.5,6,5,8.67,3,6.Kim-Joy,Kim-Joy,27,F,Leeds,Mental health specialist,0.75,3,3,4,9,0,10,1,1,1,1,1,1,1,1,1,0,6
+2018-09-25,6.5,6,5,8.67,3,6.Manon,Manon,26,F,London,Software project manager,0,3,1,5,9,0,8,1,1,1,1,1,-1,1,NA,0,0,4
+2018-09-25,6.5,6,5,8.67,3,6.Rahul,Rahul,30,M,Rotherham,Research scientist,1.5,3,3,3,9,1,10,1,1,1,1,1,1,1,1,0,0,6
+2018-09-25,6.5,6,5,8.67,3,6.Ruby,Ruby,29,F,London,Project manager,3,2,1,1,9,0,10,1,0,1,1,1,0,0,NA,0,0,3
+2018-09-25,6.5,6,5,8.67,3,6.Terry,Terry,56,M,West Midlands,Retired air steward,-2.25,-3,-3,8,9,0,5,-1,-1,-1,-1,-1,-1,-1,-1,0,1,-6
+2018-10-02,6.6,6,6,8.91,4,6.Briony,Briony,33,F,Bristol,Stay at home parent,3,2,1,1,7,0,9,1,0,1,1,1,-1,1,1,1,0,3
+2018-10-02,6.6,6,6,8.91,4,6.Dan,Dan,36,M,London,Stay at home parent,-2,0,1,6,7,0,6,-1,1,0,-1,-1,1,1,-1,0,1,1
+2018-10-02,6.6,6,6,8.91,4,6.Jon,Jon,47,M,Newport,Blood courier,2,0,-1,2,7,0,7,-1,1,0,NA,-1,1,-1,NA,0,0,-1
+2018-10-02,6.6,6,6,8.91,4,6.Kim-Joy,Kim-Joy,27,F,Leeds,Mental health specialist,-0.9999999999999998,2,1,5,7,0,10,1,1,0,NA,-1,1,1,NA,0,0,3
+2018-10-02,6.6,6,6,8.91,4,6.Manon,Manon,26,F,London,Software project manager,0,-3,-3,4,7,0,8,-1,-1,-1,-1,-1,-1,-1,-1,0,0,-6
+2018-10-02,6.6,6,6,8.91,4,6.Rahul,Rahul,30,M,Rotherham,Research scientist,1,3,2,3,7,1,10,1,1,1,1,0,1,1,1,0,0,5
+2018-10-02,6.6,6,6,8.91,4,6.Ruby,Ruby,29,F,London,Project manager,-3,3,3,7,7,0,10,1,1,1,-1,1,1,1,1,0,0,6
+2018-10-09,6.7,6,7,9.22,3,6.Briony,Briony,33,F,Bristol,Stay at home parent,-1.8000000000000003,-1,3,5,6,0,9,0,-1,0,-1,1,1,1,NA,0,0,2
+2018-10-09,6.7,6,7,9.22,3,6.Jon,Jon,47,M,Newport,Blood courier,-0.5999999999999999,-3,0,4,6,0,7,-1,-1,-1,-1,1,0,-1,-1,0,1,-3
+2018-10-09,6.7,6,7,9.22,3,6.Kim-Joy,Kim-Joy,27,F,Leeds,Mental health specialist,-3,3,3,6,6,0,10,1,1,1,NA,1,1,1,1,1,0,6
+2018-10-09,6.7,6,7,9.22,3,6.Manon,Manon,26,F,London,Software project manager,1.7999999999999998,3,-1,2,6,0,8,1,1,1,1,-1,-1,1,NA,0,0,2
+2018-10-09,6.7,6,7,9.22,3,6.Rahul,Rahul,30,M,Rotherham,Research scientist,3,2,-2,1,6,1,10,1,1,0,1,-1,0,-1,1,0,0,0
+2018-10-09,6.7,6,7,9.22,3,6.Ruby,Ruby,29,F,London,Project manager,0.5999999999999999,1,1,3,6,0,10,1,-1,1,-1,1,1,-1,-1,0,0,2
+2018-10-16,6.8,6,8,9.69,2,6.Briony,Briony,33,F,Bristol,Stay at home parent,3,-3,2,1,5,0,9,-1,-1,-1,1,1,1,0,1,0,0,-1
+2018-10-16,6.8,6,8,9.69,2,6.Kim-Joy,Kim-Joy,27,F,Leeds,Mental health specialist,1.5,2,1,2,5,0,10,0,1,1,1,-1,1,1,-1,0,0,3
+2018-10-16,6.8,6,8,9.69,2,6.Manon,Manon,26,F,London,Software project manager,-1.5,-3,1,4,5,0,8,-1,-1,-1,-1,-1,1,1,-1,0,1,-2
+2018-10-16,6.8,6,8,9.69,2,6.Rahul,Rahul,30,M,Rotherham,Research scientist,-3,-2,0,5,5,1,10,-1,0,-1,-1,-1,1,0,-1,0,0,-2
+2018-10-16,6.8,6,8,9.69,2,6.Ruby,Ruby,29,F,London,Project manager,0,3,2,3,5,0,10,1,1,1,1,1,0,1,1,1,0,5
+2018-10-23,6.9,6,9,9.5,3,6.Briony,Briony,33,F,Bristol,Stay at home parent,-0.9999999999999998,1,-2,3,4,0,9,1,0,0,-1,-1,0,-1,-1,0,1,-1
+2018-10-23,6.9,6,9,9.5,3,6.Kim-Joy,Kim-Joy,27,F,Leeds,Mental health specialist,1,0,0,2,4,0,10,-1,0,1,1,0,1,-1,1,0,0,0
+2018-10-23,6.9,6,9,9.5,3,6.Rahul,Rahul,30,M,Rotherham,Research scientist,-3,3,0,4,4,1,10,1,1,1,NA,0,1,-1,-1,0,0,3
+2018-10-23,6.9,6,9,9.5,3,6.Ruby,Ruby,29,F,London,Project manager,3,-1,2,1,4,0,10,-1,1,-1,NA,1,1,0,1,1,0,1
+2018-10-30,6.10,6,10,10.34,2,6.Kim-Joy,Kim-Joy,27,F,Leeds,Mental health specialist,0,2,1,2,3,0,10,1,1,0,NA,1,0,0,NA,0,1,3
+2018-10-30,6.10,6,10,10.34,2,6.Rahul,Rahul,30,M,Rotherham,Research scientist,3,0,2,1,3,1,10,-1,0,1,NA,1,1,0,NA,1,0,2
+2018-10-30,6.10,6,10,10.34,2,6.Ruby,Ruby,29,F,London,Project manager,-3,0,1,3,3,0,10,1,-1,0,NA,1,1,-1,NA,0,1,1
+2019-08-27,7.1,7,1,9.62,1,7.Alice,Alice,28,F,Essex,Geography teacher,1,1,3,5,13,0,10,0,0,1,NA,1,1,1,NA,0,0,4
+2019-08-27,7.1,7,1,9.62,1,7.Amelia,Amelia,24,F,Halifax,Fashion designer,1.5,3,-2,4,13,0,3,1,1,1,NA,-1,-1,0,NA,0,0,1
+2019-08-27,7.1,7,1,9.62,1,7.Dan,Dan,32,M,Rotherham,Support worker,-0.9999999999999998,-1,0,9,13,0,1,-1,1,-1,NA,0,-1,1,-1,0,1,-1
+2019-08-27,7.1,7,1,9.62,1,7.David,David,36,M,Whitby,International health adviser,-1.5,2,3,10,13,1,10,1,0,1,NA,1,1,1,NA,0,0,5
+2019-08-27,7.1,7,1,9.62,1,7.Helena,Helena,40,F,Leeds,Online project manager,-2.5,0,3,12,13,0,5,0,1,-1,NA,1,1,1,NA,0,0,3
+2019-08-27,7.1,7,1,9.62,1,7.Henry,Henry,20,M,Durham,Student,3,1,2,1,13,0,8,1,1,-1,NA,0,1,1,NA,0,0,3
+2019-08-27,7.1,7,1,9.62,1,7.Jamie,Jamie,20,M,Surrey,Part-time waiter,-3,2,-2,13,13,0,2,1,1,0,NA,-1,-1,0,-1,0,0,0
+2019-08-27,7.1,7,1,9.62,1,7.Michael,Michael,26,M,Stratford-upon-Avon,Theatre manager/fitness instructor,-2,3,1,11,13,0,7,1,1,1,NA,1,-1,1,NA,0,0,4
+2019-08-27,7.1,7,1,9.62,1,7.Michelle,Michelle,35,F,"Tenby, Wales",Print shop administrator,0.4999999999999999,1,3,6,13,0,5,-1,1,1,NA,1,1,1,1,1,0,4
+2019-08-27,7.1,7,1,9.62,1,7.Phil,Phil,56,M,Rainham,HGV driver,-0.5000000000000002,0,-1,8,13,0,4,0,-1,1,NA,0,-1,0,NA,0,0,-1
+2019-08-27,7.1,7,1,9.62,1,7.Priya,Priya,34,F,Leicester,Marketing consultant,0,3,0,7,13,0,6,1,1,1,NA,0,1,-1,NA,0,0,3
+2019-08-27,7.1,7,1,9.62,1,7.Rosie,Rosie,28,F,Somerset,Veterinary surgeon,2.5,-3,2,2,13,0,9,-1,-1,-1,NA,1,1,0,NA,0,0,-1
+2019-08-27,7.1,7,1,9.62,1,7.Steph,Steph,28,F,Chester,Shop assistant,2,3,1,3,13,0,10,1,1,1,NA,-1,1,1,1,0,0,4
+2019-09-03,7.2,7,2,9.38,1,7.Alice,Alice,28,F,Essex,Geography teacher,3,3,3,1,12,0,10,1,1,1,NA,1,1,1,1,1,0,6
+2019-09-03,7.2,7,2,9.38,1,7.Amelia,Amelia,24,F,Halifax,Fashion designer,-1.3636363636363638,-1,-1,9,12,0,3,-1,1,-1,NA,1,-1,-1,-1,0,0,-2
+2019-09-03,7.2,7,2,9.38,1,7.David,David,36,M,Whitby,International health adviser,2.454545454545454,1,3,2,12,1,10,1,1,-1,NA,1,1,1,1,0,0,4
+2019-09-03,7.2,7,2,9.38,1,7.Helena,Helena,40,F,Leeds,Online project manager,-3,-1,3,12,12,0,5,-1,0,0,NA,1,1,1,NA,0,0,2
+2019-09-03,7.2,7,2,9.38,1,7.Henry,Henry,20,M,Durham,Student,0.2727272727272728,2,-1,6,12,0,8,0,1,1,NA,-1,1,-1,NA,0,0,1
+2019-09-03,7.2,7,2,9.38,1,7.Jamie,Jamie,20,M,Surrey,Part-time waiter,-2.454545454545454,-2,1,11,12,0,2,0,-1,-1,NA,1,1,-1,-1,0,1,-1
+2019-09-03,7.2,7,2,9.38,1,7.Michael,Michael,26,M,Stratford-upon-Avon,Theatre manager/fitness instructor,1.3636363636363638,1,0,4,12,0,7,0,1,0,NA,-1,0,1,NA,0,0,1
+2019-09-03,7.2,7,2,9.38,1,7.Michelle,Michelle,35,F,"Tenby, Wales",Print shop administrator,-0.8181818181818181,3,1,8,12,0,5,1,1,1,NA,1,1,-1,NA,0,0,4
+2019-09-03,7.2,7,2,9.38,1,7.Phil,Phil,56,M,Rainham,HGV driver,1.9090909090909092,1,0,3,12,0,4,1,1,-1,NA,-1,0,1,NA,0,0,1
+2019-09-03,7.2,7,2,9.38,1,7.Priya,Priya,34,F,Leicester,Marketing consultant,-0.2727272727272725,-2,-1,7,12,0,6,0,-1,-1,NA,-1,-1,1,NA,0,0,-3
+2019-09-03,7.2,7,2,9.38,1,7.Rosie,Rosie,28,F,Somerset,Veterinary surgeon,0.8181818181818181,3,2,5,12,0,9,1,1,1,NA,0,1,1,1,0,0,5
+2019-09-03,7.2,7,2,9.38,1,7.Steph,Steph,28,F,Chester,Shop assistant,-1.9090909090909094,0,1,10,12,0,10,0,-1,1,NA,-1,1,1,NA,0,0,1
+2019-09-10,7.3,7,3,8.94,1,7.Alice,Alice,28,F,Essex,Geography teacher,-0.5999999999999999,1,2,7,11,0,10,-1,1,1,-1,1,0,1,-1,0,0,3
+2019-09-10,7.3,7,3,8.94,1,7.Amelia,Amelia,24,F,Halifax,Fashion designer,-3,0,-2,11,11,0,3,0,1,-1,-1,-1,-1,0,-1,0,1,-2
+2019-09-10,7.3,7,3,8.94,1,7.David,David,36,M,Whitby,International health adviser,2.4000000000000004,0,-2,2,11,1,10,0,0,0,1,-1,-1,0,NA,0,0,-2
+2019-09-10,7.3,7,3,8.94,1,7.Helena,Helena,40,F,Leeds,Online project manager,-1.1999999999999997,0,-3,8,11,0,5,0,1,-1,NA,-1,-1,-1,NA,0,0,-3
+2019-09-10,7.3,7,3,8.94,1,7.Henry,Henry,20,M,Durham,Student,3,0,-1,1,11,0,8,0,-1,1,NA,-1,1,-1,-1,0,0,-1
+2019-09-10,7.3,7,3,8.94,1,7.Michael,Michael,26,M,Stratford-upon-Avon,Theatre manager/fitness instructor,0,3,3,6,11,0,7,1,1,1,NA,1,1,1,1,1,0,6
+2019-09-10,7.3,7,3,8.94,1,7.Michelle,Michelle,35,F,"Tenby, Wales",Print shop administrator,0.5999999999999999,1,1,5,11,0,5,1,1,-1,1,-1,1,1,NA,0,0,2
+2019-09-10,7.3,7,3,8.94,1,7.Phil,Phil,56,M,Rainham,HGV driver,-2.4000000000000004,3,2,10,11,0,4,1,1,1,NA,1,1,0,NA,0,0,5
+2019-09-10,7.3,7,3,8.94,1,7.Priya,Priya,34,F,Leicester,Marketing consultant,1.2000000000000002,1,-1,4,11,0,6,0,1,0,1,1,-1,-1,NA,0,0,0
+2019-09-10,7.3,7,3,8.94,1,7.Rosie,Rosie,28,F,Somerset,Veterinary surgeon,-1.8000000000000003,2,2,9,11,0,9,1,1,0,-1,1,0,1,NA,0,0,4
+2019-09-10,7.3,7,3,8.94,1,7.Steph,Steph,28,F,Chester,Shop assistant,1.7999999999999998,1,3,3,11,0,10,-1,1,1,NA,1,1,1,1,0,0,4
+2019-09-17,7.4,7,4,8.96,2,7.Alice,Alice,28,F,Essex,Geography teacher,-1.6666666666666667,1,3,8,10,0,10,1,-1,1,NA,1,1,1,NA,0,0,4
+2019-09-17,7.4,7,4,8.96,2,7.David,David,36,M,Whitby,International health adviser,2.3333333333333335,3,3,2,10,1,10,1,1,1,1,1,1,1,1,0,0,6
+2019-09-17,7.4,7,4,8.96,2,7.Helena,Helena,40,F,Leeds,Online project manager,-2.333333333333333,3,3,9,10,0,5,1,1,1,NA,1,1,1,NA,0,0,6
+2019-09-17,7.4,7,4,8.96,2,7.Henry,Henry,20,M,Durham,Student,1.6666666666666667,3,-1,3,10,0,8,1,1,1,1,-1,1,-1,NA,0,0,2
+2019-09-17,7.4,7,4,8.96,2,7.Michael,Michael,26,M,Stratford-upon-Avon,Theatre manager/fitness instructor,-0.9999999999999998,1,3,7,10,0,7,1,1,-1,-1,1,1,1,-1,0,0,4
+2019-09-17,7.4,7,4,8.96,2,7.Michelle,Michelle,35,F,"Tenby, Wales",Print shop administrator,0.3333333333333335,0,1,5,10,0,5,-1,0,1,NA,0,0,1,NA,0,0,1
+2019-09-17,7.4,7,4,8.96,2,7.Phil,Phil,56,M,Rainham,HGV driver,-0.3333333333333335,-1,0,6,10,0,4,1,-1,-1,NA,0,-1,1,-1,0,1,-1
+2019-09-17,7.4,7,4,8.96,2,7.Priya,Priya,34,F,Leicester,Marketing consultant,-3,3,1,10,10,0,6,1,1,1,-1,1,1,-1,-1,0,0,4
+2019-09-17,7.4,7,4,8.96,2,7.Rosie,Rosie,28,F,Somerset,Veterinary surgeon,1,3,3,4,10,0,9,1,1,1,NA,1,1,1,NA,0,0,6
+2019-09-17,7.4,7,4,8.96,2,7.Steph,Steph,28,F,Chester,Shop assistant,3,3,3,1,10,0,10,1,1,1,1,1,1,1,1,1,0,6
+2019-09-24,7.5,7,5,9.26,2,7.Alice,Alice,28,F,Essex,Geography teacher,-0.75,-1,1,6,9,0,10,0,-1,0,NA,1,1,-1,NA,0,0,0
+2019-09-24,7.5,7,5,9.26,2,7.David,David,36,M,Whitby,International health adviser,-3,3,3,9,9,1,10,1,1,1,NA,1,1,1,1,0,0,6
+2019-09-24,7.5,7,5,9.26,2,7.Helena,Helena,40,F,Leeds,Online project manager,3,0,-1,1,9,0,5,0,-1,1,NA,1,-1,-1,-1,0,1,-1
+2019-09-24,7.5,7,5,9.26,2,7.Henry,Henry,20,M,Durham,Student,1.5,1,1,3,9,0,8,-1,1,1,NA,-1,1,1,1,0,0,2
+2019-09-24,7.5,7,5,9.26,2,7.Michael,Michael,26,M,Stratford-upon-Avon,Theatre manager/fitness instructor,-2.25,2,1,8,9,0,7,1,1,0,NA,1,-1,1,NA,0,0,3
+2019-09-24,7.5,7,5,9.26,2,7.Michelle,Michelle,35,F,"Tenby, Wales",Print shop administrator,-1.5,0,-2,7,9,0,5,0,-1,1,NA,-1,-1,0,-1,0,1,-2
+2019-09-24,7.5,7,5,9.26,2,7.Priya,Priya,34,F,Leicester,Marketing consultant,2.25,-1,1,2,9,0,6,-1,1,-1,-1,1,1,-1,-1,0,0,0
+2019-09-24,7.5,7,5,9.26,2,7.Rosie,Rosie,28,F,Somerset,Veterinary surgeon,0,-1,2,5,9,0,9,-1,1,-1,NA,1,1,0,-1,0,0,1
+2019-09-24,7.5,7,5,9.26,2,7.Steph,Steph,28,F,Chester,Shop assistant,0.75,3,2,4,9,0,10,1,1,1,NA,1,1,0,1,1,0,5
+2019-10-01,7.6,7,6,8.7,3,7.Alice,Alice,28,F,Essex,Geography teacher,3,0,3,1,7,0,10,0,-1,1,1,1,1,1,1,0,0,3
+2019-10-01,7.6,7,6,8.7,3,7.David,David,36,M,Whitby,International health adviser,2,1,1,2,7,1,10,1,-1,1,NA,-1,1,1,NA,0,0,2
+2019-10-01,7.6,7,6,8.7,3,7.Henry,Henry,20,M,Durham,Student,0,1,-1,4,7,0,8,1,1,-1,NA,-1,-1,1,-1,0,0,0
+2019-10-01,7.6,7,6,8.7,3,7.Michael,Michael,26,M,Stratford-upon-Avon,Theatre manager/fitness instructor,-2,1,0,6,7,0,7,-1,1,1,-1,-1,1,0,-1,0,0,1
+2019-10-01,7.6,7,6,8.7,3,7.Priya,Priya,34,F,Leicester,Marketing consultant,-3,-3,2,7,7,0,6,-1,-1,-1,-1,1,0,1,-1,0,1,-1
+2019-10-01,7.6,7,6,8.7,3,7.Rosie,Rosie,28,F,Somerset,Veterinary surgeon,-0.9999999999999998,1,-2,5,7,0,9,1,1,-1,NA,-1,-1,0,-1,0,0,-1
+2019-10-01,7.6,7,6,8.7,3,7.Steph,Steph,28,F,Chester,Shop assistant,1,2,3,3,7,0,10,1,0,1,1,1,1,1,1,1,0,5
+2019-10-08,7.7,7,7,8.98,3,7.Alice,Alice,28,F,Essex,Geography teacher,-3,0,3,6,6,0,10,1,-1,0,-1,1,1,1,NA,0,0,3
+2019-10-08,7.7,7,7,8.98,3,7.David,David,36,M,Whitby,International health adviser,1.7999999999999998,3,-1,2,6,1,10,1,1,1,NA,-1,0,0,1,0,0,2
+2019-10-08,7.7,7,7,8.98,3,7.Henry,Henry,20,M,Durham,Student,0.5999999999999999,3,3,3,6,0,8,1,1,1,NA,1,1,1,1,1,0,6
+2019-10-08,7.7,7,7,8.98,3,7.Michael,Michael,26,M,Stratford-upon-Avon,Theatre manager/fitness instructor,-1.8000000000000003,1,-1,5,6,0,7,0,1,0,NA,-1,0,0,-1,0,1,0
+2019-10-08,7.7,7,7,8.98,3,7.Rosie,Rosie,28,F,Somerset,Veterinary surgeon,3,3,0,1,6,0,9,1,1,1,NA,0,1,-1,-1,0,0,3
+2019-10-08,7.7,7,7,8.98,3,7.Steph,Steph,28,F,Chester,Shop assistant,-0.5999999999999999,3,2,4,6,0,10,1,1,1,NA,1,1,0,1,0,0,5
+2019-10-15,7.8,7,8,9.19,3,7.Alice,Alice,28,F,Essex,Geography teacher,0,1,-1,3,5,0,10,0,1,0,-1,-1,-1,1,NA,0,0,0
+2019-10-15,7.8,7,8,9.19,3,7.David,David,36,M,Whitby,International health adviser,3,-1,-1,1,5,1,10,-1,1,-1,NA,-1,-1,1,1,0,0,-2
+2019-10-15,7.8,7,8,9.19,3,7.Henry,Henry,20,M,Durham,Student,-3,3,-3,5,5,0,8,1,1,1,-1,-1,-1,-1,-1,0,1,0
+2019-10-15,7.8,7,8,9.19,3,7.Rosie,Rosie,28,F,Somerset,Veterinary surgeon,1.5,-3,1,2,5,0,9,-1,-1,-1,-1,-1,1,1,-1,0,0,-2
+2019-10-15,7.8,7,8,9.19,3,7.Steph,Steph,28,F,Chester,Shop assistant,-1.5,0,3,4,5,0,10,0,1,-1,NA,1,1,1,1,1,0,3
+2019-10-22,7.9,7,9,9.34,3,7.Alice,Alice,28,F,Essex,Geography teacher,-3,2,1,4,4,0,10,1,1,0,NA,-1,1,1,1,1,0,3
+2019-10-22,7.9,7,9,9.34,3,7.David,David,36,M,Whitby,International health adviser,1,1,-1,2,4,1,10,0,1,0,NA,-1,1,-1,-1,0,0,0
+2019-10-22,7.9,7,9,9.34,3,7.Rosie,Rosie,28,F,Somerset,Veterinary surgeon,3,1,-1,1,4,0,9,-1,1,1,NA,-1,0,0,-1,0,1,0
+2019-10-22,7.9,7,9,9.34,3,7.Steph,Steph,28,F,Chester,Shop assistant,-0.9999999999999998,2,3,3,4,0,10,0,1,1,NA,1,1,1,1,0,0,5
+2019-10-29,7.10,7,10,10.05,3,7.Alice,Alice,28,F,Essex,Geography teacher,0,0,3,2,3,0,10,1,0,-1,NA,1,1,1,1,0,1,3
+2019-10-29,7.10,7,10,10.05,3,7.David,David,36,M,Whitby,International health adviser,3,1,3,1,3,1,10,1,-1,1,NA,1,1,1,1,1,0,4
+2019-10-29,7.10,7,10,10.05,3,7.Steph,Steph,28,F,Chester,Shop assistant,-3,2,-1,3,3,0,10,0,1,1,NA,0,0,-1,-1,0,1,1
+NA,8.1,8,1,NA,NA,8.Dave,Dave,30,M,"Waterlooville, Hampshire",Armoured security guard,-1.3636363636363638,3,-1,9,12,0,10,1,1,1,NA,-1,-1,1,NA,0,0,2
+NA,8.1,8,1,NA,NA,8.Hermine,Hermine,39,F,London,Accountant,0.8181818181818181,3,3,5,12,0,9,1,1,1,1,1,1,1,1,0,0,6
+NA,8.1,8,1,NA,NA,8.Laura,Laura,31,F,"Gravesend, Kent",Digital manager,0.2727272727272728,-1,2,6,12,0,10,0,-1,0,NA,1,1,0,NA,0,0,1
+NA,8.1,8,1,NA,NA,8.Linda,Linda,61,F,"Bexhill-on-Sea, East Sussex",Retirement living team leader,-3,-1,2,12,12,0,5,-1,0,0,-1,1,1,0,-1,0,0,1
+NA,8.1,8,1,NA,NA,8.Loriea,Loriea,27,F,Durham,Diagnostic radiographer,-1.9090909090909094,-1,-2,10,12,0,1,-1,-1,1,-1,0,-1,-1,-1,0,1,-3
+NA,8.1,8,1,NA,NA,8.Lottie,Lottie,31,F,West Sussex,Pantomime producer,1.3636363636363638,1,1,4,12,0,7,1,1,-1,NA,-1,1,1,NA,0,0,2
+NA,8.1,8,1,NA,NA,8.Mak,Mak,51,M,Manchester,Accountant,-0.8181818181818181,0,1,8,12,0,2,0,-1,1,NA,-1,1,1,NA,0,0,1
+NA,8.1,8,1,NA,NA,8.Marc,Marc,51,M,"St Eval, Cornwall",Bronze resin sculptor,-2.454545454545454,0,0,11,12,0,8,0,0,0,-1,0,1,-1,-1,0,0,0
+NA,8.1,8,1,NA,NA,8.Mark,Mark,32,M,"Portadown, Northern Ireland",Project manager,-0.2727272727272725,1,3,7,12,0,6,1,0,0,NA,1,1,1,NA,0,0,4
+NA,8.1,8,1,NA,NA,8.Peter,Peter,20,M,Edinburgh,Accounting & finance student,2.454545454545454,3,3,2,12,1,10,1,1,1,1,1,1,1,1,1,0,6
+NA,8.1,8,1,NA,NA,8.Rowan,Rowan,55,M,"Pershore, Worcestershire",Music teacher,1.9090909090909092,0,3,3,12,0,3,-1,0,1,NA,1,1,1,NA,0,0,3
+NA,8.1,8,1,NA,NA,8.Sura,Sura,31,F,London,Hospital pharmacy dispenser,3,3,3,1,12,0,4,1,1,1,1,1,1,1,1,0,0,6
+NA,8.2,8,2,NA,NA,8.Dave,Dave,30,M,"Waterlooville, Hampshire",Armoured security guard,3,3,3,1,11,0,10,1,1,1,NA,1,1,1,1,1,0,6
+NA,8.2,8,2,NA,NA,8.Hermine,Hermine,39,F,London,Accountant,0.5999999999999999,-2,0,5,11,0,9,-1,0,-1,NA,0,-1,1,NA,0,0,-2
+NA,8.2,8,2,NA,NA,8.Laura,Laura,31,F,"Gravesend, Kent",Digital manager,-0.5999999999999999,2,0,7,11,0,10,1,0,1,NA,0,1,-1,NA,0,0,2
+NA,8.2,8,2,NA,NA,8.Linda,Linda,61,F,"Bexhill-on-Sea, East Sussex",Retirement living team leader,1.2000000000000002,1,0,4,11,0,5,1,1,-1,NA,-1,0,1,NA,0,0,1
+NA,8.2,8,2,NA,NA,8.Lottie,Lottie,31,F,West Sussex,Pantomime producer,-1.1999999999999997,3,3,8,11,0,7,1,1,1,NA,1,1,1,NA,0,0,6
+NA,8.2,8,2,NA,NA,8.Mak,Mak,51,M,Manchester,Accountant,1.7999999999999998,-1,0,3,11,0,2,-1,1,-1,NA,0,1,-1,-1,0,1,-1
+NA,8.2,8,2,NA,NA,8.Marc,Marc,51,M,"St Eval, Cornwall",Bronze resin sculptor,-1.8000000000000003,2,3,9,11,0,8,0,1,1,NA,1,1,1,1,0,0,5
+NA,8.2,8,2,NA,NA,8.Mark,Mark,32,M,"Portadown, Northern Ireland",Project manager,2.4000000000000004,-2,2,2,11,0,6,0,-1,-1,NA,0,1,1,1,0,0,0
+NA,8.2,8,2,NA,NA,8.Peter,Peter,20,M,Edinburgh,Accounting & finance student,-2.4000000000000004,2,3,10,11,1,10,0,1,1,NA,1,1,1,NA,0,0,5
+NA,8.2,8,2,NA,NA,8.Rowan,Rowan,55,M,"Pershore, Worcestershire",Music teacher,-3,-1,0,11,11,0,3,-1,1,-1,NA,-1,1,0,-1,0,0,-1
+NA,8.2,8,2,NA,NA,8.Sura,Sura,31,F,London,Hospital pharmacy dispenser,0,3,1,6,11,0,4,1,1,1,NA,1,1,-1,NA,0,0,4
+NA,8.3,8,3,NA,NA,8.Dave,Dave,30,M,"Waterlooville, Hampshire",Armoured security guard,-2.333333333333333,1,0,9,10,0,10,1,-1,1,-1,-1,1,0,-1,0,0,1
+NA,8.3,8,3,NA,NA,8.Hermine,Hermine,39,F,London,Accountant,-0.9999999999999998,3,1,7,10,0,9,1,1,1,1,1,-1,1,NA,0,0,4
+NA,8.3,8,3,NA,NA,8.Laura,Laura,31,F,"Gravesend, Kent",Digital manager,-0.3333333333333335,1,1,6,10,0,10,-1,1,1,NA,-1,1,1,NA,0,0,2
+NA,8.3,8,3,NA,NA,8.Linda,Linda,61,F,"Bexhill-on-Sea, East Sussex",Retirement living team leader,3,1,-1,1,10,0,5,-1,1,1,NA,-1,-1,1,NA,0,0,0
+NA,8.3,8,3,NA,NA,8.Lottie,Lottie,31,F,West Sussex,Pantomime producer,0.3333333333333335,3,2,5,10,0,7,1,1,1,1,1,0,1,NA,0,0,5
+NA,8.3,8,3,NA,NA,8.Marc,Marc,51,M,"St Eval, Cornwall",Bronze resin sculptor,2.3333333333333335,2,3,2,10,0,8,1,0,1,1,1,1,1,1,1,0,5
+NA,8.3,8,3,NA,NA,8.Mark,Mark,32,M,"Portadown, Northern Ireland",Project manager,1.6666666666666667,3,0,3,10,0,6,1,1,1,1,1,0,-1,NA,0,0,3
+NA,8.3,8,3,NA,NA,8.Peter,Peter,20,M,Edinburgh,Accounting & finance student,1,1,1,4,10,1,10,-1,1,1,NA,0,1,0,-1,0,0,2
+NA,8.3,8,3,NA,NA,8.Rowan,Rowan,55,M,"Pershore, Worcestershire",Music teacher,-3,-1,-1,10,10,0,3,-1,1,-1,-1,-1,-1,1,-1,0,1,-2
+NA,8.3,8,3,NA,NA,8.Sura,Sura,31,F,London,Hospital pharmacy dispenser,-1.6666666666666667,0,3,8,10,0,4,-1,1,0,NA,1,1,1,1,0,0,3
+NA,8.4,8,4,NA,NA,8.Dave,Dave,30,M,"Waterlooville, Hampshire",Armoured security guard,-2.25,1,3,8,9,0,10,-1,1,1,NA,1,1,1,NA,0,0,4
+NA,8.4,8,4,NA,NA,8.Hermine,Hermine,39,F,London,Accountant,0,-2,2,5,9,0,9,0,-1,-1,NA,1,1,0,NA,0,0,0
+NA,8.4,8,4,NA,NA,8.Laura,Laura,31,F,"Gravesend, Kent",Digital manager,2.25,-3,0,2,9,0,10,-1,-1,-1,NA,-1,1,0,NA,0,0,-3
+NA,8.4,8,4,NA,NA,8.Linda,Linda,61,F,"Bexhill-on-Sea, East Sussex",Retirement living team leader,3,0,1,1,9,0,5,-1,1,0,NA,1,1,-1,NA,0,0,1
+NA,8.4,8,4,NA,NA,8.Lottie,Lottie,31,F,West Sussex,Pantomime producer,-3,-2,1,9,9,0,7,-1,0,-1,NA,-1,1,1,-1,0,0,-1
+NA,8.4,8,4,NA,NA,8.Marc,Marc,51,M,"St Eval, Cornwall",Bronze resin sculptor,-0.75,-1,1,6,9,0,8,-1,1,-1,NA,-1,1,1,NA,0,0,0
+NA,8.4,8,4,NA,NA,8.Mark,Mark,32,M,"Portadown, Northern Ireland",Project manager,1.5,2,1,3,9,0,6,0,1,1,NA,1,-1,1,1,1,0,3
+NA,8.4,8,4,NA,NA,8.Peter,Peter,20,M,Edinburgh,Accounting & finance student,0.75,0,3,4,9,1,10,0,-1,1,NA,1,1,1,1,0,0,3
+NA,8.4,8,4,NA,NA,8.Sura,Sura,31,F,London,Hospital pharmacy dispenser,-1.5,-2,-3,7,9,0,4,-1,0,-1,NA,-1,-1,-1,-1,0,1,-5
+NA,8.5,8,5,NA,NA,8.Dave,Dave,30,M,"Waterlooville, Hampshire",Armoured security guard,-0.4285714285714284,0,3,5,8,0,10,-1,0,1,NA,1,1,1,1,0,0,3
+NA,8.5,8,5,NA,NA,8.Hermine,Hermine,39,F,London,Accountant,2.142857142857143,2,3,2,8,0,9,1,1,0,NA,1,1,1,1,0,0,5
+NA,8.5,8,5,NA,NA,8.Laura,Laura,31,F,"Gravesend, Kent",Digital manager,-1.2857142857142858,3,3,6,8,0,10,1,1,1,NA,1,1,1,1,1,0,6
+NA,8.5,8,5,NA,NA,8.Linda,Linda,61,F,"Bexhill-on-Sea, East Sussex",Retirement living team leader,-3,1,-1,8,8,0,5,1,1,-1,NA,-1,1,-1,-1,0,1,0
+NA,8.5,8,5,NA,NA,8.Lottie,Lottie,31,F,West Sussex,Pantomime producer,0.4285714285714287,1,2,4,8,0,7,1,1,-1,NA,1,1,0,NA,0,0,3
+NA,8.5,8,5,NA,NA,8.Marc,Marc,51,M,"St Eval, Cornwall",Bronze resin sculptor,-2.1428571428571423,-1,1,7,8,0,8,-1,1,-1,NA,-1,1,1,-1,0,0,0
+NA,8.5,8,5,NA,NA,8.Mark,Mark,32,M,"Portadown, Northern Ireland",Project manager,1.2857142857142858,3,-1,3,8,0,6,1,1,1,NA,-1,1,-1,-1,0,0,2
+NA,8.5,8,5,NA,NA,8.Peter,Peter,20,M,Edinburgh,Accounting & finance student,3,1,3,1,8,1,10,-1,1,1,NA,1,1,1,1,0,0,4
+NA,8.6,8,6,NA,NA,8.Dave,Dave,30,M,"Waterlooville, Hampshire",Armoured security guard,1,2,3,3,7,0,10,1,1,0,1,1,1,1,1,0,0,5
+NA,8.6,8,6,NA,NA,8.Hermine,Hermine,39,F,London,Accountant,0,2,-1,4,7,0,9,1,1,0,NA,-1,1,-1,-1,0,0,1
+NA,8.6,8,6,NA,NA,8.Laura,Laura,31,F,"Gravesend, Kent",Digital manager,-3,-1,2,7,7,0,10,-1,1,-1,-1,1,1,0,-1,0,0,1
+NA,8.6,8,6,NA,NA,8.Lottie,Lottie,31,F,West Sussex,Pantomime producer,2,3,3,2,7,0,7,1,1,1,1,1,1,1,1,1,0,6
+NA,8.6,8,6,NA,NA,8.Marc,Marc,51,M,"St Eval, Cornwall",Bronze resin sculptor,-2,2,3,6,7,0,8,1,1,0,NA,1,1,1,1,0,0,5
+NA,8.6,8,6,NA,NA,8.Mark,Mark,32,M,"Portadown, Northern Ireland",Project manager,-0.9999999999999998,3,-1,5,7,0,6,1,1,1,NA,-1,-1,1,-1,0,1,2
+NA,8.6,8,6,NA,NA,8.Peter,Peter,20,M,Edinburgh,Accounting & finance student,3,0,1,1,7,1,10,-1,1,0,NA,1,-1,1,NA,0,0,1
+NA,8.7,8,7,NA,NA,8.Dave,Dave,30,M,"Waterlooville, Hampshire",Armoured security guard,-3,-1,1,6,6,0,10,0,-1,0,-1,1,1,-1,NA,0,0,0
+NA,8.7,8,7,NA,NA,8.Hermine,Hermine,39,F,London,Accountant,3,1,3,1,6,0,9,-1,1,1,1,1,1,1,1,1,0,4
+NA,8.7,8,7,NA,NA,8.Laura,Laura,31,F,"Gravesend, Kent",Digital manager,-0.5999999999999999,0,0,4,6,0,10,-1,1,0,-1,0,1,-1,-1,0,0,0
+NA,8.7,8,7,NA,NA,8.Lottie,Lottie,31,F,West Sussex,Pantomime producer,-1.8000000000000003,3,-2,5,6,0,7,1,1,1,-1,0,-1,-1,-1,0,1,1
+NA,8.7,8,7,NA,NA,8.Marc,Marc,51,M,"St Eval, Cornwall",Bronze resin sculptor,0.5999999999999999,2,2,3,6,0,8,1,1,0,NA,0,1,1,1,0,0,4
+NA,8.7,8,7,NA,NA,8.Peter,Peter,20,M,Edinburgh,Accounting & finance student,1.7999999999999998,2,1,2,6,1,10,1,0,1,NA,-1,1,1,NA,0,0,3
+NA,8.8,8,8,NA,NA,8.Dave,Dave,30,M,"Waterlooville, Hampshire",Armoured security guard,-3,3,1,5,5,0,10,1,1,1,NA,-1,1,1,NA,0,0,4
+NA,8.8,8,8,NA,NA,8.Hermine,Hermine,39,F,London,Accountant,0,-1,3,3,5,0,9,-1,-1,1,NA,1,1,1,1,1,0,2
+NA,8.8,8,8,NA,NA,8.Laura,Laura,31,F,"Gravesend, Kent",Digital manager,3,1,2,1,5,0,10,1,1,-1,1,1,1,0,1,0,0,3
+NA,8.8,8,8,NA,NA,8.Marc,Marc,51,M,"St Eval, Cornwall",Bronze resin sculptor,1.5,-2,-2,2,5,0,8,0,-1,-1,NA,-1,-1,0,-1,0,1,-4
+NA,8.8,8,8,NA,NA,8.Peter,Peter,20,M,Edinburgh,Accounting & finance student,-1.5,0,-1,4,5,1,10,0,1,-1,-1,-1,1,-1,-1,0,0,-1
+NA,8.9,8,9,NA,NA,8.Dave,Dave,30,M,"Waterlooville, Hampshire",Armoured security guard,-0.9999999999999998,3,3,3,4,0,10,1,1,1,NA,1,1,1,1,0,0,6
+NA,8.9,8,9,NA,NA,8.Hermine,Hermine,39,F,London,Accountant,1,1,-1,2,4,0,9,-1,1,1,NA,-1,1,-1,-1,0,1,0
+NA,8.9,8,9,NA,NA,8.Laura,Laura,31,F,"Gravesend, Kent",Digital manager,-3,1,1,4,4,0,10,1,0,0,NA,1,1,-1,-1,0,0,2
+NA,8.9,8,9,NA,NA,8.Peter,Peter,20,M,Edinburgh,Accounting & finance student,3,3,3,1,4,1,10,1,1,1,NA,1,1,1,1,1,0,6
+NA,8.10,8,10,NA,NA,8.Dave,Dave,30,M,"Waterlooville, Hampshire",Armoured security guard,3,2,1,1,3,0,10,1,1,0,1,-1,1,1,NA,0,1,3
+NA,8.10,8,10,NA,NA,8.Laura,Laura,31,F,"Gravesend, Kent",Digital manager,-3,-1,1,3,3,0,10,-1,1,-1,-1,1,1,-1,NA,0,1,0
+NA,8.10,8,10,NA,NA,8.Peter,Peter,20,M,Edinburgh,Accounting & finance student,0,3,3,2,3,1,10,1,1,1,1,1,1,1,NA,1,0,6
+NA,9.1,9,1,NA,NA,9.Amanda,Amanda,56,F,London,Metropolitan Police detective,-3,-1,-2,12,12,0,6,0,0,-1,-1,-1,-1,0,-1,0,0,-3
+NA,9.1,9,1,NA,NA,9.Chigs,Chigs,40,M,Leicester,Sales manager,-2.454545454545454,3,2,11,12,0,10,1,1,1,NA,1,1,0,NA,0,0,5
+NA,9.1,9,1,NA,NA,9.Crystelle,Crystelle,26,F,London,Client relationship manager,-0.8181818181818181,2,3,8,12,0,10,1,1,0,NA,1,1,1,1,0,0,5
+NA,9.1,9,1,NA,NA,9.Freya,Freya,19,F,"Scarborough, North Yorkshire",Student,2.454545454545454,0,3,2,12,0,5,-1,1,0,NA,1,1,1,NA,0,0,3
+NA,9.1,9,1,NA,NA,9.George,George,34,M,London,Shared lives coordinator,1.9090909090909092,-3,0,3,12,0,7,-1,-1,-1,-1,0,1,-1,-1,0,0,-3
+NA,9.1,9,1,NA,NA,9.Giuseppe,Giuseppe,45,M,Bristol,Chief engineer,-1.9090909090909094,3,1,10,12,1,10,1,1,1,1,-1,1,1,1,0,0,4
+NA,9.1,9,1,NA,NA,9.Jairzeno,Jairzeno,51,M,London,Head of Finance,-1.3636363636363638,1,1,9,12,0,2,1,1,-1,NA,1,1,-1,-1,0,0,2
+NA,9.1,9,1,NA,NA,9.Jurgen,Jurgen,NA,NA,NA,NA,0.2727272727272728,1,3,6,12,0,9,1,1,-1,1,1,1,1,1,1,0,4
+NA,9.1,9,1,NA,NA,9.Lizzie,Lizzie,28,F,Liverpool,Car production operative,1.3636363636363638,-3,1,4,12,0,8,-1,-1,-1,NA,1,1,-1,NA,0,0,-2
+NA,9.1,9,1,NA,NA,9.Maggie,Maggie,70,F,"Poole, Dorset",Retired nurse and midwife,3,2,0,1,12,0,4,1,1,0,1,1,-1,0,NA,0,0,2
+NA,9.1,9,1,NA,NA,9.Rochica,Rochica,27,F,Birmingham,Junior HR business partner,-0.2727272727272725,1,1,7,12,0,3,-1,1,1,NA,0,1,0,NA,0,0,2
+NA,9.1,9,1,NA,NA,9.Tom,Tom,28,M,"Maidstone, Kent",Software developer,0.8181818181818181,-1,-2,5,12,0,1,1,-1,-1,-1,0,-1,-1,-1,0,1,-3
+NA,9.2,9,2,NA,NA,9.Amanda,Amanda,56,F,London,Metropolitan Police detective,1.2000000000000002,0,1,4,11,0,6,0,1,-1,NA,1,1,-1,-1,0,0,1
+NA,9.2,9,2,NA,NA,9.Chigs,Chigs,40,M,Leicester,Sales manager,-0.5999999999999999,3,3,7,11,0,10,1,1,1,NA,1,1,1,1,0,0,6
+NA,9.2,9,2,NA,NA,9.Crystelle,Crystelle,26,F,London,Client relationship manager,-2.4000000000000004,2,3,10,11,0,10,1,1,0,NA,1,1,1,NA,0,0,5
+NA,9.2,9,2,NA,NA,9.Freya,Freya,19,F,"Scarborough, North Yorkshire",Student,1.7999999999999998,2,2,3,11,0,5,1,0,1,NA,1,0,1,NA,0,0,4
+NA,9.2,9,2,NA,NA,9.George,George,34,M,London,Shared lives coordinator,-1.1999999999999997,1,3,8,11,0,7,1,1,-1,NA,1,1,1,NA,0,0,4
+NA,9.2,9,2,NA,NA,9.Giuseppe,Giuseppe,45,M,Bristol,Chief engineer,2.4000000000000004,3,3,2,11,1,10,1,1,1,NA,1,1,1,1,0,0,6
+NA,9.2,9,2,NA,NA,9.Jairzeno,Jairzeno,51,M,London,Head of Finance,-1.8000000000000003,-2,1,9,11,0,2,0,-1,-1,NA,1,1,-1,-1,0,1,-1
+NA,9.2,9,2,NA,NA,9.Jurgen,Jurgen,NA,NA,NA,NA,3,3,3,1,11,0,9,1,1,1,NA,1,1,1,1,1,0,6
+NA,9.2,9,2,NA,NA,9.Lizzie,Lizzie,28,F,Liverpool,Car production operative,0,1,1,6,11,0,8,1,1,-1,NA,1,0,0,NA,0,0,2
+NA,9.2,9,2,NA,NA,9.Maggie,Maggie,70,F,"Poole, Dorset",Retired nurse and midwife,0.5999999999999999,-1,-2,5,11,0,4,-1,1,-1,NA,-1,0,-1,-1,0,0,-3
+NA,9.2,9,2,NA,NA,9.Rochica,Rochica,27,F,Birmingham,Junior HR business partner,-3,1,3,11,11,0,3,1,1,-1,NA,1,1,1,NA,0,0,4
+NA,9.3,9,3,NA,NA,9.Amanda,Amanda,56,F,London,Metropolitan Police detective,1.6666666666666667,-1,3,3,10,0,6,-1,0,0,NA,1,1,1,NA,0,0,2
+NA,9.3,9,3,NA,NA,9.Chigs,Chigs,40,M,Leicester,Sales manager,-0.3333333333333335,0,3,6,10,0,10,-1,1,0,-1,1,1,1,NA,0,0,3
+NA,9.3,9,3,NA,NA,9.Crystelle,Crystelle,26,F,London,Client relationship manager,-2.333333333333333,2,3,9,10,0,10,1,1,0,NA,1,1,1,NA,0,0,5
+NA,9.3,9,3,NA,NA,9.Freya,Freya,19,F,"Scarborough, North Yorkshire",Student,1,2,3,4,10,0,5,1,1,0,NA,1,1,1,1,0,0,5
+NA,9.3,9,3,NA,NA,9.George,George,34,M,London,Shared lives coordinator,-0.9999999999999998,2,1,7,10,0,7,1,1,0,NA,-1,1,1,NA,0,0,3
+NA,9.3,9,3,NA,NA,9.Giuseppe,Giuseppe,45,M,Bristol,Chief engineer,3,3,3,1,10,1,10,1,1,1,1,1,1,1,1,1,0,6
+NA,9.3,9,3,NA,NA,9.Jurgen,Jurgen,NA,NA,NA,NA,0.3333333333333335,-2,1,5,10,0,9,-1,-1,0,-1,-1,1,1,NA,0,0,-1
+NA,9.3,9,3,NA,NA,9.Lizzie,Lizzie,28,F,Liverpool,Car production operative,2.3333333333333335,3,2,2,10,0,8,1,1,1,NA,1,0,1,1,0,0,5
+NA,9.3,9,3,NA,NA,9.Maggie,Maggie,70,F,"Poole, Dorset",Retired nurse and midwife,-1.6666666666666667,2,-3,8,10,0,4,0,1,1,-1,-1,-1,-1,-1,0,0,-1
+NA,9.3,9,3,NA,NA,9.Rochica,Rochica,27,F,Birmingham,Junior HR business partner,-3,0,-1,10,10,0,3,0,-1,1,-1,-1,1,-1,-1,0,1,-1
+NA,9.4,9,4,NA,NA,9.Amanda,Amanda,56,F,London,Metropolitan Police detective,-2.25,0,-1,8,9,0,6,0,-1,1,NA,1,-1,-1,-1,0,0,-1
+NA,9.4,9,4,NA,NA,9.Chigs,Chigs,40,M,Leicester,Sales manager,1.5,3,3,3,9,0,10,1,1,1,NA,1,1,1,1,1,0,6
+NA,9.4,9,4,NA,NA,9.Crystelle,Crystelle,26,F,London,Client relationship manager,0,2,3,5,9,0,10,0,1,1,NA,1,1,1,NA,0,0,5
+NA,9.4,9,4,NA,NA,9.Freya,Freya,19,F,"Scarborough, North Yorkshire",Student,-0.75,0,-2,6,9,0,5,0,-1,1,NA,0,-1,-1,-1,0,0,-2
+NA,9.4,9,4,NA,NA,9.George,George,34,M,London,Shared lives coordinator,-1.5,-1,-2,7,9,0,7,-1,1,-1,NA,0,-1,-1,NA,0,0,-3
+NA,9.4,9,4,NA,NA,9.Giuseppe,Giuseppe,45,M,Bristol,Chief engineer,0.75,1,3,4,9,1,10,-1,1,1,NA,1,1,1,1,0,0,4
+NA,9.4,9,4,NA,NA,9.Jurgen,Jurgen,NA,NA,NA,NA,3,2,3,1,9,0,9,1,1,0,NA,1,1,1,1,0,0,5
+NA,9.4,9,4,NA,NA,9.Lizzie,Lizzie,28,F,Liverpool,Car production operative,2.25,-1,0,2,9,0,8,-1,1,-1,NA,-1,1,0,NA,0,0,-1
+NA,9.4,9,4,NA,NA,9.Maggie,Maggie,70,F,"Poole, Dorset",Retired nurse and midwife,-3,-1,-1,9,9,0,4,-1,1,-1,NA,-1,1,-1,-1,0,1,-2
+NA,9.5,9,5,NA,NA,9.Amanda,Amanda,56,F,London,Metropolitan Police detective,-3,1,2,8,8,0,6,1,1,-1,NA,1,1,0,NA,0,0,3
+NA,9.5,9,5,NA,NA,9.Chigs,Chigs,40,M,Leicester,Sales manager,2.142857142857143,2,1,2,8,0,10,1,1,0,NA,-1,1,1,NA,0,0,3
+NA,9.5,9,5,NA,NA,9.Crystelle,Crystelle,26,F,London,Client relationship manager,-2.1428571428571423,3,3,7,8,0,10,1,1,1,NA,1,1,1,NA,0,0,6
+NA,9.5,9,5,NA,NA,9.Freya,Freya,19,F,"Scarborough, North Yorkshire",Student,-0.4285714285714284,-1,-1,5,8,0,5,-1,1,-1,NA,-1,1,-1,-1,0,1,-2
+NA,9.5,9,5,NA,NA,9.George,George,34,M,London,Shared lives coordinator,-1.2857142857142858,1,1,6,8,0,7,-1,1,1,NA,-1,1,1,-1,0,0,2
+NA,9.5,9,5,NA,NA,9.Giuseppe,Giuseppe,45,M,Bristol,Chief engineer,3,3,3,1,8,1,10,1,1,1,NA,1,1,1,1,1,0,6
+NA,9.5,9,5,NA,NA,9.Jurgen,Jurgen,NA,NA,NA,NA,0.4285714285714287,3,2,4,8,0,9,1,1,1,NA,0,1,1,1,0,0,5
+NA,9.5,9,5,NA,NA,9.Lizzie,Lizzie,28,F,Liverpool,Car production operative,1.2857142857142858,-1,2,3,8,0,8,-1,0,0,NA,1,0,1,NA,0,0,1
+NA,9.6,9,6,NA,NA,9.Amanda,Amanda,56,F,London,Metropolitan Police detective,-0.9999999999999998,-1,-3,5,7,0,6,0,-1,0,-1,-1,-1,-1,-1,0,1,-4
+NA,9.6,9,6,NA,NA,9.Chigs,Chigs,40,M,Leicester,Sales manager,1,2,0,3,7,0,10,1,1,0,1,0,1,-1,NA,0,0,2
+NA,9.6,9,6,NA,NA,9.Crystelle,Crystelle,26,F,London,Client relationship manager,2,0,3,2,7,0,10,-1,1,0,1,1,1,1,1,1,0,3
+NA,9.6,9,6,NA,NA,9.George,George,34,M,London,Shared lives coordinator,-2,2,-1,6,7,0,7,1,0,1,NA,-1,-1,1,-1,0,0,1
+NA,9.6,9,6,NA,NA,9.Giuseppe,Giuseppe,45,M,Bristol,Chief engineer,0,2,3,4,7,1,10,1,1,0,1,1,1,1,1,0,0,5
+NA,9.6,9,6,NA,NA,9.Jurgen,Jurgen,NA,NA,NA,NA,3,2,2,1,7,0,9,1,1,0,1,1,0,1,NA,0,0,4
+NA,9.6,9,6,NA,NA,9.Lizzie,Lizzie,28,F,Liverpool,Car production operative,-3,3,2,7,7,0,8,1,1,1,-1,0,1,1,NA,0,0,5
+NA,9.7,9,7,NA,NA,9.Chigs,Chigs,40,M,Leicester,Sales manager,0.5999999999999999,0,0,3,6,0,10,0,-1,1,NA,-1,1,0,1,0,0,0
+NA,9.7,9,7,NA,NA,9.Crystelle,Crystelle,26,F,London,Client relationship manager,-0.5999999999999999,3,1,4,6,0,10,1,1,1,NA,-1,1,1,1,0,0,4
+NA,9.7,9,7,NA,NA,9.George,George,34,M,London,Shared lives coordinator,-3,-1,2,6,6,0,7,1,-1,-1,NA,0,1,1,-1,0,1,1
+NA,9.7,9,7,NA,NA,9.Giuseppe,Giuseppe,45,M,Bristol,Chief engineer,3,1,1,1,6,1,10,1,-1,1,NA,-1,1,1,1,0,0,2
+NA,9.7,9,7,NA,NA,9.Jurgen,Jurgen,NA,NA,NA,NA,1.7999999999999998,-2,3,2,6,0,9,-1,0,-1,NA,1,1,1,1,1,0,1
+NA,9.7,9,7,NA,NA,9.Lizzie,Lizzie,28,F,Liverpool,Car production operative,-1.8000000000000003,1,-1,5,6,0,8,1,1,-1,NA,-1,-1,1,-1,0,0,0
+NA,9.8,9,8,NA,NA,9.Chigs,Chigs,40,M,Leicester,Sales manager,3,1,3,1,5,0,10,1,-1,1,NA,1,1,1,1,1,0,4
+NA,9.8,9,8,NA,NA,9.Crystelle,Crystelle,26,F,London,Client relationship manager,-3,3,3,5,5,0,10,1,1,1,-1,1,1,1,-1,0,0,6
+NA,9.8,9,8,NA,NA,9.Giuseppe,Giuseppe,45,M,Bristol,Chief engineer,1.5,3,-1,2,5,1,10,1,1,1,1,-1,0,0,NA,0,0,2
+NA,9.8,9,8,NA,NA,9.Jurgen,Jurgen,NA,NA,NA,NA,-1.5,1,3,4,5,0,9,1,1,-1,NA,1,1,1,1,0,0,4
+NA,9.8,9,8,NA,NA,9.Lizzie,Lizzie,28,F,Liverpool,Car production operative,0,1,3,3,5,0,8,1,1,-1,-1,1,1,1,-1,0,1,4
+NA,9.9,9,9,NA,NA,9.Chigs,Chigs,40,M,Leicester,Sales manager,-3,3,3,4,4,0,10,1,1,1,NA,1,1,1,1,0,0,6
+NA,9.9,9,9,NA,NA,9.Crystelle,Crystelle,26,F,London,Client relationship manager,-0.9999999999999998,3,3,3,4,0,10,1,1,1,NA,1,1,1,1,1,0,6
+NA,9.9,9,9,NA,NA,9.Giuseppe,Giuseppe,45,M,Bristol,Chief engineer,1,3,1,2,4,1,10,1,1,1,NA,1,-1,1,-1,0,0,4
+NA,9.9,9,9,NA,NA,9.Jurgen,Jurgen,NA,NA,NA,NA,3,2,2,1,4,0,9,1,0,1,NA,1,1,0,-1,0,1,4
+NA,9.10,9,10,NA,NA,9.Chigs,Chigs,40,M,Leicester,Sales manager,0,1,3,2,3,0,10,-1,1,1,-1,1,1,1,NA,0,1,4
+NA,9.10,9,10,NA,NA,9.Crystelle,Crystelle,26,F,London,Client relationship manager,3,0,1,1,3,0,10,0,1,-1,1,-1,1,1,NA,0,1,1
+NA,9.10,9,10,NA,NA,9.Giuseppe,Giuseppe,45,M,Bristol,Chief engineer,-3,1,3,3,3,1,10,-1,1,1,NA,1,1,1,NA,1,0,4
+NA,10.1,10,1,NA,NA,10.Abdul,Abdul,29,M,London,Electronics engineer,0.2727272727272728,3,1,6,12,0,10,1,1,1,1,1,1,-1,NA,0,0,4
+NA,10.1,10,1,NA,NA,10.Carole,Carole,59,F,Dorset,Supermarket cashier,-0.8181818181818181,3,0,8,12,0,5,1,1,1,NA,0,-1,1,NA,0,0,3
+NA,10.1,10,1,NA,NA,10.Dawn,Dawn,60,F,Bedfordshire,IT manager,1.9090909090909092,2,3,3,12,0,6,1,1,0,NA,1,1,1,NA,0,0,5
+NA,10.1,10,1,NA,NA,10.James,James,25,M,Cumbria,Nuclear scientist,-3,1,1,12,12,0,4,1,1,-1,NA,-1,1,1,NA,0,0,2
+NA,10.1,10,1,NA,NA,10.Janusz,Janusz,34,M,East Sussex,Personal assistant to head teacher,-0.2727272727272725,3,3,7,12,0,9,1,1,1,1,1,1,1,1,1,0,6
+NA,10.1,10,1,NA,NA,10.Kevin,Kevin,33,M,Lanarkshire,Music teacher,1.3636363636363638,1,2,4,12,0,7,-1,1,1,NA,1,1,0,NA,0,0,3
+NA,10.1,10,1,NA,NA,10.Maisam,Maisam,18,F,Greater Manchester,Student and sales assistant,0.8181818181818181,1,-1,5,12,0,2,1,1,-1,-1,-1,1,-1,-1,0,0,0
+NA,10.1,10,1,NA,NA,10.Maxy,Maxy,29,F,London,Architectural assistant,-1.9090909090909094,-1,1,10,12,0,8,-1,1,-1,NA,1,1,-1,NA,0,0,0
+NA,10.1,10,1,NA,NA,10.Rebs,Rebs,23,F,County Antrim,Masters student,-2.454545454545454,-2,2,11,12,0,4,-1,-1,0,-1,0,1,1,-1,0,0,0
+NA,10.1,10,1,NA,NA,10.Sandro,Sandro,30,M,London,Nanny,2.454545454545454,3,-1,2,12,0,10,1,1,1,1,1,-1,-1,1,0,0,2
+NA,10.1,10,1,NA,NA,10.Syabira,Syabira,32,F,London,Cardiovascular research associate,3,1,1,1,12,1,10,1,1,-1,1,1,-1,1,1,0,0,2
+NA,10.1,10,1,NA,NA,10.Will,Will,45,M,London,Former charity director,-1.3636363636363638,-2,-1,9,12,0,1,0,-1,-1,-1,-1,0,0,-1,0,1,-3
+NA,10.2,10,2,NA,NA,10.Abdul,Abdul,29,M,London,Electronics engineer,-3,-1,3,11,11,0,10,1,-1,-1,NA,1,1,1,NA,0,0,2
+NA,10.2,10,2,NA,NA,10.Carole,Carole,59,F,Dorset,Supermarket cashier,1.2000000000000002,-2,1,4,11,0,5,0,-1,-1,NA,-1,1,1,-1,0,0,-1
+NA,10.2,10,2,NA,NA,10.Dawn,Dawn,60,F,Bedfordshire,IT manager,-1.8000000000000003,3,3,9,11,0,6,1,1,1,NA,1,1,1,NA,0,0,6
+NA,10.2,10,2,NA,NA,10.James,James,25,M,Cumbria,Nuclear scientist,2.4000000000000004,3,3,2,11,0,4,1,1,1,NA,1,1,1,1,0,0,6
+NA,10.2,10,2,NA,NA,10.Janusz,Janusz,34,M,East Sussex,Personal assistant to head teacher,0,1,3,6,11,0,9,-1,1,1,NA,1,1,1,NA,0,0,4
+NA,10.2,10,2,NA,NA,10.Kevin,Kevin,33,M,Lanarkshire,Music teacher,-1.1999999999999997,-2,2,8,11,0,7,0,-1,-1,NA,0,1,1,NA,0,0,0
+NA,10.2,10,2,NA,NA,10.Maisam,Maisam,18,F,Greater Manchester,Student and sales assistant,-0.5999999999999999,-1,2,7,11,0,2,1,-1,-1,NA,1,1,0,-1,0,1,1
+NA,10.2,10,2,NA,NA,10.Maxy,Maxy,29,F,London,Architectural assistant,0.5999999999999999,3,3,5,11,0,8,1,1,1,NA,1,1,1,1,1,0,6
+NA,10.2,10,2,NA,NA,10.Rebs,Rebs,23,F,County Antrim,Masters student,3,1,-2,1,11,0,4,1,1,-1,NA,-1,-1,0,-1,0,0,-1
+NA,10.2,10,2,NA,NA,10.Sandro,Sandro,30,M,London,Nanny,1.7999999999999998,3,3,3,11,0,10,1,1,1,NA,1,1,1,NA,0,0,6
+NA,10.2,10,2,NA,NA,10.Syabira,Syabira,32,F,London,Cardiovascular research associate,-2.4000000000000004,3,3,10,11,1,10,1,1,1,NA,1,1,1,1,0,0,6
+NA,10.3,10,3,NA,NA,10.Carole,Carole,59,F,Dorset,Supermarket cashier,-3,0,0,8,8,0,5,0,1,-1,NA,-1,0,1,-1,0,0,0
+NA,10.3,10,3,NA,NA,10.Dawn,Dawn,60,F,Bedfordshire,IT manager,-1.2857142857142858,-3,-1,6,8,0,6,-1,-1,-1,NA,-1,-1,1,-1,0,0,-4
+NA,10.3,10,3,NA,NA,10.James,James,25,M,Cumbria,Nuclear scientist,1.2857142857142858,1,2,3,8,0,4,1,0,0,NA,1,0,1,NA,0,0,3
+NA,10.3,10,3,NA,NA,10.Janusz,Janusz,34,M,East Sussex,Personal assistant to head teacher,3,-1,3,1,8,0,9,0,-1,0,NA,1,1,1,1,1,0,2
+NA,10.3,10,3,NA,NA,10.Kevin,Kevin,33,M,Lanarkshire,Music teacher,-2.1428571428571423,2,0,7,8,0,7,0,1,1,NA,-1,1,0,-1,0,0,2
+NA,10.3,10,3,NA,NA,10.Maxy,Maxy,29,F,London,Architectural assistant,2.142857142857143,2,1,2,8,0,8,1,1,0,NA,0,1,0,NA,0,0,3
+NA,10.3,10,3,NA,NA,10.Sandro,Sandro,30,M,London,Nanny,0.4285714285714287,3,1,4,8,0,10,1,1,1,NA,1,1,-1,1,0,0,4
+NA,10.3,10,3,NA,NA,10.Syabira,Syabira,32,F,London,Cardiovascular research associate,-0.4285714285714284,1,3,5,8,1,10,1,-1,1,NA,1,1,1,1,0,0,4
+NA,10.4,10,4,NA,NA,10.Abdul,Abdul,29,M,London,Electronics engineer,-0.3333333333333335,0,2,6,10,0,10,-1,0,1,NA,1,1,0,NA,0,0,2
+NA,10.4,10,4,NA,NA,10.Carole,Carole,59,F,Dorset,Supermarket cashier,-3,-1,1,10,10,0,5,-1,1,-1,NA,1,-1,1,-1,0,0,0
+NA,10.4,10,4,NA,NA,10.Dawn,Dawn,60,F,Bedfordshire,IT manager,0.3333333333333335,-1,3,5,10,0,6,-1,1,-1,NA,1,1,1,NA,0,0,2
+NA,10.4,10,4,NA,NA,10.James,James,25,M,Cumbria,Nuclear scientist,-1.6666666666666667,-1,1,8,10,0,4,-1,-1,1,NA,1,1,-1,-1,0,1,0
+NA,10.4,10,4,NA,NA,10.Janusz,Janusz,34,M,East Sussex,Personal assistant to head teacher,-0.9999999999999998,0,1,7,10,0,9,0,-1,1,NA,-1,1,1,1,0,0,1
+NA,10.4,10,4,NA,NA,10.Kevin,Kevin,33,M,Lanarkshire,Music teacher,1,1,0,4,10,0,7,-1,1,1,NA,-1,1,0,NA,0,0,1
+NA,10.4,10,4,NA,NA,10.Maxy,Maxy,29,F,London,Architectural assistant,3,3,3,1,10,0,8,1,1,1,NA,1,1,1,1,1,0,6
+NA,10.4,10,4,NA,NA,10.Rebs,Rebs,23,F,County Antrim,Masters student,-2.333333333333333,-1,-2,9,10,0,4,-1,1,-1,NA,0,-1,-1,-1,0,1,-3
+NA,10.4,10,4,NA,NA,10.Sandro,Sandro,30,M,London,Nanny,1.6666666666666667,1,1,3,10,0,10,-1,1,1,NA,1,-1,1,1,0,0,2
+NA,10.4,10,4,NA,NA,10.Syabira,Syabira,32,F,London,Cardiovascular research associate,2.3333333333333335,1,0,2,10,1,10,-1,1,1,NA,-1,0,1,NA,0,0,1
+NA,10.5,10,5,NA,NA,10.Abdul,Abdul,29,M,London,Electronics engineer,2.142857142857143,3,0,2,8,0,10,1,1,1,1,-1,0,1,NA,0,0,3
+NA,10.5,10,5,NA,NA,10.Carole,Carole,59,F,Dorset,Supermarket cashier,-1.2857142857142858,-1,1,6,8,0,5,-1,1,-1,-1,-1,1,1,-1,0,1,0
+NA,10.5,10,5,NA,NA,10.Dawn,Dawn,60,F,Bedfordshire,IT manager,-2.1428571428571423,0,1,7,8,0,6,0,1,-1,-1,1,1,-1,-1,0,0,1
+NA,10.5,10,5,NA,NA,10.Janusz,Janusz,34,M,East Sussex,Personal assistant to head teacher,3,-1,3,1,8,0,9,0,-1,0,1,1,1,1,1,0,0,2
+NA,10.5,10,5,NA,NA,10.Kevin,Kevin,33,M,Lanarkshire,Music teacher,-0.4285714285714284,-1,1,5,8,0,7,-1,1,-1,-1,-1,1,1,NA,0,0,0
+NA,10.5,10,5,NA,NA,10.Maxy,Maxy,29,F,London,Architectural assistant,1.2857142857142858,2,1,3,8,0,8,1,1,0,1,1,-1,1,NA,0,0,3
+NA,10.5,10,5,NA,NA,10.Sandro,Sandro,30,M,London,Nanny,0.4285714285714287,3,3,4,8,0,10,1,1,1,1,1,1,1,1,1,0,6
+NA,10.5,10,5,NA,NA,10.Syabira,Syabira,32,F,London,Cardiovascular research associate,-3,1,1,8,8,1,10,0,0,1,-1,1,-1,1,-1,0,0,2
+NA,10.6,10,6,NA,NA,10.Abdul,Abdul,29,M,London,Electronics engineer,-3,3,2,7,7,0,10,1,1,1,NA,0,1,1,NA,0,0,5
+NA,10.6,10,6,NA,NA,10.Dawn,Dawn,60,F,Bedfordshire,IT manager,-0.9999999999999998,-2,-3,5,7,0,6,0,-1,-1,NA,-1,-1,-1,-1,0,1,-5
+NA,10.6,10,6,NA,NA,10.Janusz,Janusz,34,M,East Sussex,Personal assistant to head teacher,2,0,1,2,7,0,9,1,-1,0,NA,1,-1,1,NA,0,0,1
+NA,10.6,10,6,NA,NA,10.Kevin,Kevin,33,M,Lanarkshire,Music teacher,1,-1,-1,3,7,0,7,-1,1,-1,NA,0,0,-1,-1,0,0,-2
+NA,10.6,10,6,NA,NA,10.Maxy,Maxy,29,F,London,Architectural assistant,-2,3,1,6,7,0,8,1,1,1,NA,1,1,-1,NA,0,0,4
+NA,10.6,10,6,NA,NA,10.Sandro,Sandro,30,M,London,Nanny,0,0,-1,4,7,0,10,1,-1,0,NA,-1,-1,1,NA,0,0,-1
+NA,10.6,10,6,NA,NA,10.Syabira,Syabira,32,F,London,Cardiovascular research associate,3,3,2,1,7,1,10,1,1,1,NA,1,0,1,1,1,0,5
+NA,10.7,10,7,NA,NA,10.Abdul,Abdul,29,M,London,Electronics engineer,-0.5999999999999999,3,2,4,6,0,10,1,1,1,NA,0,1,1,NA,0,0,5
+NA,10.7,10,7,NA,NA,10.Janusz,Janusz,34,M,East Sussex,Personal assistant to head teacher,-1.8000000000000003,3,1,5,6,0,9,1,1,1,NA,1,-1,1,-1,0,0,4
+NA,10.7,10,7,NA,NA,10.Kevin,Kevin,33,M,Lanarkshire,Music teacher,0.5999999999999999,-1,1,3,6,0,7,-1,1,-1,NA,1,1,-1,-1,0,1,0
+NA,10.7,10,7,NA,NA,10.Maxy,Maxy,29,F,London,Architectural assistant,1.7999999999999998,0,0,2,6,0,8,-1,1,0,NA,1,-1,0,NA,0,0,0
+NA,10.7,10,7,NA,NA,10.Sandro,Sandro,30,M,London,Nanny,3,1,2,1,6,0,10,1,-1,1,NA,1,0,1,1,0,0,3
+NA,10.7,10,7,NA,NA,10.Syabira,Syabira,32,F,London,Cardiovascular research associate,-3,3,3,6,6,1,10,1,1,1,NA,1,1,1,1,1,0,6
+NA,10.8,10,8,NA,NA,10.Abdul,Abdul,29,M,London,Electronics engineer,0,-3,1,3,5,0,10,-1,-1,-1,NA,1,1,-1,1,0,0,-2
+NA,10.8,10,8,NA,NA,10.Janusz,Janusz,34,M,East Sussex,Personal assistant to head teacher,1.5,-1,0,2,5,0,9,-1,-1,1,NA,-1,1,0,1,0,0,-1
+NA,10.8,10,8,NA,NA,10.Maxy,Maxy,29,F,London,Architectural assistant,-3,-1,1,5,5,0,8,-1,1,-1,NA,0,1,0,-1,0,1,0
+NA,10.8,10,8,NA,NA,10.Sandro,Sandro,30,M,London,Nanny,3,-1,1,1,5,0,10,-1,1,-1,NA,-1,1,1,-1,0,0,0
+NA,10.8,10,8,NA,NA,10.Syabira,Syabira,32,F,London,Cardiovascular research associate,-1.5,2,2,4,5,1,10,0,1,1,NA,1,1,0,1,1,0,4
+NA,10.9,10,9,NA,NA,10.Abdul,Abdul,29,M,London,Electronics engineer,1,1,3,2,4,0,10,1,1,-1,1,1,1,1,1,1,0,4
+NA,10.9,10,9,NA,NA,10.Janusz,Janusz,34,M,East Sussex,Personal assistant to head teacher,-0.9999999999999998,1,0,3,4,0,9,-1,1,1,-1,-1,1,0,-1,0,1,1
+NA,10.9,10,9,NA,NA,10.Sandro,Sandro,30,M,London,Nanny,-3,1,2,4,4,0,10,1,0,0,-1,1,1,0,-1,0,0,3
+NA,10.9,10,9,NA,NA,10.Syabira,Syabira,32,F,London,Cardiovascular research associate,3,3,2,1,4,1,10,1,1,1,1,0,1,1,1,0,0,5
+NA,10.10,10,10,NA,NA,10.Abdul,Abdul,29,M,London,Electronics engineer,3,1,-2,1,3,0,10,1,1,-1,NA,-1,0,-1,NA,0,1,-1
+NA,10.10,10,10,NA,NA,10.Sandro,Sandro,30,M,London,Nanny,-3,1,-1,3,3,0,10,-1,1,1,NA,-1,1,-1,NA,0,1,0
+NA,10.10,10,10,NA,NA,10.Syabira,Syabira,32,F,London,Cardiovascular research associate,0,3,2,2,3,1,10,1,1,1,NA,1,1,0,NA,1,0,5
+NA,11.1,11,1,NA,NA,11.Abbi,Abbi,27,F,Cumbria,Delivery driver,1.9090909090909092,3,3,3,12,0,3,1,1,1,1,1,1,1,1,0,0,6
+NA,11.1,11,1,NA,NA,11.Amos,Amos,43,M,London,Deli and grocery manager,2.454545454545454,-2,-2,2,12,0,1,0,-1,-1,-1,-1,-1,0,-1,0,1,-4
+NA,11.1,11,1,NA,NA,11.Cristy,Cristy,33,F,London,Personal assistant,0.2727272727272728,2,3,6,12,0,8,1,0,1,1,1,1,1,1,0,0,5
+NA,11.1,11,1,NA,NA,11.Dan,Dan,42,M,Cheshire,Civil engineering resource planner,3,3,3,1,12,0,10,1,1,1,1,1,1,1,1,1,0,6
+NA,11.1,11,1,NA,NA,11.Dana,Dana,25,F,Essex,Database administrator,-3,0,-2,12,12,0,6,0,1,-1,-1,0,-1,-1,-1,0,0,-2
+NA,11.1,11,1,NA,NA,11.Josh,Josh,27,M,Leicestershire,Chemical biology post-doctoral research associate,-0.8181818181818181,1,1,8,12,0,10,-1,1,1,NA,0,0,1,NA,0,0,2
+NA,11.1,11,1,NA,NA,11.Keith,Keith,60,M,Hampshire,Chartered accountant,1.3636363636363638,3,1,4,12,0,2,1,1,1,1,1,1,-1,1,0,0,4
+NA,11.1,11,1,NA,NA,11.Matty,Matty,28,M,Cambridgeshire,PE and science teacher,-0.2727272727272725,0,1,7,12,1,10,0,1,-1,NA,1,1,-1,NA,0,0,1
+NA,11.1,11,1,NA,NA,11.Nicky,Nicky,52,F,Shropshire,Retired cabin crew and pet-therapy charity volunteer,-1.9090909090909094,1,0,10,12,0,5,0,0,1,NA,-1,0,1,-1,0,0,1
+NA,11.1,11,1,NA,NA,11.Rowan,Rowan,21,M,West Yorkshire,English literature student,-1.3636363636363638,3,3,9,12,0,5,1,1,1,NA,1,1,1,NA,0,0,6
+NA,11.1,11,1,NA,NA,11.Saku,Saku,50,F,Herefordshire,Intelligence analyst,0.8181818181818181,1,0,5,12,0,7,0,1,0,NA,-1,0,1,NA,0,0,1
+NA,11.1,11,1,NA,NA,11.Tasha,Tasha,27,F,Bristol,Children's charity participation officer,-2.454545454545454,1,3,11,12,0,9,1,1,-1,-1,1,1,1,NA,0,0,4
+NA,11.2,11,2,NA,NA,11.Abbi,Abbi,27,F,Cumbria,Delivery driver,3,0,3,1,11,0,3,1,-1,0,NA,1,1,1,NA,0,0,3
+NA,11.2,11,2,NA,NA,11.Cristy,Cristy,33,F,London,Personal assistant,-1.8000000000000003,1,3,9,11,0,8,0,0,1,NA,1,1,1,NA,0,0,4
+NA,11.2,11,2,NA,NA,11.Dan,Dan,42,M,Cheshire,Civil engineering resource planner,2.4000000000000004,1,2,2,11,0,10,1,1,-1,NA,0,1,1,NA,0,0,3
+NA,11.2,11,2,NA,NA,11.Dana,Dana,25,F,Essex,Database administrator,-0.5999999999999999,-1,2,7,11,0,6,0,0,-1,-1,1,1,0,NA,0,0,1
+NA,11.2,11,2,NA,NA,11.Josh,Josh,27,M,Leicestershire,Chemical biology post-doctoral research associate,0,3,3,6,11,0,10,1,1,1,NA,1,1,1,1,0,0,6
+NA,11.2,11,2,NA,NA,11.Keith,Keith,60,M,Hampshire,Chartered accountant,-3,1,1,11,11,0,2,1,1,-1,-1,-1,1,1,-1,0,1,2
+NA,11.2,11,2,NA,NA,11.Matty,Matty,28,M,Cambridgeshire,PE and science teacher,0.5999999999999999,2,3,5,11,1,10,0,1,1,NA,1,1,1,NA,0,0,5
+NA,11.2,11,2,NA,NA,11.Nicky,Nicky,52,F,Shropshire,Retired cabin crew and pet-therapy charity volunteer,1.2000000000000002,2,1,4,11,0,5,1,0,1,-1,0,0,1,-1,0,0,3
+NA,11.2,11,2,NA,NA,11.Rowan,Rowan,21,M,West Yorkshire,English literature student,1.7999999999999998,3,0,3,11,0,5,1,1,1,1,0,1,-1,NA,0,0,3
+NA,11.2,11,2,NA,NA,11.Saku,Saku,50,F,Herefordshire,Intelligence analyst,-2.4000000000000004,2,1,10,11,0,7,0,1,1,NA,1,1,-1,NA,0,0,3
+NA,11.2,11,2,NA,NA,11.Tasha,Tasha,27,F,Bristol,Children's charity participation officer,-1.1999999999999997,3,3,8,11,0,9,1,1,1,1,1,1,1,1,1,0,6
+NA,11.3,11,3,NA,NA,11.Abbi,Abbi,27,F,Cumbria,Delivery driver,-1.6666666666666667,-3,0,8,10,0,3,-1,-1,-1,-1,0,1,-1,-1,0,1,-3
+NA,11.3,11,3,NA,NA,11.Cristy,Cristy,33,F,London,Personal assistant,-0.3333333333333335,0,3,6,10,0,8,0,-1,1,NA,1,1,1,NA,0,0,3
+NA,11.3,11,3,NA,NA,11.Dan,Dan,42,M,Cheshire,Civil engineering resource planner,-3,2,-3,10,10,0,10,1,1,0,-1,-1,-1,-1,-1,0,0,-1
+NA,11.3,11,3,NA,NA,11.Dana,Dana,25,F,Essex,Database administrator,1.6666666666666667,-1,0,3,10,0,6,-1,1,-1,NA,-1,1,0,NA,0,0,-1
+NA,11.3,11,3,NA,NA,11.Josh,Josh,27,M,Leicestershire,Chemical biology post-doctoral research associate,1,3,3,4,10,0,10,1,1,1,1,1,1,1,1,0,0,6
+NA,11.3,11,3,NA,NA,11.Matty,Matty,28,M,Cambridgeshire,PE and science teacher,-0.9999999999999998,1,2,7,10,1,10,1,1,-1,NA,0,1,1,NA,0,0,3
+NA,11.3,11,3,NA,NA,11.Nicky,Nicky,52,F,Shropshire,Retired cabin crew and pet-therapy charity volunteer,0.3333333333333335,-2,0,5,10,0,5,-1,-1,0,NA,0,-1,1,NA,0,0,-2
+NA,11.3,11,3,NA,NA,11.Rowan,Rowan,21,M,West Yorkshire,English literature student,-2.333333333333333,-1,-1,9,10,0,5,0,0,-1,-1,-1,-1,1,-1,0,0,-2
+NA,11.3,11,3,NA,NA,11.Saku,Saku,50,F,Herefordshire,Intelligence analyst,3,1,-1,1,10,0,7,-1,1,1,1,-1,-1,1,NA,0,0,0
+NA,11.3,11,3,NA,NA,11.Tasha,Tasha,27,F,Bristol,Children's charity participation officer,2.3333333333333335,2,3,2,10,0,9,1,1,0,1,1,1,1,1,1,0,5
+NA,11.4,11,4,NA,NA,11.Cristy,Cristy,33,F,London,Personal assistant,-2.1428571428571423,-2,1,7,8,0,8,-1,-1,0,-1,-1,1,1,-1,0,0,-1
+NA,11.4,11,4,NA,NA,11.Dan,Dan,42,M,Cheshire,Civil engineering resource planner,3,-1,1,1,8,0,10,-1,-1,1,NA,-1,1,1,1,0,0,0
+NA,11.4,11,4,NA,NA,11.Dana,Dana,25,F,Essex,Database administrator,-0.4285714285714284,2,-1,5,8,0,6,0,1,1,NA,1,-1,-1,NA,0,0,1
+NA,11.4,11,4,NA,NA,11.Josh,Josh,27,M,Leicestershire,Chemical biology post-doctoral research associate,-1.2857142857142858,0,-1,6,8,0,10,-1,1,0,NA,1,-1,-1,NA,0,0,-1
+NA,11.4,11,4,NA,NA,11.Matty,Matty,28,M,Cambridgeshire,PE and science teacher,2.142857142857143,1,2,2,8,1,10,0,1,0,NA,1,1,0,1,1,0,3
+NA,11.4,11,4,NA,NA,11.Nicky,Nicky,52,F,Shropshire,Retired cabin crew and pet-therapy charity volunteer,0.4285714285714287,1,3,4,8,0,5,0,0,1,NA,1,1,1,1,0,0,4
+NA,11.4,11,4,NA,NA,11.Rowan,Rowan,21,M,West Yorkshire,English literature student,1.2857142857142858,2,-2,3,8,0,5,0,1,1,NA,0,-1,-1,-1,0,0,0
+NA,11.4,11,4,NA,NA,11.Saku,Saku,50,F,Herefordshire,Intelligence analyst,-3,-1,0,8,8,0,7,-1,1,-1,-1,-1,1,0,-1,0,0,-1
+NA,11.5,11,5,NA,NA,11.Cristy,Cristy,33,F,London,Personal assistant,0,3,3,5,9,0,8,1,1,1,NA,1,1,1,1,1,0,6
+NA,11.5,11,5,NA,NA,11.Dan,Dan,42,M,Cheshire,Civil engineering resource planner,3,0,0,1,9,0,10,0,1,-1,NA,1,-1,0,NA,0,0,0
+NA,11.5,11,5,NA,NA,11.Dana,Dana,25,F,Essex,Database administrator,2.25,2,-2,2,9,0,6,0,1,1,NA,-1,-1,0,-1,0,0,0
+NA,11.5,11,5,NA,NA,11.Josh,Josh,27,M,Leicestershire,Chemical biology post-doctoral research associate,-2.25,0,3,8,9,0,10,-1,1,0,NA,1,1,1,1,0,0,3
+NA,11.5,11,5,NA,NA,11.Matty,Matty,28,M,Cambridgeshire,PE and science teacher,-1.5,1,-2,7,9,1,10,0,1,0,NA,-1,0,-1,-1,0,0,-1
+NA,11.5,11,5,NA,NA,11.Nicky,Nicky,52,F,Shropshire,Retired cabin crew and pet-therapy charity volunteer,-3,0,1,9,9,0,5,-1,0,1,NA,-1,1,1,-1,0,1,1
+NA,11.5,11,5,NA,NA,11.Rowan,Rowan,21,M,West Yorkshire,English literature student,0.75,1,-3,4,9,0,5,1,1,-1,NA,-1,-1,-1,-1,0,1,-2
+NA,11.5,11,5,NA,NA,11.Saku,Saku,50,F,Herefordshire,Intelligence analyst,-0.75,0,1,6,9,0,7,-1,1,0,NA,0,0,1,-1,0,0,1
+NA,11.5,11,5,NA,NA,11.Tasha,Tasha,27,F,Bristol,Children's charity participation officer,1.5,3,0,3,9,0,9,1,1,1,NA,0,1,-1,1,0,0,3
+NA,11.6,11,6,NA,NA,11.Cristy,Cristy,33,F,London,Personal assistant,3,3,1,1,7,0,8,1,1,1,1,-1,1,1,1,0,0,4
+NA,11.6,11,6,NA,NA,11.Dan,Dan,42,M,Cheshire,Civil engineering resource planner,1,1,1,3,7,0,10,0,1,0,NA,1,-1,1,NA,0,0,2
+NA,11.6,11,6,NA,NA,11.Dana,Dana,25,F,Essex,Database administrator,-2,-2,-1,6,7,0,6,0,-1,-1,-1,-1,-1,1,-1,0,1,-3
+NA,11.6,11,6,NA,NA,11.Josh,Josh,27,M,Leicestershire,Chemical biology post-doctoral research associate,2,3,3,2,7,0,10,1,1,1,1,1,1,1,1,1,0,6
+NA,11.6,11,6,NA,NA,11.Matty,Matty,28,M,Cambridgeshire,PE and science teacher,0,-1,-1,4,7,1,10,-1,-1,1,-1,-1,1,-1,-1,0,0,-2
+NA,11.6,11,6,NA,NA,11.Saku,Saku,50,F,Herefordshire,Intelligence analyst,-0.9999999999999998,1,1,5,7,0,7,-1,1,1,NA,1,-1,1,-1,0,0,2
+NA,11.6,11,6,NA,NA,11.Tasha,Tasha,27,F,Bristol,Children's charity participation officer,-3,3,3,7,7,0,9,1,1,1,NA,1,1,1,1,0,0,6
+NA,11.7,11,7,NA,NA,11.Cristy,Cristy,33,F,London,Personal assistant,-0.5999999999999999,-2,0,4,6,0,8,-1,-1,0,-1,-1,1,0,-1,0,0,-2
+NA,11.7,11,7,NA,NA,11.Dan,Dan,42,M,Cheshire,Civil engineering resource planner,1.7999999999999998,1,3,2,6,0,10,1,1,-1,1,1,1,1,1,1,0,4
+NA,11.7,11,7,NA,NA,11.Josh,Josh,27,M,Leicestershire,Chemical biology post-doctoral research associate,0.5999999999999999,0,3,3,6,0,10,-1,1,0,1,1,1,1,1,0,0,3
+NA,11.7,11,7,NA,NA,11.Matty,Matty,28,M,Cambridgeshire,PE and science teacher,-3,1,1,6,6,1,10,-1,1,1,1,1,-1,1,NA,0,0,2
+NA,11.7,11,7,NA,NA,11.Saku,Saku,50,F,Herefordshire,Intelligence analyst,-1.8000000000000003,1,-2,5,6,0,7,-1,1,1,-1,0,-1,-1,-1,0,1,-1
+NA,11.7,11,7,NA,NA,11.Tasha,Tasha,27,F,Bristol,Children's charity participation officer,3,-1,2,1,6,0,9,1,-1,-1,NA,0,1,1,NA,0,0,1
+NA,11.8,11,8,NA,NA,11.Cristy,Cristy,33,F,London,Personal assistant,1.5,0,0,2,5,0,8,-1,1,0,-1,0,1,-1,-1,0,1,0
+NA,11.8,11,8,NA,NA,11.Dan,Dan,42,M,Cheshire,Civil engineering resource planner,-3,1,1,5,5,0,10,0,0,1,-1,-1,1,1,-1,0,0,2
+NA,11.8,11,8,NA,NA,11.Josh,Josh,27,M,Leicestershire,Chemical biology post-doctoral research associate,-1.5,0,3,4,5,0,10,0,1,-1,-1,1,1,1,1,0,0,3
+NA,11.8,11,8,NA,NA,11.Matty,Matty,28,M,Cambridgeshire,PE and science teacher,0,3,1,3,5,1,10,1,1,1,1,-1,1,1,1,1,0,4
+NA,11.8,11,8,NA,NA,11.Tasha,Tasha,27,F,Bristol,Children's charity participation officer,3,1,0,1,5,0,9,-1,1,1,1,0,0,0,NA,0,0,1
+NA,11.9,11,9,NA,NA,11.Dan,Dan,42,M,Cheshire,Civil engineering resource planner,-0.9999999999999998,3,2,3,4,0,10,1,1,1,NA,1,0,1,1,0,0,5
+NA,11.9,11,9,NA,NA,11.Josh,Josh,27,M,Leicestershire,Chemical biology post-doctoral research associate,3,1,3,1,4,0,10,0,0,1,NA,1,1,1,1,1,0,4
+NA,11.9,11,9,NA,NA,11.Matty,Matty,28,M,Cambridgeshire,PE and science teacher,1,1,-1,2,4,1,10,-1,1,1,NA,-1,1,-1,-1,0,0,0
+NA,11.9,11,9,NA,NA,11.Tasha,Tasha,27,F,Bristol,Children's charity participation officer,-3,2,0,4,4,0,9,1,1,0,NA,-1,1,0,-1,0,1,2
+NA,11.10,11,10,NA,NA,11.Dan,Dan,42,M,Cheshire,Civil engineering resource planner,0,-1,0,2,3,0,10,-1,1,-1,-1,0,1,-1,NA,0,1,-1
+NA,11.10,11,10,NA,NA,11.Josh,Josh,27,M,Leicestershire,Chemical biology post-doctoral research associate,3,3,0,1,3,0,10,1,1,1,1,0,0,0,NA,0,1,3
+NA,11.10,11,10,NA,NA,11.Matty,Matty,28,M,Cambridgeshire,PE and science teacher,-3,0,2,3,3,1,10,1,0,-1,NA,1,1,0,NA,1,0,2
+NA,12.1,12,1,NA,NA,12.Andy,Andy,NA,NA,NA,NA,-1.1999999999999997,1,1,8,11,0,5,-1,1,1,NA,-1,1,1,NA,0,0,2
+NA,12.1,12,1,NA,NA,12.Christiaan,Christiaan,NA,NA,NA,NA,2.4000000000000004,-1,-1,2,11,0,10,-1,-1,1,-1,-1,-1,1,-1,0,0,-2
+NA,12.1,12,1,NA,NA,12.Dylan,Dylan,NA,NA,NA,NA,1.2000000000000002,1,3,4,11,0,10,-1,1,1,NA,1,1,1,NA,0,0,4
+NA,12.1,12,1,NA,NA,12.Georgie,Georgie,NA,NA,NA,NA,3,0,2,1,11,1,10,0,1,-1,1,0,1,1,1,0,0,2
+NA,12.1,12,1,NA,NA,12.Gill,Gill,NA,NA,NA,NA,0,1,3,6,11,0,9,1,1,-1,NA,1,1,1,NA,0,0,4
+NA,12.1,12,1,NA,NA,12.Hazel,Hazel,NA,NA,NA,NA,-2.4000000000000004,-1,-1,10,11,0,2,-1,0,0,-1,-1,1,-1,-1,0,0,-2
+NA,12.1,12,1,NA,NA,12.Illiyin,Illiyin,NA,NA,NA,NA,-0.5999999999999999,3,2,7,11,0,8,1,1,1,NA,1,1,0,NA,0,0,5
+NA,12.1,12,1,NA,NA,12.John,John,NA,NA,NA,NA,1.7999999999999998,2,3,3,11,0,3,1,1,0,1,1,1,1,1,1,0,5
+NA,12.1,12,1,NA,NA,12.Mike,Mike,NA,NA,NA,NA,-3,0,3,11,11,0,4,0,1,-1,-1,1,1,1,NA,0,0,3
+NA,12.1,12,1,NA,NA,12.Nelly,Nelly,NA,NA,NA,NA,0.5999999999999999,2,2,5,11,0,6,1,1,0,NA,1,1,0,NA,0,0,4
+NA,12.1,12,1,NA,NA,12.Sumayah,Sumayah,NA,NA,NA,NA,-1.8000000000000003,3,3,9,11,0,7,1,1,1,NA,1,1,1,1,0,0,6
+NA,12.2,12,2,NA,NA,12.Andy,Andy,NA,NA,NA,NA,-2.4000000000000004,3,2,10,11,0,5,1,1,1,NA,1,1,0,NA,0,0,5
+NA,12.2,12,2,NA,NA,12.Christiaan,Christiaan,NA,NA,NA,NA,0,2,3,6,11,0,10,1,1,0,NA,1,1,1,1,0,0,5
+NA,12.2,12,2,NA,NA,12.Dylan,Dylan,NA,NA,NA,NA,-3,3,3,11,11,0,10,1,1,1,NA,1,1,1,NA,0,0,6
+NA,12.2,12,2,NA,NA,12.Georgie,Georgie,NA,NA,NA,NA,-1.8000000000000003,-2,-1,9,11,1,10,-1,0,-1,-1,-1,1,-1,-1,0,0,-3
+NA,12.2,12,2,NA,NA,12.Gill,Gill,NA,NA,NA,NA,1.2000000000000002,3,3,4,11,0,9,1,1,1,NA,1,1,1,NA,0,0,6
+NA,12.2,12,2,NA,NA,12.Hazel,Hazel,NA,NA,NA,NA,0.5999999999999999,-3,-1,5,11,0,2,-1,-1,-1,-1,-1,0,0,-1,0,1,-4
+NA,12.2,12,2,NA,NA,12.Illiyin,Illiyin,NA,NA,NA,NA,-1.1999999999999997,1,1,8,11,0,8,0,1,0,-1,0,1,0,-1,0,0,2
+NA,12.2,12,2,NA,NA,12.John,John,NA,NA,NA,NA,2.4000000000000004,2,1,2,11,0,3,0,1,1,1,0,1,0,NA,0,0,3
+NA,12.2,12,2,NA,NA,12.Mike,Mike,NA,NA,NA,NA,3,2,1,1,11,0,4,1,1,0,NA,-1,1,1,NA,0,0,3
+NA,12.2,12,2,NA,NA,12.Nelly,Nelly,NA,NA,NA,NA,-0.5999999999999999,1,3,7,11,0,6,1,1,-1,NA,1,1,1,NA,0,0,4
+NA,12.2,12,2,NA,NA,12.Sumayah,Sumayah,NA,NA,NA,NA,1.7999999999999998,3,3,3,11,0,7,1,1,1,1,1,1,1,1,1,0,6
+NA,12.3,12,3,NA,NA,12.Andy,Andy,NA,NA,NA,NA,1.6666666666666667,3,-2,3,10,0,5,1,1,1,NA,0,-1,-1,-1,0,0,1
+NA,12.3,12,3,NA,NA,12.Christiaan,Christiaan,NA,NA,NA,NA,-1.6666666666666667,3,0,8,10,0,10,1,1,1,NA,-1,1,0,NA,0,0,3
+NA,12.3,12,3,NA,NA,12.Dylan,Dylan,NA,NA,NA,NA,-3,3,3,10,10,0,10,1,1,1,NA,1,1,1,1,1,0,6
+NA,12.3,12,3,NA,NA,12.Georgie,Georgie,NA,NA,NA,NA,-0.9999999999999998,3,3,7,10,1,10,1,1,1,NA,1,1,1,1,0,0,6
+NA,12.3,12,3,NA,NA,12.Gill,Gill,NA,NA,NA,NA,0.3333333333333335,3,2,5,10,0,9,1,1,1,NA,0,1,1,NA,0,0,5
+NA,12.3,12,3,NA,NA,12.Illiyin,Illiyin,NA,NA,NA,NA,1,2,3,4,10,0,8,1,1,0,NA,1,1,1,NA,0,0,5
+NA,12.3,12,3,NA,NA,12.John,John,NA,NA,NA,NA,-2.333333333333333,1,2,9,10,0,3,-1,1,1,-1,0,1,1,-1,0,1,3
+NA,12.3,12,3,NA,NA,12.Mike,Mike,NA,NA,NA,NA,-0.3333333333333335,2,-1,6,10,0,4,0,1,1,NA,-1,-1,1,NA,0,0,1
+NA,12.3,12,3,NA,NA,12.Nelly,Nelly,NA,NA,NA,NA,3,3,3,1,10,0,6,1,1,1,1,1,1,1,1,0,0,6
+NA,12.3,12,3,NA,NA,12.Sumayah,Sumayah,NA,NA,NA,NA,2.3333333333333335,0,1,2,10,0,7,-1,1,0,NA,0,0,1,NA,0,0,1
+NA,12.4,12,4,NA,NA,12.Andy,Andy,NA,NA,NA,NA,-3,3,2,9,9,0,5,1,1,1,NA,0,1,1,NA,0,0,5
+NA,12.4,12,4,NA,NA,12.Christiaan,Christiaan,NA,NA,NA,NA,2.25,3,1,2,9,0,10,1,1,1,1,-1,1,1,NA,0,0,4
+NA,12.4,12,4,NA,NA,12.Dylan,Dylan,NA,NA,NA,NA,0,2,2,5,9,0,10,1,1,0,1,1,1,0,1,0,0,4
+NA,12.4,12,4,NA,NA,12.Georgie,Georgie,NA,NA,NA,NA,3,3,2,1,9,1,10,1,1,1,1,1,1,0,1,1,0,5
+NA,12.4,12,4,NA,NA,12.Gill,Gill,NA,NA,NA,NA,-2.25,3,2,8,9,0,9,1,1,1,NA,0,1,1,NA,0,0,5
+NA,12.4,12,4,NA,NA,12.Illiyin,Illiyin,NA,NA,NA,NA,0.75,3,0,4,9,0,8,1,1,1,NA,1,0,-1,NA,0,0,3
+NA,12.4,12,4,NA,NA,12.Mike,Mike,NA,NA,NA,NA,-1.5,0,0,7,9,0,4,-1,1,0,-1,-1,0,1,-1,0,1,0
+NA,12.4,12,4,NA,NA,12.Nelly,Nelly,NA,NA,NA,NA,-0.75,1,3,6,9,0,6,-1,1,1,-1,1,1,1,NA,0,0,4
+NA,12.4,12,4,NA,NA,12.Sumayah,Sumayah,NA,NA,NA,NA,1.5,1,-2,3,9,0,7,-1,1,1,NA,-1,-1,0,-1,0,0,-1
+NA,12.5,12,5,NA,NA,12.Andy,Andy,NA,NA,NA,NA,-2.1428571428571423,-1,-1,7,8,0,5,-1,1,-1,NA,0,0,-1,-1,0,1,-2
+NA,12.5,12,5,NA,NA,12.Christiaan,Christiaan,NA,NA,NA,NA,2.142857142857143,-1,1,2,8,0,10,-1,0,0,NA,-1,1,1,NA,0,0,0
+NA,12.5,12,5,NA,NA,12.Dylan,Dylan,NA,NA,NA,NA,3,1,1,1,8,0,10,1,-1,1,NA,-1,1,1,NA,0,0,2
+NA,12.5,12,5,NA,NA,12.Georgie,Georgie,NA,NA,NA,NA,-1.2857142857142858,3,0,6,8,1,10,1,1,1,NA,-1,1,0,NA,0,0,3
+NA,12.5,12,5,NA,NA,12.Gill,Gill,NA,NA,NA,NA,-3,3,3,8,8,0,9,1,1,1,NA,1,1,1,1,1,0,6
+NA,12.5,12,5,NA,NA,12.Illiyin,Illiyin,NA,NA,NA,NA,-0.4285714285714284,-2,2,5,8,0,8,-1,-1,0,NA,1,1,0,-1,0,0,0
+NA,12.5,12,5,NA,NA,12.Nelly,Nelly,NA,NA,NA,NA,1.2857142857142858,-1,1,3,8,0,6,-1,1,-1,NA,-1,1,1,NA,0,0,0
+NA,12.5,12,5,NA,NA,12.Sumayah,Sumayah,NA,NA,NA,NA,0.4285714285714287,1,2,4,8,0,7,-1,1,1,NA,0,1,1,1,0,0,3
+NA,12.6,12,6,NA,NA,12.Christiaan,Christiaan,NA,NA,NA,NA,-2,3,3,6,7,0,10,1,1,1,NA,1,1,1,NA,0,0,6
+NA,12.6,12,6,NA,NA,12.Dylan,Dylan,NA,NA,NA,NA,0,1,0,4,7,0,10,-1,1,1,NA,0,1,-1,-1,0,0,1
+NA,12.6,12,6,NA,NA,12.Georgie,Georgie,NA,NA,NA,NA,2,-3,3,2,7,1,10,-1,-1,-1,NA,1,1,1,NA,0,0,0
+NA,12.6,12,6,NA,NA,12.Gill,Gill,NA,NA,NA,NA,-3,3,3,7,7,0,9,1,1,1,NA,1,1,1,1,0,0,6
+NA,12.6,12,6,NA,NA,12.Illiyin,Illiyin,NA,NA,NA,NA,3,-1,3,1,7,0,8,-1,1,-1,NA,1,1,1,NA,0,0,2
+NA,12.6,12,6,NA,NA,12.Nelly,Nelly,NA,NA,NA,NA,-0.9999999999999998,2,-1,5,7,0,6,1,1,0,NA,-1,-1,1,-1,0,1,1
+NA,12.6,12,6,NA,NA,12.Sumayah,Sumayah,NA,NA,NA,NA,1,1,3,3,7,0,7,1,-1,1,NA,1,1,1,1,1,0,4
+NA,12.7,12,7,NA,NA,12.Christiaan,Christiaan,NA,NA,NA,NA,0.5999999999999999,0,2,3,6,0,10,0,-1,1,-1,0,1,1,NA,0,0,2
+NA,12.7,12,7,NA,NA,12.Dylan,Dylan,NA,NA,NA,NA,3,3,3,1,6,0,10,1,1,1,1,1,1,1,1,1,0,6
+NA,12.7,12,7,NA,NA,12.Georgie,Georgie,NA,NA,NA,NA,1.7999999999999998,1,3,2,6,1,10,0,1,0,1,1,1,1,1,0,0,4
+NA,12.7,12,7,NA,NA,12.Gill,Gill,NA,NA,NA,NA,-0.5999999999999999,0,3,4,6,0,9,0,-1,1,-1,1,1,1,-1,0,0,3
+NA,12.7,12,7,NA,NA,12.Illiyin,Illiyin,NA,NA,NA,NA,-1.8000000000000003,0,3,5,6,0,8,0,1,-1,-1,1,1,1,-1,0,0,3
+NA,12.7,12,7,NA,NA,12.Sumayah,Sumayah,NA,NA,NA,NA,-3,1,-1,6,6,0,7,0,0,1,-1,0,-1,0,-1,0,1,0
+NA,12.8,12,8,NA,NA,12.Christiaan,Christiaan,NA,NA,NA,NA,1.5,3,0,2,5,0,10,1,1,1,1,1,-1,0,-1,0,0,3
+NA,12.8,12,8,NA,NA,12.Dylan,Dylan,NA,NA,NA,NA,0,3,2,3,5,0,10,1,1,1,1,1,0,1,1,0,0,5
+NA,12.8,12,8,NA,NA,12.Georgie,Georgie,NA,NA,NA,NA,3,2,3,1,5,1,10,0,1,1,1,1,1,1,1,1,0,5
+NA,12.8,12,8,NA,NA,12.Gill,Gill,NA,NA,NA,NA,-3,1,2,5,5,0,9,0,1,0,-1,0,1,1,-1,0,0,3
+NA,12.8,12,8,NA,NA,12.Illiyin,Illiyin,NA,NA,NA,NA,-1.5,1,-1,4,5,0,8,0,1,0,-1,-1,1,-1,-1,0,1,0
+NA,12.9,12,9,NA,NA,12.Christiaan,Christiaan,NA,NA,NA,NA,-0.9999999999999998,2,3,3,4,0,10,0,1,1,1,1,1,1,1,1,0,5
+NA,12.9,12,9,NA,NA,12.Dylan,Dylan,NA,NA,NA,NA,3,-2,2,1,4,0,10,-1,0,-1,NA,0,1,1,1,0,0,0
+NA,12.9,12,9,NA,NA,12.Georgie,Georgie,NA,NA,NA,NA,-3,1,3,4,4,1,10,-1,1,1,NA,1,1,1,-1,0,0,4
+NA,12.9,12,9,NA,NA,12.Gill,Gill,NA,NA,NA,NA,1,0,3,2,4,0,9,-1,1,0,NA,1,1,1,-1,0,1,3
+NA,12.10,12,10,NA,NA,12.Christiaan,Christiaan,NA,NA,NA,NA,3,2,0,1,3,0,10,0,1,1,NA,-1,0,1,NA,0,1,2
+NA,12.10,12,10,NA,NA,12.Dylan,Dylan,NA,NA,NA,NA,-3,-3,0,3,3,0,10,-1,-1,-1,NA,-1,1,0,NA,0,1,-3
+NA,12.10,12,10,NA,NA,12.Georgie,Georgie,NA,NA,NA,NA,0,0,3,2,3,1,10,0,1,-1,NA,1,1,1,NA,1,0,3
+NA,13.1,13,1,NA,NA,13.Aaron,Aaron,NA,NA,NA,NA,1.3636363636363638,3,-2,4,12,0,10,1,1,1,NA,0,-1,-1,NA,0,0,1
+NA,13.1,13,1,NA,NA,13.Hassan,Hassan,NA,NA,NA,NA,-1.9090909090909094,0,0,10,12,0,1,0,1,-1,-1,1,0,-1,-1,0,1,0
+NA,13.1,13,1,NA,NA,13.Iain,Iain,NA,NA,NA,NA,-0.8181818181818181,2,2,8,12,0,8,0,1,1,NA,0,1,1,NA,0,0,4
+NA,13.1,13,1,NA,NA,13.Jasmine,Jasmine,NA,NA,NA,NA,-1.3636363636363638,1,1,9,12,1,10,-1,1,1,NA,0,1,0,NA,0,0,2
+NA,13.1,13,1,NA,NA,13.Jessika,Jessika,NA,NA,NA,NA,2.454545454545454,0,3,2,12,0,4,-1,1,0,NA,1,1,1,1,0,0,3
+NA,13.1,13,1,NA,NA,13.Leighton,Leighton,NA,NA,NA,NA,0.2727272727272728,1,-1,6,12,0,2,-1,1,1,-1,-1,1,-1,-1,0,0,0
+NA,13.1,13,1,NA,NA,13.Lesley,Lesley,NA,NA,NA,NA,0.8181818181818181,1,3,5,12,0,7,1,1,-1,NA,1,1,1,NA,0,0,4
+NA,13.1,13,1,NA,NA,13.Nadia,Nadia,NA,NA,NA,NA,-0.2727272727272725,-2,1,7,12,0,5,0,-1,-1,NA,-1,1,1,NA,0,0,-1
+NA,13.1,13,1,NA,NA,13.Nataliia,Nataliia,NA,NA,NA,NA,1.9090909090909092,1,3,3,12,0,6,-1,1,1,1,1,1,1,1,1,0,4
+NA,13.1,13,1,NA,NA,13.Pui Man,Pui Man,NA,NA,NA,NA,-2.454545454545454,2,0,11,12,0,3,0,1,1,NA,0,1,-1,NA,0,0,2
+NA,13.1,13,1,NA,NA,13.Toby,Toby,NA,NA,NA,NA,3,-1,-1,1,12,0,9,-1,1,-1,NA,-1,1,-1,-1,0,0,-2
+NA,13.1,13,1,NA,NA,13.Tom,Tom,NA,NA,NA,NA,-3,3,3,12,12,0,10,1,1,1,NA,1,1,1,1,0,0,6
+NA,13.2,13,2,NA,NA,13.Aaron,Aaron,NA,NA,NA,NA,-1.1999999999999997,3,1,8,11,0,10,1,1,1,NA,1,1,-1,-1,0,0,4
+NA,13.2,13,2,NA,NA,13.Iain,Iain,NA,NA,NA,NA,0.5999999999999999,0,2,5,11,0,8,0,1,-1,NA,0,1,1,NA,0,0,2
+NA,13.2,13,2,NA,NA,13.Jasmine,Jasmine,NA,NA,NA,NA,1.2000000000000002,1,3,4,11,1,10,-1,1,1,1,1,1,1,1,0,0,4
+NA,13.2,13,2,NA,NA,13.Jessika,Jessika,NA,NA,NA,NA,-0.5999999999999999,1,2,7,11,0,4,-1,1,1,NA,0,1,1,NA,0,0,3
+NA,13.2,13,2,NA,NA,13.Leighton,Leighton,NA,NA,NA,NA,-2.4000000000000004,3,0,10,11,0,2,1,1,1,NA,0,1,-1,-1,0,1,3
+NA,13.2,13,2,NA,NA,13.Lesley,Lesley,NA,NA,NA,NA,-1.8000000000000003,-2,3,9,11,0,7,-1,-1,0,NA,1,1,1,NA,0,0,1
+NA,13.2,13,2,NA,NA,13.Nadia,Nadia,NA,NA,NA,NA,2.4000000000000004,-1,3,2,11,0,5,-1,-1,1,NA,1,1,1,NA,0,0,2
+NA,13.2,13,2,NA,NA,13.Nataliia,Nataliia,NA,NA,NA,NA,1.7999999999999998,-1,-1,3,11,0,6,-1,1,-1,NA,0,0,-1,NA,0,0,-2
+NA,13.2,13,2,NA,NA,13.Pui Man,Pui Man,NA,NA,NA,NA,-3,-2,3,11,11,0,3,-1,-1,0,-1,1,1,1,-1,0,0,1
+NA,13.2,13,2,NA,NA,13.Toby,Toby,NA,NA,NA,NA,3,-1,-1,1,11,0,9,0,-1,0,NA,-1,-1,1,-1,0,0,-2
+NA,13.2,13,2,NA,NA,13.Tom,Tom,NA,NA,NA,NA,0,1,3,6,11,0,10,-1,1,1,1,1,1,1,1,1,0,4
+NA,13.3,13,3,NA,NA,13.Aaron,Aaron,NA,NA,NA,NA,1.6666666666666667,-1,3,3,10,0,10,-1,1,-1,NA,1,1,1,1,0,0,2
+NA,13.3,13,3,NA,NA,13.Iain,Iain,NA,NA,NA,NA,-0.3333333333333335,2,-3,6,10,0,8,0,1,1,NA,-1,-1,-1,-1,0,0,-1
+NA,13.3,13,3,NA,NA,13.Jasmine,Jasmine,NA,NA,NA,NA,3,2,3,1,10,1,10,0,1,1,1,1,1,1,1,1,0,5
+NA,13.3,13,3,NA,NA,13.Jessika,Jessika,NA,NA,NA,NA,-0.9999999999999998,3,0,7,10,0,4,1,1,1,NA,1,-1,0,NA,0,0,3
+NA,13.3,13,3,NA,NA,13.Lesley,Lesley,NA,NA,NA,NA,-2.333333333333333,2,3,9,10,0,7,1,0,1,NA,1,1,1,NA,0,0,5
+NA,13.3,13,3,NA,NA,13.Nadia,Nadia,NA,NA,NA,NA,2.3333333333333335,-1,3,2,10,0,5,-1,1,-1,1,1,1,1,1,0,0,2
+NA,13.3,13,3,NA,NA,13.Nataliia,Nataliia,NA,NA,NA,NA,-1.6666666666666667,-1,0,8,10,0,6,-1,-1,1,-1,-1,1,0,-1,0,0,-1
+NA,13.3,13,3,NA,NA,13.Pui Man,Pui Man,NA,NA,NA,NA,-3,-3,2,10,10,0,3,-1,-1,-1,-1,1,1,0,-1,0,1,-1
+NA,13.3,13,3,NA,NA,13.Toby,Toby,NA,NA,NA,NA,1,1,1,4,10,0,9,0,0,1,NA,-1,1,1,NA,0,0,2
+NA,13.3,13,3,NA,NA,13.Tom,Tom,NA,NA,NA,NA,0.3333333333333335,2,3,5,10,0,10,0,1,1,NA,1,1,1,1,0,0,5
+NA,13.4,13,4,NA,NA,13.Aaron,Aaron,NA,NA,NA,NA,2.25,3,0,2,9,0,10,1,1,1,1,0,1,-1,NA,0,0,3
+NA,13.4,13,4,NA,NA,13.Iain,Iain,NA,NA,NA,NA,1.5,0,-1,3,9,0,8,-1,0,1,NA,0,0,-1,-1,0,0,-1
+NA,13.4,13,4,NA,NA,13.Jasmine,Jasmine,NA,NA,NA,NA,3,3,3,1,9,1,10,1,1,1,1,1,1,1,1,1,0,6
+NA,13.4,13,4,NA,NA,13.Jessika,Jessika,NA,NA,NA,NA,-1.5,1,-3,7,9,0,4,-1,1,1,-1,-1,-1,-1,-1,0,1,-2
+NA,13.4,13,4,NA,NA,13.Lesley,Lesley,NA,NA,NA,NA,0,-3,3,5,9,0,7,-1,-1,-1,NA,1,1,1,NA,0,0,0
+NA,13.4,13,4,NA,NA,13.Nadia,Nadia,NA,NA,NA,NA,-3,-2,2,9,9,0,5,0,-1,-1,-1,0,1,1,NA,0,0,0
+NA,13.4,13,4,NA,NA,13.Nataliia,Nataliia,NA,NA,NA,NA,-2.25,-3,3,8,9,0,6,-1,-1,-1,-1,1,1,1,NA,0,0,0
+NA,13.4,13,4,NA,NA,13.Toby,Toby,NA,NA,NA,NA,0.75,2,1,4,9,0,9,1,0,1,1,1,1,-1,1,0,0,3
+NA,13.4,13,4,NA,NA,13.Tom,Tom,NA,NA,NA,NA,-0.75,3,3,6,9,0,10,1,1,1,NA,1,1,1,1,0,0,6
+NA,13.5,13,5,NA,NA,13.Aaron,Aaron,NA,NA,NA,NA,1.2857142857142858,2,3,3,8,0,10,0,1,1,NA,1,1,1,1,1,0,5
+NA,13.5,13,5,NA,NA,13.Iain,Iain,NA,NA,NA,NA,-2.1428571428571423,3,3,7,8,0,8,1,1,1,NA,1,1,1,NA,0,0,6
+NA,13.5,13,5,NA,NA,13.Jasmine,Jasmine,NA,NA,NA,NA,2.142857142857143,1,3,2,8,1,10,-1,1,1,NA,1,1,1,1,0,0,4
+NA,13.5,13,5,NA,NA,13.Lesley,Lesley,NA,NA,NA,NA,3,0,2,1,8,0,7,-1,1,0,NA,0,1,1,1,0,0,2
+NA,13.5,13,5,NA,NA,13.Nadia,Nadia,NA,NA,NA,NA,-3,0,1,8,8,0,5,-1,1,0,NA,1,1,-1,-1,0,1,1
+NA,13.5,13,5,NA,NA,13.Nataliia,Nataliia,NA,NA,NA,NA,-1.2857142857142858,1,3,6,8,0,6,-1,1,1,NA,1,1,1,NA,0,0,4
+NA,13.5,13,5,NA,NA,13.Toby,Toby,NA,NA,NA,NA,-0.4285714285714284,-1,-1,5,8,0,9,-1,1,-1,NA,-1,-1,1,-1,0,0,-2
+NA,13.5,13,5,NA,NA,13.Tom,Tom,NA,NA,NA,NA,0.4285714285714287,3,2,4,8,0,10,1,1,1,NA,0,1,1,NA,0,0,5
+NA,13.6,13,6,NA,NA,13.Aaron,Aaron,NA,NA,NA,NA,-3,3,0,7,7,0,10,1,1,1,NA,0,0,0,-1,0,0,3
+NA,13.6,13,6,NA,NA,13.Iain,Iain,NA,NA,NA,NA,2,-1,2,2,7,0,8,0,-1,0,NA,1,0,1,NA,0,0,1
+NA,13.6,13,6,NA,NA,13.Jasmine,Jasmine,NA,NA,NA,NA,3,3,2,1,7,1,10,1,1,1,NA,1,0,1,1,1,0,5
+NA,13.6,13,6,NA,NA,13.Lesley,Lesley,NA,NA,NA,NA,1,2,1,3,7,0,7,0,1,1,NA,0,1,0,1,0,0,3
+NA,13.6,13,6,NA,NA,13.Nataliia,Nataliia,NA,NA,NA,NA,-0.9999999999999998,0,0,5,7,0,6,-1,1,0,NA,-1,0,1,-1,0,1,0
+NA,13.6,13,6,NA,NA,13.Toby,Toby,NA,NA,NA,NA,0,0,2,4,7,0,9,-1,1,0,NA,1,1,0,NA,0,0,2
+NA,13.6,13,6,NA,NA,13.Tom,Tom,NA,NA,NA,NA,-2,0,3,6,7,0,10,-1,1,0,NA,1,1,1,NA,0,0,3
+NA,13.7,13,7,NA,NA,13.Aaron,Aaron,NA,NA,NA,NA,1.7999999999999998,1,0,2,6,0,10,1,1,-1,NA,-1,0,1,NA,0,0,1
+NA,13.7,13,7,NA,NA,13.Iain,Iain,NA,NA,NA,NA,3,2,0,1,6,0,8,0,1,1,NA,0,-1,1,-1,0,0,2
+NA,13.7,13,7,NA,NA,13.Jasmine,Jasmine,NA,NA,NA,NA,-0.5999999999999999,3,3,4,6,1,10,1,1,1,NA,1,1,1,1,0,0,6
+NA,13.7,13,7,NA,NA,13.Lesley,Lesley,NA,NA,NA,NA,-3,-1,2,6,6,0,7,-1,1,-1,NA,0,1,1,-1,0,1,1
+NA,13.7,13,7,NA,NA,13.Toby,Toby,NA,NA,NA,NA,0.5999999999999999,3,3,3,6,0,9,1,1,1,NA,1,1,1,1,1,0,6
+NA,13.7,13,7,NA,NA,13.Tom,Tom,NA,NA,NA,NA,-1.8000000000000003,1,3,5,6,0,10,-1,1,1,NA,1,1,1,NA,0,0,4
+NA,13.8,13,8,NA,NA,13.Aaron,Aaron,NA,NA,NA,NA,-3,3,1,5,5,0,10,1,1,1,NA,-1,1,1,1,0,0,4
+NA,13.8,13,8,NA,NA,13.Iain,Iain,NA,NA,NA,NA,1.5,0,-1,2,5,0,8,1,-1,0,NA,-1,-1,1,-1,0,1,-1
+NA,13.8,13,8,NA,NA,13.Jasmine,Jasmine,NA,NA,NA,NA,-1.5,3,3,4,5,1,10,1,1,1,NA,1,1,1,1,1,0,6
+NA,13.8,13,8,NA,NA,13.Toby,Toby,NA,NA,NA,NA,0,1,0,3,5,0,9,1,-1,1,NA,-1,1,0,NA,0,0,1
+NA,13.8,13,8,NA,NA,13.Tom,Tom,NA,NA,NA,NA,3,0,-1,1,5,0,10,0,-1,1,NA,-1,-1,1,-1,0,0,-1
+NA,13.9,13,9,NA,NA,13.Aaron,Aaron,NA,NA,NA,NA,-0.9999999999999998,2,0,3,4,0,10,1,0,1,NA,0,1,-1,-1,0,0,2
+NA,13.9,13,9,NA,NA,13.Jasmine,Jasmine,NA,NA,NA,NA,3,3,2,1,4,1,10,1,1,1,NA,1,0,1,1,1,0,5
+NA,13.9,13,9,NA,NA,13.Toby,Toby,NA,NA,NA,NA,-3,1,2,4,4,0,9,-1,1,1,NA,1,0,1,-1,0,1,3
+NA,13.9,13,9,NA,NA,13.Tom,Tom,NA,NA,NA,NA,1,0,-1,2,4,0,10,-1,1,0,NA,-1,1,-1,-1,0,0,-1
+NA,13.10,13,10,NA,NA,13.Aaron,Aaron,NA,NA,NA,NA,0,0,-1,2,3,0,10,-1,1,0,NA,-1,0,0,-1,0,1,-1
+NA,13.10,13,10,NA,NA,13.Jasmine,Jasmine,NA,NA,NA,NA,-3,1,3,3,3,1,10,1,1,-1,NA,1,1,1,1,1,0,4
+NA,13.10,13,10,NA,NA,13.Tom,Tom,NA,NA,NA,NA,3,1,3,1,3,0,10,-1,1,1,NA,1,1,1,1,0,1,4

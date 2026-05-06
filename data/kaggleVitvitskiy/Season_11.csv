@@ -1,0 +1,13 @@
+Baker,Gender,Age,Occupation,Hometown,Round_1_Technical,Round_1,Round_2_Technical,Round_2_Handshake,Round_2,Round_3_Technical,Round_3_Handshake,Round_3,Round_4_Technical,Round_4,Round_5_Technical,Round_5,Round_6_Technical,Round_6,Round_7_Technical,Round_7_Handshake,Round_7,Round_8_Technical,Round_8,Round_9_Technical,Round_9,Round_10_Technical,Round_10,Technicals,Handshakes,Star_Bakers
+Peter,M,20,Accounting & finance student,Edinburgh,2,SB,10,,SAFE,4,,LOW,4,HIGH,1,HIGH,1,SAFE,2,Signature,SAFE,4,LOW,1,SB,2,WINNER,3,1,2
+Dave,M,30,Armoured security guard,"Waterlooville, Hampshire",9,SAFE,1,,SB,9,,LOW,8,SAFE,5,HIGH,3,HIGH,6,,SAFE,5,SAFE,3,HIGH,1,Runner-up,2,0,1
+Laura,F,31,Digital manager,"Gravesend, Kent",6,SAFE,7,,SAFE,6,,SAFE,2,SAFE,6,SB,7,LOW,4,,LOW,1,HIGH,4,LOW,3,Runner-up,1,0,1
+Hermine,F,39,Accountant,London,5,HIGH,5,,SAFE,7,Signature,SAFE,5,SAFE,2,HIGH,4,LOW,1,,SB,3,SB,2,OUT,,,1,1,2
+Marc,M,51,Bronze resin sculptor,"St Eval, Cornwall",11,LOW,9,,HIGH,2,,SB,6,SAFE,7,LOW,6,HIGH,3,,HIGH,2,OUT,,,,,0,0,1
+Lottie,F,31,Pantomime producer,West Sussex,4,SAFE,8,Signature,SAFE,5,,SAFE,9,LOW,4,SAFE,2,SB,5,,OUT,,,,,,,0,1,1
+Mark,M,32,Project manager,"Portadown, Northern Ireland",7,SAFE,2,,HIGH,3,,SAFE,3,SB,3,LOW,5,OUT,,,,,,,,,,0,0,1
+Linda,F,61,Retirement living team leader,"Bexhill-on-Sea, East Sussex",12,LOW,4,,SAFE,1,,SAFE,1,SAFE,8,OUT,,,,,,,,,,,,2,0,0
+Sura,F,31,Hospital pharmacy dispenser,London,1,HIGH,6,,SAFE,8,,HIGH,7,OUT,,,,,,,,,,,,,,1,0,0
+Rowan,M,55,Music teacher,"Pershore, Worcestershire",3,SAFE,11,,LOW,10,,OUT,,,,,,,,,,,,,,,,0,0,0
+Mak,M,51,Accountant,Manchester,8,SAFE,3,,OUT,,,,,,,,,,,,,,,,,,,0,0,0
+Loriea,F,27,Diagnostic radiographer,Durham,10,OUT,,,,,,,,,,,,,,,,,,,,,,0,0,0

@@ -1,0 +1,530 @@
+season,contestant,gender,age,occupation,hometown,round,technical,series
+8,Chris,M,50,Software developer,Bristol,1,12,5
+8,Flo,F,71,Retired,Merseyside,1,9,5
+8,James,M,46,Banker,"Brentwood, Essex",1,2,5
+8,Julia,F,21,Aviation Broker,"Crawley, West Sussex",1,3,5
+8,Kate,F,29,Health and safety inspector,Merseyside,1,1,5
+8,Liam,M,19,Student,North London,1,8,5
+8,Peter,M,52,IT programme manager,"Southend, Essex",1,10,5
+8,Sophie,F,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",1,5,5
+8,Stacey,F,42,Former school teacher,"Radlett, Hertfordshire",1,11,5
+8,Steven,M,34,Marketer,"Watford, Hertfordshire",1,6,5
+8,Tom,M,29,Architect,Edinburgh,1,7,5
+8,Yan,F,46,Laboratory research scientist,North London,1,4,5
+8,Chris,M,50,Software developer,Bristol,2,11,5
+8,Flo,F,71,Retired,Merseyside,2,10,5
+8,James,M,46,Banker,"Brentwood, Essex",2,3,5
+8,Julia,F,21,Aviation Broker,"Crawley, West Sussex",2,4,5
+8,Kate,F,29,Health and safety inspector,Merseyside,2,8,5
+8,Liam,M,19,Student,North London,2,7,5
+8,Sophie,F,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",2,2,5
+8,Stacey,F,42,Former school teacher,"Radlett, Hertfordshire",2,9,5
+8,Steven,M,34,Marketer,"Watford, Hertfordshire",2,6,5
+8,Tom,M,29,Architect,Edinburgh,2,5,5
+8,Yan,F,46,Laboratory research scientist,North London,2,1,5
+8,Flo,F,71,Retired,Merseyside,3,7,5
+8,James,M,46,Banker,"Brentwood, Essex",3,9,5
+8,Julia,F,21,Aviation Broker,"Crawley, West Sussex",3,2,5
+8,Kate,F,29,Health and safety inspector,Merseyside,3,10,5
+8,Liam,M,19,Student,North London,3,5,5
+8,Sophie,F,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",3,6,5
+8,Stacey,F,42,Former school teacher,"Radlett, Hertfordshire",3,1,5
+8,Steven,M,34,Marketer,"Watford, Hertfordshire",3,3,5
+8,Tom,M,29,Architect,Edinburgh,3,4,5
+8,Yan,F,46,Laboratory research scientist,North London,3,8,5
+8,James,M,46,Banker,"Brentwood, Essex",4,2,5
+8,Julia,F,21,Aviation Broker,"Crawley, West Sussex",4,9,5
+8,Kate,F,29,Health and safety inspector,Merseyside,4,6,5
+8,Liam,M,19,Student,North London,4,3,5
+8,Sophie,F,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",4,4,5
+8,Stacey,F,42,Former school teacher,"Radlett, Hertfordshire",4,1,5
+8,Steven,M,34,Marketer,"Watford, Hertfordshire",4,7,5
+8,Tom,M,29,Architect,Edinburgh,4,5,5
+8,Yan,F,46,Laboratory research scientist,North London,4,8,5
+8,James,M,46,Banker,"Brentwood, Essex",5,7,5
+8,Julia,F,21,Aviation Broker,"Crawley, West Sussex",5,3,5
+8,Kate,F,29,Health and safety inspector,Merseyside,5,8,5
+8,Liam,M,19,Student,North London,5,2,5
+8,Sophie,F,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",5,1,5
+8,Stacey,F,42,Former school teacher,"Radlett, Hertfordshire",5,4,5
+8,Steven,M,34,Marketer,"Watford, Hertfordshire",5,5,5
+8,Yan,F,46,Laboratory research scientist,North London,5,6,5
+8,Julia,F,21,Aviation Broker,"Crawley, West Sussex",6,7,5
+8,Kate,F,29,Health and safety inspector,Merseyside,6,5,5
+8,Liam,M,19,Student,North London,6,4,5
+8,Sophie,F,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",6,2,5
+8,Stacey,F,42,Former school teacher,"Radlett, Hertfordshire",6,6,5
+8,Steven,M,34,Marketer,"Watford, Hertfordshire",6,3,5
+8,Yan,F,46,Laboratory research scientist,North London,6,1,5
+8,Kate,F,29,Health and safety inspector,Merseyside,7,6,5
+8,Liam,M,19,Student,North London,7,2,5
+8,Sophie,F,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",7,3,5
+8,Stacey,F,42,Former school teacher,"Radlett, Hertfordshire",7,4,5
+8,Steven,M,34,Marketer,"Watford, Hertfordshire",7,1,5
+8,Yan,F,46,Laboratory research scientist,North London,7,5,5
+8,Kate,F,29,Health and safety inspector,Merseyside,8,2,5
+8,Liam,M,19,Student,North London,8,5,5
+8,Sophie,F,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",8,4,5
+8,Stacey,F,42,Former school teacher,"Radlett, Hertfordshire",8,3,5
+8,Steven,M,34,Marketer,"Watford, Hertfordshire",8,1,5
+8,Kate,F,29,Health and safety inspector,Merseyside,9,4,5
+8,Sophie,F,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",9,1,5
+8,Stacey,F,42,Former school teacher,"Radlett, Hertfordshire",9,2,5
+8,Steven,M,34,Marketer,"Watford, Hertfordshire",9,3,5
+8,Kate,F,29,Health and safety inspector,Merseyside,10,3,5
+8,Sophie,F,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",10,2,5
+8,Steven,M,34,Marketer,"Watford, Hertfordshire",10,1,5
+9,Antony,M,30,Banker,London,1,12,6
+9,Briony,F,33,Stay at home parent,Bristol,1,2,6
+9,Dan,M,36,Stay at home parent,London,1,4,6
+9,Imelda,F,33,Countryside recreation officer,County Tyrone,1,11,6
+9,Jon,M,47,Blood courier,Newport,1,5,6
+9,Karen,F,60,In-store sampling assistant,Wakefield,1,6,6
+9,Kim-Joy,F,27,Mental health specialist,Leeds,1,10,6
+9,Luke,M,30,Civil servant/house and techno DJ,Sheffield,1,8,6
+9,Manon,F,26,Software project manager,London,1,3,6
+9,Rahul,M,30,Research scientist,Rotherham,1,7,6
+9,Ruby,F,29,Project manager,London,1,1,6
+9,Terry,M,56,Retired air steward,West Midlands,1,9,6
+9,Antony,M,30,Banker,London,2,9,6
+9,Briony,F,33,Stay at home parent,Bristol,2,5,6
+9,Dan,M,36,Stay at home parent,London,2,3,6
+9,Jon,M,47,Blood courier,Newport,2,1,6
+9,Karen,F,60,In-store sampling assistant,Wakefield,2,11,6
+9,Kim-Joy,F,27,Mental health specialist,Leeds,2,4,6
+9,Luke,M,30,Civil servant/house and techno DJ,Sheffield,2,7,6
+9,Manon,F,26,Software project manager,London,2,6,6
+9,Rahul,M,30,Research scientist,Rotherham,2,2,6
+9,Ruby,F,29,Project manager,London,2,10,6
+9,Terry,M,56,Retired air steward,West Midlands,2,8,6
+9,Antony,M,30,Banker,London,3,8,6
+9,Briony,F,33,Stay at home parent,Bristol,3,9,6
+9,Dan,M,36,Stay at home parent,London,3,6,6
+9,Jon,M,47,Blood courier,Newport,3,2,6
+9,Karen,F,60,In-store sampling assistant,Wakefield,3,5,6
+9,Kim-Joy,F,27,Mental health specialist,Leeds,3,10,6
+9,Manon,F,26,Software project manager,London,3,3,6
+9,Rahul,M,30,Research scientist,Rotherham,3,4,6
+9,Ruby,F,29,Project manager,London,3,7,6
+9,Terry,M,56,Retired air steward,West Midlands,3,1,6
+9,Briony,F,33,Stay at home parent,Bristol,4,5,6
+9,Dan,M,36,Stay at home parent,London,4,1,6
+9,Jon,M,47,Blood courier,Newport,4,3,6
+9,Karen,F,60,In-store sampling assistant,Wakefield,4,7,6
+9,Kim-Joy,F,27,Mental health specialist,Leeds,4,6,6
+9,Manon,F,26,Software project manager,London,4,8,6
+9,Rahul,M,30,Research scientist,Rotherham,4,4,6
+9,Ruby,F,29,Project manager,London,4,2,6
+9,Briony,F,33,Stay at home parent,Bristol,5,6,6
+9,Dan,M,36,Stay at home parent,London,5,2,6
+9,Jon,M,47,Blood courier,Newport,5,7,6
+9,Karen,F,60,In-store sampling assistant,Wakefield,5,9,6
+9,Kim-Joy,F,27,Mental health specialist,Leeds,5,4,6
+9,Manon,F,26,Software project manager,London,5,5,6
+9,Rahul,M,30,Research scientist,Rotherham,5,3,6
+9,Ruby,F,29,Project manager,London,5,1,6
+9,Terry,M,56,Retired air steward,West Midlands,5,8,6
+9,Briony,F,33,Stay at home parent,Bristol,6,1,6
+9,Dan,M,36,Stay at home parent,London,6,6,6
+9,Jon,M,47,Blood courier,Newport,6,2,6
+9,Kim-Joy,F,27,Mental health specialist,Leeds,6,5,6
+9,Manon,F,26,Software project manager,London,6,4,6
+9,Rahul,M,30,Research scientist,Rotherham,6,3,6
+9,Ruby,F,29,Project manager,London,6,7,6
+9,Briony,F,33,Stay at home parent,Bristol,7,5,6
+9,Jon,M,47,Blood courier,Newport,7,4,6
+9,Kim-Joy,F,27,Mental health specialist,Leeds,7,6,6
+9,Manon,F,26,Software project manager,London,7,2,6
+9,Rahul,M,30,Research scientist,Rotherham,7,1,6
+9,Ruby,F,29,Project manager,London,7,3,6
+9,Briony,F,33,Stay at home parent,Bristol,8,1,6
+9,Kim-Joy,F,27,Mental health specialist,Leeds,8,2,6
+9,Manon,F,26,Software project manager,London,8,4,6
+9,Rahul,M,30,Research scientist,Rotherham,8,5,6
+9,Ruby,F,29,Project manager,London,8,3,6
+9,Briony,F,33,Stay at home parent,Bristol,9,3,6
+9,Kim-Joy,F,27,Mental health specialist,Leeds,9,2,6
+9,Rahul,M,30,Research scientist,Rotherham,9,4,6
+9,Ruby,F,29,Project manager,London,9,1,6
+9,Kim-Joy,F,27,Mental health specialist,Leeds,10,1,6
+9,Rahul,M,30,Research scientist,Rotherham,10,2,6
+9,Ruby,F,29,Project manager,London,10,3,6
+10,Alice,F,28,Geography teacher,Essex,1,5,7
+10,Amelia,F,24,Fashion designer,Halifax,1,4,7
+10,Dan,M,32,Support worker,Rotherham,1,10,7
+10,David,M,36,International health adviser,Whitby,1,9,7
+10,Helena,F,40,Online project manager,Leeds,1,12,7
+10,Henry,M,20,Student,Durham,1,1,7
+10,Jamie,M,20,Part-time waiter,Surrey,1,13,7
+10,Michael,M,26,Theatre manager/fitness instructor,Stratford-upon-Avon,1,11,7
+10,Michelle,F,35,Print shop administrator,"Tenby, Wales",1,6,7
+10,Phil,M,56,HGV driver,Rainham,1,8,7
+10,Priya,F,34,Marketing consultant,Leicester,1,7,7
+10,Rosie,F,28,Veterinary surgeon,Somerset,1,2,7
+10,Steph,F,28,Shop assistant,Chester,1,3,7
+10,Alice,F,28,Geography teacher,Essex,2,1,7
+10,Amelia,F,24,Fashion designer,Halifax,2,9,7
+10,David,M,36,International health adviser,Whitby,2,2,7
+10,Helena,F,40,Online project manager,Leeds,2,12,7
+10,Henry,M,20,Student,Durham,2,6,7
+10,Jamie,M,20,Part-time waiter,Surrey,2,11,7
+10,Michael,M,26,Theatre manager/fitness instructor,Stratford-upon-Avon,2,4,7
+10,Michelle,F,35,Print shop administrator,"Tenby, Wales",2,8,7
+10,Phil,M,56,HGV driver,Rainham,2,3,7
+10,Priya,F,34,Marketing consultant,Leicester,2,7,7
+10,Rosie,F,28,Veterinary surgeon,Somerset,2,5,7
+10,Steph,F,28,Shop assistant,Chester,2,10,7
+10,Alice,F,28,Geography teacher,Essex,3,7,7
+10,Amelia,F,24,Fashion designer,Halifax,3,11,7
+10,David,M,36,International health adviser,Whitby,3,2,7
+10,Helena,F,40,Online project manager,Leeds,3,8,7
+10,Henry,M,20,Student,Durham,3,1,7
+10,Michael,M,26,Theatre manager/fitness instructor,Stratford-upon-Avon,3,6,7
+10,Michelle,F,35,Print shop administrator,"Tenby, Wales",3,5,7
+10,Phil,M,56,HGV driver,Rainham,3,10,7
+10,Priya,F,34,Marketing consultant,Leicester,3,4,7
+10,Rosie,F,28,Veterinary surgeon,Somerset,3,9,7
+10,Steph,F,28,Shop assistant,Chester,3,3,7
+10,Alice,F,28,Geography teacher,Essex,4,8,7
+10,David,M,36,International health adviser,Whitby,4,2,7
+10,Helena,F,40,Online project manager,Leeds,4,9,7
+10,Henry,M,20,Student,Durham,4,3,7
+10,Michael,M,26,Theatre manager/fitness instructor,Stratford-upon-Avon,4,7,7
+10,Michelle,F,35,Print shop administrator,"Tenby, Wales",4,5,7
+10,Phil,M,56,HGV driver,Rainham,4,6,7
+10,Priya,F,34,Marketing consultant,Leicester,4,10,7
+10,Rosie,F,28,Veterinary surgeon,Somerset,4,4,7
+10,Steph,F,28,Shop assistant,Chester,4,1,7
+10,Alice,F,28,Geography teacher,Essex,5,6,7
+10,David,M,36,International health adviser,Whitby,5,9,7
+10,Helena,F,40,Online project manager,Leeds,5,1,7
+10,Henry,M,20,Student,Durham,5,3,7
+10,Michael,M,26,Theatre manager/fitness instructor,Stratford-upon-Avon,5,8,7
+10,Michelle,F,35,Print shop administrator,"Tenby, Wales",5,7,7
+10,Priya,F,34,Marketing consultant,Leicester,5,2,7
+10,Rosie,F,28,Veterinary surgeon,Somerset,5,5,7
+10,Steph,F,28,Shop assistant,Chester,5,4,7
+10,Alice,F,28,Geography teacher,Essex,6,1,7
+10,David,M,36,International health adviser,Whitby,6,2,7
+10,Henry,M,20,Student,Durham,6,4,7
+10,Michael,M,26,Theatre manager/fitness instructor,Stratford-upon-Avon,6,6,7
+10,Priya,F,34,Marketing consultant,Leicester,6,7,7
+10,Rosie,F,28,Veterinary surgeon,Somerset,6,5,7
+10,Steph,F,28,Shop assistant,Chester,6,3,7
+10,Alice,F,28,Geography teacher,Essex,7,6,7
+10,David,M,36,International health adviser,Whitby,7,2,7
+10,Henry,M,20,Student,Durham,7,3,7
+10,Michael,M,26,Theatre manager/fitness instructor,Stratford-upon-Avon,7,5,7
+10,Rosie,F,28,Veterinary surgeon,Somerset,7,1,7
+10,Steph,F,28,Shop assistant,Chester,7,4,7
+10,Alice,F,28,Geography teacher,Essex,8,3,7
+10,David,M,36,International health adviser,Whitby,8,1,7
+10,Henry,M,20,Student,Durham,8,5,7
+10,Rosie,F,28,Veterinary surgeon,Somerset,8,2,7
+10,Steph,F,28,Shop assistant,Chester,8,4,7
+10,Alice,F,28,Geography teacher,Essex,9,4,7
+10,David,M,36,International health adviser,Whitby,9,2,7
+10,Rosie,F,28,Veterinary surgeon,Somerset,9,1,7
+10,Steph,F,28,Shop assistant,Chester,9,3,7
+10,Alice,F,28,Geography teacher,Essex,10,2,7
+10,David,M,36,International health adviser,Whitby,10,1,7
+10,Steph,F,28,Shop assistant,Chester,10,3,7
+11,Dave,M,30,Armoured security guard,"Waterlooville, Hampshire",1,9,8
+11,Hermine,F,39,Accountant,London,1,5,8
+11,Laura,F,31,Digital manager,"Gravesend, Kent",1,6,8
+11,Linda,F,61,Retirement living team leader,"Bexhill-on-Sea, East Sussex",1,12,8
+11,Loriea,F,27,Diagnostic radiographer,Durham,1,10,8
+11,Lottie,F,31,Pantomime producer,West Sussex,1,4,8
+11,Mak,M,51,Accountant,Manchester,1,8,8
+11,Marc,M,51,Bronze resin sculptor,"St Eval, Cornwall",1,11,8
+11,Mark,M,32,Project manager,"Portadown, Northern Ireland",1,7,8
+11,Peter,M,20,Accounting & finance student,Edinburgh,1,2,8
+11,Rowan,M,55,Music teacher,"Pershore, Worcestershire",1,3,8
+11,Sura,F,31,Hospital pharmacy dispenser,London,1,1,8
+11,Dave,M,30,Armoured security guard,"Waterlooville, Hampshire",2,1,8
+11,Hermine,F,39,Accountant,London,2,5,8
+11,Laura,F,31,Digital manager,"Gravesend, Kent",2,7,8
+11,Linda,F,61,Retirement living team leader,"Bexhill-on-Sea, East Sussex",2,4,8
+11,Lottie,F,31,Pantomime producer,West Sussex,2,8,8
+11,Mak,M,51,Accountant,Manchester,2,3,8
+11,Marc,M,51,Bronze resin sculptor,"St Eval, Cornwall",2,9,8
+11,Mark,M,32,Project manager,"Portadown, Northern Ireland",2,2,8
+11,Peter,M,20,Accounting & finance student,Edinburgh,2,10,8
+11,Rowan,M,55,Music teacher,"Pershore, Worcestershire",2,11,8
+11,Sura,F,31,Hospital pharmacy dispenser,London,2,6,8
+11,Dave,M,30,Armoured security guard,"Waterlooville, Hampshire",3,9,8
+11,Hermine,F,39,Accountant,London,3,7,8
+11,Laura,F,31,Digital manager,"Gravesend, Kent",3,6,8
+11,Linda,F,61,Retirement living team leader,"Bexhill-on-Sea, East Sussex",3,1,8
+11,Lottie,F,31,Pantomime producer,West Sussex,3,5,8
+11,Marc,M,51,Bronze resin sculptor,"St Eval, Cornwall",3,2,8
+11,Mark,M,32,Project manager,"Portadown, Northern Ireland",3,3,8
+11,Peter,M,20,Accounting & finance student,Edinburgh,3,4,8
+11,Rowan,M,55,Music teacher,"Pershore, Worcestershire",3,10,8
+11,Sura,F,31,Hospital pharmacy dispenser,London,3,8,8
+11,Dave,M,30,Armoured security guard,"Waterlooville, Hampshire",4,8,8
+11,Hermine,F,39,Accountant,London,4,5,8
+11,Laura,F,31,Digital manager,"Gravesend, Kent",4,2,8
+11,Linda,F,61,Retirement living team leader,"Bexhill-on-Sea, East Sussex",4,1,8
+11,Lottie,F,31,Pantomime producer,West Sussex,4,9,8
+11,Marc,M,51,Bronze resin sculptor,"St Eval, Cornwall",4,6,8
+11,Mark,M,32,Project manager,"Portadown, Northern Ireland",4,3,8
+11,Peter,M,20,Accounting & finance student,Edinburgh,4,4,8
+11,Sura,F,31,Hospital pharmacy dispenser,London,4,7,8
+11,Dave,M,30,Armoured security guard,"Waterlooville, Hampshire",5,5,8
+11,Hermine,F,39,Accountant,London,5,2,8
+11,Laura,F,31,Digital manager,"Gravesend, Kent",5,6,8
+11,Linda,F,61,Retirement living team leader,"Bexhill-on-Sea, East Sussex",5,8,8
+11,Lottie,F,31,Pantomime producer,West Sussex,5,4,8
+11,Marc,M,51,Bronze resin sculptor,"St Eval, Cornwall",5,7,8
+11,Mark,M,32,Project manager,"Portadown, Northern Ireland",5,3,8
+11,Peter,M,20,Accounting & finance student,Edinburgh,5,1,8
+11,Dave,M,30,Armoured security guard,"Waterlooville, Hampshire",6,3,8
+11,Hermine,F,39,Accountant,London,6,4,8
+11,Laura,F,31,Digital manager,"Gravesend, Kent",6,7,8
+11,Lottie,F,31,Pantomime producer,West Sussex,6,2,8
+11,Marc,M,51,Bronze resin sculptor,"St Eval, Cornwall",6,6,8
+11,Mark,M,32,Project manager,"Portadown, Northern Ireland",6,5,8
+11,Peter,M,20,Accounting & finance student,Edinburgh,6,1,8
+11,Dave,M,30,Armoured security guard,"Waterlooville, Hampshire",7,6,8
+11,Hermine,F,39,Accountant,London,7,1,8
+11,Laura,F,31,Digital manager,"Gravesend, Kent",7,4,8
+11,Lottie,F,31,Pantomime producer,West Sussex,7,5,8
+11,Marc,M,51,Bronze resin sculptor,"St Eval, Cornwall",7,3,8
+11,Peter,M,20,Accounting & finance student,Edinburgh,7,2,8
+11,Dave,M,30,Armoured security guard,"Waterlooville, Hampshire",8,5,8
+11,Hermine,F,39,Accountant,London,8,3,8
+11,Laura,F,31,Digital manager,"Gravesend, Kent",8,1,8
+11,Marc,M,51,Bronze resin sculptor,"St Eval, Cornwall",8,2,8
+11,Peter,M,20,Accounting & finance student,Edinburgh,8,4,8
+11,Dave,M,30,Armoured security guard,"Waterlooville, Hampshire",9,3,8
+11,Hermine,F,39,Accountant,London,9,2,8
+11,Laura,F,31,Digital manager,"Gravesend, Kent",9,4,8
+11,Peter,M,20,Accounting & finance student,Edinburgh,9,1,8
+11,Dave,M,30,Armoured security guard,"Waterlooville, Hampshire",10,1,8
+11,Laura,F,31,Digital manager,"Gravesend, Kent",10,3,8
+11,Peter,M,20,Accounting & finance student,Edinburgh,10,2,8
+12,Amanda,F,56,Metropolitan Police detective,London,1,12,9
+12,Chigs,M,40,Sales manager,Leicester,1,11,9
+12,Crystelle,F,26,Client relationship manager,London,1,8,9
+12,Freya,F,19,Student,"Scarborough, North Yorkshire",1,2,9
+12,George,M,34,Shared lives coordinator,London,1,3,9
+12,Giuseppe,M,45,Chief engineer,Bristol,1,10,9
+12,Jairzeno,M,51,Head of Finance,London,1,9,9
+12,Jürgen,M,56,Physicist,"Brighton, East Sussex",1,6,9
+12,Lizzie,F,28,Car production operative,Liverpool,1,4,9
+12,Maggie,F,70,Retired nurse and midwife,"Poole, Dorset",1,1,9
+12,Rochica,F,27,Junior HR business partner,Birmingham,1,7,9
+12,Tom,M,28,Software developer,"Maidstone, Kent",1,5,9
+12,Amanda,F,56,Metropolitan Police detective,London,2,4,9
+12,Chigs,M,40,Sales manager,Leicester,2,7,9
+12,Crystelle,F,26,Client relationship manager,London,2,10,9
+12,Freya,F,19,Student,"Scarborough, North Yorkshire",2,3,9
+12,George,M,34,Shared lives coordinator,London,2,8,9
+12,Giuseppe,M,45,Chief engineer,Bristol,2,2,9
+12,Jairzeno,M,51,Head of Finance,London,2,9,9
+12,Jürgen,M,56,Physicist,"Brighton, East Sussex",2,1,9
+12,Lizzie,F,28,Car production operative,Liverpool,2,6,9
+12,Maggie,F,70,Retired nurse and midwife,"Poole, Dorset",2,5,9
+12,Rochica,F,27,Junior HR business partner,Birmingham,2,11,9
+12,Amanda,F,56,Metropolitan Police detective,London,3,3,9
+12,Chigs,M,40,Sales manager,Leicester,3,6,9
+12,Crystelle,F,26,Client relationship manager,London,3,9,9
+12,Freya,F,19,Student,"Scarborough, North Yorkshire",3,4,9
+12,George,M,34,Shared lives coordinator,London,3,7,9
+12,Giuseppe,M,45,Chief engineer,Bristol,3,1,9
+12,Jürgen,M,56,Physicist,"Brighton, East Sussex",3,5,9
+12,Lizzie,F,28,Car production operative,Liverpool,3,2,9
+12,Maggie,F,70,Retired nurse and midwife,"Poole, Dorset",3,8,9
+12,Rochica,F,27,Junior HR business partner,Birmingham,3,10,9
+12,Amanda,F,56,Metropolitan Police detective,London,4,8,9
+12,Chigs,M,40,Sales manager,Leicester,4,3,9
+12,Crystelle,F,26,Client relationship manager,London,4,5,9
+12,Freya,F,19,Student,"Scarborough, North Yorkshire",4,6,9
+12,George,M,34,Shared lives coordinator,London,4,7,9
+12,Giuseppe,M,45,Chief engineer,Bristol,4,4,9
+12,Jürgen,M,56,Physicist,"Brighton, East Sussex",4,1,9
+12,Lizzie,F,28,Car production operative,Liverpool,4,2,9
+12,Maggie,F,70,Retired nurse and midwife,"Poole, Dorset",4,9,9
+12,Amanda,F,56,Metropolitan Police detective,London,5,8,9
+12,Chigs,M,40,Sales manager,Leicester,5,2,9
+12,Crystelle,F,26,Client relationship manager,London,5,7,9
+12,Freya,F,19,Student,"Scarborough, North Yorkshire",5,5,9
+12,George,M,34,Shared lives coordinator,London,5,6,9
+12,Giuseppe,M,45,Chief engineer,Bristol,5,1,9
+12,Jürgen,M,56,Physicist,"Brighton, East Sussex",5,4,9
+12,Lizzie,F,28,Car production operative,Liverpool,5,3,9
+12,Amanda,F,56,Metropolitan Police detective,London,6,5,9
+12,Chigs,M,40,Sales manager,Leicester,6,3,9
+12,Crystelle,F,26,Client relationship manager,London,6,2,9
+12,George,M,34,Shared lives coordinator,London,6,6,9
+12,Giuseppe,M,45,Chief engineer,Bristol,6,4,9
+12,Jürgen,M,56,Physicist,"Brighton, East Sussex",6,1,9
+12,Lizzie,F,28,Car production operative,Liverpool,6,7,9
+12,Chigs,M,40,Sales manager,Leicester,7,3,9
+12,Crystelle,F,26,Client relationship manager,London,7,4,9
+12,George,M,34,Shared lives coordinator,London,7,6,9
+12,Giuseppe,M,45,Chief engineer,Bristol,7,1,9
+12,Jürgen,M,56,Physicist,"Brighton, East Sussex",7,2,9
+12,Lizzie,F,28,Car production operative,Liverpool,7,5,9
+12,Chigs,M,40,Sales manager,Leicester,8,1,9
+12,Crystelle,F,26,Client relationship manager,London,8,5,9
+12,Giuseppe,M,45,Chief engineer,Bristol,8,2,9
+12,Jürgen,M,56,Physicist,"Brighton, East Sussex",8,4,9
+12,Lizzie,F,28,Car production operative,Liverpool,8,3,9
+12,Chigs,M,40,Sales manager,Leicester,9,4,9
+12,Crystelle,F,26,Client relationship manager,London,9,3,9
+12,Giuseppe,M,45,Chief engineer,Bristol,9,2,9
+12,Jürgen,M,56,Physicist,"Brighton, East Sussex",9,1,9
+12,Chigs,M,40,Sales manager,Leicester,10,2,9
+12,Crystelle,F,26,Client relationship manager,London,10,1,9
+12,Giuseppe,M,45,Chief engineer,Bristol,10,3,9
+13,Abdul,M,29,Electronics engineer,London,1,6,10
+13,Carole,F,59,Supermarket cashier,Dorset,1,8,10
+13,Dawn,F,60,IT manager,Bedfordshire,1,3,10
+13,James,M,25,Nuclear scientist,Cumbria,1,12,10
+13,Janusz,M,34,Personal assistant to head teacher,East Sussex,1,7,10
+13,Kevin,M,33,Music teacher,Lanarkshire,1,4,10
+13,Maisam,F,18,Student and sales assistant,Greater Manchester,1,5,10
+13,Maxy,F,29,Architectural assistant,London,1,10,10
+13,Rebs,F,23,Masters student,County Antrim,1,11,10
+13,Sandro,M,30,Nanny,London,1,2,10
+13,Syabira,F,32,Cardiovascular research associate,London,1,1,10
+13,Will,M,45,Former charity director,London,1,9,10
+13,Abdul,M,29,Electronics engineer,London,2,11,10
+13,Carole,F,59,Supermarket cashier,Dorset,2,4,10
+13,Dawn,F,60,IT manager,Bedfordshire,2,9,10
+13,James,M,25,Nuclear scientist,Cumbria,2,2,10
+13,Janusz,M,34,Personal assistant to head teacher,East Sussex,2,6,10
+13,Kevin,M,33,Music teacher,Lanarkshire,2,8,10
+13,Maisam,F,18,Student and sales assistant,Greater Manchester,2,7,10
+13,Maxy,F,29,Architectural assistant,London,2,5,10
+13,Rebs,F,23,Masters student,County Antrim,2,1,10
+13,Sandro,M,30,Nanny,London,2,3,10
+13,Syabira,F,32,Cardiovascular research associate,London,2,10,10
+13,Carole,F,59,Supermarket cashier,Dorset,3,8,10
+13,Dawn,F,60,IT manager,Bedfordshire,3,6,10
+13,James,M,25,Nuclear scientist,Cumbria,3,3,10
+13,Janusz,M,34,Personal assistant to head teacher,East Sussex,3,1,10
+13,Kevin,M,33,Music teacher,Lanarkshire,3,7,10
+13,Maxy,F,29,Architectural assistant,London,3,2,10
+13,Sandro,M,30,Nanny,London,3,4,10
+13,Syabira,F,32,Cardiovascular research associate,London,3,5,10
+13,Abdul,M,29,Electronics engineer,London,4,6,10
+13,Carole,F,59,Supermarket cashier,Dorset,4,10,10
+13,Dawn,F,60,IT manager,Bedfordshire,4,5,10
+13,James,M,25,Nuclear scientist,Cumbria,4,8,10
+13,Janusz,M,34,Personal assistant to head teacher,East Sussex,4,7,10
+13,Kevin,M,33,Music teacher,Lanarkshire,4,4,10
+13,Maxy,F,29,Architectural assistant,London,4,1,10
+13,Rebs,F,23,Masters student,County Antrim,4,9,10
+13,Sandro,M,30,Nanny,London,4,3,10
+13,Syabira,F,32,Cardiovascular research associate,London,4,2,10
+13,Abdul,M,29,Electronics engineer,London,5,2,10
+13,Carole,F,59,Supermarket cashier,Dorset,5,6,10
+13,Dawn,F,60,IT manager,Bedfordshire,5,7,10
+13,Janusz,M,34,Personal assistant to head teacher,East Sussex,5,1,10
+13,Kevin,M,33,Music teacher,Lanarkshire,5,5,10
+13,Maxy,F,29,Architectural assistant,London,5,3,10
+13,Sandro,M,30,Nanny,London,5,4,10
+13,Syabira,F,32,Cardiovascular research associate,London,5,8,10
+13,Abdul,M,29,Electronics engineer,London,6,7,10
+13,Dawn,F,60,IT manager,Bedfordshire,6,5,10
+13,Janusz,M,34,Personal assistant to head teacher,East Sussex,6,2,10
+13,Kevin,M,33,Music teacher,Lanarkshire,6,3,10
+13,Maxy,F,29,Architectural assistant,London,6,6,10
+13,Sandro,M,30,Nanny,London,6,4,10
+13,Syabira,F,32,Cardiovascular research associate,London,6,1,10
+13,Abdul,M,29,Electronics engineer,London,7,4,10
+13,Janusz,M,34,Personal assistant to head teacher,East Sussex,7,5,10
+13,Kevin,M,33,Music teacher,Lanarkshire,7,3,10
+13,Maxy,F,29,Architectural assistant,London,7,2,10
+13,Sandro,M,30,Nanny,London,7,1,10
+13,Syabira,F,32,Cardiovascular research associate,London,7,6,10
+13,Abdul,M,29,Electronics engineer,London,8,3,10
+13,Janusz,M,34,Personal assistant to head teacher,East Sussex,8,2,10
+13,Maxy,F,29,Architectural assistant,London,8,5,10
+13,Sandro,M,30,Nanny,London,8,1,10
+13,Syabira,F,32,Cardiovascular research associate,London,8,4,10
+13,Abdul,M,29,Electronics engineer,London,9,2,10
+13,Janusz,M,34,Personal assistant to head teacher,East Sussex,9,3,10
+13,Sandro,M,30,Nanny,London,9,4,10
+13,Syabira,F,32,Cardiovascular research associate,London,9,1,10
+13,Abdul,M,29,Electronics engineer,London,10,1,10
+13,Sandro,M,30,Nanny,London,10,3,10
+13,Syabira,F,32,Cardiovascular research associate,London,10,2,10
+14,Abbi,F,27,Delivery driver,Cumbria,1,3,11
+14,Amos,M,43,Deli and grocery manager,London,1,2,11
+14,Cristy,F,33,Personal assistant,London,1,6,11
+14,Dan,M,42,Civil engineering resource planner,Cheshire,1,1,11
+14,Dana,F,25,Database administrator,Essex,1,12,11
+14,Josh,M,27,Chemical biology post-doctoral research associate,Leicestershire,1,8,11
+14,Keith,M,60,Chartered accountant,Hampshire,1,4,11
+14,Matty,M,28,PE and science teacher,Cambridgeshire,1,7,11
+14,Nicky,F,52,Retired cabin crew and pet-therapy charity volunteer,Shropshire,1,10,11
+14,Rowan,M,21,English literature student,West Yorkshire,1,9,11
+14,Saku,F,50,Intelligence analyst,Herefordshire,1,5,11
+14,Tasha,F,27,Children's charity participation officer,Bristol,1,11,11
+14,Abbi,F,27,Delivery driver,Cumbria,2,1,11
+14,Cristy,F,33,Personal assistant,London,2,9,11
+14,Dan,M,42,Civil engineering resource planner,Cheshire,2,2,11
+14,Dana,F,25,Database administrator,Essex,2,7,11
+14,Josh,M,27,Chemical biology post-doctoral research associate,Leicestershire,2,6,11
+14,Keith,M,60,Chartered accountant,Hampshire,2,11,11
+14,Matty,M,28,PE and science teacher,Cambridgeshire,2,5,11
+14,Nicky,F,52,Retired cabin crew and pet-therapy charity volunteer,Shropshire,2,4,11
+14,Rowan,M,21,English literature student,West Yorkshire,2,3,11
+14,Saku,F,50,Intelligence analyst,Herefordshire,2,10,11
+14,Tasha,F,27,Children's charity participation officer,Bristol,2,8,11
+14,Abbi,F,27,Delivery driver,Cumbria,3,8,11
+14,Cristy,F,33,Personal assistant,London,3,6,11
+14,Dan,M,42,Civil engineering resource planner,Cheshire,3,10,11
+14,Dana,F,25,Database administrator,Essex,3,3,11
+14,Josh,M,27,Chemical biology post-doctoral research associate,Leicestershire,3,4,11
+14,Matty,M,28,PE and science teacher,Cambridgeshire,3,7,11
+14,Nicky,F,52,Retired cabin crew and pet-therapy charity volunteer,Shropshire,3,5,11
+14,Rowan,M,21,English literature student,West Yorkshire,3,9,11
+14,Saku,F,50,Intelligence analyst,Herefordshire,3,1,11
+14,Tasha,F,27,Children's charity participation officer,Bristol,3,2,11
+14,Cristy,F,33,Personal assistant,London,4,7,11
+14,Dan,M,42,Civil engineering resource planner,Cheshire,4,1,11
+14,Dana,F,25,Database administrator,Essex,4,5,11
+14,Josh,M,27,Chemical biology post-doctoral research associate,Leicestershire,4,6,11
+14,Matty,M,28,PE and science teacher,Cambridgeshire,4,2,11
+14,Nicky,F,52,Retired cabin crew and pet-therapy charity volunteer,Shropshire,4,4,11
+14,Rowan,M,21,English literature student,West Yorkshire,4,3,11
+14,Saku,F,50,Intelligence analyst,Herefordshire,4,8,11
+14,Cristy,F,33,Personal assistant,London,5,5,11
+14,Dan,M,42,Civil engineering resource planner,Cheshire,5,1,11
+14,Dana,F,25,Database administrator,Essex,5,2,11
+14,Josh,M,27,Chemical biology post-doctoral research associate,Leicestershire,5,8,11
+14,Matty,M,28,PE and science teacher,Cambridgeshire,5,7,11
+14,Nicky,F,52,Retired cabin crew and pet-therapy charity volunteer,Shropshire,5,9,11
+14,Rowan,M,21,English literature student,West Yorkshire,5,4,11
+14,Saku,F,50,Intelligence analyst,Herefordshire,5,6,11
+14,Tasha,F,27,Children's charity participation officer,Bristol,5,3,11
+14,Cristy,F,33,Personal assistant,London,6,1,11
+14,Dan,M,42,Civil engineering resource planner,Cheshire,6,3,11
+14,Dana,F,25,Database administrator,Essex,6,6,11
+14,Josh,M,27,Chemical biology post-doctoral research associate,Leicestershire,6,2,11
+14,Matty,M,28,PE and science teacher,Cambridgeshire,6,4,11
+14,Saku,F,50,Intelligence analyst,Herefordshire,6,5,11
+14,Tasha,F,27,Children's charity participation officer,Bristol,6,7,11
+14,Cristy,F,33,Personal assistant,London,7,4,11
+14,Dan,M,42,Civil engineering resource planner,Cheshire,7,2,11
+14,Josh,M,27,Chemical biology post-doctoral research associate,Leicestershire,7,3,11
+14,Matty,M,28,PE and science teacher,Cambridgeshire,7,6,11
+14,Saku,F,50,Intelligence analyst,Herefordshire,7,5,11
+14,Tasha,F,27,Children's charity participation officer,Bristol,7,1,11
+14,Cristy,F,33,Personal assistant,London,8,2,11
+14,Dan,M,42,Civil engineering resource planner,Cheshire,8,5,11
+14,Josh,M,27,Chemical biology post-doctoral research associate,Leicestershire,8,4,11
+14,Matty,M,28,PE and science teacher,Cambridgeshire,8,3,11
+14,Tasha,F,27,Children's charity participation officer,Bristol,8,1,11
+14,Dan,M,42,Civil engineering resource planner,Cheshire,9,3,11
+14,Josh,M,27,Chemical biology post-doctoral research associate,Leicestershire,9,1,11
+14,Matty,M,28,PE and science teacher,Cambridgeshire,9,2,11
+14,Tasha,F,27,Children's charity participation officer,Bristol,9,4,11
+14,Dan,M,42,Civil engineering resource planner,Cheshire,10,2,11
+14,Josh,M,27,Chemical biology post-doctoral research associate,Leicestershire,10,1,11
+14,Matty,M,28,PE and science teacher,Cambridgeshire,10,3,11

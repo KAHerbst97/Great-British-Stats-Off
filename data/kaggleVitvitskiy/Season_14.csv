@@ -1,0 +1,13 @@
+Baker,Gender,Age,Occupation,Hometown,Round_1_Technical,Round_1,Round_2_Technical,Round_2_Handshake,Round_2,Round_3_Technical,Round_3,Round_4_Technical,Round_4,Round_5_Technical,Round_5_Handshake,Round_5,Round_6_Technical,Round_6,Round_7_Technical,Round_7,Round_8_Technical,Round_8_Handshake,Round_8,Round_9_Technical,Round_9_Handshake,Round_9,Round_10_Technical,Round_10,Technicals,Handshakes,Star_Bakers
+Matty,M,28,PE and science teacher,Cambridgeshire,7,SAFE,5,,SAFE,7,SAFE,2,SB,7,,SAFE,4,LOW,6,SAFE,3,Signature,SB,2,,LOW,3,WINNER,0,1,2
+Dan,M,42,Civil engineering resource planner,Cheshire,1,SB,2,,SAFE,10,LOW,1,HIGH,1,,SAFE,3,SAFE,2,SB,5,,LOW,3,Signature,HIGH,2,Runner-up,3,1,2
+Josh,M,27,Chemical biology post-doctoral research associate,Leicestershire,8,SAFE,6,Showstopper,HIGH,4,HIGH,6,SAFE,8,,HIGH,2,SB,3,HIGH,4,,HIGH,1,,SB,1,Runner-up,2,1,2
+Tasha,F,27,Children's charity participation officer,Bristol,11,SAFE,8,Signature,SB,2,SB,NA,SAFE*,3,,SAFE,7,HIGH,1,SAFE,1,,SAFE,4,,OUT,,,2,1,2
+Cristy,F,33,Personal assistant,London,6,HIGH,9,,SAFE,6,SAFE,7,LOW,5,Signature,SB,1,HIGH,4,LOW,2,,OUT,,,,,,1,1,1
+Saku,F,50,Intelligence analyst,Herefordshire,5,SAFE,10,,SAFE,1,SAFE,8,LOW,6,,LOW,5,LOW,5,OUT,,,,,,,,,1,0,0
+Dana,F,25,Database administrator,Essex,12,LOW,7,,SAFE,3,SAFE,5,SAFE,2,,LOW,6,OUT,,,,,,,,,,,0,0,0
+Nicky,F,52,Retired cabin crew and pet-therapy charity volunteer,Shropshire,10,LOW,4,,LOW,5,SAFE,4,HIGH,9,,OUT,,,,,,,,,,,,,0,0,0
+Rowan,M,21,English literature student,West Yorkshire,9,SAFE,3,,SAFE,9,LOW,3,SAFE,4,,OUT,,,,,,,,,,,,,0,0,0
+Abbi,F,27,Delivery driver,Cumbria,3,HIGH,1,,SAFE,8,OUT,,,,,,,,,,,,,,,,,,1,0,0
+Keith,M,60,Chartered accountant,Hampshire,4,SAFE,11,,OUT,,,,,,,,,,,,,,,,,,,,0,0,0
+Amos,M,43,Deli and grocery manager,London,2,OUT,,,,,,,,,,,,,,,,,,,,,,,0,0,0

@@ -1,0 +1,14 @@
+Baker,Gender,Age,Occupation,Hometown,Round_1_Technical,Round_1,Round_2_Technical,Round_2,Round_3_Technical,Round_3,Round_4_Technical,Round_4,Round_5_Technical,Round_5,Round_6_Technical,Round_6,Round_7_Technical,Round_7,Rounc_8_Technical,Round_8,Round_9_Technical,Round_9_Handshake,Round_9,Round_10_Technical,Round_10,Technicals,Handshakes,Star_Bakers
+Frances,F,31,Children's Clothes Designer,"Market Harborough, Leicestershire",7,HIGH,2,SAFE,8,HIGH,1,SAFE,3,SAFE,2,HIGH,5,SB,3,LOW,2,Signature,HIGH,3,WINNER,1,1,1
+Kimberley,F,30,Psychologist,London,10,SAFE,1,HIGH,6,SAFE,4,SB,7,LOW,3,SAFE,4,SAFE,2,HIGH,1,,SB,1,Runner-up,3,0,2
+Ruby,F,20,History of Art and Philosophy Student,"Southend, Essex",12,LOW,3,SB,3,HIGH,6,HIGH,6,LOW,1,SB,2,SAFE,1,SB,4,,LOW,2,Runner-up,2,0,3
+Beca,F,31,Military Wives' Choir Singer,"Aldershot, Hampshire",8,SAFE,11,LOW,10,SAFE,2,SAFE,5,SAFE,6,SAFE,1,HIGH,4,LOW,3,,OUT,,,1,0,0
+Christine,F,66,Director of an engraving company,"Didcot, Oxfordshire",3,SAFE,4,SAFE,4,SB,7,SAFE,1,SB,4,SAFE,6,LOW,5,OUT,,,,,,1,0,2
+Glenn,M,37,English Teacher,"Teignmouth, Devon",4,SAFE,7,SAFE,1,SAFE,9,LOW,2,HIGH,5,LOW,3,OUT,,,,,,,,1,0,0
+Howard,M,51,Council Worker,Sheffield,6,HIGH,10,SAFE,7,LOW,5,SAFE,8,SAFE,7,OUT,,,,,,,,,,0,0,0
+Robert,M,54,Space Satellite Designer,"Melbourn, Cambridgeshire",1,SB,5,LOW,2,SAFE,3,LOW,4,OUT,,,,,,,,,,,,1,0,1
+Ali,M,25,Charity worker,"Saltley, Birmingham",11,LOW,9,SAFE,5,SAFE,8,OUT,,,,,,,,,,,,,,0,0,0
+Deborah,F,51,Dentist,Peterborough,9,SAFE,8,SAFE,9,OUT,,,,,,,,,,,,,,,,0,0,0
+Mark,M,37,Carpenter and Kitchen Fitter,Milton Keynes,5,SAFE,6,LOW,11,OUT,,,,,,,,,,,,,,,,0,0,0
+Lucy,F,38,Horticulturist,"Grimsby, Lincolnshire",1,SAFE,12,OUT,,,,,,,,,,,,,,,,,,0,0,0
+Toby,M,30,Web Programmer,"Reading, Berkshire",13,OUT,,,,,,,,,,,,,,,,,,,,0,0,0

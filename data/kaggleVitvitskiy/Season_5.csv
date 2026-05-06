@@ -1,0 +1,13 @@
+Baker,Gender,Age,Occupation,Hometown,Round_1_Technical,Round_1,Round_2_Technical,Round_2_Handshake,Round_2,Round_3_Technical,Round_3_Handshake,Round_3,Round_4_Technical,Round_4,Round_5_Technical,Round_5,Round_6_Technical,Round_6,Round_7_Technical,Round_7,Round_8_Technical,Round_8,Round_9_Technical,Round_9,Round_10_Technical,Round_10,Technicals,Handshakes,Star_Bakers
+Nancy,F,60,Retired Practice Manager,"Barton-upon-Humber, Lincolnshire",1,SB,2,,SAFE,5,,SAFE,4,SAFE,4,HIGH,1,HIGH,2,HIGH,3,LOW,3,LOW,1,WINNER,3,0,1
+Luis,M,42,Graphic Designer,"Poynton, Cheshire",7,SAFE,3,,HIGH,2,Signature,SB,2,HIGH,6,SAFE,3,HIGH,5,SAFE,2,HIGH,1,HIGH,2,Runner-up,1,1,1
+Richard,M,38,Builder,"Mill Hill, London",10,HIGH,1,,SB,6,,SAFE,5,SB,7,LOW,5,LOW,1,SB,4,SB,2,SB,3,Runner-up,2,0,5
+Chetna,F,35,Fashion Designer,"Broadstairs, Kent",3,SAFE,8,,SAFE,8,,SAFE,3,SAFE,2,SAFE,2,SB,6,SAFE,1,SAFE,4,OUT,,,1,0,1
+Martha,F,17,Student,"Ascot, Berkshire",2,HIGH,5,,SAFE,3,,SAFE,1,SAFE,1,LOW,4,SAFE,3,LOW,5,OUT,,,,,2,0,0
+Kate,F,41,Furniture Restorer,"Brighton, East Sussex",6,SAFE,4,,SAFE,1,,HIGH,7,HIGH,3,SB,6,LOW,4,OUT,,,,,,,1,0,1
+Norman,M,66,Retired Naval Officer,"Portknockie, Moray",11,SAFE,10,Signature,LOW,4,,LOW,8,LOW,5,OUT,,,,,,,,,,,0,1,0
+Diana,F,69,Women's Institute (WI) Judge,"Alkington, Shropshire",5,SAFE,7,,SAFE,7,,SAFE,9,SAFE,NA,OUT*,,,,,,,,,,,0,0,0
+Iain,M,31,Construction Engineer,London/Belfast,4,LOW,11,,SAFE,9,,SAFE,6,OUT,,,,,,,,,,,,,0,0,0
+Jordan,M,32,IT Manager,"Sneinton, Nottingham",12,LOW,6,,SAFE,10,,OUT,,,,,,,,,,,,,,,0,0,0
+Enwezor,M,39,Business Consultant,"Portsmouth, Hampshire",9,SAFE,9,,OUT,,,,,,,,,,,,,,,,,,0,0,0
+Claire,F,31,Speech Therapist,"Ashton upon Mersey, Trafford",8,OUT,,,,,,,,,,,,,,,,,,,,,0,0,0

@@ -1,0 +1,424 @@
+---
+title: "GBBO Data Cleaning/Joining"
+subtitle: "v1"
+author: "Konnor Herbst"
+format:
+  pdf:
+    fontsize: 11pt
+    toc: true
+    toc-depth: 7
+    colorlinks: true
+    linestretch: 1
+    fig-width: 12
+    fig-height: 8
+    fig-align: center
+    df-print: kable
+execute:
+  cache: FALSE
+  echo: FALSE
+  warning: false
+  message: false
+output: pdf_document
+---
+
+\newpage
+
+```{r, echo = FALSE}
+# helpers
+set.seed(489)
+`%notin%` = Negate(`%in%`)
+
+options(digits = 3)
+
+# packages
+library(forcats)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(stringr)
+library(janitor)
+library(tibble)
+```
+
+# Data Cleaning
+
+I combine and clean several sources of data on the Netflix seasons of
+\textit{The Great British Bake Off}, including:
+
+\begin{itemize}
+  \item Judging data prepared by \href{https://github.com/nathangiusti/BakeOff}{Nathan Giusti}.
+  \item Baker demogrpahic (age/occupation) data from the
+  \href{https://cran.r-project.org/web/packages/bakeoff/index.html}{R \texttt{bakeoff} package} and \href{https://www.kaggle.com/datasets/sarahvitvitskiy/great-british-bake-off-results-seasons-1-14}{Kaggle}
+  \item Hand-collected 7-day UK viewer counts from
+  \href{https://www.barb.co.uk/viewing-data/most-viewed-programmes/}{BARB},
+  used to supplement missing viewer data for later seasons.
+\end{itemize}
+
+## Giusti's Data
+
+The technical challenge score is different from the signature and showstopper
+scores because it is a ranking rather than an absolute component score. This
+creates a scaling issue because the number of contestants changes across rounds
+as bakers are eliminated. For example, first place out of twelve bakers carries
+more information than first place out of three bakers, and third place out of
+three is the worst performance in that episode even though rank three would be
+strong early in the season.
+
+For example,
+
+\begin{itemize}
+  \item Round 1: rank 1 out of 12 is very strong.
+  \item Round 9: rank 1 out of 3 is still strong, but less informative.
+  \item Round 1: rank 6 out of 12 is middle.
+  \item Round 9: rank 3 out of 3 is worst.
+\end{itemize}
+
+For this reason, I make another variable so that we need not treat the raw technical rank as directly comparable
+across rounds. I transform it into a within-episode relative rank,
+
+$$
+\operatorname{tech\_scaled}_{ie}
+=
+1 - 2\frac{\operatorname{tech}_{ie} - 1}{n_e - 1}.
+$$
+
+where $n_e$ is the number of bakers remaining in episode $e$. This maps the
+technical result to a stable relative scale: $1$ is best, $0$ is middle of the
+field, and $-1$ is worst.
+
+To keep the model predictors on a common scale, I also rescale this to mathc the range of the signature and
+showstopper totals. Each signature and showstopper score combines flavor,
+appearance, and bake components, so the raw totals range from $-3$ to $3$. I then multiply the above by $3$ to match
+
+After this signature, showstopper, and technical performance are
+all coded on the same $[-3,3]$ scale. Positive values indicate stronger
+performance, negative values indicate weaker performance, and zero corresponds
+to a neutral or middle performance.
+
+```{r giusti-data, echo=FALSE}
+giusti_file <- "human_judging_giusti.csv"
+
+judging_raw <- read_csv(giusti_file, show_col_types = FALSE)
+
+judging <- judging_raw %>%
+  clean_names() %>%
+  rename(
+    star_baker = winner,
+    tech_rank  = tech
+  ) %>%
+  mutate(
+    episode = interaction(series, round, drop = TRUE)
+  ) %>%
+  mutate(
+    across(
+      .cols = matches("handshake|eliminated|star_baker") & where(is.numeric),
+      .fns  = ~ replace_na(.x, 0)
+    ),
+    eliminated = case_when(
+      round == 10 & star_baker == 1 ~ 0,
+      round == 10 & star_baker == 0 ~ 1,
+      TRUE ~ eliminated
+    )
+  ) %>%
+  select(-contains("_handshake")) %>%
+  mutate(
+    sig_sum = rowSums(
+      across(c(signature_bake, signature_flavor, signature_looks)),
+      na.rm = TRUE
+    ),
+    showstopper_sum = rowSums(
+      across(c(showstopper_bake, showstopper_flavor, showstopper_looks)),
+      na.rm = TRUE
+    ),
+    sig_ss_sum = sig_sum + showstopper_sum
+  ) %>%
+  group_by(series, round) %>%
+  mutate(
+    n_remaining = n(),
+    tech_rank_scaled = if_else(
+      n_remaining > 1,
+      1 - 2 * (tech_rank - 1) / (n_remaining - 1),
+      NA_real_
+    ),
+    tech_rank_scaled = 3 * tech_rank_scaled
+  ) %>%
+  ungroup() %>%
+  group_by(contestant, series) %>%
+  arrange(round, .by_group = TRUE) %>%
+  mutate(
+    series_winner = as.integer(last(round) == 10 & last(star_baker) == 1),
+    eliminated_round = last(round)
+  ) %>%
+  ungroup() %>%
+  mutate(
+    baker_id = interaction(series, contestant, drop = TRUE)
+  ) %>%
+  arrange(series, round, contestant) %>%
+  select(
+    contestant,
+    series,
+    round,
+    episode,
+    tech_rank_scaled,
+    sig_sum,
+    showstopper_sum,
+    tech_rank,
+    n_remaining,
+    series_winner,
+    eliminated_round,
+    baker_id,
+    everything()
+  )
+
+judging_sb <- judging
+
+judging_elim <- judging %>%
+  filter(round <= 9) %>%
+  group_by(episode) %>%
+  filter(sum(eliminated == 1, na.rm = TRUE) == 1) %>%
+  ungroup()
+```
+
+## Kaggle
+
+```{r kaggle-data}
+kaggle_dir <- "kaggleVitvitskiy"
+
+winners <- read_csv(
+  file.path(kaggle_dir, "GBBO_Winners.csv"),
+  show_col_types = FALSE
+)
+
+gbbo_kaggle <- map_dfr(1:14, function(s) {
+  file <- file.path(kaggle_dir, paste0("Season_", s, ".csv"))
+
+  read_csv(
+    file,
+    col_types = cols(.default = col_character()),
+    show_col_types = FALSE
+  ) %>%
+    mutate(season = s, .before = 1)
+})
+
+gbbo_kaggle_long <- gbbo_kaggle %>%
+  pivot_longer(
+    cols = matches("^Round_([1-9]|10)_"),
+    names_to = c("round", "variable"),
+    names_pattern = "^Round_([1-9]|10)_(.*)$",
+    values_to = "value"
+  ) %>%
+  mutate(
+    round = as.integer(round),
+    variable = str_to_lower(variable),
+    variable = str_replace_all(variable, "\\s+", "_")
+  ) %>%
+  pivot_wider(
+    names_from = variable,
+    values_from = value
+  ) %>%
+  clean_names() %>%
+  mutate(series = season - 3) %>%
+  filter(series >= 5) %>%
+  rename(contestant = baker) %>%
+  select(
+    -technicals,
+    -handshakes,
+    -star_bakers,
+    -handshake,
+    -contains("_")
+  ) %>%
+  drop_na() %>%
+  arrange(series, round, contestant)
+
+write_csv(gbbo_kaggle, file.path(kaggle_dir, "gbbo_kaggle_seasons_1_14.csv"))
+write_csv(gbbo_kaggle_long, file.path(kaggle_dir, "kaggle_long_clean.csv"))
+```
+
+to join with giustis data we can simply omit those seasons that are not included in netflx,
+
+```{r join-giusti-kaggle}
+giusti_kaggle_cln <- judging %>%
+  left_join(
+    gbbo_kaggle_long,
+    by = c("series", "round", "contestant")
+  ) %>%
+  clean_names() %>%
+  select(-any_of("technical"))
+
+write_csv(giusti_kaggle_cln, "giusti_kaggle_cln.csv")
+```
+
+here thankfully we see mostly agreement on the technical (did giusti use this data to get it? I am not certain) with discrepency only on 4 judgings - I keep giustis here
+
+## R bakeoff Package
+
+```{r rbakeoff-package}
+rbakeoff_dir <- "RbakeoffPackage"
+
+read_rbakeoff_csv <- function(filename) {
+  read_csv(
+    file.path(rbakeoff_dir, filename),
+    show_col_types = FALSE
+  ) %>%
+    clean_names() %>%
+    mutate(series = series - 3) %>%
+    filter(series >= 5)
+}
+
+# for another time maybe flavor or whatever text analysis
+bakes_raw <- read_rbakeoff_csv("bakes_raw.csv")
+challenges <- read_rbakeoff_csv("challenges.csv")
+ratings_raw <- read_rbakeoff_csv("ratings_raw.csv")
+
+ratings <- read_rbakeoff_csv("ratings.csv") %>%
+  rename(round = episode)
+
+giusti_kaggle_ratings_cln <- giusti_kaggle_cln %>%
+  left_join(
+    ratings,
+    by = join_by(series, round)
+  ) %>%
+  select(
+    -any_of(c(
+      "bbc_iplayer_requests",
+      "episode_count",
+      "us_season",
+      "us_airdate",
+      "season",
+      "network_rank",
+      "viewers_28day"
+    ))
+  ) %>%
+  select(
+    uk_airdate,
+    episode,
+    series,
+    round,
+    viewers_7day,
+    channels_rank,
+    baker_id,
+    contestant,
+    age,
+    gender,
+    hometown,
+    occupation,
+    everything()
+  )
+
+write_csv(giusti_kaggle_ratings_cln, "cur_cleanest_version.csv")
+```
+
+the viewer data is unavailable in this data from series 8 onwards, perhaps IO can fill that in by hand? I went to the British broadcasting groups data BARB and got that,
+
+# Data Gathering Myself
+
+## BARB viewer data - hand entry
+
+For the weeks when GBBO aired in the UK I compiled the 7 day viewing data/counts from ![BARB](https://www.barb.co.uk/viewing-data/most-viewed-programmes/)
+
+My numbers are for post 2021/netflix seasons to add to what was in the bakeoff package, the bakeoff package seems to have gotten its data from BARB as well
+
+```{r barb-manual-entry}
+gbbo_uk_airdates <- tribble(
+  ~series, ~round, ~uk_airdate, ~viewers_7day, ~channels_rank,
+  8, 1, "2020-09-22", 11211907, 1,
+  8, 2, "2020-09-29", 10806516, 1,
+  8, 3, "2020-10-06", 10698161, 1,
+  8, 4, "2020-10-13", 10629433, 1,
+  8, 5, "2020-10-20", 10657511, 2,
+  8, 6, "2020-10-27", 10370564, 3,
+  8, 7, "2020-11-03", 10866618, 2,
+  8, 8, "2020-11-10", 10911563, 3,
+  8, 9, "2020-11-17", 10827776, 8,
+  8, 10, "2020-11-24", 11744692, 1,
+  9, 1, "2021-09-21", 9610000, 3,
+  9, 2, "2021-09-28", 8978000, 2,
+  9, 3, "2021-10-05", 8694000, 2,
+  9, 4, "2021-10-12", 8539000, 2,
+  9, 5, "2021-10-19", 8711000, 3,
+  9, 6, "2021-10-26", 9151000, 2,
+  9, 7, "2021-11-02", 9084000, 2,
+  9, 8, "2021-11-09", 9051000, 3,
+  9, 9, "2021-11-16", 9385000, 3,
+  9, 10, "2021-11-23", 9607000, 3,
+  10, 1, "2022-09-13", 8301000, 1,
+  10, 2, "2022-09-20", 7601000, 5,
+  10, 3, "2022-09-27", 7857000, 3,
+  10, 4, "2022-10-04", 7770000, 3,
+  10, 5, "2022-10-11", 8317000, 2,
+  10, 6, "2022-10-18", 7794000, 3,
+  10, 7, "2022-10-25", 7512000, 3,
+  10, 8, "2022-11-01", 7414000, 4,
+  10, 9, "2022-11-08", 7699000, 10,
+  10, 10, "2022-11-15", 8125000, 10,
+  11, 1, "2023-09-26", 7836000, 2,
+  11, 2, "2023-10-03", 7543000, 2,
+  11, 3, "2023-10-10", 7282000, 3,
+  11, 4, "2023-10-18", 7120000, 4,
+  11, 5, "2023-10-24", 5885000, 4,
+  11, 6, "2023-10-31", 6320000, 3,
+  11, 7, "2023-11-07", 6937000, 3,
+  11, 8, "2023-11-14", 6771000, 4,
+  11, 9, "2023-11-21", 6473000, 11,
+  11, 10, "2023-11-28", 6750000, 10,
+  12, 1, "2024-09-24", 6621000, 3,
+  12, 2, "2024-10-01", 6520000, 3,
+  12, 3, "2024-10-08", 6497000, 3,
+  12, 4, "2024-10-15", 6409000, 4,
+  12, 5, "2024-10-22", 6316000, 4,
+  12, 6, "2024-10-29", 6139000, 4,
+  12, 7, "2024-11-05", 6432000, 3,
+  12, 8, "2024-11-12", 6386000, 4,
+  12, 9, "2024-11-19", 6260000, 10,
+  12, 10, "2024-11-26", 6743000, 10
+) %>%
+  mutate(
+    uk_airdate = as.Date(uk_airdate)
+  )
+
+dir.create("data/manual", recursive = TRUE, showWarnings = FALSE)
+
+write_csv(
+  gbbo_uk_airdates,
+  "data/manual/gbbo_uk_airdates_viewers.csv"
+)
+```
+
+then combine with the other data
+
+```{r combine-viewer-data}
+other_dates <- giusti_kaggle_ratings_cln %>%
+  select(uk_airdate, series, round, viewers_7day, channels_rank) %>%
+  mutate(
+    uk_airdate = as.Date(uk_airdate),
+    viewers_7day = viewers_7day * 1000000
+  )
+
+dates <- gbbo_uk_airdates %>%
+  bind_rows(other_dates) %>%
+  distinct(series, round, .keep_all = TRUE) %>%
+  arrange(series, round)
+
+full_cln_dat <- giusti_kaggle_ratings_cln %>%
+  select(-any_of(c("uk_airdate", "viewers_7day", "channels_rank"))) %>%
+  left_join(dates, by = c("series", "round")) %>%
+  select(
+    uk_airdate,
+    episode,
+    series,
+    round,
+    viewers_7day,
+    channels_rank,
+    baker_id,
+    contestant,
+    age,
+    gender,
+    hometown,
+    occupation,
+    everything()
+  ) %>%
+  arrange(series, round, contestant)
+
+write_csv(full_cln_dat, "full_cln_gbbo.csv")
+```

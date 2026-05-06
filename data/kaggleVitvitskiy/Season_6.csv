@@ -1,0 +1,13 @@
+Baker,Gender,Age,Occupation,Hometown,Round_1_Technical,Round_1,Round_2_Technical,Round_2,Round_3_Technical,Round_3_Handshake,Round_3,Round_4_Technical,Round_4,Round_5_Technical,Round_5,Round_6_Technical,Round_6,Round_7_Technical,Round_7_Handshake,Round_7,Round_8_Technical,Round_8,Round_9_Technical,Round_9_Handshake,Round_9,Round_10_Technical,Round_10,Technicals,Handshakes,Star_Bakers
+Nadiya,F,30,Full-time mother,Leeds / Luton,12,HIGH,9,SAFE,9,,SAFE,8,HIGH,1,SB,4,LOW,1,,HIGH,1,SB,4,Signature,SB,1,WINNER,4,1,3
+Ian,M,41,Travel photographer,"Great Wilbraham, Cambridgeshire",8,SAFE,3,SB,1,,SB,4,SB,5,SAFE,3,SAFE,5,,HIGH,2,SAFE,3,,LOW,2,Runner-up,1,0,3
+Tamal,M,29,Trainee anaesthetist,Manchester,4,HIGH,8,SAFE,3,,SAFE,5,HIGH,7,SAFE,7,SAFE,3,Signature,SB,4,HIGH,2,,HIGH,3,Runner-up,0,1,1
+Flora,F,19,Art gallery assistant,"Dunkeld, Perth and Kinross",6,HIGH,2,SAFE,2,,SAFE,3,SAFE,3,LOW,2,HIGH,4,,SAFE,3,LOW,1,,OUT,,,1,0,0
+Paul,M,49,Prison governor,"Swansea, Wales",10,SAFE,10,LOW,10,Signature,HIGH,1,LOW,2,HIGH,5,SAFE,2,,LOW,5,OUT,,,,,,1,1,0
+Mat,M,37,Fire fighter,London,7,SAFE,5,HIGH,8,,LOW,7,SAFE,4,SAFE,1,SB,6,,OUT,,,,,,,,1,0,1
+Alvin,M,37,Nurse,"Bracknell, Berkshire",2,SAFE,6,SAFE,4,,HIGH,9,LOW,8,SAFE,6,OUT,,,,,,,,,,,0,0,0
+Ugnė,F,32,PA and administrator,"Woodford, London / Vilkaviškis, Lithuania",1,LOW,7,SAFE,5,,SAFE,2,SAFE,6,OUT,,,,,,,,,,,,,1,0,0
+Sandy,F,49,Child welfare officer,"Yeadon, West Yorkshire",9,SAFE,4,HIGH,7,,SAFE,6,OUT,,,,,,,,,,,,,,,0,0,0
+Dorret,F,53,Accountant,"Penwortham, Lancashire",5,LOW,1,LOW,6,,OUT,,,,,,,,,,,,,,,,,1,0,0
+Marie,F,66,Retired,"Auchterarder, Perthshire",3,SB,11,OUT,,,,,,,,,,,,,,,,,,,,0,0,1
+Stu,M,35,Professional musician,"Guildford, Surrey",11,OUT,,,,,,,,,,,,,,,,,,,,,,0,0,0

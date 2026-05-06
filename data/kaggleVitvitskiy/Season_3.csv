@@ -1,0 +1,13 @@
+Baker,Gender,Age,Occupation,Hometown,Round_1_Technical,Round_1,Round_2_Technical,Round_2,Round_3_Technical,Round_3,Round_4_Technical,Round_4,Round_5_Technical,Round_5,Round_6_Technical,Round_6,Round_7_Technical,Round_7_Handshake,Round_7,Round_8_Technical,Round_8,Round_9_Technical,Round_9,Round_10_Technical,Round_10,Technicals,Handshakes,Star_Bakers
+John,M,22,Law student,Wigan,11,SAFE,1,SB,6,SAFE,6,SAFE,2,SAFE,5,LOW,3,,LOW,3,HIGH,2,LOW,2,WINNER,1,0,1
+Brendan,M,63,Recruitment consultant,Sutton Coldfield,10,SAFE,4,HIGH,9,LOW,1,SB,3,HIGH,1,SB,4,,HIGH,2,SAFE,3,HIGH,2,Runner-up,2,0,2
+James,M,21,Medical student,"Hillswick, Shetland Islands",2,SAFE,2,HIGH,1,SB,5,SAFE,6,SAFE,7,LOW,1,,LOW,1,SB,1,SB,1,Runner-up,5,0,3
+Danny,F,45,Intensive care consultant,Sheffield,7,SAFE,3,SAFE,2,SAFE,2,HIGH,7,LOW,2,HIGH,2,,SB,4,LOW,4,OUT,,,0,0,1
+Cathryn,F,27,Shop assistant,"Pease Pottage, West Sussex",5,HIGH,8,SAFE,3,SAFE,3,SAFE,1,SAFE,3,SAFE,5,,LOW,5,OUT,,,,,1,0,0
+Ryan,M,38,Photographer,Bristol,8,SAFE,5,SAFE,5,SAFE,7,LOW,8,SB,6,SAFE,6,Signature,OUT,,,,,,,0,1,1
+Sarah-Jane,F,28,Vicar's wife,"Bewbush, West Sussex",1,SAFE,10,SAFE,8,SAFE,4,SAFE,4,LOW,4,LOW,7,,OUT,,,,,,,1,0,0
+Manisha,F,27,Nursery nurse,Leicester,6,SAFE,6,SAFE,10,SAFE,9,LOW,5,OUT,,,,,,,,,,,,0,0,0
+Stuart,M,26,PE teacher,"Lichfield, Staffordshire",9,LOW,9,LOW,7,HIGH,8,OUT,,,,,,,,,,,,,,0,0,0
+Victoria,F,50,CEO of the charity Plantlife,Somerset,4,SB,7,LOW,4,OUT,,,,,,,,,,,,,,,,0,0,1
+Peter,M,43,Sales manager,"Windsor, Berkshire",3,SAFE,11,OUT,,,,,,,,,,,,,,,,,,0,0,0
+Natasha,F,36,Midwife,"Tamworth, Staffordshire",12,OUT,,,,,,,,,,,,,,,,,,,,0,0,0

@@ -1,0 +1,14 @@
+Baker,Gender,Age,Occupation,Hometown,Round_1_Technical,Round_1,Round_2_Technical,Round_2,Round_3_Technical,Round_3_Handshake,Round_3,Round_4_Technical,Round_4,Round_5_Technical,Round_5_Handshake,Round_5,Round_6_Technical,Round_6,Round_7_Technical,Round_7_Handshake,Round_7,Round_8_Technical,Round_8,Round_9_Technical,Round_9,Round_10_Technical,Round_10,Technicals,Handshakes,Star_Bakers
+David,M,36,International health adviser,Whitby,9,SAFE,2,HIGH,2,,SAFE,2,HIGH,9,Signature,HIGH,2,HIGH,2,,HIGH,1,HIGH,2,LOW,1,WINNER,2,1,0
+Alice,F,28,Geography teacher,Essex,5,SAFE,1,SB,7,,LOW,8,SAFE,6,,SAFE,1,HIGH,6,,SAFE,3,SAFE,4,SB,2,Runner-up,2,0,2
+Steph,F,28,Shop assistant,Chester,3,HIGH,10,SAFE,3,,HIGH,1,SB,4,,SB,3,SB,4,Signature,HIGH,4,SB,3,HIGH,3,Runner-up,1,1,4
+Rosie,F,28,Veterinary surgeon,Somerset,2,SAFE,5,HIGH,9,,SAFE,4,SAFE,5,,LOW,5,LOW,1,,LOW,2,LOW,1,OUT,,,2,0,0
+Henry,M,20,Student,Durham,1,SAFE,6,SAFE,1,,LOW,3,SAFE,3,,HIGH,4,LOW,3,Signature,SB,5,OUT,,,,,2,1,1
+Michael,M,26,Theatre manager/fitness instructor,Stratford-upon-Avon,11,SAFE,4,SAFE,6,Signature,SB,7,LOW,8,,SAFE,6,LOW,5,,OUT,,,,,,,0,1,1
+Priya,F,34,Marketing consultant,Leicester,7,SAFE,7,SAFE,4,,SAFE,10,LOW,2,,LOW,7,OUT,,,,,,,,,,0,0,0
+Helena,F,40,Online project manager,Leeds,12,SAFE,12,SAFE,8,,SAFE,9,SAFE,1,,OUT,,,,,,,,,,,,1,0,0
+Michelle,F,35,Print shop administrator,"Tenby, Wales",6,SB,8,SAFE,5,,SAFE,5,SAFE,7,,OUT,,,,,,,,,,,,0,0,1
+Phil,M,56,HGV driver,Rainham,8,SAFE,3,SAFE,10,,SAFE,6,OUT,,,,,,,,,,,,,,,0,0,0
+Amelia,F,24,Fashion designer,Halifax,4,SAFE,9,LOW,11,,OUT,,,,,,,,,,,,,,,,,0,0,0
+Jamie,M,20,Part-time waiter,Surrey,13,LOW,11,OUT,,,,,,,,,,,,,,,,,,,,0,0,0
+Dan,M,32,Support worker,Rotherham,10,OUT,,,,,,,,,,,,,,,,,,,,,,0,0,0

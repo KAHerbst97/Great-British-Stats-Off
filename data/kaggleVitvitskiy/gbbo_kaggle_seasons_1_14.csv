@@ -1,0 +1,169 @@
+season,Baker,Gender,Age,Occupation,Hometown,Round_1_Technical,Round_1,Round_2_Technical,Round_2,Round_3_Technical,Round_3,Round_4_Technical,Round_4,Round_5_Technical,Round_5,Round_6,Technicals,Handshakes,Star_Bakers,Round_Two,Round_6_Technical,Round_7_Technical,Round_7,Round_8_Technical,Round_8,Round_7_Handshake,Round_9_Technical,Round_9,Round_10_Technical,Round_10,Rounc_8_Technical,Round_9_Handshake,Round_2_Handshake,Round_3_Handshake,Round_4_Handshake,Round_10_Handshake,Round_1_Handshake,Round_5_Handshake,Round_8_Handshake,Round_6_Handshake
+1,Edd,M,24,Debt collector for Yorkshire Bank,Bradford,1,SAFE,6,HIGH,1,HIGH,3,LOW,2,HIGH,WINNER,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+1,Ruth,F,31,Retail manager/Housewife,"Poynton, Cheshire",unknown,HIGH,5,SAFE,2,HIGH,4,HIGH,3,HIGH,Runner-up,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+1,Miranda,F,37,Food buyer for Marks & Spencer,"Midhurst, West Sussex",8,HIGH,3,HIGH,3,SAFE,1,HIGH,1,LOW,Third,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+1,Jasminder,F,45,Assistant Credit Control Manager,Birmingham,unknown,SAFE,2,SAFE,5,LOW,2,HIGH,4,OUT,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+1,David,M,31,Entrepreneur,Milton Keynes,3,LOW,8,LOW,4,LOW,5,OUT,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+1,Jonathan,M,25,Research Analyst,St Albans,9,SAFE,1,HIGH,6,OUT,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+1,Annetha,F,30,Midwife,Essex,2,HIGH,7,OUT,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+1,Louise,F,44,Police Officer,Manchester,unknown,LOW,4,OUT,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+1,Lea,F,51,Retired,"Midlothian, Scotland",10,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+1,Mark,M,48,Bus Driver,South Wales,unknown,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,Jo,F,41,Housewife,"Ongar, Essex",11,HIGH,10,NA,1,SAFE,8,SAFE,6,SAFE,SB,3,NA,1,LOW,1,3,HIGH,1,WINNER,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,Holly,F,31,Advertising executive,Leicester,1,SB,4,NA,6,SAFE,3,SB,4,SAFE,LOW,2,NA,2,SAFE,3,1,HIGH,2,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,Mary-Anne,F,45,Housewife,"Kidderminster, Worcestershire",4,SAFE,9,NA,5,HIGH,2,HIGH,2,HIGH,HIGH,0,NA,0,SAFE,4,2,LOW,3,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,Janet,F,63,Teacher of Modern Languages,"Formby, Liverpool",8,SAFE,8,NA,8,LOW,4,SAFE,1,SB,HIGH,1,NA,1,SAFE,5,4,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,Yasmin,F,43,Childminder,"West Kirby, The Wirral",5,SAFE,6,NA,2,SB,6,LOW,5,LOW,OUT,0,NA,1,SAFE,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,Jason,M,19,Civil Engineering Student,Croydon,6,SAFE,3,NA,7,SAFE,1,SB,7,OUT,NA,1,NA,2,SB,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,Robert,M,25,Photographer,London,3,LOW,5,NA,4,LOW,7,SAFE,3,OUT,NA,0,NA,0,LOW,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,Ben,M,31,Graphic Designer,Northampton,2,SAFE,1,NA,3,SAFE,5,OUT,NA,NA,NA,1,NA,0,SAFE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,Ian,M,40,Fundraiser for English Heritage,"Dunstable, Bedfordshire",10,SAFE,2,NA,10,OUT,NA,NA,NA,NA,NA,0,NA,0,HIGH,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,Urvashi,F,40,Head of Marketing,"Enfield, London",7,SAFE,7,NA,9,OUT,NA,NA,NA,NA,NA,0,NA,0,SAFE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,Simon,M,31,Rugby Coach,Norfolk,9,LOW,11,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,0,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+2,Keith,M,31,House husband,"Arlesey, Bedfordshire",12,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,John,M,22,Law student,Wigan,11,SAFE,1,SB,6,SAFE,6,SAFE,2,SAFE,LOW,1,0,1,NA,5,3,LOW,3,HIGH,NA,2,LOW,2,WINNER,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,Brendan,M,63,Recruitment consultant,Sutton Coldfield,10,SAFE,4,HIGH,9,LOW,1,SB,3,HIGH,SB,2,0,2,NA,1,4,HIGH,2,SAFE,NA,3,HIGH,2,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,James,M,21,Medical student,"Hillswick, Shetland Islands",2,SAFE,2,HIGH,1,SB,5,SAFE,6,SAFE,LOW,5,0,3,NA,7,1,LOW,1,SB,NA,1,SB,1,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,Danny,F,45,Intensive care consultant,Sheffield,7,SAFE,3,SAFE,2,SAFE,2,HIGH,7,LOW,HIGH,0,0,1,NA,2,2,SB,4,LOW,NA,4,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,Cathryn,F,27,Shop assistant,"Pease Pottage, West Sussex",5,HIGH,8,SAFE,3,SAFE,3,SAFE,1,SAFE,SAFE,1,0,0,NA,3,5,LOW,5,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,Ryan,M,38,Photographer,Bristol,8,SAFE,5,SAFE,5,SAFE,7,LOW,8,SB,SAFE,0,1,1,NA,6,6,OUT,NA,NA,Signature,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,Sarah-Jane,F,28,Vicar's wife,"Bewbush, West Sussex",1,SAFE,10,SAFE,8,SAFE,4,SAFE,4,LOW,LOW,1,0,0,NA,4,7,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,Manisha,F,27,Nursery nurse,Leicester,6,SAFE,6,SAFE,10,SAFE,9,LOW,5,OUT,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,Stuart,M,26,PE teacher,"Lichfield, Staffordshire",9,LOW,9,LOW,7,HIGH,8,OUT,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,Victoria,F,50,CEO of the charity Plantlife,Somerset,4,SB,7,LOW,4,OUT,NA,NA,NA,NA,NA,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,Peter,M,43,Sales manager,"Windsor, Berkshire",3,SAFE,11,OUT,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+3,Natasha,F,36,Midwife,"Tamworth, Staffordshire",12,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,Frances,F,31,Children's Clothes Designer,"Market Harborough, Leicestershire",7,HIGH,2,SAFE,8,HIGH,1,SAFE,3,SAFE,HIGH,1,1,1,NA,2,5,SB,NA,LOW,NA,2,HIGH,3,WINNER,3,Signature,NA,NA,NA,NA,NA,NA,NA,NA
+4,Kimberley,F,30,Psychologist,London,10,SAFE,1,HIGH,6,SAFE,4,SB,7,LOW,SAFE,3,0,2,NA,3,4,SAFE,NA,HIGH,NA,1,SB,1,Runner-up,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,Ruby,F,20,History of Art and Philosophy Student,"Southend, Essex",12,LOW,3,SB,3,HIGH,6,HIGH,6,LOW,SB,2,0,3,NA,1,2,SAFE,NA,SB,NA,4,LOW,2,Runner-up,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,Beca,F,31,Military Wives' Choir Singer,"Aldershot, Hampshire",8,SAFE,11,LOW,10,SAFE,2,SAFE,5,SAFE,SAFE,1,0,0,NA,6,1,HIGH,NA,LOW,NA,3,OUT,NA,NA,4,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,Christine,F,66,Director of an engraving company,"Didcot, Oxfordshire",3,SAFE,4,SAFE,4,SB,7,SAFE,1,SB,SAFE,1,0,2,NA,4,6,LOW,NA,OUT,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,Glenn,M,37,English Teacher,"Teignmouth, Devon",4,SAFE,7,SAFE,1,SAFE,9,LOW,2,HIGH,LOW,1,0,0,NA,5,3,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,Howard,M,51,Council Worker,Sheffield,6,HIGH,10,SAFE,7,LOW,5,SAFE,8,SAFE,OUT,0,0,0,NA,7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,Robert,M,54,Space Satellite Designer,"Melbourn, Cambridgeshire",1,SB,5,LOW,2,SAFE,3,LOW,4,OUT,NA,1,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,Ali,M,25,Charity worker,"Saltley, Birmingham",11,LOW,9,SAFE,5,SAFE,8,OUT,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,Deborah,F,51,Dentist,Peterborough,9,SAFE,8,SAFE,9,OUT,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,Mark,M,37,Carpenter and Kitchen Fitter,Milton Keynes,5,SAFE,6,LOW,11,OUT,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,Lucy,F,38,Horticulturist,"Grimsby, Lincolnshire",1,SAFE,12,OUT,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+4,Toby,M,30,Web Programmer,"Reading, Berkshire",13,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+5,Nancy,F,60,Retired Practice Manager,"Barton-upon-Humber, Lincolnshire",1,SB,2,SAFE,5,SAFE,4,SAFE,4,HIGH,HIGH,3,0,1,NA,1,2,HIGH,3,LOW,NA,3,LOW,1,WINNER,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+5,Luis,M,42,Graphic Designer,"Poynton, Cheshire",7,SAFE,3,HIGH,2,SB,2,HIGH,6,SAFE,HIGH,1,1,1,NA,3,5,SAFE,2,HIGH,NA,1,HIGH,2,Runner-up,NA,NA,NA,Signature,NA,NA,NA,NA,NA,NA
+5,Richard,M,38,Builder,"Mill Hill, London",10,HIGH,1,SB,6,SAFE,5,SB,7,LOW,LOW,2,0,5,NA,5,1,SB,4,SB,NA,2,SB,3,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+5,Chetna,F,35,Fashion Designer,"Broadstairs, Kent",3,SAFE,8,SAFE,8,SAFE,3,SAFE,2,SAFE,SB,1,0,1,NA,2,6,SAFE,1,SAFE,NA,4,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+5,Martha,F,17,Student,"Ascot, Berkshire",2,HIGH,5,SAFE,3,SAFE,1,SAFE,1,LOW,SAFE,2,0,0,NA,4,3,LOW,5,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+5,Kate,F,41,Furniture Restorer,"Brighton, East Sussex",6,SAFE,4,SAFE,1,HIGH,7,HIGH,3,SB,LOW,1,0,1,NA,6,4,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+5,Norman,M,66,Retired Naval Officer,"Portknockie, Moray",11,SAFE,10,LOW,4,LOW,8,LOW,5,OUT,NA,0,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA,NA,NA,NA
+5,Diana,F,69,Women's Institute (WI) Judge,"Alkington, Shropshire",5,SAFE,7,SAFE,7,SAFE,9,SAFE,NA,OUT*,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+5,Iain,M,31,Construction Engineer,London/Belfast,4,LOW,11,SAFE,9,SAFE,6,OUT,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+5,Jordan,M,32,IT Manager,"Sneinton, Nottingham",12,LOW,6,SAFE,10,OUT,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+5,Enwezor,M,39,Business Consultant,"Portsmouth, Hampshire",9,SAFE,9,OUT,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+5,Claire,F,31,Speech Therapist,"Ashton upon Mersey, Trafford",8,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+6,Nadiya,F,30,Full-time mother,Leeds / Luton,12,HIGH,9,SAFE,9,SAFE,8,HIGH,1,SB,LOW,4,1,3,NA,4,1,HIGH,1,SB,NA,4,SB,1,WINNER,NA,Signature,NA,NA,NA,NA,NA,NA,NA,NA
+6,Ian,M,41,Travel photographer,"Great Wilbraham, Cambridgeshire",8,SAFE,3,SB,1,SB,4,SB,5,SAFE,SAFE,1,0,3,NA,3,5,HIGH,2,SAFE,NA,3,LOW,2,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+6,Tamal,M,29,Trainee anaesthetist,Manchester,4,HIGH,8,SAFE,3,SAFE,5,HIGH,7,SAFE,SAFE,0,1,1,NA,7,3,SB,4,HIGH,Signature,2,HIGH,3,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+6,Flora,F,19,Art gallery assistant,"Dunkeld, Perth and Kinross",6,HIGH,2,SAFE,2,SAFE,3,SAFE,3,LOW,HIGH,1,0,0,NA,2,4,SAFE,3,LOW,NA,1,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+6,Paul,M,49,Prison governor,"Swansea, Wales",10,SAFE,10,LOW,10,HIGH,1,LOW,2,HIGH,SAFE,1,1,0,NA,5,2,LOW,5,OUT,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA,NA,NA
+6,Mat,M,37,Fire fighter,London,7,SAFE,5,HIGH,8,LOW,7,SAFE,4,SAFE,SB,1,0,1,NA,1,6,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+6,Alvin,M,37,Nurse,"Bracknell, Berkshire",2,SAFE,6,SAFE,4,HIGH,9,LOW,8,SAFE,OUT,0,0,0,NA,6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+6,Ugnė,F,32,PA and administrator,"Woodford, London / Vilkaviškis, Lithuania",1,LOW,7,SAFE,5,SAFE,2,SAFE,6,OUT,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+6,Sandy,F,49,Child welfare officer,"Yeadon, West Yorkshire",9,SAFE,4,HIGH,7,SAFE,6,OUT,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+6,Dorret,F,53,Accountant,"Penwortham, Lancashire",5,LOW,1,LOW,6,OUT,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+6,Marie,F,66,Retired,"Auchterarder, Perthshire",3,SB,11,OUT,NA,NA,NA,NA,NA,NA,NA,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+6,Stu,M,35,Professional musician,"Guildford, Surrey",11,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+7,Candice,F,31,PE teacher,"Barton-Le-Clay, Bedfordshire",5th,LOW,8,SB,3,LOW,2,SAFE,2,SB,HIGH,1,1,3,NA,5,2,SAFE,1,SB,NA,3,HIGH,2,WINNER,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA
+7,Andrew,M,25,Aerospace engineer,"Derby / Holywood, County Down",12th,SAFE,4,HIGH,2,HIGH,4,HIGH,6,SAFE,LOW,2,0,2,NA,6,1,SB,2,SAFE,NA,2,SB,1,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+7,Jane,F,61,Garden designer,Beckenham,7th,SB,2,SAFE,9,SAFE,3,SAFE,1,HIGH,SAFE,2,1,1,NA,4,4,SAFE,5,HIGH,NA,1,LOW,3,Runner-up,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA
+7,Selasi,M,30,Client service associate,London,1st,HIGH,11,SAFE,5,SAFE,8,SAFE,3,SAFE,HIGH,1,1,0,NA,7,6,LOW,3,LOW,NA,4,OUT,NA,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA,NA
+7,Benjamina,F,23,Teaching assistant,South London,6th,HIGH,3,SAFE,6,SAFE,1,SB,5,SAFE,SAFE,1,0,1,NA,2,3,HIGH,4,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+7,Tom,M,26,Project engagement manager,Rochdale,2nd,SAFE,7,SAFE,4,SB,5,LOW,4,LOW,SB,1,1,2,NA,1,5,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA,NA,NA,NA
+7,Rav,M,28,Student support,Erith,8th,SAFE,6,SAFE,10,SAFE,9,LOW,8,SAFE,OUT,0,0,0,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+7,Val,F,66,"Semi-retired, Substitute teacher",Yeovil,10th,LOW,5,LOW,1,LOW,6,SAFE,7,OUT,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+7,Kate,F,37,Nurse,"Brooke, Norfolk",4th,SAFE,1,SAFE,8,HIGH,7,OUT,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+7,Michael,M,20,Student,Durham,3rd,SAFE,9,SAFE,7,OUT,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+7,Louise,F,46,Hairdresser,Cardiff,9th,SAFE,10,OUT,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+7,Lee,M,67,Pastor,Bolton,11th,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+8,Sophie,F,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",5,HIGH,2,HIGH,6,SAFE,4,SAFE,1,SB,HIGH,2,1,2,NA,2,3,HIGH,4,SAFE,NA,1,SB,2,WINNER,NA,NA,NA,NA,NA,NA,Signature,NA,NA,NA
+8,Kate,F,29,Health and safety inspector,Merseyside,1,SAFE,8,LOW,10,SAFE,6,SB,8,SAFE,SAFE,1,0,1,NA,5,6,LOW,2,LOW,NA,4,HIGH,3,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+8,Steven,M,34,Marketer,"Watford, Hertfordshire",6,SB,6,SB,3,HIGH,7,SAFE,5,SAFE,SAFE,3,2,3,NA,3,1,SB,1,HIGH,NA,3,LOW,1,Runner-up,NA,NA,NA,NA,NA,NA,Signature,Signature,NA,NA
+8,Stacey,F,42,Former school teacher,"Radlett, Hertfordshire",11,LOW,9,LOW,1,SAFE,1,SAFE,4,HIGH,LOW,2,2,1,NA,6,4,LOW,3,SB,NA,2,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,Signature,NA
+8,Liam,M,19,Student,North London,8,SAFE,7,SAFE,5,LOW,3,HIGH,2,LOW,SB,0,1,1,NA,4,2,HIGH,5,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA,NA
+8,Yan,F,46,Laboratory research scientist,North London,4,SAFE,1,SAFE,8,SAFE,8,SAFE,6,SAFE,HIGH,2,1,0,NA,1,5,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA
+8,Julia,F,21,Aviation Broker,"Crawley, West Sussex",3,SAFE,4,SAFE,2,SB,9,SAFE,3,LOW,OUT,0,0,1,NA,7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+8,James,M,46,Banker,"Brentwood, Essex",2,SAFE,3,SAFE,9,SAFE,2,LOW,7,OUT,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+8,Tom,M,29,Architect,Edinburgh,7,SAFE,5,HIGH,4,SAFE,5,OUT,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+8,Flo,F,71,Retired,Merseyside,9,HIGH,10,LOW,7,OUT,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+8,Chris,M,50,Software developer,Bristol,12,LOW,11,OUT,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+8,Peter,M,52,IT programme manager,"Southend, Essex",10,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+9,Rahul,M,30,Research scientist,Rotherham,7,SAFE,2,SB,4,SB,4,HIGH,3,HIGH,HIGH,1,3,2,NA,3,1,HIGH,5,LOW,NA,4,LOW,2,WINNER,NA,NA,Showstopper,NA,NA,NA,NA,Signature,NA,Signature
+9,Kim-Joy,F,27,Mental health specialist,Leeds,10,SAFE,4,SAFE,10,SAFE,6,SAFE,4,SB,SAFE,1,2,2,NA,5,6,SB,2,LOW,Signature,2,HIGH,1,Runner-up,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA
+9,Ruby,F,29,Project manager,London,1,LOW,10,SAFE,7,SAFE,2,SAFE,1,SAFE,HIGH,3,2,2,NA,7,3,LOW,3,SB,NA,1,SB,3,Runner-up,NA,NA,Showstopper,NA,NA,NA,NA,NA,NA,Signature
+9,Briony,F,33,Stay at home parent,Bristol,2,HIGH,5,LOW,9,LOW,5,LOW,6,LOW,SB,2,0,1,NA,1,5,SAFE,1,HIGH,NA,3,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+9,Manon,F,26,Software project manager,London,3,SB,6,SAFE,3,SAFE,8,SAFE,5,SAFE,LOW,0,1,1,NA,4,2,SAFE,4,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA
+9,Jon,M,47,Blood courier,Newport,5,SAFE,1,HIGH,2,SAFE,3,HIGH,7,LOW,SAFE,1,1,0,NA,2,4,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA,NA
+9,Dan,M,36,Stay at home parent,London,4,SAFE,3,HIGH,6,HIGH,1,SB,2,SAFE,OUT,1,3,1,NA,6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,Signature,Signature,NA,NA,NA,NA,NA
+9,Karen,F,60,In-store sampling assistant,Wakefield,6,SAFE,11,SAFE,5,SAFE,7,LOW,9,OUT,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+9,Terry,M,56,Retired air steward,West Midlands,9,LOW,8,LOW,1,SAFE,NA,SAFE*,8,OUT,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+9,Antony,M,30,Banker,London,12,SAFE,9,SAFE,8,OUT,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+9,Luke,M,30,Civil servant/house and techno DJ,Sheffield,8,SAFE,7,OUT,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+9,Imelda,F,33,Countryside recreation officer,County Tyrone,11,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+10,David,M,36,International health adviser,Whitby,9,SAFE,2,HIGH,2,SAFE,2,HIGH,9,HIGH,HIGH,2,1,0,NA,2,2,HIGH,1,HIGH,NA,2,LOW,1,WINNER,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA
+10,Alice,F,28,Geography teacher,Essex,5,SAFE,1,SB,7,LOW,8,SAFE,6,SAFE,HIGH,2,0,2,NA,1,6,SAFE,3,SAFE,NA,4,SB,2,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+10,Steph,F,28,Shop assistant,Chester,3,HIGH,10,SAFE,3,HIGH,1,SB,4,SB,SB,1,1,4,NA,3,4,HIGH,4,SB,Signature,3,HIGH,3,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+10,Rosie,F,28,Veterinary surgeon,Somerset,2,SAFE,5,HIGH,9,SAFE,4,SAFE,5,LOW,LOW,2,0,0,NA,5,1,LOW,2,LOW,NA,1,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+10,Henry,M,20,Student,Durham,1,SAFE,6,SAFE,1,LOW,3,SAFE,3,HIGH,LOW,2,1,1,NA,4,3,SB,5,OUT,Signature,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+10,Michael,M,26,Theatre manager/fitness instructor,Stratford-upon-Avon,11,SAFE,4,SAFE,6,SB,7,LOW,8,SAFE,LOW,0,1,1,NA,6,5,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA,NA,NA
+10,Priya,F,34,Marketing consultant,Leicester,7,SAFE,7,SAFE,4,SAFE,10,LOW,2,LOW,OUT,0,0,0,NA,7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+10,Helena,F,40,Online project manager,Leeds,12,SAFE,12,SAFE,8,SAFE,9,SAFE,1,OUT,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+10,Michelle,F,35,Print shop administrator,"Tenby, Wales",6,SB,8,SAFE,5,SAFE,5,SAFE,7,OUT,NA,0,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+10,Phil,M,56,HGV driver,Rainham,8,SAFE,3,SAFE,10,SAFE,6,OUT,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+10,Amelia,F,24,Fashion designer,Halifax,4,SAFE,9,LOW,11,OUT,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+10,Jamie,M,20,Part-time waiter,Surrey,13,LOW,11,OUT,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+10,Dan,M,32,Support worker,Rotherham,10,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+11,Peter,M,20,Accounting & finance student,Edinburgh,2,SB,10,SAFE,4,LOW,4,HIGH,1,HIGH,SAFE,3,1,2,NA,1,2,SAFE,4,LOW,Signature,1,SB,2,WINNER,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+11,Dave,M,30,Armoured security guard,"Waterlooville, Hampshire",9,SAFE,1,SB,9,LOW,8,SAFE,5,HIGH,HIGH,2,0,1,NA,3,6,SAFE,5,SAFE,NA,3,HIGH,1,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+11,Laura,F,31,Digital manager,"Gravesend, Kent",6,SAFE,7,SAFE,6,SAFE,2,SAFE,6,SB,LOW,1,0,1,NA,7,4,LOW,1,HIGH,NA,4,LOW,3,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+11,Hermine,F,39,Accountant,London,5,HIGH,5,SAFE,7,SAFE,5,SAFE,2,HIGH,LOW,1,1,2,NA,4,1,SB,3,SB,NA,2,OUT,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA,NA,NA
+11,Marc,M,51,Bronze resin sculptor,"St Eval, Cornwall",11,LOW,9,HIGH,2,SB,6,SAFE,7,LOW,HIGH,0,0,1,NA,6,3,HIGH,2,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+11,Lottie,F,31,Pantomime producer,West Sussex,4,SAFE,8,SAFE,5,SAFE,9,LOW,4,SAFE,SB,0,1,1,NA,2,5,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA,NA,NA,NA
+11,Mark,M,32,Project manager,"Portadown, Northern Ireland",7,SAFE,2,HIGH,3,SAFE,3,SB,3,LOW,OUT,0,0,1,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+11,Linda,F,61,Retirement living team leader,"Bexhill-on-Sea, East Sussex",12,LOW,4,SAFE,1,SAFE,1,SAFE,8,OUT,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+11,Sura,F,31,Hospital pharmacy dispenser,London,1,HIGH,6,SAFE,8,HIGH,7,OUT,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+11,Rowan,M,55,Music teacher,"Pershore, Worcestershire",3,SAFE,11,LOW,10,OUT,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+11,Mak,M,51,Accountant,Manchester,8,SAFE,3,OUT,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+11,Loriea,F,27,Diagnostic radiographer,Durham,10,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+12,Giuseppe,M,45,Chief engineer,Bristol,10,HIGH,2,HIGH,1,SB,4,HIGH,1,SB,HIGH,3,2,2,NA,4,1,HIGH,2,SAFE,NA,2,LOW,3,WINNER,NA,Signature,NA,Signature,NA,NA,NA,NA,NA,NA
+12,Chigs,M,40,Sales manager,Leicester,11,SAFE,7,HIGH,6,SAFE,3,SB,2,SAFE,SAFE,1,2,2,NA,3,3,HIGH,1,SB,NA,4,HIGH,2,Runner-up,NA,Signature,NA,NA,Signature,NA,NA,NA,NA,NA
+12,Crystelle,F,26,Client relationship manager,London,8,HIGH,10,SAFE,9,SAFE,5,SAFE,7,SAFE,SB,1,2,2,NA,2,4,HIGH,5,LOW,NA,3,SB,1,Runner-up,NA,Signature,NA,NA,NA,NA,NA,NA,NA,Showstopper
+12,Jürgen,M,56,Physicist,"Brighton, East Sussex",6,SB,1,SB,5,SAFE,1,HIGH,4,HIGH,SAFE,4,1,3,NA,1,2,SB,4,HIGH,NA,1,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA
+12,Lizzie,F,28,Car production operative,Liverpool,4,SAFE,6,SAFE,2,HIGH,2,SAFE,3,SAFE,SAFE,0,0,0,NA,7,5,LOW,3,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+12,George,M,34,Shared lives coordinator,London,3,LOW,8,HIGH,7,SAFE,7,SAFE,6,LOW,LOW,0,0,0,NA,6,6,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+12,Amanda,F,56,Metropolitan Police detective,London,12,LOW,4,LOW,3,SAFE,8,LOW,8,SAFE,OUT,0,0,0,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+12,Freya,F,19,Student,"Scarborough, North Yorkshire",2,SAFE,3,SAFE,4,HIGH,6,LOW,5,OUT,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+12,Maggie,F,70,Retired nurse and midwife,"Poole, Dorset",1,SAFE,5,LOW,8,LOW,9,OUT,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+12,Rochica,F,27,Junior HR business partner,Birmingham,7,SAFE,11,SAFE,10,OUT,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+12,Jairzeno,M,51,Head of Finance,London,9,LOW,9,OUT,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+12,Tom,M,28,Software developer,"Maidstone, Kent",5,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+13,Syabira,F,32,Cardiovascular research associate,London,1,HIGH,10,HIGH,5,HIGH,2,SAFE,8,LOW,SB,3,1,3,NA,1,6,SB,4,SB,NA,1,HIGH,2,WINNER,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature
+13,Abdul,M,29,Electronics engineer,London,6,SAFE,11,SAFE,NA,SAFE*,6,SAFE,2,SAFE,SAFE,1,0,1,NA,7,4,SAFE,3,HIGH,NA,2,SB,1,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+13,Sandro,M,30,Nanny,London,2,HIGH,3,SAFE,4,HIGH,3,HIGH,4,SB,SAFE,2,0,1,NA,4,1,HIGH,1,LOW,NA,4,LOW,3,Runner-up,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+13,Janusz,M,34,Personal assistant to head teacher,East Sussex,7,SB,6,SAFE,1,SB,7,HIGH,1,HIGH,SAFE,2,0,2,NA,2,5,LOW,2,SAFE,NA,3,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+13,Maxy,F,29,Architectural assistant,London,10,SAFE,5,SB,2,SAFE,1,SB,3,SAFE,SAFE,1,2,2,NA,6,2,SAFE,5,OUT,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA,NA,NA,Signature
+13,Kevin,M,33,Music teacher,Lanarkshire,4,SAFE,8,SAFE,7,LOW,4,SAFE,5,SAFE,LOW,0,0,0,NA,3,3,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+13,Dawn,F,60,IT manager,Bedfordshire,3,SAFE,9,SAFE,6,LOW,5,HIGH,7,LOW,OUT,0,1,0,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA,NA,NA,NA,NA,NA
+13,Carole,F,59,Supermarket cashier,Dorset,8,SAFE,4,LOW,8,LOW,10,LOW,6,OUT,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+13,James,M,25,Nuclear scientist,Cumbria,12,SAFE,2,HIGH,3,SAFE,8,OUT,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+13,Rebs,F,23,Masters student,County Antrim,11,LOW,1,LOW,NA,SAFE*,9,OUT,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+13,Maisam,F,18,Student and sales assistant,Greater Manchester,5,LOW,7,OUT,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+13,Will,M,45,Former charity director,London,9,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+14,Matty,M,28,PE and science teacher,Cambridgeshire,7,SAFE,5,SAFE,7,SAFE,2,SB,7,SAFE,LOW,0,1,2,NA,4,6,SAFE,3,SB,NA,2,LOW,3,WINNER,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA
+14,Dan,M,42,Civil engineering resource planner,Cheshire,1,SB,2,SAFE,10,LOW,1,HIGH,1,SAFE,SAFE,3,1,2,NA,3,2,SB,5,LOW,NA,3,HIGH,2,Runner-up,NA,Signature,NA,NA,NA,NA,NA,NA,NA,NA
+14,Josh,M,27,Chemical biology post-doctoral research associate,Leicestershire,8,SAFE,6,HIGH,4,HIGH,6,SAFE,8,HIGH,SB,2,1,2,NA,2,3,HIGH,4,HIGH,NA,1,SB,1,Runner-up,NA,NA,Showstopper,NA,NA,NA,NA,NA,NA,NA
+14,Tasha,F,27,Children's charity participation officer,Bristol,11,SAFE,8,SB,2,SB,NA,SAFE*,3,SAFE,HIGH,2,1,2,NA,7,1,SAFE,1,SAFE,NA,4,OUT,NA,NA,NA,NA,Signature,NA,NA,NA,NA,NA,NA,NA
+14,Cristy,F,33,Personal assistant,London,6,HIGH,9,SAFE,6,SAFE,7,LOW,5,SB,HIGH,1,1,1,NA,1,4,LOW,2,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Signature,NA,NA
+14,Saku,F,50,Intelligence analyst,Herefordshire,5,SAFE,10,SAFE,1,SAFE,8,LOW,6,LOW,LOW,1,0,0,NA,5,5,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+14,Dana,F,25,Database administrator,Essex,12,LOW,7,SAFE,3,SAFE,5,SAFE,2,LOW,OUT,0,0,0,NA,6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+14,Nicky,F,52,Retired cabin crew and pet-therapy charity volunteer,Shropshire,10,LOW,4,LOW,5,SAFE,4,HIGH,9,OUT,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+14,Rowan,M,21,English literature student,West Yorkshire,9,SAFE,3,SAFE,9,LOW,3,SAFE,4,OUT,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+14,Abbi,F,27,Delivery driver,Cumbria,3,HIGH,1,SAFE,8,OUT,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+14,Keith,M,60,Chartered accountant,Hampshire,4,SAFE,11,OUT,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+14,Amos,M,43,Deli and grocery manager,London,2,OUT,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

@@ -1,0 +1,13 @@
+Baker,Gender,Age,Occupation,Hometown,Round_1_Technical,Round_1,Round_2_Technical,Round_2,Round_3_Technical,Round_3_Handshake,Round_3,Round_4_Technical,Round_4_Handshake,Round_4,Round_5_Technical,Round_5_Handshake,Round_5,Round_6_Technical,Round_6_Handshake,Round_6,Round_7_Technical,Round_7,Round_8_Technical,Round_8,Round_9_Technical,Round_9_Handshake,Round_9,Round_10_Technical,Round_10,Technicals,Handshakes,Star_Bakers
+Giuseppe,M,45,Chief engineer,Bristol,10,HIGH,2,HIGH,1,Signature,SB,4,,HIGH,1,,SB,4,,HIGH,1,HIGH,2,SAFE,2,Signature,LOW,3,WINNER,3,2,2
+Chigs,M,40,Sales manager,Leicester,11,SAFE,7,HIGH,6,,SAFE,3,Signature,SB,2,,SAFE,3,,SAFE,3,HIGH,1,SB,4,Signature,HIGH,2,Runner-up,1,2,2
+Crystelle,F,26,Client relationship manager,London,8,HIGH,10,SAFE,9,,SAFE,5,,SAFE,7,,SAFE,2,Showstopper,SB,4,HIGH,5,LOW,3,Signature,SB,1,Runner-up,1,2,2
+Jürgen,M,56,Physicist,"Brighton, East Sussex",6,SB,1,SB,5,,SAFE,1,,HIGH,4,Signature,HIGH,1,,SAFE,2,SB,4,HIGH,1,,OUT,,,4,1,3
+Lizzie,F,28,Car production operative,Liverpool,4,SAFE,6,SAFE,2,,HIGH,2,,SAFE,3,,SAFE,7,,SAFE,5,LOW,3,OUT,,,,,,0,0,0
+George,M,34,Shared lives coordinator,London,3,LOW,8,HIGH,7,,SAFE,7,,SAFE,6,,LOW,6,,LOW,6,OUT,,,,,,, ,0,0,0
+Amanda,F,56,Metropolitan Police detective,London,12,LOW,4,LOW,3,,SAFE,8,,LOW,8,,SAFE,5,,OUT,,,,,,,,, ,0,0,0
+Freya,F,19,Student,"Scarborough, North Yorkshire",2,SAFE,3,SAFE,4,,HIGH,6,,LOW,5,,OUT,,,,,,,,,,,,,0,0,0
+Maggie,F,70,Retired nurse and midwife,"Poole, Dorset",1,SAFE,5,LOW,8,,LOW,9,,OUT,,,,,,,,,,,,,,,,1,0,0
+Rochica,F,27,Junior HR business partner,Birmingham,7,SAFE,11,SAFE,10,,OUT,,,,,,,,,,,,,,,,,,,0,0,0
+Jairzeno,M,51,Head of Finance,London,9,LOW,9,OUT,,,,,,,,,,,,,,,,,,,,,,0,0,0
+Tom,M,28,Software developer,"Maidstone, Kent",5,OUT,,,,,,,,,,,,,,,,,,,,,,,,0,0,0

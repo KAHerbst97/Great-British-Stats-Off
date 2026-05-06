@@ -1,0 +1,13 @@
+Baker,Gender,Age,Occupation,Hometown,Round_1_Technical,Round_1_Handshake,Round_1,Round_2_Technical,Round_2,Round_3_Technical,Round_3,Round_4_Technical,Round_4_Handshake,Round_4,Round_5_Technical,Round_5_Handshake,Round_5,Round_6_Technical,Round_6,Round_7_Technical,Round_7,Round_8_Technical,Round_8_Handshake,Round_8,Round_9_Technical,Round_9,Round_10_Technical,Round_10,Technicals,Handshakes,Star_Bakers
+Sophie,F,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",5,Signature,HIGH,2,HIGH,6,SAFE,4,,SAFE,1,,SB,2,HIGH,3,HIGH,4,,SAFE,1,SB,2,WINNER,2,1,2
+Kate,F,29,Health and safety inspector,Merseyside,1,,SAFE,8,LOW,10,SAFE,6,,SB,8,,SAFE,5,SAFE,6,LOW,2,,LOW,4,HIGH,3,Runner-up,1,0,1
+Steven,M,34,Marketer,"Watford, Hertfordshire",6,Signature,SB,6,SB,3,HIGH,7,,SAFE,5,Signature,SAFE,3,SAFE,1,SB,1,,HIGH,3,LOW,1,Runner-up,3,2,3
+Stacey,F,42,Former school teacher,"Radlett, Hertfordshire",11,,LOW,9,LOW,1,SAFE,1,,SAFE,4,Signature,HIGH,6,LOW,4,LOW,3,Signature,SB,2,OUT,,,2,2,1
+Liam,M,19,Student,North London,8,,SAFE,7,SAFE,5,LOW,3,Signature,HIGH,2,,LOW,4,SB,2,HIGH,5,,OUT,,,,,0,1,1
+Yan,F,46,Laboratory research scientist,North London,4,,SAFE,1,SAFE,8,SAFE,8,,SAFE,6,Signature,SAFE,1,HIGH,5,OUT,,,,,,,,2,1,0
+Julia,F,21,Aviation Broker,"Crawley, West Sussex",3,,SAFE,4,SAFE,2,SB,9,,SAFE,3,,LOW,7,OUT,,,,,,,,,,0,0,1
+James,M,46,Banker,"Brentwood, Essex",2,,SAFE,3,SAFE,9,SAFE,2,,LOW,7,,OUT,,,,,,,,,,,,0,0,0
+Tom,M,29,Architect,Edinburgh,7,,SAFE,5,HIGH,4,SAFE,5,,OUT,,,,,,,,,,,,,,,0,0,0
+Flo,F,71,Retired,Merseyside,9,,HIGH,10,LOW,7,OUT,,,,,,,,,,,,,,,,,,0,0,0
+Chris,M,50,Software developer,Bristol,12,,LOW,11,OUT,,,,,,,,,,,,,,,,,,,,0,0,0
+Peter,M,52,IT programme manager,"Southend, Essex",10,,OUT,,,,,,,,,,,,,,,,,,,,,,0,0,0

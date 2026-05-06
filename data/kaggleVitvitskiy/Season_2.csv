@@ -1,0 +1,13 @@
+Baker,Gender,Age,Occupation,Hometown,Round_1_Technical,Round_1,Round_2_Technical,Round_Two,Round_3_Technical,Round_3,Round_4_Technical,Round_4,Round_5_Technical,Round_5,Round_6_Technical,Round_6,Round_7_Technical,Round_7,Round_8_Technical,Round_8,Technicals,Star_Bakers,Handshakes
+Jo,F,41,Housewife,"Ongar, Essex",11,HIGH,10,LOW,1,SAFE,8,SAFE,6,SAFE,1,SB,3,HIGH,1,WINNER,3,1,
+Holly,F,31,Advertising executive,Leicester,1,SB,4,SAFE,6,SAFE,3,SB,4,SAFE,3,LOW,1,HIGH,2,Runner-up,2,2,
+Mary-Anne,F,45,Housewife,"Kidderminster, Worcestershire",4,SAFE,9,SAFE,5,HIGH,2,HIGH,2,HIGH,4,HIGH,2,LOW,3,Runner-up,0,0,
+Janet,F,63,Teacher of Modern Languages,"Formby, Liverpool",8,SAFE,8,SAFE,8,LOW,4,SAFE,1,SB,5,HIGH,4,OUT,,,1,1,
+Yasmin,F,43,Childminder,"West Kirby, The Wirral",5,SAFE,6,SAFE,2,SB,6,LOW,5,LOW,2,OUT,,,,,0,1,
+Jason,M,19,Civil Engineering Student,Croydon,6,SAFE,3,SB,7,SAFE,1,SB,7,OUT,,,,,,,1,2,
+Robert,M,25,Photographer,London,3,LOW,5,LOW,4,LOW,7,SAFE,3,OUT,,,,,,,0,0,
+Ben,M,31,Graphic Designer,Northampton,2,SAFE,1,SAFE,3,SAFE,5,OUT,,,,,,,,,1,0,
+Ian,M,40,Fundraiser for English Heritage,"Dunstable, Bedfordshire",10,SAFE,2,HIGH,10,OUT,,,,,,,,,,,0,0,
+Urvashi,F,40,Head of Marketing,"Enfield, London",7,SAFE,7,SAFE,9,OUT,,,,,,,,,,,0,0,
+Simon,M,31,Rugby Coach,Norfolk,9,LOW,11,OUT,,,,,,,,,,,,,0,0,
+Keith,M,31,House husband,"Arlesey, Bedfordshire",12,OUT,,,,,,,,,,,,,,,0,0,
