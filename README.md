@@ -1,14 +1,17 @@
-# The Great British Stats Off (Preliminary Results from A Work in Progress, Will finish when time permits!)
+# The Great British Bake Off - A Statistical Analysis (Preliminary Results, WIP)
 
-A risk-set-aware statistical analysis of *The Great British Bake Off*, Series 5–13 on Netflix.
+> **What actually matters in the tent? Does it change for overall winner, star baker and elimination?**
 
-> **What actually matters in the tent — and can we predict the judges’ weekly decisions?**
+> **Who were the strongest contenders?**
 
-This project turns Netflix-era *Bake Off* judging data into a weekly prediction and explanation system. It uses data prepared by [Nathan Giusti](https://github.com/nathangiusti/BakeOff), then asks a more competition-specific question:
+These are the kinds of questions I had while watching Series 5–13 of *The Great British Bake Off* on Netflix. I wanted to see whether my general impressions about specific events, like Jürgen being eliminated or Jasmine winning the final over Tom, and broader judging patterns, like Showstopper performance seeming to dominate star baker selection, were also supported by the data and maybe discover some new insights into one of my favorite shows.
 
-> In a given episode, among the bakers still competing that week, who is most likely to win **Star Baker** or be **eliminated**?
+Using data prepared by [Nathan Giusti](https://github.com/nathangiusti/BakeOff), I focus on four questions:
 
-That distinction matters. A baker is not judged against every baker in every season. They are judged against the other bakers standing in the tent that episode. This project therefore compares bakers **within the same episode**, instead of treating all baker-weeks as globally interchangeable.
+1. Which parts of the competition are most associated with Star Baker?
+2. Which parts are most associated with avoiding elimination?
+3. How well can we predict judging decisions within a particular episode?
+4. Which bakers and seasons stand out after adjustment?
 
 The cleaned dataset contains **678 baker-episode rows**, **9 Netflix-era series**, **90 episodes**, and **108 baker-season entries**.
 
@@ -20,15 +23,16 @@ The main findings are simple:
 
 > **Showstopper performance is the strongest signal for Star Baker.**  
 > **Technical rank becomes more important for avoiding elimination as the field narrows.**  
-> **Season-long strength and winning the final are related, but they are not the same thing.**
 
-The model performs well as a weekly ranking system:
+The (conditional logit) model performs well as a weekly ranking system:
 
 - It ranked the actual **Star Baker first in 68.9%** of episodes.
 - It ranked the actual **Star Baker in the top two in 88.9%** of episodes.
 - It ranked the actual **eliminated baker first in 61.6%** of eligible elimination episodes.
 - It ranked the actual **eliminated baker in the top two in 82.2%** of eligible elimination episodes.
 - It picked the eventual winner in **6 of 9 finals**; in all three misses, the true winner was ranked second.
+  - Jasmine, Sophie and Giuseppe were not favored to win by the model solely given their performance during their finales 
+
 
 The practical takeaway:
 
@@ -36,50 +40,9 @@ The practical takeaway:
 
 For viewers, this matches a lot of the show's logic. Star Baker is usually about who produced the most memorable high point that week. Elimination is more about who gave the judges enough reason to send them home. Those are not mirror-image decisions. A baker can be too inconsistent to win Star Baker but still safe. A baker can have a quiet week and survive. But if the field is small and the Technical goes badly, there are fewer people left to hide behind.
 
-The key feature of this project is that it treats *Bake Off* as the competition it actually is: a sequence of weekly decisions among the bakers still in the tent.
-
-That matters because the same performance can mean different things in different weeks. A solid Signature bake may be enough to stay safe in an early episode, but not enough in a semifinal. A poor Technical rank may be survivable when the field is large, but much more damaging once only a few strong bakers remain. The relevant comparison is always local:
-
-> **How did this baker perform relative to the people they were actually competing against that week?**
-
-This gives the analysis three practical advantages:
-
-1. **Fairer comparisons**  
-   Bakers are compared within their actual episode rather than against a pooled historical average. This respects the changing field size, season structure, and weekly risk set.
-
-2. **More useful predictions**  
-   The model produces episode-level rankings and probabilities: who is most likely to win Star Baker this week, and who is most at risk of elimination this week.
-
-3. **Better explanation of judging patterns**  
-   The analysis separates the roles of Signature, Technical, and Showstopper performance and shows how their importance changes across the season.
-
-The goal is not just to make a leaderboard. The goal is to turn messy competition data into an explainable model of weekly judging decisions.
-
----
-
-## What the analysis produces
-
-The analysis gives four audience-readable outputs:
-
-1. **Weekly Star Baker rankings**  
-   A probability-ranked list of who is most likely to win Star Baker in each episode.
-
-2. **Weekly elimination-risk rankings**  
-   A probability-ranked list of who is most at risk of going home in each eligible episode.
-
-3. **Decision-driver plots**  
-   Visual summaries of whether Signature, Technical, or Showstopper performance matters most, and how that changes over the season.
-
-4. **Adjusted baker and season rankings**  
-   Season-long baker profiles that adjust for episode, series, score component, and repeated observations.
-
-This keeps the statistical structure but turns it into outputs that are easier to use: rankings, probabilities, tables, and plots.
-
----
-
 ## Weekly prediction accuracy
 
-The models were evaluated with leave-one-episode-out cross-validation. Each episode is left out, the model is trained on the rest, and the held-out episode is ranked by predicted probability.
+The (conditional logit) models were evaluated with leave-one-episode-out cross-validation. Each episode is left out, the model is trained on the rest, and the held-out episode is ranked by predicted probability.
 
 <p align="center"><strong>Prediction accuracy: leave-one-episode-out cross-validation</strong></p>
 
@@ -111,7 +74,7 @@ The models were evaluated with leave-one-episode-out cross-validation. Each epis
   </tbody>
 </table>
 
-The ranking view is the right one. In each episode, the question is not simply “is this baker good?” The question is:
+In each episode, the question is not simply “is this baker good?” The question is:
 
 > **Where does this baker rank among the people still competing this week?**
 
@@ -154,7 +117,7 @@ That is also how the show feels as a viewer. The judges are not comparing a curr
 
 ## Finale predictions
 
-The model picked the eventual winner in **6 of 9 finals**. In the three misses, the actual winner was still ranked second.
+The model picked the eventual winner in **6 of 9 finals** using episode LOOCV. In the three misses, the actual winner was still ranked second.
 
 <p align="center"><strong>Final episode winner predictions</strong></p>
 
@@ -489,19 +452,9 @@ The main viewer-facing interpretation is:
 - **Star Baker is a high-point award.** The Showstopper is where the model sees the clearest separation.
 - **Elimination is a risk decision.** A baker does not need to be the worst at everything; they just need the weakest overall case for staying.
 - **The Technical matters more when the tent gets smaller.** Once the remaining bakers are all strong, rank-based separation becomes harder to ignore.
-- **Winning the season is not the same as having the strongest adjusted season profile.** The show is sequential: survive each week, then win the final.
+- **Winning the season is not the same as having the strongest adjusted season profile.** The show is sequential: survive each week, then win the final. This line of questions opens up models for predicting the overall winner that have mild separation in the rounds 1-9 but a large bump; in the importance at round 10 (you could win just by winning that finale like david or you could lose the finale and still win like jasmine)
 
 That is why this project uses both weekly prediction and season-long adjusted profiles. One explains the episode decisions. The other summarizes the broader arc of each baker and season.
-
----
-
-## Statistical approach
-
-The core models use conditional logistic regression for Star Baker and elimination. In plain English, this means each baker is compared against the other bakers in the same episode.
-
-That matters because each episode has its own difficulty, theme, group of contestants, and number of remaining bakers. The model therefore avoids treating a Round 2 baker from one season as if they were directly competing against a semifinalist from another season.
-
-The season-long baker rankings use a mixed-model-style adjustment to summarize repeated baker performance across episodes and score components. These rankings should be read as adjusted performance profiles, not as direct measures of true latent ability.
 
 ---
 

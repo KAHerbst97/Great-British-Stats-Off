@@ -85,7 +85,7 @@ judging %>%
   )
 ```
 
-# Judging and Bakers Themselves
+# Judging Models
 
 Some interesting modeling targets are a baker’s latent ability trajectory across rounds and the episode-specific selection mechanisms for star baker and elimination. The basic data structure is naturally longitudinal: each baker contributes repeated performances until they are eliminated, and each episode defines a new risk set of bakers still in the competition.
 
@@ -230,7 +230,10 @@ library(survival)
 judging_elim <- judging_elim %>%
   mutate(round_c = round - 1)
 
-round_center_elim <- mean(judging_elim$round, na.rm = TRUE)
+round_grid <- tibble(
+  round = sort(unique(judging_elim$round)),
+  round_c = round - 1
+)
 
 fit_elim_round_interact <- clogit(
   eliminated ~ 
@@ -249,7 +252,7 @@ vcov_elim <- vcov(fit_elim_round_interact)
 
 round_grid <- tibble(
   round = sort(unique(judging_elim$round)),
-  round_c = round - round_center_elim
+  round_c = round - 1
 )
 
 get_round_slope <- function(
@@ -410,8 +413,6 @@ library(survival)
 judging_sb <- judging_sb %>%
   mutate(round_c = round - 1)
 
-round_center_sb <- mean(judging_sb$round, na.rm = TRUE)
-
 fit_sb_round_interact <- clogit(
   star_baker ~ 
     sig_sum + showstopper_sum + tech_rank +
@@ -429,7 +430,7 @@ vcov_sb <- vcov(fit_sb_round_interact)
 
 round_grid <- tibble(
   round = sort(unique(judging_sb$round)),
-  round_c = round - round_center_sb
+  round_c = round - 1
 )
 
 get_round_slope_sb <- function(
@@ -667,7 +668,7 @@ looks like it a little bit, so the field narrows in terms of sig and showstopper
 
 If I was going to track what mattered most over a season to coming out as the final winner this all seems to indicate that it would be signature performance until about round 3, then techincal until round 9 then showstopper in the finale?
 
-#### Model Prediction Evaluation
+#### (Interacted) Model Prediction Evaluation
 
 I also evaluate how well the conditional logit models predict the selected baker within each episode. The models are not only descriptive; they have some ability to identify likely Star Baker and elimination candidates from the episode-specific risk set.
 
@@ -1058,7 +1059,7 @@ knitr::kable(
 
 here leave one out cross validation actualyl performs comparably well to naive!
 
-## Model for baker's latent ability
+# Model for baker's latent ability
 
 
 HERE i USE tech scaled to $[-1,1]$ within episodes to make components comparable!!!
@@ -1435,7 +1436,7 @@ knitr::kable(
   )
 ```
 
-### Limitations
+# Limitations
 
 - The analysis is observational. The models estimate associations between performance and judging outcomes, not causal effects.
 

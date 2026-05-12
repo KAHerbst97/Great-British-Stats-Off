@@ -352,27 +352,33 @@ display: none;
 </div>
 
 
-<div id="the-great-british-stats-off" class="section level1">
-<h1>The Great British Stats Off</h1>
-<p>A risk-set-aware statistical analysis of <em>The Great British Bake
-Off</em>, Series 5–13 on Netflix.</p>
+<div id="the-great-british-bake-off---a-statistical-analysis-preliminary-results-wip" class="section level1">
+<h1>The Great British Bake Off - A Statistical Analysis (Preliminary
+Results, WIP)</h1>
 <blockquote>
-<p><strong>What actually matters in the tent — and can we predict the
-judges’ weekly decisions?</strong></p>
+<p><strong>What actually matters in the tent? Does it change for overall
+winner, star baker and elimination?</strong></p>
 </blockquote>
-<p>This project turns Netflix-era <em>Bake Off</em> judging data into a
-weekly prediction and explanation system. It uses data prepared by <a href="https://github.com/nathangiusti/BakeOff">Nathan Giusti</a>, then
-asks a more competition-specific question:</p>
 <blockquote>
-<p>In a given episode, among the bakers still competing that week, who
-is most likely to win <strong>Star Baker</strong> or be
-<strong>eliminated</strong>?</p>
+<p><strong>Who were the strongest contenders?</strong></p>
 </blockquote>
-<p>That distinction matters. A baker is not judged against every baker
-in every season. They are judged against the other bakers standing in
-the tent that episode. This project therefore compares bakers
-<strong>within the same episode</strong>, instead of treating all
-baker-weeks as globally interchangeable.</p>
+<p>These are the kinds of questions I had while watching Series 5–13 of
+<em>The Great British Bake Off</em> on Netflix. I wanted to see whether
+my general impressions about specific events, like Jürgen being
+eliminated or Jasmine winning the final over Tom, and broader judging
+patterns, like Showstopper performance seeming to dominate star baker
+selection, were also supported by the data and maybe discover some new
+insights into one of my favorite shows.</p>
+<p>Using data prepared by <a href="https://github.com/nathangiusti/BakeOff">Nathan Giusti</a>, I
+focus on four questions:</p>
+<ol style="list-style-type: decimal">
+<li>Which parts of the competition are most associated with Star
+Baker?</li>
+<li>Which parts are most associated with avoiding elimination?</li>
+<li>How well can we predict judging decisions within a particular
+episode?</li>
+<li>Which bakers and seasons stand out after adjustment?</li>
+</ol>
 <p>The cleaned dataset contains <strong>678 baker-episode rows</strong>,
 <strong>9 Netflix-era series</strong>, <strong>90 episodes</strong>, and
 <strong>108 baker-season entries</strong>.</p>
@@ -384,11 +390,10 @@ baker-weeks as globally interchangeable.</p>
 <p><strong>Showstopper performance is the strongest signal for Star
 Baker.</strong><br />
 <strong>Technical rank becomes more important for avoiding elimination
-as the field narrows.</strong><br />
-<strong>Season-long strength and winning the final are related, but they
-are not the same thing.</strong></p>
+as the field narrows.</strong></p>
 </blockquote>
-<p>The model performs well as a weekly ranking system:</p>
+<p>The (conditional logit) model performs well as a weekly ranking
+system:</p>
 <ul>
 <li>It ranked the actual <strong>Star Baker first in 68.9%</strong> of
 episodes.</li>
@@ -399,7 +404,11 @@ episodes.</li>
 <li>It ranked the actual <strong>eliminated baker in the top two in
 82.2%</strong> of eligible elimination episodes.</li>
 <li>It picked the eventual winner in <strong>6 of 9 finals</strong>; in
-all three misses, the true winner was ranked second.</li>
+all three misses, the true winner was ranked second.
+<ul>
+<li>Jasmine, Sophie and Giuseppe were not favored to win by the model
+solely given their performance during their finales</li>
+</ul></li>
 </ul>
 <p>The practical takeaway:</p>
 <blockquote>
@@ -413,65 +422,13 @@ home. Those are not mirror-image decisions. A baker can be too
 inconsistent to win Star Baker but still safe. A baker can have a quiet
 week and survive. But if the field is small and the Technical goes
 badly, there are fewer people left to hide behind.</p>
-<p>The key feature of this project is that it treats <em>Bake Off</em>
-as the competition it actually is: a sequence of weekly decisions among
-the bakers still in the tent.</p>
-<p>That matters because the same performance can mean different things
-in different weeks. A solid Signature bake may be enough to stay safe in
-an early episode, but not enough in a semifinal. A poor Technical rank
-may be survivable when the field is large, but much more damaging once
-only a few strong bakers remain. The relevant comparison is always
-local:</p>
-<blockquote>
-<p><strong>How did this baker perform relative to the people they were
-actually competing against that week?</strong></p>
-</blockquote>
-<p>This gives the analysis three practical advantages:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Fairer comparisons</strong><br />
-Bakers are compared within their actual episode rather than against a
-pooled historical average. This respects the changing field size, season
-structure, and weekly risk set.</p></li>
-<li><p><strong>More useful predictions</strong><br />
-The model produces episode-level rankings and probabilities: who is most
-likely to win Star Baker this week, and who is most at risk of
-elimination this week.</p></li>
-<li><p><strong>Better explanation of judging patterns</strong><br />
-The analysis separates the roles of Signature, Technical, and
-Showstopper performance and shows how their importance changes across
-the season.</p></li>
-</ol>
-<p>The goal is not just to make a leaderboard. The goal is to turn messy
-competition data into an explainable model of weekly judging
-decisions.</p>
-<hr />
-</div>
-<div id="what-the-analysis-produces" class="section level2">
-<h2>What the analysis produces</h2>
-<p>The analysis gives four audience-readable outputs:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Weekly Star Baker rankings</strong><br />
-A probability-ranked list of who is most likely to win Star Baker in
-each episode.</p></li>
-<li><p><strong>Weekly elimination-risk rankings</strong><br />
-A probability-ranked list of who is most at risk of going home in each
-eligible episode.</p></li>
-<li><p><strong>Decision-driver plots</strong><br />
-Visual summaries of whether Signature, Technical, or Showstopper
-performance matters most, and how that changes over the season.</p></li>
-<li><p><strong>Adjusted baker and season rankings</strong><br />
-Season-long baker profiles that adjust for episode, series, score
-component, and repeated observations.</p></li>
-</ol>
-<p>This keeps the statistical structure but turns it into outputs that
-are easier to use: rankings, probabilities, tables, and plots.</p>
-<hr />
 </div>
 <div id="weekly-prediction-accuracy" class="section level2">
 <h2>Weekly prediction accuracy</h2>
-<p>The models were evaluated with leave-one-episode-out
-cross-validation. Each episode is left out, the model is trained on the
-rest, and the held-out episode is ranked by predicted probability.</p>
+<p>The (conditional logit) models were evaluated with
+leave-one-episode-out cross-validation. Each episode is left out, the
+model is trained on the rest, and the held-out episode is ranked by
+predicted probability.</p>
 <p align="center">
 <strong>Prediction accuracy: leave-one-episode-out
 cross-validation</strong>
@@ -533,8 +490,8 @@ Elimination
 </tr>
 </tbody>
 </table>
-<p>The ranking view is the right one. In each episode, the question is
-not simply “is this baker good?” The question is:</p>
+<p>In each episode, the question is not simply “is this baker good?” The
+question is:</p>
 <blockquote>
 <p><strong>Where does this baker rank among the people still competing
 this week?</strong></p>
@@ -619,8 +576,8 @@ Elimination
 <div id="finale-predictions" class="section level2">
 <h2>Finale predictions</h2>
 <p>The model picked the eventual winner in <strong>6 of 9
-finals</strong>. In the three misses, the actual winner was still ranked
-second.</p>
+finals</strong> using episode LOOCV. In the three misses, the actual
+winner was still ranked second.</p>
 <p align="center">
 <strong>Final episode winner predictions</strong>
 </p>
@@ -2260,26 +2217,15 @@ smaller.</strong> Once the remaining bakers are all strong, rank-based
 separation becomes harder to ignore.</li>
 <li><strong>Winning the season is not the same as having the strongest
 adjusted season profile.</strong> The show is sequential: survive each
-week, then win the final.</li>
+week, then win the final. This line of questions opens up models for
+predicting the overall winner that have mild separation in the rounds
+1-9 but a large bump; in the importance at round 10 (you could win just
+by winning that finale like david or you could lose the finale and still
+win like jasmine)</li>
 </ul>
 <p>That is why this project uses both weekly prediction and season-long
 adjusted profiles. One explains the episode decisions. The other
 summarizes the broader arc of each baker and season.</p>
-<hr />
-</div>
-<div id="statistical-approach" class="section level2">
-<h2>Statistical approach</h2>
-<p>The core models use conditional logistic regression for Star Baker
-and elimination. In plain English, this means each baker is compared
-against the other bakers in the same episode.</p>
-<p>That matters because each episode has its own difficulty, theme,
-group of contestants, and number of remaining bakers. The model
-therefore avoids treating a Round 2 baker from one season as if they
-were directly competing against a semifinalist from another season.</p>
-<p>The season-long baker rankings use a mixed-model-style adjustment to
-summarize repeated baker performance across episodes and score
-components. These rankings should be read as adjusted performance
-profiles, not as direct measures of true latent ability.</p>
 <hr />
 </div>
 <div id="limitations" class="section level2">
