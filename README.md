@@ -14,7 +14,7 @@ Using data prepared by [Nathan Giusti](https://github.com/nathangiusti/BakeOff),
 The cleaned dataset contains **678 baker-episode rows**, **9 Netflix-era series**, **90 episodes**, and **108 baker-season entries**.
 
 <p align="center">
-  <img src="results/gbbo_one_pager.png" alt="One-page summary of Great British Bake Off statistical analysis" width="950">
+  <img src="gbbo_one_pager.png" alt="One-page summary of Great British Bake Off statistical analysis" width="950">
 </p>
 
 ---
