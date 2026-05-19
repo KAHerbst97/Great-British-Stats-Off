@@ -1,0 +1,3490 @@
+---
+title: "GBBO Analysis"
+subtitle: "v2"
+author: "Konnor Herbst"
+format:
+  pdf:
+    fontsize: 11pt
+    toc: true
+    toc-depth: 7
+    colorlinks: true
+    linestretch: 1
+    fig-width: 12
+    fig-height: 8
+    fig-align: center
+    df-print: kable
+execute:
+  cache: FALSE
+  echo: FALSE
+  warning: false
+  message: false
+output: pdf_document
+---
+
+\newpage
+
+```{r, echo = FALSE}
+# helpers
+set.seed(489)
+`%notin%` = Negate(`%in%`)
+
+options(digits = 3)
+
+# packages
+## tidyverse for data manipulations, 
+## modelr for tidy modeling
+library(tidyverse)
+library(tidybayes)
+library(forcats)
+invisible(lapply(c("tidyverse","emmeans","geepack","janitor","kableExtra","nlme","glmnet","yardstick","survival"),
+       library, 
+       character.only = TRUE))
+
+theme_set(theme_bw())
+
+full_cln_dat = readr::read_csv(
+  "data/full_cln_gbbo.csv",
+  col_types = readr::cols(
+    episode = readr::col_character(),
+    .default = readr::col_guess()
+  )
+)
+```
+
+
+# Introduction
+
+We may be interested in questions like: *What actually matters in the tent? Does it differ for overall winner, Star Baker, and elimination? Who were the strongest contenders?*
+
+Naive descriptive statistics are useful, but they only get us so far here. The structure of *The Great British Bake Off* is longitudinal: each baker contributes repeated performances until they are eliminated, and each episode defines a new risk set of bakers still eligible for Star Baker or elimination. A useful analysis should respect that structure, rather than relying only on marginal descriptive statistics that may ignore these subtleties and lead to misleading conclusions.
+
+
+We build four main models:
+
+1. **Elimination model**
+   The outcome is whether a baker is eliminated in a given episode.
+
+2. **Star Baker model**
+   The outcome is whether a baker wins Star Baker in a given episode.
+
+3. **Baker strength / ability model**
+   The outcome is a baker’s underlying performance level, interpreted through baker-specific random effects. This gives a model-based estimate of how far each baker is from the average baker, after accounting for repeated performances and episode-level structure.
+
+4. **Running win probability model**
+   The outcome is each baker’s updated probability of winning the overall competition, recalculated sequentially after each episode using the information available up to that point.
+
+These models have different targets. The elimination and Star Baker models are *judging behavior models*: they ask how episode-level performances are associated with being eliminated or winning Star Baker among the bakers at risk in that episode. The baker strength model is a *latent ability model*: it estimates persistent baker-level performance after accounting for repeated observations and episode context. The running win probability model is a *sequential prediction model*: it tracks how each baker’s probability of winning changes as the season unfolds.
+
+The main predictors available across these models are episode-level signature performance, showstopper performance, and technical rank. Signature and showstopper performance are scored using taste, appearance, and bake components, each coded on a $-1, 0, 1$ scale. Technical performance is represented by within-episode technical rank.
+
+Because judging criteria and stakes may change over the course of a season, these effects can be allowed to vary by round through interactions with round.
+
+## Descriptive/Inferential Models vs Predictive
+
+We will use the judging behavior models for both inferential and predictive purposes - we will fit them first using all episodes of interest for inference then we will fit them using LOOCV and sequential CV (trained on all preceding episodes) for prediction to evaluate performance
+
+\newpage
+
+# Judging Models
+
+We have 9 available seasons/series,
+
+```{r, echo = FALSE}
+# helpers
+set.seed(489)
+`%notin%` = Negate(`%in%`)
+
+options(digits = 3)
+
+# packages
+## tidyverse for data manipulations, 
+## modelr for tidy modeling
+library(tidyverse)
+library(tidybayes)
+library(forcats)
+invisible(lapply(c("tidyverse","emmeans","geepack","janitor","kableExtra","nlme","glmnet","yardstick","survival"),
+       library, 
+       character.only = TRUE))
+
+theme_set(theme_bw())
+
+full_cln_dat = readr::read_csv(
+  "data/full_cln_gbbo.csv",
+  col_types = readr::cols(
+    episode = readr::col_character(),
+    .default = readr::col_guess()
+  )
+)
+```
+
+
+```{r, echo = FALSE}
+# ------------------------------------------------------------
+# Data setup for full_cln_dat
+# ------------------------------------------------------------
+# Expected input object: full_cln_dat
+# This chunk standardizes the new cleaned Kaggle/R data object so the
+# downstream model code can keep using the old short variable names.
+
+judging <- full_cln_dat 
+
+# Star Baker can use rounds 1--10 because round 10 Star Baker is the winner.
+judging_sb <- judging %>%
+  filter(round <= 10, !is.na(star_baker)) %>%
+  group_by(episode) %>%
+  filter(n() > 1, sum(star_baker, na.rm = TRUE) == 1) %>%
+  ungroup()
+
+# Elimination excludes round 10 because the final is not a normal elimination risk set.
+judging_elim <- judging %>%
+  filter(round <= 9, !is.na(eliminated)) %>%
+  group_by(episode) %>%
+  filter(n() > 1, sum(eliminated, na.rm = TRUE) == 1) %>%
+  ungroup()
+
+judging %>%
+  summarise(
+    n_rows = n(),
+    n_series = n_distinct(series),
+    n_episodes = n_distinct(episode),
+    n_bakers = n_distinct(baker_id)
+  )
+```
+
+For the Star Baker and elimination outcomes, the relevant comparison is within episode. In each episode, the judges choose one Star Baker and, in most non-final episodes, one eliminated baker from the bakers currently competing. This motivates a conditional logit model with episode-specific strata. The episode stratum restricts comparisons to the appropriate risk set, rather than comparing bakers across different series or episodes where they were never actually competing against each other.
+
+We exclude the final round, Round 10, from both the Star Baker and elimination models. In the final, “Star Baker” is effectively the overall winner, and there is no ordinary weekly elimination decision. For the elimination model, we also exclude episodes with zero or two eliminations, so that each retained risk set has exactly one eliminated baker. The same restriction is used during cross-validation.
+
+A baseline frequentist conditional logit model assumes a shared judging rule across episodes and seasons. That is, the effects of signature, showstopper, and technical performance are assumed to be the same at every point in the competition. For baker $i$ in episode $j$, write the underlying model as
+
+$$
+\operatorname{logit}{\Pr(Y_{ij}=1)}
+=\alpha_j + X_{ij}^\top \beta,
+$$
+
+where $Y_{ij}$ indicates whether baker $i$ is selected in episode $j$, $X_{ij}$ contains the signature, showstopper, and technical performance variables, and $\alpha_j$ is an episode-specific intercept.
+
+The episode intercept $\alpha_j$ represents the baseline selection level for episode $j$. It is shared by all bakers in the same episode and captures episode-level differences in baseline selection probability, such as the mechanical difference between choosing one baker out of twelve versus one baker out of three.
+
+In the conditional logit model, we compare bakers only within the same episode. Equivalently, we condition on the observed number of selected bakers in each episode. For a one-event episode, the conditional probability that baker $i$ is selected is
+
+$$
+\Pr\left(
+Y_{ij}=1
+\mid
+\sum_{\ell \in \mathcal R_j} Y_{\ell j}=1
+\right)
+=\frac{
+\exp(X_{ij}^\top \beta)
+}{
+\sum_{\ell \in \mathcal R_j}
+\exp(X_{\ell j}^\top \beta)
+},
+$$
+
+where $\mathcal R_j$ is the episode-specific risk set.
+
+The episode intercept $\alpha_j$ cancels from this conditional probability:
+
+$$
+\frac{
+\exp(\alpha_j + X_{ij}^\top \beta)
+}{
+\sum_{\ell \in \mathcal R_j}
+\exp(\alpha_j + X_{\ell j}^\top \beta)
+}
+=
+\frac{
+\exp(X_{ij}^\top \beta)
+}{
+\sum_{\ell \in \mathcal R_j}
+\exp(X_{\ell j}^\top \beta)
+}.
+$$
+
+Thus, $\alpha_j$ is allowed to be arbitrary but is not directly estimated. The conditional likelihood across episodes is
+
+$$
+L_c(\beta)
+=\prod_j
+\prod_{i \in \mathcal R_j}
+\left[
+\frac{
+\exp(X_{ij}^\top \beta)
+}{
+\sum_{\ell \in \mathcal R_j}
+\exp(X_{\ell j}^\top \beta)
+}
+\right]^{Y_{ij}}
+$$
+
+Since each retained episode has exactly one selected baker, this can also be written as
+
+$$
+L_c(\beta)
+=\prod_j
+\frac{
+\exp(X_{i_j j}^\top \beta)
+}{
+\sum_{\ell \in \mathcal R_j}
+\exp(X_{\ell j}^\top \beta)
+},
+$$
+
+where $i_j$ is the selected baker in episode $j$.
+
+Because we condition on the episode-specific event totals, this is a likelihood for $\beta$ alone, not the full unconditional likelihood for $(\alpha, \beta)$. Algebraically, it is the same likelihood as a stratified Cox proportional hazards partial likelihood with constant artificial event time and one event per stratum. In this application, the Cox model is only a computational device; the substantive interpretation is as a within-episode conditional choice model.
+
+In this setup, $\beta$ estimates how within-episode differences in signature, showstopper, and technical performance are associated with selection as Star Baker or elimination.
+
+## Covariates / Predictors
+
+Because the Star Baker and elimination models are fit within episode, the predictors are interpreted as within-episode differences among bakers competing in the same risk set.
+
+The main predictors are:
+
+1. **Signature sum**  
+   The baker’s total signature score in that episode. This is the sum of the signature bake, flavor, and appearance components. Each component is scored on a $-1, 0, 1$ scale, so the total signature score ranges from $-3$ to $3$.
+
+2. **Showstopper sum**  
+   The baker’s total showstopper score in that episode. This is the sum of the showstopper bake, flavor, and appearance components. Each component is scored on a $-1, 0, 1$ scale, so the total showstopper score ranges from $-3$ to $3$.
+
+3. **Technical rank**  
+   The baker’s rank in the technical challenge for that episode. Lower values indicate better performance: rank 1 is best, rank 2 is second best, and so on.
+
+Signature sum and showstopper sum are on the same scale, so their effects are directly comparable. Technical rank is different: it is a within-episode ordinal placement, not a component score. A one-unit increase in technical rank means moving one place worse in the technical challenge.
+
+## Main Effects Only Models for Star baker and Elimination
+
+We can use the clogit function in the survival package of R to fit both the elimination and star baker models. Starting with the elimination model
+
+```{r, echo = FALSE}
+fit_elim_clogit <- clogit(
+  eliminated ~ sig_sum + showstopper_sum + tech_rank + strata(episode),
+  data = judging_elim
+)
+
+summary(fit_elim_clogit)
+```
+
+For elimination, better signature, showstopper, and technical performances are all associated with lower odds of being eliminated. A one-unit increase in signature score is associated with an odds ratio of 0.487, corresponding to a 51.3% reduction in the odds of elimination, holding the other predictors fixed within episode. A one-unit increase in showstopper score is associated with an odds ratio of 0.458, corresponding to a 54.2% reduction in the odds of elimination.
+
+Signature and showstopper are on the same scale: both are summed component scores, with bake, flavor, and appearance contributing to the total. Therefore, their odds ratios are directly comparable as one-unit increases in judged performance totals.
+
+The technical variable is different. Here, `tech_rank` is still a rank, not a score. Lower technical rank means better technical performance: rank 1 is best, rank 2 is next best, and so on. The model reports an odds ratio of 1.553 for a one-rank increase, meaning that moving one place worse in the technical challenge is associated with 55.3% higher odds of elimination. Equivalently, moving one place better in technical rank is associated with an odds ratio of
+
+$$
+\frac{1}{1.553}
+\approx
+0.644,
+$$
+
+or about 35.6% lower odds of elimination, holding signature and showstopper scores fixed within the same episode.
+
+Because `tech_rank` is measured on a different scale from `sig_sum` and `showstopper_sum`, its odds ratio should not be compared directly to theirs as if all three represented the same kind of one-unit performance improvement. A one-unit improvement in signature or showstopper score means one additional judged component point. A one-unit improvement in technical rank means moving one placement higher in the within-episode technical ranking.
+
+A more meaningful comparison is to look at multi-unit improvements. For example, a two-point increase in signature score is associated with an elimination odds ratio of approximately
+
+$$
+0.487^2 \approx 0.237,
+$$
+
+or about 76.3% lower odds of elimination. A two-point increase in showstopper score is associated with an odds ratio of approximately
+
+$$
+0.458^2 \approx 0.210,
+$$
+
+or about 79.0% lower odds of elimination. By contrast, improving by two technical ranks is associated with an odds ratio of approximately
+
+$$
+0.644^2 \approx 0.415,
+$$
+
+or about 58.5% lower odds of elimination.
+
+Thus, better technical placement clearly reduces elimination risk, but a few points of improvement in signature or showstopper scores correspond to larger changes in elimination odds than moving a few places up in the technical ranking.
+
+| Performance improvement | Odds ratio for elimination | Approximate reduction in odds |
+|---|---:|---:|
+| +1 signature point | 0.487 | 51.3% lower |
+| +2 signature points | $0.487^2 \approx 0.237$ | 76.3% lower |
+| +1 showstopper point | 0.458 | 54.2% lower |
+| +2 showstopper points | $0.458^2 \approx 0.210$ | 79.0% lower |
+| 1 technical rank better | $1/1.553 \approx 0.644$ | 35.6% lower |
+| 2 technical ranks better | $0.644^2 \approx 0.415$ | 58.5% lower |
+
+overall implying that signature and shopwstopper are similarly important and technical rank increase is less so. However it is important to note that we did not allow effect modification via itneration by round that may allow importance to shift across rounds.
+
+now for the star baker model
+
+```{r}
+fit_sb_clogit <- clogit(
+  star_baker ~ sig_sum + showstopper_sum + tech_rank + strata(episode),
+  data = judging_sb
+)
+
+summary(fit_sb_clogit)
+```
+
+For Star Baker, better signature, showstopper, and technical performances are all associated with higher odds of winning Star Baker. A one-unit increase in signature score is associated with an odds ratio of $2.046$, meaning the odds of winning Star Baker are about $104.6%$ higher, holding the other predictors fixed within episode. A one-unit increase in showstopper score is associated with an odds ratio of $5.599$, meaning the odds are about $459.9%$ higher.
+
+Signature and showstopper are on the same scale: both are summed component scores, with bake, flavor, and appearance contributing to the total. Therefore, their odds ratios are directly comparable as one-unit increases in judged performance totals. On this scale, showstopper performance is much more strongly associated with Star Baker selection than signature performance. A one-point showstopper improvement is associated with more than five times the odds of winning Star Baker, while a one-point signature improvement is associated with about twice the odds.
+
+The technical variable is different. Here, `tech_rank` is still a rank, not a score. Lower technical rank means better technical performance: rank 1 is best, rank 2 is next best, and so on. The model reports an odds ratio of $0.673$ for moving one rank worse. Equivalently, moving one technical rank better is associated with an odds ratio of
+
+$$
+\frac{1}{0.673}
+\approx
+1.486,
+$$
+
+or about $48.6%$ higher odds of winning Star Baker, holding signature and showstopper scores fixed within the same episode.
+
+Moving two technical ranks better corresponds to an odds ratio of approximately
+
+$$
+1.486^2 \approx 2.208,
+$$
+
+or about $120.8%$ higher odds of winning Star Baker.
+
+A two-point increase in signature score corresponds to an odds ratio of approximately
+
+$$
+2.046^2 \approx 4.186,
+$$
+
+or about $318.6%$ higher odds of winning Star Baker. A two-point increase in showstopper score corresponds to an odds ratio of approximately
+
+$$
+5.599^2 \approx 31.349,
+$$
+
+or about $3034.9%$ higher odds.
+
+Again, technical rank should not be compared directly to signature and showstopper as if all three predictors were on the same scale. Technical rank is an ordinal placement, while signature and showstopper are summed judged component scores. Still, directionally aligned comparisons are useful: improving technical placement helps, but showstopper performance dominates Star Baker selection in this baseline model. A one-point showstopper improvement is associated with a much larger increase in Star Baker odds than moving one or even two places up in the technical ranking.
+
+These comparisons summarize the baseline Star Baker model:
+
+| Performance improvement  | Odds ratio for Star Baker | Approximate increase in odds |
+| ------------------------ | ------------------------: | ---------------------------: |
+| +1 signature point       |                     2.046 |                104.6% higher |
+| +2 signature points      |   $2.046^2 \approx 4.186$ |                318.6% higher |
+| +1 showstopper point     |                     5.599 |                459.9% higher |
+| +2 showstopper points    |  $5.599^2 \approx 31.349$ |               3034.9% higher |
+| 1 technical rank better  |   $1/0.673 \approx 1.486$ |                 48.6% higher |
+| 2 technical ranks better |   $1.486^2 \approx 2.208$ |                120.8% higher |
+
+Again an important limitation of this baseline model is that these effects are assumed to be constant across rounds. The model treats a one-point improvement in signature, a one-point improvement in showstopper, or a one-rank improvement in technical placement as having the same association with Star Baker selection in Round 1 as in Round 9. That is likely too rigid, so we also fit round-interaction models to allow the importance of each performance component to change over the course of the season.
+
+For this reason we include an interaction by round for both models (elim and star baker) below
+
+## Interacted (main effects + round interactions) Models for Star Baker and Elimination
+
+Importantly below I center (zero) at round 1 so that main level coefficients have the interpretation as the effects at round 1
+
+We can also allow the criteria to interact with round as we move along, usiing a round interaction by component, here the round main effect is not estimable because it is constant within episode because nesting - removing it from the model is not a violation of the hierarchical variables principle because the strata by episode is giving each episode its own baseline risk and the main round effect is absorbed into this, (alos at least one of the two in two way itneractions do have fit main effects)
+
+
+```{r, echo = FALSE}
+library(tidyverse)
+library(broom)
+library(ggplot2)
+library(survival)
+
+# Center round for the elimination model.
+# Since elimination uses Rounds 1-9, this centers at the mean elimination round.
+judging_elim <- judging_elim %>%
+  mutate(round_c = round - 1)
+
+round_grid <- tibble(
+  round = sort(unique(judging_elim$round)),
+  round_c = round - 1
+)
+
+fit_elim_round_interact <- clogit(
+  eliminated ~ 
+    sig_sum + showstopper_sum + tech_rank +
+    sig_sum:round_c +
+    showstopper_sum:round_c +
+    tech_rank:round_c +
+    strata(episode),
+  data = judging_elim
+)
+
+summary(fit_elim_round_interact)
+
+coef_elim <- coef(fit_elim_round_interact)
+vcov_elim <- vcov(fit_elim_round_interact)
+
+round_grid <- tibble(
+  round = sort(unique(judging_elim$round)),
+  round_c = round - 1
+)
+
+get_round_slope <- function(
+  main,
+  interaction,
+  label,
+  invert = FALSE,
+  multiplier = 1
+) {
+  beta <- coef_elim[[main]]
+  gamma <- coef_elim[[interaction]]
+  
+  var_beta <- vcov_elim[main, main]
+  var_gamma <- vcov_elim[interaction, interaction]
+  cov_bg <- vcov_elim[main, interaction]
+  
+  round_grid %>%
+    mutate(
+      term = label,
+      slope_raw = beta + round_c * gamma,
+      slope = multiplier * if (invert) -slope_raw else slope_raw,
+      se_raw = sqrt(var_beta + round_c^2 * var_gamma + 2 * round_c * cov_bg),
+      se = multiplier * se_raw,
+      lower = slope - 1.96 * se,
+      upper = slope + 1.96 * se,
+      exp_slope = exp(slope),
+      exp_lower = exp(lower),
+      exp_upper = exp(upper)
+    )
+}
+
+round_slopes_elim <- bind_rows(
+  get_round_slope(
+    "sig_sum",
+    "sig_sum:round_c",
+    "Signature"
+  ),
+  get_round_slope(
+    "showstopper_sum",
+    "showstopper_sum:round_c",
+    "Showstopper"
+  ),
+  get_round_slope(
+    "tech_rank",
+    "tech_rank:round_c",
+    "Technical rank improvement\n2 slots",
+    invert = TRUE,
+    multiplier = 2
+  )
+)
+
+find_crossings <- function(dat, reference_term, reference_label) {
+  ref <- dat %>%
+    filter(term == reference_term) %>%
+    select(round, ref_exp_slope = exp_slope)
+  
+  dat %>%
+    filter(term != reference_term) %>%
+    left_join(ref, by = "round") %>%
+    group_by(term) %>%
+    arrange(round, .by_group = TRUE) %>%
+    mutate(
+      diff = exp_slope - ref_exp_slope,
+      diff_next = lead(diff),
+      round_next = lead(round),
+      exp_slope_next = lead(exp_slope),
+      crosses_ref = diff == 0 | diff * diff_next < 0,
+      cross_round = round +
+        (0 - diff) * (round_next - round) / (diff_next - diff),
+      cross_exp_slope = exp_slope +
+        (cross_round - round) *
+        (exp_slope_next - exp_slope) / (round_next - round),
+      direction = if_else(diff_next < 0, "below", "above")
+    ) %>%
+    filter(crosses_ref) %>%
+    ungroup() %>%
+    mutate(
+      reference = reference_term,
+      crossing_type = paste(reference_label, direction, sep = ": ")
+    )
+}
+
+cross_showstopper <- find_crossings(
+  round_slopes_elim,
+  reference_term = "Showstopper",
+  reference_label = "Crosses Showstopper"
+)
+
+cross_technical <- find_crossings(
+  round_slopes_elim,
+  reference_term = "Technical rank improvement\n2 slots",
+  reference_label = "Crosses Technical"
+)
+
+cross_pts <- bind_rows(
+  cross_showstopper,
+  cross_technical
+) %>%
+  mutate(
+    crossing_type = factor(
+      crossing_type,
+      levels = c(
+        "Crosses Showstopper: below",
+        "Crosses Showstopper: above",
+        "Crosses Technical: below",
+        "Crosses Technical: above"
+      )
+    )
+  )
+
+ggplot(round_slopes_elim, aes(x = round, y = exp_slope)) +
+  geom_hline(yintercept = 1, linetype = "dashed") +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  geom_point(
+    data = cross_pts,
+    aes(
+      x = cross_round,
+      y = cross_exp_slope,
+      color = crossing_type
+    ),
+    size = 3,
+    inherit.aes = FALSE
+  ) +
+  scale_color_manual(
+    values = c(
+      "Crosses Showstopper: below" = "darkred",
+      "Crosses Showstopper: above" = "salmon",
+      "Crosses Technical: below" = "darkorange3",
+      "Crosses Technical: above" = "moccasin"
+    ),
+    name = "Crossing direction"
+  ) +
+  facet_wrap(~ term) +
+  scale_x_continuous(breaks = 1:9) +
+  labs(
+    x = "Round",
+    y = "Round-specific odds ratio",
+    title = "Round-specific associations with elimination",
+    subtitle = "Signature/showstopper are +1 score point; technical is improvement by 2 ranks"
+  ) +
+  theme_minimal(base_size = 13)
+```
+
+here it looks like sometime shortly around round 3 increasing in two slots of technical rank becomes more important than increasing a single component of flavor/looks/bake in showstopper or signature
+
+
+```{r, echo = FALSE}
+library(tidyverse)
+library(broom)
+library(ggplot2)
+library(survival)
+
+# Center round for the Star Baker model.
+# Star Baker uses Rounds 1-10, so this centers at the mean Star Baker round.
+judging_sb <- judging_sb %>%
+  mutate(round_c = round - 1)
+
+fit_sb_round_interact <- clogit(
+  star_baker ~ 
+    sig_sum + showstopper_sum + tech_rank +
+    sig_sum:round_c +
+    showstopper_sum:round_c +
+    tech_rank:round_c +
+    strata(episode),
+  data = judging_sb
+)
+
+summary(fit_sb_round_interact)
+
+coef_sb <- coef(fit_sb_round_interact)
+vcov_sb <- vcov(fit_sb_round_interact)
+
+round_grid <- tibble(
+  round = sort(unique(judging_sb$round)),
+  round_c = round - 1
+)
+
+get_round_slope_sb <- function(
+  main,
+  interaction,
+  label,
+  invert = FALSE,
+  multiplier = 1
+) {
+  beta <- coef_sb[[main]]
+  gamma <- coef_sb[[interaction]]
+  
+  var_beta <- vcov_sb[main, main]
+  var_gamma <- vcov_sb[interaction, interaction]
+  cov_bg <- vcov_sb[main, interaction]
+  
+  round_grid %>%
+    mutate(
+      term = label,
+      slope_raw = beta + round_c * gamma,
+      slope = multiplier * if (invert) -slope_raw else slope_raw,
+      se_raw = sqrt(var_beta + round_c^2 * var_gamma + 2 * round_c * cov_bg),
+      se = multiplier * se_raw,
+      lower = slope - 1.96 * se,
+      upper = slope + 1.96 * se,
+      exp_slope = exp(slope),
+      exp_lower = exp(lower),
+      exp_upper = exp(upper)
+    )
+}
+
+round_slopes_sb <- bind_rows(
+  get_round_slope_sb(
+    "sig_sum",
+    "sig_sum:round_c",
+    "Signature"
+  ),
+  get_round_slope_sb(
+    "showstopper_sum",
+    "showstopper_sum:round_c",
+    "Showstopper"
+  ),
+  get_round_slope_sb(
+    "tech_rank",
+    "tech_rank:round_c",
+    "Technical rank improvement\n2 slots",
+    invert = TRUE,
+    multiplier = 2
+  )
+)
+
+find_crossings_sb <- function(dat, reference_term, reference_label) {
+  ref <- dat %>%
+    filter(term == reference_term) %>%
+    select(round, ref_exp_slope = exp_slope)
+  
+  dat %>%
+    filter(term != reference_term) %>%
+    left_join(ref, by = "round") %>%
+    group_by(term) %>%
+    arrange(round, .by_group = TRUE) %>%
+    mutate(
+      diff = exp_slope - ref_exp_slope,
+      diff_next = lead(diff),
+      round_next = lead(round),
+      exp_slope_next = lead(exp_slope),
+      crosses_ref = diff == 0 | diff * diff_next < 0,
+      cross_round = round +
+        (0 - diff) * (round_next - round) / (diff_next - diff),
+      cross_exp_slope = exp_slope +
+        (cross_round - round) *
+        (exp_slope_next - exp_slope) / (round_next - round),
+      
+      # Direction after crossing:
+      # below = the term's OR becomes smaller than the reference OR
+      # above = the term's OR becomes larger than the reference OR
+      direction = if_else(diff_next < 0, "below", "above")
+    ) %>%
+    filter(crosses_ref) %>%
+    ungroup() %>%
+    mutate(
+      reference = reference_term,
+      crossing_type = paste(reference_label, direction, sep = ": ")
+    )
+}
+
+cross_showstopper_sb <- find_crossings_sb(
+  round_slopes_sb,
+  reference_term = "Showstopper",
+  reference_label = "Crosses Showstopper"
+)
+
+cross_technical_sb <- find_crossings_sb(
+  round_slopes_sb,
+  reference_term = "Technical rank improvement\n2 slots",
+  reference_label = "Crosses Technical"
+)
+
+cross_pts_sb <- bind_rows(
+  cross_showstopper_sb,
+  cross_technical_sb
+) %>%
+  mutate(
+    crossing_type = factor(
+      crossing_type,
+      levels = c(
+        "Crosses Showstopper: below",
+        "Crosses Showstopper: above",
+        "Crosses Technical: below",
+        "Crosses Technical: above"
+      )
+    )
+  )
+
+ggplot(round_slopes_sb, aes(x = round, y = exp_slope)) +
+  geom_hline(yintercept = 1, linetype = "dashed") +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  geom_point(
+    data = cross_pts_sb,
+    aes(
+      x = cross_round,
+      y = cross_exp_slope,
+      color = crossing_type
+    ),
+    size = 3,
+    inherit.aes = FALSE
+  ) +
+  scale_color_manual(
+    values = c(
+      "Crosses Showstopper: below" = "darkred",
+      "Crosses Showstopper: above" = "salmon",
+      "Crosses Technical: below" = "darkorange3",
+      "Crosses Technical: above" = "moccasin"
+    ),
+    name = "Crossing direction"
+  ) +
+  facet_wrap(~ term) +
+  scale_x_continuous(breaks = 1:10) +
+  labs(
+    x = "Round",
+    y = "Round-specific odds ratio",
+    title = "Round-specific associations with Star Baker",
+    subtitle = "Signature/showstopper are +1 score point; technical is improvement by 2 ranks"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "bottom")
+```
+
+Here we have the effect of moving up two slots in the technical rank slowly increassign over time and trading importance with increasing a componbent of flavor/looks/bake in the signature around round 4-5 but the increasing showstopper components is overwhelmingly the most important here it seems. 
+
+> Star-baker selection appears strongly associated with high performance in the showstopper while over time better performance in the technical is more protective against elimnation. This is consistent with star baker being a high-end performance award, where
+standing out matters, while elimination is a lower-tail selection problem, where
+the key issue is avoiding one of the weakest overall performances in the episode - most clearly found in low technical rank.
+
+Just out of curiosity we check what proportion of those that scored highest in the showstopper sum win star baker, we filter by each round by the best showstopper scores required and see how many of those groupings include star baker,
+ 
+```{r}
+tmp <- judging_sb %>% 
+  group_by(series, round) %>% 
+  mutate(
+    best_showstopper_sum = as.integer(showstopper_sum == max(showstopper_sum, na.rm = TRUE)),
+    best_sig_sum = as.integer(sig_sum == max(sig_sum, na.rm = TRUE))
+  ) %>%
+  ungroup()
+
+showstopper_group_contains_star_baker <- tmp %>%
+  group_by(series, round) %>%
+  summarise(
+    n_best_showstopper_sum = sum(best_showstopper_sum),
+    star_baker_in_best_showstopper_group = any(best_showstopper_sum == 1 & star_baker == 1),
+    .groups = "drop"
+  )
+
+showstopper_group_contains_star_baker %>%
+  summarise(
+    n_episodes = n(),
+    n_contained_star_baker = sum(star_baker_in_best_showstopper_group),
+    prop_contained_star_baker = mean(star_baker_in_best_showstopper_group)
+  )
+```
+
+that's pretty high just from looking at who scored the best in each episodes showstopper!!!! That is just looking at their showstopper we can almost predict the group the star baker is in almost $90\%$ of the time!
+
+All this is evidence that
+
+- Star Baker is a high-end award: it rewards standing out. 
+
+- For elimination, Technical performance appears most consequential in later rounds. Because elimination is a lower-tail selection problem, the model is asking which baker falls into the weakest part of the episode-specific risk set. As the risk set shrinks, poor Technical placement becomes harder to hide and can be especially damaging when Signature and Showstopper scores do not clearly separate another baker as weaker.
+
+We can get a sense to see if the signature and showstopper perfomrance is more tight in latter rounds by looking at SD and IQR,
+
+
+```{r}
+library(tidyverse)
+
+score_spread_by_episode <- judging %>%
+  filter(round <= 9) %>%
+  group_by(series, round, episode) %>%
+  summarise(
+    n_bakers = n(),
+
+    sig_sd = sd(sig_sum, na.rm = TRUE),
+    sig_range = max(sig_sum, na.rm = TRUE) - min(sig_sum, na.rm = TRUE),
+
+    show_sd = sd(showstopper_sum, na.rm = TRUE),
+    show_range = max(showstopper_sum, na.rm = TRUE) - min(showstopper_sum, na.rm = TRUE),
+
+    .groups = "drop"
+  )
+
+spread_by_round <- score_spread_by_episode %>%
+  group_by(round) %>%
+  summarise(
+    n_episodes = n(),
+    mean_n_bakers = mean(n_bakers, na.rm = TRUE),
+
+    mean_sig_sd = mean(sig_sd, na.rm = TRUE),
+    mean_sig_range = mean(sig_range, na.rm = TRUE),
+
+    mean_show_sd = mean(show_sd, na.rm = TRUE),
+    mean_show_range = mean(show_range, na.rm = TRUE),
+
+    .groups = "drop"
+  )
+
+spread_by_round
+```
+
+looks like it a little bit, so the field narrows in terms of sig and showstopper (what they can porep for) and the elimination decision is based on the technical.
+
+If I was going to track what mattered most over a season to coming out as the final winner this all seems to indicate that it would be signature performance until about round 3, then technical until round 9 
+
+#### (Interacted) Model Prediction Evaluation
+
+I also evaluate how well the conditional logit models for star baker and elimination predict the selected baker within each episode (when trained on all other episodes). We see then that the models are not only descriptive; they have some ability to identify likely Star Baker and elimination candidates from the episode-specific risk set.
+
+The prediction task is difficult because each episode has a changing set of bakers. Early episodes include many possible candidates, while later episodes include only a few. For each episode, the model assigns each baker a predicted probability, ranks the bakers from most to least likely to be selected, and then checks where the actual Star Baker or eliminated baker falls in that ordering.
+
+Prediction is evaluated in two related ways. First, I use episode-level ranking metrics:
+
+\begin{itemize}
+\item top-1 accuracy: whether the actual selected baker has the highest predicted probability;
+\item top-2 and top-3 accuracy: whether the actual selected baker is among the model's top two or top three candidates;
+\item mean log loss: whether the model assigns high probability to the actual selected baker;
+\item median actual rank: where the true Star Baker or eliminated baker falls in the model's predicted ordering;
+\item mean actual probability: the model-assigned probability for the baker who was actually selected.
+\end{itemize}
+
+Second, I also summarize the same predictions as a binary classification problem over baker-episode rows. In this version, the top-ranked baker in each episode is treated as the model's positive prediction, while all other bakers are treated as negative predictions. I report the resulting confusion matrices, sensitivity, specificity, positive predictive value, AUROC, and AUPRC.
+
+These binary metrics should be interpreted carefully. This is not an ordinary independent binary classification task because each episode has exactly one selected baker and the model is forced to rank bakers within that episode. Under the top-1 classification rule, sensitivity and positive predictive value are closely tied to top-1 accuracy: the model gets one positive prediction per episode, and there is one true positive per episode. Specificity is usually high because most baker-episode rows are non-selected bakers.
+
+AUROC and AUPRC provide threshold-free summaries of whether selected bakers tend to receive higher predicted probabilities than non-selected bakers. However, the ranking metrics remain the most directly relevant evaluation criteria because the actual prediction problem is episode-specific: among the bakers still competing in a given week, who is most likely to be selected?
+
+##### LOOCV
+
+I use leave-one-episode-out cross-validation as the main prediction check. For each episode, the model is refit on all other episodes and then used to predict the held-out episode. Since the conditional logit model conditions on the episode-specific risk set, the held-out episode does not need an estimated stratum intercept. I use the fitted component coefficients to compute a linear predictor for each baker in the held-out episode, then renormalize those values into within-episode predicted probabilities.
+
+The leave-one-episode-out results should still be interpreted as within-data-set validation. The held-out episodes come from the same overall collection of series, judges, scoring conventions, and data-processing choices. A stricter prediction task would be leave-one-series-out cross-validation, which would ask whether the estimated judging patterns generalize to an entirely unseen season.
+
+
+```{r}
+library(dplyr)
+library(purrr)
+library(survival)
+library(yardstick)
+library(tidyr)
+
+# ------------------------------------------------------------
+# In-sample prediction from fitted conditional logit model
+# ------------------------------------------------------------
+# using predict() for the linear predictor and converting those linear predictors into within-episode choice probabilities:
+
+predict_episode_probs <- function(model, data, outcome) {
+  data %>%
+    mutate(
+      lp = as.numeric(predict(model, newdata = data, type = "lp"))
+    ) %>%
+    group_by(episode) %>%
+    mutate(
+      pred_prob = exp(lp - max(lp)) / sum(exp(lp - max(lp))),
+      pred_rank = rank(-pred_prob, ties.method = "first"),
+      actual = as.integer(.data[[outcome]])
+    ) %>%
+    ungroup()
+}
+
+pred_sb <- predict_episode_probs(fit_sb_clogit, judging_sb, "star_baker")
+pred_elim <- predict_episode_probs(fit_elim_clogit, judging_elim, "eliminated")
+
+
+# ------------------------------------------------------------
+# Leave-one-episode-out cross-validation
+# ------------------------------------------------------------
+
+loo_episode_predict <- function(data, outcome, rhs) {
+  episodes <- sort(unique(data$episode))
+
+  purrr::map_dfr(episodes, function(ep) {
+
+    train <- data %>% filter(episode != ep)
+    test  <- data %>% filter(episode == ep)
+
+    form <- as.formula(
+      paste0(outcome, " ~ ", rhs, " + strata(episode)")
+    )
+
+    fit <- survival::clogit(
+      form,
+      data = train,
+      method = "exact"
+    )
+
+    beta_hat <- coef(fit)
+
+    # Drop aliased / non-estimable coefficients if needed
+    beta_hat <- beta_hat[!is.na(beta_hat)]
+
+    # Build design matrix for held-out episode using RHS only
+    X_test <- model.matrix(
+      as.formula(paste0("~ ", rhs)),
+      data = test
+    )
+
+    # Remove intercept because clogit has no estimated intercept
+    if ("(Intercept)" %in% colnames(X_test)) {
+      X_test <- X_test[, colnames(X_test) != "(Intercept)", drop = FALSE]
+    }
+
+    # Add missing coefficient columns as zeros
+    missing_cols <- setdiff(names(beta_hat), colnames(X_test))
+
+    if (length(missing_cols) > 0) {
+      missing_mat <- matrix(
+        0,
+        nrow = nrow(X_test),
+        ncol = length(missing_cols),
+        dimnames = list(NULL, missing_cols)
+      )
+
+      X_test <- cbind(X_test, missing_mat)
+    }
+
+    # Keep only coefficient columns and preserve order
+    X_test <- X_test[, names(beta_hat), drop = FALSE]
+
+    test %>%
+      mutate(
+        lp = as.numeric(X_test %*% beta_hat)
+      ) %>%
+      group_by(episode) %>%
+      mutate(
+        pred_prob = exp(lp - max(lp)) / sum(exp(lp - max(lp))),
+        pred_rank = rank(-pred_prob, ties.method = "first"),
+        actual = as.integer(.data[[outcome]])
+      ) %>%
+      ungroup()
+  })
+}
+
+
+# ------------------------------------------------------------
+# Model RHS
+# ------------------------------------------------------------
+
+rhs_interact <- paste(
+  "sig_sum + showstopper_sum + tech_rank",
+  "sig_sum:round + showstopper_sum:round + tech_rank:round",
+  sep = " + "
+)
+
+
+# ------------------------------------------------------------
+# Generate leave-one-episode-out predictions
+# ------------------------------------------------------------
+
+pred_sb_loo_interact <- loo_episode_predict(
+  data = judging_sb,
+  outcome = "star_baker",
+  rhs = rhs_interact
+)
+
+pred_elim_loo_interact <- loo_episode_predict(
+  data = judging_elim,
+  outcome = "eliminated",
+  rhs = rhs_interact
+)
+
+# ------------------------------------------------------------
+# Episode-level ranking + binary classification metrics
+# ------------------------------------------------------------
+
+make_binary_prediction_data <- function(pred_data) {
+  pred_data %>%
+    mutate(
+      truth = factor(
+        if_else(actual == 1, "yes", "no"),
+        levels = c("yes", "no")
+      ),
+      pred_class = factor(
+        if_else(pred_rank == 1, "yes", "no"),
+        levels = c("yes", "no")
+      )
+    )
+}
+
+eval_model_predictions <- function(pred_data) {
+
+  # Ranking metrics: one row per episode
+  ranking_metrics <- pred_data %>%
+    group_by(episode) %>%
+    summarise(
+      actual_rank = pred_rank[actual == 1],
+      actual_prob = pred_prob[actual == 1],
+      top1_correct = actual_rank == 1,
+      top2_correct = actual_rank <= 2,
+      top3_correct = actual_rank <= 3,
+      log_loss = -log(actual_prob),
+      .groups = "drop"
+    ) %>%
+    summarise(
+      n_episodes = n(),
+      top1_acc = mean(top1_correct),
+      top2_acc = mean(top2_correct),
+      top3_acc = mean(top3_correct),
+      mean_log_loss = mean(log_loss),
+      median_actual_rank = median(actual_rank),
+      mean_actual_prob = mean(actual_prob),
+      .groups = "drop"
+    )
+
+  # Binary metrics: one row per baker-episode
+  # Positive prediction = top-ranked baker in the episode
+  binary_data <- make_binary_prediction_data(pred_data)
+
+  binary_metrics <- binary_data %>%
+    summarise(
+      sensitivity = sens_vec(
+        truth = truth,
+        estimate = pred_class,
+        event_level = "first"
+      ),
+      specificity = spec_vec(
+        truth = truth,
+        estimate = pred_class,
+        event_level = "first"
+      ),
+      ppv = ppv_vec(
+        truth = truth,
+        estimate = pred_class,
+        event_level = "first"
+      ),
+      auroc = roc_auc_vec(
+        truth = truth,
+        estimate = pred_prob,
+        event_level = "first"
+      ),
+      auprc = pr_auc_vec(
+        truth = truth,
+        estimate = pred_prob,
+        event_level = "first"
+      ),
+      .groups = "drop"
+    )
+
+  bind_cols(ranking_metrics, binary_metrics)
+}
+
+ranking_metric_table <- bind_rows(
+  eval_model_predictions(pred_sb_loo_interact) %>%
+    mutate(outcome = "Star Baker"),
+  eval_model_predictions(pred_elim_loo_interact) %>%
+    mutate(outcome = "Elimination")
+) %>%
+  select(
+    outcome,
+    n_episodes,
+    top1_acc,
+    top2_acc,
+    top3_acc,
+    sensitivity,
+    specificity,
+    ppv,
+    auroc,
+    auprc,
+    mean_log_loss,
+    median_actual_rank,
+    mean_actual_prob
+  )
+
+ranking_metric_table[, -c(1, 11:13)]
+```
+
+- AUROC has a direct ranking interpretation: it is the probability that the model assigns a higher predicted probability to a randomly selected true event case than to a randomly selected non-event case.
+  - For Star Baker, AUROC is the probability that an actual Star Baker is ranked above a non-Star Baker by predicted Star Baker probability.
+  - For elimination, AUROC is the probability that an eliminated baker is ranked above a non-eliminated baker by predicted elimination probability.
+
+- AUPRC summarizes the precision-recall tradeoff.
+  - Precision asks: among the bakers the model assigns high predicted probability, how many were actually selected?
+  - Recall asks: among the bakers who were actually selected, how many did the model successfully flag?
+  - This is especially relevant here because each episode has only one Star Baker and usually one eliminated baker, so the event class is rare within each weekly risk set.
+  
+We also particularly look at how the model performs in the final stage - given those last three contestants
+
+```{r}
+# ------------------------------------------------------------
+# Final winner among finalists validation
+# Uses Round 10 Star Baker model predictions
+# In Round 10, star_baker == series winner
+# ------------------------------------------------------------
+
+eval_final_winner_predictions <- function(pred_data) {
+
+  finalist_predictions <- pred_data %>%
+    filter(round == 10) %>%
+    group_by(series, episode) %>%
+    arrange(pred_rank, .by_group = TRUE) %>%
+    mutate(
+      is_predicted_winner = pred_rank == min(pred_rank, na.rm = TRUE),
+      is_actual_winner = actual == 1
+    ) %>%
+    select(
+      series,
+      episode,
+      contestant,
+      pred_rank,
+      pred_prob,
+      is_predicted_winner,
+      is_actual_winner
+    ) %>%
+    ungroup()
+
+  final_episode_metrics <- finalist_predictions %>%
+    group_by(series, episode) %>%
+    summarise(
+      n_finalists = n(),
+
+      predicted_winner = contestant[which.min(pred_rank)][1],
+      predicted_winner_prob = pred_prob[which.min(pred_rank)][1],
+
+      actual_winner = contestant[which(is_actual_winner)][1],
+      actual_winner_rank = pred_rank[which(is_actual_winner)][1],
+      actual_winner_prob = pred_prob[which(is_actual_winner)][1],
+
+      top1_correct = actual_winner_rank == 1,
+      top2_correct = actual_winner_rank <= 2,
+      top3_correct = actual_winner_rank <= 3,
+
+      log_loss = -log(actual_winner_prob),
+
+      .groups = "drop"
+    )
+
+  summary_metrics <- final_episode_metrics %>%
+    summarise(
+      n_finals = n(),
+      n_top1_correct = sum(top1_correct, na.rm = TRUE),
+      top1_acc = mean(top1_correct, na.rm = TRUE),
+      top2_acc = mean(top2_correct, na.rm = TRUE),
+      top3_acc = mean(top3_correct, na.rm = TRUE),
+      mean_log_loss = mean(log_loss, na.rm = TRUE),
+      median_actual_rank = median(actual_winner_rank, na.rm = TRUE),
+      mean_actual_prob = mean(actual_winner_prob, na.rm = TRUE),
+      .groups = "drop"
+    )
+
+  list(
+    by_finalist = finalist_predictions,
+    by_final = final_episode_metrics,
+    summary = summary_metrics
+  )
+}
+
+final_winner_validation <- eval_final_winner_predictions(
+  pred_data = pred_sb_loo_interact
+)
+```
+
+```{r}
+# Percentage of final winners correctly predicted as top-ranked finalist
+final_winner_percent_right <- final_winner_validation$by_final %>%
+  summarise(
+    n_finals = n(),
+    n_correct = sum(top1_correct),
+    percent_right = 100 * mean(top1_correct)
+  )
+
+final_winner_percent_right
+```
+
+```{r}
+make_confusion_matrix_table <- function(pred_data, outcome_label) {
+  cm <- make_binary_prediction_data(pred_data) %>%
+    conf_mat(
+      truth = truth,
+      estimate = pred_class
+    )
+
+  as_tibble(cm$table) %>%
+    mutate(outcome = outcome_label) %>%
+    rename(
+      Prediction = Prediction,
+      Truth = Truth,
+      n = n
+    ) %>%
+    select(outcome, Prediction, Truth, n)
+}
+
+confusion_matrix_table <- bind_rows(
+  make_confusion_matrix_table(pred_sb_loo_interact, "Star Baker"),
+  make_confusion_matrix_table(pred_elim_loo_interact, "Elimination")
+)
+
+confusion_matrix_table
+
+knitr::kable(
+  confusion_matrix_table,
+  caption = "Leave-one-episode-out confusion matrices"
+)
+```
+
+here leave one out cross validation actualyl performs comparably well to naive!
+
+##### Sequential CV
+
+Sequential CV doesn't make the model suffer too much it seems!!!
+
+```{r}
+# ============================================================
+# Sequential episode cross-validation
+# ============================================================
+# For each test episode, train only on earlier episodes.
+# This is stricter than leave-one-episode-out CV because it does
+# not allow future judging behavior to inform past predictions.
+# ============================================================
+
+library(dplyr)
+library(purrr)
+library(survival)
+library(yardstick)
+library(tidyr)
+
+# ------------------------------------------------------------
+# Helper: softmax probabilities within held-out episode
+# ------------------------------------------------------------
+
+softmax_by_episode <- function(dat) {
+  dat %>%
+    group_by(episode) %>%
+    mutate(
+      pred_prob = exp(lp - max(lp, na.rm = TRUE)) /
+        sum(exp(lp - max(lp, na.rm = TRUE)), na.rm = TRUE),
+      pred_rank = rank(-pred_prob, ties.method = "first")
+    ) %>%
+    ungroup()
+}
+
+# ------------------------------------------------------------
+# Sequential episode CV prediction
+# ------------------------------------------------------------
+# data: judging_sb or judging_elim
+# outcome: "star_baker" or "eliminated"
+# rhs: model RHS as character string
+#
+# The function orders episodes by series and round.
+# For each test episode, it trains on all episodes from earlier
+# series/rounds only.
+# ------------------------------------------------------------
+
+sequential_episode_predict <- function(
+  data,
+  outcome,
+  rhs,
+  min_train_episodes = 10
+) {
+
+  episode_index <- data %>%
+    distinct(series, round, episode) %>%
+    arrange(series, round, episode) %>%
+    mutate(cv_order = row_number())
+
+  data_indexed <- data %>%
+    left_join(episode_index, by = c("series", "round", "episode"))
+
+  test_episodes <- episode_index %>%
+    filter(cv_order > min_train_episodes)
+
+  purrr::map_dfr(seq_len(nrow(test_episodes)), function(m) {
+
+    test_ep <- test_episodes$episode[m]
+    test_order <- test_episodes$cv_order[m]
+
+    train <- data_indexed %>%
+      filter(cv_order < test_order)
+
+    test <- data_indexed %>%
+      filter(episode == test_ep)
+
+    # Need at least some events and non-events in the training data.
+    if (
+      n_distinct(train$episode) < min_train_episodes ||
+      sum(train[[outcome]] == 1, na.rm = TRUE) == 0 ||
+      sum(train[[outcome]] == 0, na.rm = TRUE) == 0
+    ) {
+      return(tibble())
+    }
+
+    form <- as.formula(
+      paste0(outcome, " ~ ", rhs, " + strata(episode)")
+    )
+
+    fit <- tryCatch(
+      survival::clogit(
+        form,
+        data = train,
+        method = "exact"
+      ),
+      error = function(e) NULL
+    )
+
+    if (is.null(fit)) {
+      return(tibble())
+    }
+
+    beta_hat <- coef(fit)
+    beta_hat <- beta_hat[!is.na(beta_hat)]
+
+    if (length(beta_hat) == 0) {
+      return(tibble())
+    }
+
+    # Build test design matrix from RHS only.
+    X_test <- model.matrix(
+      as.formula(paste0("~ ", rhs)),
+      data = test
+    )
+
+    # Remove intercept.
+    if ("(Intercept)" %in% colnames(X_test)) {
+      X_test <- X_test[, colnames(X_test) != "(Intercept)", drop = FALSE]
+    }
+
+    # Add any missing coefficient columns as zero.
+    missing_cols <- setdiff(names(beta_hat), colnames(X_test))
+
+    if (length(missing_cols) > 0) {
+      missing_mat <- matrix(
+        0,
+        nrow = nrow(X_test),
+        ncol = length(missing_cols),
+        dimnames = list(NULL, missing_cols)
+      )
+
+      X_test <- cbind(X_test, missing_mat)
+    }
+
+    # Drop any extra columns not estimated in training.
+    X_test <- X_test[, names(beta_hat), drop = FALSE]
+
+    test %>%
+      mutate(
+        lp = as.numeric(X_test %*% beta_hat),
+        actual = as.integer(.data[[outcome]]),
+        train_n_episodes = n_distinct(train$episode),
+        train_max_series = max(train$series, na.rm = TRUE),
+        train_max_round = max(train$round[train$series == train_max_series], na.rm = TRUE)
+      ) %>%
+      softmax_by_episode()
+  })
+}
+
+# ------------------------------------------------------------
+# Model RHS
+# ------------------------------------------------------------
+
+rhs_interact <- paste(
+  "sig_sum + showstopper_sum + tech_rank",
+  "sig_sum:round + showstopper_sum:round + tech_rank:round",
+  sep = " + "
+)
+
+# ------------------------------------------------------------
+# Generate sequential-CV predictions
+# ------------------------------------------------------------
+# min_train_episodes controls how much history is required before testing.
+# Increase if early fits are unstable.
+# ------------------------------------------------------------
+
+pred_sb_seqcv_interact <- sequential_episode_predict(
+  data = judging_sb,
+  outcome = "star_baker",
+  rhs = rhs_interact,
+  min_train_episodes = 10
+)
+
+pred_elim_seqcv_interact <- sequential_episode_predict(
+  data = judging_elim,
+  outcome = "eliminated",
+  rhs = rhs_interact,
+  min_train_episodes = 10
+)
+
+# ------------------------------------------------------------
+# Binary prediction helper
+# ------------------------------------------------------------
+
+make_binary_prediction_data <- function(pred_data) {
+  pred_data %>%
+    mutate(
+      truth = factor(
+        if_else(actual == 1, "yes", "no"),
+        levels = c("yes", "no")
+      ),
+      pred_class = factor(
+        if_else(pred_rank == 1, "yes", "no"),
+        levels = c("yes", "no")
+      )
+    )
+}
+
+# ------------------------------------------------------------
+# Evaluation function
+# ------------------------------------------------------------
+
+eval_model_predictions <- function(pred_data) {
+
+  ranking_metrics <- pred_data %>%
+    group_by(episode) %>%
+    summarise(
+      actual_rank = pred_rank[actual == 1][1],
+      actual_prob = pred_prob[actual == 1][1],
+      top1_correct = actual_rank == 1,
+      top2_correct = actual_rank <= 2,
+      top3_correct = actual_rank <= 3,
+      log_loss = -log(actual_prob),
+      .groups = "drop"
+    ) %>%
+    summarise(
+      n_episodes = n(),
+      top1_acc = mean(top1_correct, na.rm = TRUE),
+      top2_acc = mean(top2_correct, na.rm = TRUE),
+      top3_acc = mean(top3_correct, na.rm = TRUE),
+      mean_log_loss = mean(log_loss, na.rm = TRUE),
+      median_actual_rank = median(actual_rank, na.rm = TRUE),
+      mean_actual_prob = mean(actual_prob, na.rm = TRUE),
+      .groups = "drop"
+    )
+
+  binary_data <- make_binary_prediction_data(pred_data)
+
+  binary_metrics <- binary_data %>%
+    summarise(
+      sensitivity = sens_vec(
+        truth = truth,
+        estimate = pred_class,
+        event_level = "first"
+      ),
+      specificity = spec_vec(
+        truth = truth,
+        estimate = pred_class,
+        event_level = "first"
+      ),
+      ppv = ppv_vec(
+        truth = truth,
+        estimate = pred_class,
+        event_level = "first"
+      ),
+      auroc = roc_auc_vec(
+        truth = truth,
+        estimate = pred_prob,
+        event_level = "first"
+      ),
+      auprc = pr_auc_vec(
+        truth = truth,
+        estimate = pred_prob,
+        event_level = "first"
+      ),
+      .groups = "drop"
+    )
+
+  bind_cols(ranking_metrics, binary_metrics)
+}
+
+# ------------------------------------------------------------
+# Sequential-CV metric table
+# ------------------------------------------------------------
+
+ranking_metric_table_seqcv <- bind_rows(
+  eval_model_predictions(pred_sb_seqcv_interact) %>%
+    mutate(outcome = "Star Baker"),
+  eval_model_predictions(pred_elim_seqcv_interact) %>%
+    mutate(outcome = "Elimination")
+) %>%
+  select(
+    outcome,
+    top1_acc,
+    top2_acc,
+    top3_acc,
+    sensitivity,
+    specificity,
+    ppv,
+    auroc,
+    auprc
+  )
+
+ranking_metric_table_seqcv %>%
+  mutate(
+    across(
+      c(top1_acc, top2_acc, top3_acc, sensitivity, specificity, ppv, auroc, auprc),
+      ~ round(.x, 3)
+    )
+  ) %>%
+  rename("sens" = sensitivity, "spec" = specificity) %>%
+  knitr::kable(
+    caption = "Sequential episode cross-validation metrics"
+  )
+
+# ------------------------------------------------------------
+# Confusion matrices under sequential CV
+# ------------------------------------------------------------
+
+make_confusion_matrix_table <- function(pred_data, outcome_label) {
+  cm <- make_binary_prediction_data(pred_data) %>%
+    conf_mat(
+      truth = truth,
+      estimate = pred_class
+    )
+
+  as_tibble(cm$table) %>%
+    mutate(outcome = outcome_label) %>%
+    select(outcome, Prediction, Truth, n)
+}
+
+confusion_matrix_table_seqcv <- bind_rows(
+  make_confusion_matrix_table(pred_sb_seqcv_interact, "Star Baker"),
+  make_confusion_matrix_table(pred_elim_seqcv_interact, "Elimination")
+)
+
+confusion_matrix_table_seqcv %>%
+  knitr::kable(
+    caption = "Sequential episode cross-validation confusion matrices"
+  )
+
+# ------------------------------------------------------------
+# Compact comparison against LOOCV, if LOOCV objects exist
+# ------------------------------------------------------------
+
+if (
+  exists("pred_sb_loo_interact") &&
+  exists("pred_elim_loo_interact")
+) {
+
+  ranking_metric_table_loo <- bind_rows(
+    eval_model_predictions(pred_sb_loo_interact) %>%
+      mutate(outcome = "Star Baker"),
+    eval_model_predictions(pred_elim_loo_interact) %>%
+      mutate(outcome = "Elimination")
+  ) %>%
+    select(
+      outcome,
+      top1_acc,
+      top2_acc,
+      top3_acc,
+      auroc,
+      auprc
+    ) %>%
+    mutate(cv_scheme = "LOOCV")
+
+  ranking_metric_table_seq <- ranking_metric_table_seqcv %>%
+    select(
+      outcome,
+      top1_acc,
+      top2_acc,
+      top3_acc,
+      auroc,
+      auprc
+    ) %>%
+    mutate(cv_scheme = "Sequential CV")
+
+  cv_comparison_table <- bind_rows(
+    ranking_metric_table_loo,
+    ranking_metric_table_seq
+  ) %>%
+    select(
+      cv_scheme,
+      outcome,
+      top1_acc,
+      top2_acc,
+      top3_acc,
+      auroc,
+      auprc
+    )
+
+  cv_comparison_table %>%
+    mutate(
+      across(
+        c(top1_acc, top2_acc, top3_acc, auroc, auprc),
+        ~ round(.x, 3)
+      )
+    ) %>%
+    knitr::kable(
+      caption = "LOOCV versus sequential episode cross-validation"
+    )
+}
+```
+
+# Model for baker's latent ability
+
+We track each baker's scores across judged categories and stack them into a
+single long-format score outcome. Rather than fitting separate models for each
+score type, we model these scores jointly using a linear mixed-effects model.
+The model includes fixed effects for series and component type, allowing the
+fitted model to adjust for systematic differences across series, bake, flavor,
+appearance, and challenge/component categories. It also includes random
+intercepts for baker and episode.
+
+## Covariates and Predictors
+
+
+HERE i USE tech scaled to $[-1,1]$ within episodes to make components comparable!!!
+
+The technical challenge requires special handling because it is originally
+recorded as a within-episode rank rather than an absolute judged component
+score. When technical performance is included, it enters through the scaled
+technical rank, which is directionally comparable with the judged component
+scores: higher values represent stronger performance and lower values represent
+weaker performance. Therefore, the baker-level random intercept is best
+interpreted as an adjusted overall performance measure across signature,
+showstopper, and scaled technical performance, rather than as a pure measure of
+judged component-score ability.
+
+For baker $i$ in series $s$ and episode $e$, the score model can be written as
+
+$$
+Y_{ise}
+=
+X_{ise}^{\top}\beta + \theta_i + v_e + \varepsilon_{ise},
+$$
+
+where $Y_{ise}$ is the scaled score outcome and $X_{ise}$ contains the fixed
+effect indicators for series and component type.
+
+\begin{itemize}
+  \item $(1 \mid id)$ gives each baker a random intercept. I interpret
+  $\theta_i \sim N(0,\sigma_\theta^2)$ as a static proxy for the baker's
+  adjusted performance level. Higher $\theta_i$ means baker $i$ tends to receive
+  higher scores, after adjusting for series, episode, and component type.
+
+  \item Series is included as a fixed effect. This allows the model to adjust
+  for systematic differences across seasons, such as contestant strength,
+  scoring tendencies, judging standards, or challenge difficulty, without
+  requiring estimation of a separate series-level variance component.
+
+  \item $(1 \mid episode)$ gives each episode a random intercept. This captures
+  episode-level residual scoring tendencies after adjustment for baker
+  performance, series, component type, and other modeled structure. A negative
+  episode effect means that bakers tended to receive lower scores than expected
+  in that episode. This may reflect harder challenges, stricter judging, poor
+  collective execution, or other episode-specific factors. Therefore, these
+  effects should be interpreted as adjusted episode-level underperformance
+  rather than direct measures of classically difficult challenges.
+
+  \item Together, the random intercepts decompose the residual score tendency
+  into baker-level and episode-level components. The total random-intercept
+  contribution is
+
+  $$
+  \theta_i + v_e,
+  $$
+
+  where
+
+  $$
+  \theta_i \sim N(0,\sigma_\theta^2), \qquad
+  v_e \sim N(0,\sigma_v^2), \qquad
+  \varepsilon_{ise} \sim N(0,\sigma^2).
+  $$
+\end{itemize}
+
+In matrix form, the fitted mixed model can be written as
+
+$$
+Y = X\beta + Zb + \varepsilon,
+$$
+
+where $X\beta$ is the fixed-effect part of the model, $Zb$ is the
+random-effect part, and $b$ contains the baker and episode random effects. The
+model assumes
+
+$$
+b \sim N(0, G), \qquad
+\varepsilon \sim N(0, R),
+$$
+
+so that the marginal covariance of the observed scores is
+
+$$
+V = ZGZ^\top + R.
+$$
+
+The fixed effects and variance components are estimated first, typically by
+restricted maximum likelihood. Once the covariance structure has been estimated,
+the fitted random effects are predicted from the fixed-effect residuals using
+
+$$
+\hat b
+=
+\hat G Z^\top \hat V^{-1}(Y - X\hat\beta).
+$$
+
+These fitted random effects are empirical-Bayes predictions, also called
+BLUP-style estimates in the linear mixed-model setting. They are not raw baker
+averages or unrestricted baker fixed effects. They are shrunken estimates: a
+baker's fitted random effect is pulled toward zero unless their observed
+residual performance is consistently above or below average. Bakers with fewer
+observations or noisier records are shrunk more strongly toward the population
+mean, while bakers with more consistent evidence are allowed to deviate more.
+
+Equivalently, the fitted random effects can be understood as the solution to a
+penalized least-squares problem: the model tries to explain residual scoring
+patterns using baker and episode deviations, while penalizing deviations that are
+too large relative to the estimated between-baker and between-episode variance.
+This is the partial-pooling mechanism.
+
+For prediction, the interpretation depends on whether the baker or episode was
+observed in the fitted data. For an existing baker, predictions can include that
+baker's fitted random effect, giving a subject-specific prediction:
+
+$$
+\widehat Y_{ise}
+=
+X_{ise}^{\top}\hat\beta + \hat\theta_i + \hat v_e.
+$$
+
+For a brand-new baker with no observed scores, there is no fitted baker-specific
+random effect yet. In that case, the natural population-level prediction sets the
+new baker effect to zero:
+
+$$
+\hat\theta_{\mathrm{new}} = 0.
+$$
+
+If the new baker later accumulates observed scores, their random effect could be
+predicted using the same empirical-Bayes/BLUP logic: compare their observed
+scores with the fixed-effect prediction and shrink that residual information
+toward the population average according to the estimated covariance structure.
+
+Thus, the fitted baker and episode random effects should be understood as
+shrunken model-based estimates of relative adjusted performance or episode-level
+scoring tendency, not as directly observed performance summaries. The resulting
+baker rankings are useful descriptive summaries of latent performance under this
+model, but they are not definitive measures of true intrinsic baking ability.
+
+## Baker Effects
+
+```{r, echo = FALSE}
+score_long <- judging %>%
+  ungroup() %>% 
+  mutate(
+    series = factor(series),
+    round = as.numeric(round),
+    round_std = as.numeric(scale(round)),
+    episode = factor(episode),
+    tech_rank_scaled = (1/3)*tech_rank_scaled
+  ) %>%
+  pivot_longer(
+    cols = c(
+      signature_bake,
+      signature_flavor,
+      signature_looks,
+      showstopper_bake,
+      showstopper_flavor,
+      showstopper_looks,
+      tech_rank_scaled
+    ),
+    names_to = "component",
+    values_to = "score"
+  ) %>%
+  mutate(
+    component = factor(component),
+    score = as.numeric(score),
+    score_ord = ordered(score)
+  ) %>%
+  filter(!is.na(score)) %>%
+  arrange(series, round, contestant, component)
+```
+
+
+```{r}
+fit_score_lmm_series_fixed <- lme4::lmer(
+  score ~ 1 + component + series +
+    (1 | baker_id) +
+    (1 | episode),
+  data = score_long
+)
+
+re <- ranef(fit_score_lmm_series_fixed)
+```
+
+```{r}
+# Baker effects
+baker_effects_freq <- re$baker_id %>%
+  as.data.frame() %>%
+  tibble::rownames_to_column("baker_id") %>%
+  rename(theta_hat = `(Intercept)`) %>%
+  left_join(
+    judging %>%
+      select(baker_id, contestant, series, series_winner, eliminated_round) %>%
+      distinct(contestant, series, .keep_all = TRUE),
+    by = "baker_id"
+  ) %>%
+  arrange(desc(theta_hat)) %>% 
+  arrange(desc(theta_hat))
+
+
+baker_effects_freq
+```
+
+```{r}
+series_effects_freq <- fixef(fit_score_lmm_series_fixed) %>%
+  enframe(name = "term", value = "estimate") %>%
+  filter(term == "(Intercept)" | grepl("^series", term)) %>%
+  mutate(
+    series = case_when(
+      term == "(Intercept)" ~ levels(score_long$series)[1],
+      TRUE ~ sub("^series", "", term)
+    )
+  ) %>%
+  mutate(
+    series = as.integer(series),
+    series_effect_hat = case_when(
+      term == "(Intercept)" ~ 0,
+      TRUE ~ estimate
+    )
+  ) %>%
+  select(series, series_effect_hat) %>%
+  arrange(desc(series_effect_hat))
+
+series_effects_freq
+```
+
+these are less reliably estimated because there are relatively more of them compared to the fixed smaple size,
+
+```{r}
+# Episode effects
+episode_lookup <- score_long %>%
+  dplyr::mutate(episode = as.character(episode)) %>%
+  dplyr::distinct(episode, series, round)
+
+episode_effects_freq <- re$episode %>%
+  as.data.frame() %>%
+  tibble::rownames_to_column("episode") %>%
+  dplyr::rename(episode_effect_hat = `(Intercept)`) %>%
+  dplyr::mutate(episode = as.character(episode)) %>%
+  dplyr::left_join(episode_lookup, by = "episode") %>%
+  dplyr::arrange(episode_effect_hat)
+
+episode_effects_freq
+```
+
+
+
+## Season Balance
+
+The baker random effects can also be used to summarize how balanced each series was. Here, “balance” means how close the strongest adjusted bakers in a season were to one another under the mixed model. This is not a causal or definitive measure of cast strength. It is a descriptive summary of whether one baker clearly separated from the field, or whether the top of the season was tightly clustered.
+
+The table below reports, for each series:
+
+- the model’s top-ranked baker;
+- the winner and the winner’s within-season rank;
+- the strongest non-winner;
+- the gap between the winner and the strongest non-winner;
+- the gap between the top-ranked and third-ranked baker.
+
+A large positive winner-versus-best-nonwinner gap suggests that the winner was clearly ahead of the rest of the field under this fitted model. A negative gap means the model ranks at least one non-winner above the winner. A small top-three spread suggests a more balanced season at the top.
+
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+# ------------------------------------------------------------
+# Season balance table from fitted baker random effects
+# ------------------------------------------------------------
+# Requires:
+# - baker_effects_freq from the mixed model section
+# - columns: contestant, series, theta_hat, series_winner, eliminated_round
+# ------------------------------------------------------------
+
+season_balance <- baker_effects_freq %>%
+  mutate(
+    series = as.integer(series),
+    series_winner = as.integer(series_winner),
+    theta_hat = as.numeric(theta_hat)
+  ) %>%
+  group_by(series) %>%
+  arrange(desc(theta_hat), .by_group = TRUE) %>%
+  mutate(
+    within_season_rank = row_number(),
+    n_bakers = n()
+  ) %>%
+  summarise(
+    n_bakers = first(n_bakers),
+
+    prop_positive_effect = mean(theta_hat > 0, na.rm = TRUE),
+
+    sd_effect = sd(theta_hat, na.rm = TRUE),
+
+    top_baker = contestant[which.max(theta_hat)],
+    top_effect = max(theta_hat, na.rm = TRUE),
+
+    second_baker = contestant[order(theta_hat, decreasing = TRUE)[2]],
+    second_effect = theta_hat[order(theta_hat, decreasing = TRUE)[2]],
+
+    third_baker = contestant[order(theta_hat, decreasing = TRUE)[3]],
+    third_effect = theta_hat[order(theta_hat, decreasing = TRUE)[3]],
+
+    winner = contestant[series_winner == 1][1],
+    winner_effect = theta_hat[series_winner == 1][1],
+    winner_rank = within_season_rank[series_winner == 1][1],
+
+    best_nonwinner = contestant[series_winner == 0][which.max(theta_hat[series_winner == 0])],
+    best_nonwinner_effect = max(theta_hat[series_winner == 0], na.rm = TRUE),
+    best_nonwinner_rank = within_season_rank[
+      series_winner == 0
+    ][which.max(theta_hat[series_winner == 0])],
+
+    winner_vs_best_nonwinner_gap =
+      winner_effect - best_nonwinner_effect,
+
+    top3_spread = top_effect - third_effect,
+
+    full_range =
+      max(theta_hat, na.rm = TRUE) - min(theta_hat, na.rm = TRUE),
+
+    top4_minus_bottom4 =
+      mean(head(theta_hat, 4), na.rm = TRUE) -
+      mean(tail(theta_hat, 4), na.rm = TRUE),
+
+    .groups = "drop"
+  ) %>%
+  arrange(desc(winner_vs_best_nonwinner_gap))
+
+season_balance_display <- season_balance %>%
+  mutate(
+    winner_rank = paste0(winner_rank, " of ", n_bakers),
+    best_nonwinner_rank = paste0(best_nonwinner_rank, " of ", n_bakers),
+    prop_positive_effect = sprintf("%.1f%%", 100 * prop_positive_effect),
+    sd_effect = sprintf("%.3f", sd_effect),
+    top_effect = sprintf("%+.3f", top_effect),
+    winner_effect = sprintf("%+.3f", winner_effect),
+    best_nonwinner_effect = sprintf("%+.3f", best_nonwinner_effect),
+    winner_vs_best_nonwinner_gap = sprintf("%+.3f", winner_vs_best_nonwinner_gap),
+    top3_spread = sprintf("%.3f", top3_spread),
+    full_range = sprintf("%.3f", full_range),
+    top4_minus_bottom4 = sprintf("%.3f", top4_minus_bottom4)
+  ) %>%
+  arrange(top3_spread) %>%
+  select(
+    Series = series,
+    Winner = winner,
+    `Winner Effect` = winner_effect,
+    `Winner Rank` = winner_rank,
+    `Best Non-Winner` = best_nonwinner,
+    `Best Non-Winner Effect` = best_nonwinner_effect,
+    `Best Non-Winner Rank` = best_nonwinner_rank,
+    `Winner - Best Non-Winner` = winner_vs_best_nonwinner_gap,
+    `% Positive Effects` = prop_positive_effect,
+    `SD Effect` = sd_effect,
+    `Top 3 Spread` = top3_spread,
+    `Full Range` = full_range,
+    `Top 4 - Bottom 4` = top4_minus_bottom4
+  )
+
+knitr::kable(
+  season_balance_display,
+  align = c("c", "c", "l", "c", "l", "c", "c", "l", "c", "c", "c", "c", "c"),
+  caption = "Season balance based on fitted baker effects"
+) %>%
+  kableExtra::kable_styling(
+    full_width = FALSE,
+    position = "center",
+    bootstrap_options = c("striped", "hover", "condensed")
+  )
+```
+
+\newpage
+
+# Viewers Analysis
+
+Using the BARB 7 day viewing data
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(scales)
+
+weekly_viewing <- full_cln_dat %>%
+  distinct(series, round, episode, uk_airdate, viewers_7day) %>%
+  mutate(
+    uk_airdate = as.Date(uk_airdate),
+    series = factor(series)
+  ) %>%
+  arrange(uk_airdate)
+
+ggplot(
+  weekly_viewing,
+  aes(
+    x = uk_airdate,
+    y = viewers_7day,
+    color = series,
+    group = series
+  )
+) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  scale_x_date(
+    date_breaks = "6 months",
+    date_labels = "%b %Y"
+  ) +
+  labs(
+    x = "UK airdate",
+    y = "7-day viewers (millions)",
+    color = "Series",
+    title = "Weekly 7-day UK viewing for The Great British Bake Off",
+    subtitle = "One point per episode, colored by series"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "bottom"
+  )
+```
+
+the pandemic jump is pretty clearly visaible here, letes look at season 9 and the pandemi seasons more clsoely
+
+
+First series 9 for my beloved Jurgen,
+
+```{r}
+weekly_viewing %>%
+  filter(series == 9) %>%
+  ggplot(
+    aes(
+      x = round,
+      y = viewers_7day,
+      group = 1
+    )
+  ) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  scale_x_continuous(breaks = 1:10) +
+  labs(
+    x = "Episode / round",
+    y = "7-day viewers",
+    title = "Weekly 7-day UK viewing: Jurgen’s series",
+    subtitle = "Series 9 in the shifted numbering"
+  ) +
+  theme_minimal(base_size = 13)
+```
+facets,
+
+```{r}
+weekly_viewing %>%
+  ggplot(
+    aes(
+      x = round,
+      y = viewers_7day,
+      group = 1
+    )
+  ) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  facet_wrap(~ series, ncol = 2, scales = "free_y") +
+  scale_x_continuous(breaks = 1:10) +
+  labs(
+    x = "Episode / round",
+    y = "7-day viewers",
+    title = "Weekly 7-day UK viewing during the pandemic-era seasons",
+    subtitle = "Faceted by series, using UK air dates from 2020–2023"
+  ) +
+  theme_minimal(base_size = 13)
+```
+
+Most seasons have a bit of a U shape - with more views in the begginng and end then the middle.
+
+\newpage
+
+# Overall Winning Probability Models
+
+A natural way to track each baker’s probability of winning is to use a sequential update. At the start of a series, before observing any performances, we have no baker-specific evidence and every contestant receives the same initial win probability:
+
+$$
+P(W_i) = \frac{1}{n_c},
+$$
+
+where $W_i$ is the event that baker $i$ wins the competition and $n_c$ is the number of contestants in that series. In most series $n_c = 12$, although in the 2019 Netflix-numbered Series 7 there were 13 bakers.
+
+After each round, we update these probabilities using the new round-level information. Let $R_k$ denote the information observed in round $k$, such as signature performance, technical rank, showstopper performance, Star Baker status, elimination status, and the current risk set. In principle, a fully Bayesian update after round 1 would be
+
+$$
+P(W_i \mid R_1)
+\propto
+P(R_1 \mid W_i)P(W_i),
+$$
+
+and after rounds $1,\ldots,k$,
+
+$$
+P(W_i \mid R_1,\ldots,R_k)
+\propto
+P(W_i)
+\prod_{r=1}^{k}
+P(R_r \mid R_1,\ldots,R_{r-1}, W_i).
+$$
+
+The hard part is specifying the likelihood contribution
+
+$$
+P(R_k \mid R_1,\ldots,R_{k-1}, W_i).
+$$
+
+That would require a generative model for performances, judging decisions, elimination, and future survival. I do not try to build that full model here.
+
+We could naively move forward and accumlate winning prob fro someone across the competition - however the final round is obviously weighted more than the other rounds in winning that is winning might be $60\%$ performance in the actual final round and $40\%$ past performance 
+
+## Sequential Softmax Tracker
+
+Instead, I use a simpler **sequential softmax tracker**. The idea is to summarize each baker’s current evidence with a running strength signal, denoted $s_{ik}$. This signal may come from a sequentially fit mixed-effects performance model, a cumulative score summary, or another running measure of baker strength.
+
+The update is
+
+$$
+w_{ik}
+\propto
+w_{i,k-1}\exp(\lambda s_{ik}),
+$$
+
+where $w_{i,k-1}$ is baker $i$’s previous win-probability weight, $s_{ik}$ is their current strength signal, and $\lambda$ controls how strongly the current strength signal moves the probabilities.
+
+After updating, the weights are normalized over the bakers still eligible to win:
+
+$$
+P(W_i \mid R_1,\ldots,R_k)
+=\frac{
+w_{i,k-1}\exp(\lambda s_{ik})
+}{
+\sum_{j \in \mathcal C_k}
+w_{j,k-1}\exp(\lambda s_{jk})
+},
+$$
+
+where $\mathcal C_k$ is the set of bakers still active after round $k$. Once a baker is eliminated, their probability of winning is set to zero.
+
+Equivalently, the update is additive on the log-weight scale:
+
+$$
+\log w_{ik}
+=\log w_{i,k-1} + \lambda s_{ik}.
+$$
+
+So computationally this is a **sequential multiplicative-weights update followed by softmax normalization**. The previous win probabilities act like prior weights, and the current strength signal exponentially tilts those weights.
+
+This is Bayesian in spirit: it starts from a prior, incorporates round-by-round evidence, and renormalizes to obtain updated win probabilities. But it is not a full Bayesian posterior unless $\exp(\lambda s_{ik})$ is explicitly defined as the likelihood contribution for round $k$. A more precise description is:
+
+> a sequential Bayesian-style softmax tracker using a running mixed-model strength proxy as evidence.
+
+The key constraint is that the strength signal must be estimated sequentially. We cannot use a mixed-effects model fit on the full data set, because that would leak future information into earlier rounds. For a genuine round-by-round tracker, the strength signal at round $k$ must be estimated using only performances observed through round $k$, not later rounds or the final.
+
+The tuning parameter $\lambda$ is chosen by cross-validation using previous series data available up to that point. In other words, when predicting a given series, $\lambda$ should be selected from earlier series rather than tuned using future information from the same series.
+
+
+```{r}
+# ============================================================
+# GBBO running win probability tracker
+# ============================================================
+# Purpose:
+#   1. Load cleaned GBBO data.
+#   2. Build simple within-episode standardized strength scores.
+#   3. Track running win probabilities using a sequential softmax update.
+#   4. Tune lambda using past series only.
+#   5. Plot running win probabilities by series.
+# ============================================================
+
+
+# ------------------------------------------------------------
+# 0. Setup
+# ------------------------------------------------------------
+
+set.seed(489)
+options(digits = 3)
+
+library(tidyverse)
+library(scales)
+
+theme_set(theme_bw())
+
+
+# ------------------------------------------------------------
+# 1. Load and standardize working data
+# ------------------------------------------------------------
+
+full_cln_dat <- readr::read_csv(
+  "data/full_cln_gbbo.csv",
+  col_types = readr::cols(
+    episode = readr::col_character(),
+    .default = readr::col_guess()
+  )
+)
+
+gbbo_dat <- full_cln_dat %>%
+  ungroup() %>%
+  mutate(
+    series = as.integer(series),
+    round = as.integer(round),
+    baker_id = as.character(baker_id),
+    contestant = as.character(contestant),
+    episode = factor(
+      paste0("S", series, "E", stringr::str_pad(round, 2, pad = "0"))
+    ),
+    sig = as.numeric(sig_sum),
+    show_stopper = as.numeric(showstopper_sum),
+    tech_scaled = as.numeric(tech_rank_scaled),
+    eliminated = as.integer(eliminated),
+    star_baker = as.integer(star_baker)
+  ) %>%
+  arrange(series, round, contestant)
+
+
+# ------------------------------------------------------------
+# 2. Simple round-level strength scores
+# ------------------------------------------------------------
+# Scores are standardized within episode so each baker is compared to the
+# people actually competing that week.
+#
+# Higher values should mean better performance for all components.
+# If tech_rank_scaled is already oriented as higher = better, this is fine.
+
+safe_z <- function(x) {
+  sx <- sd(x, na.rm = TRUE)
+
+  if (is.na(sx) || sx == 0) {
+    return(rep(0, length(x)))
+  }
+
+  as.numeric((x - mean(x, na.rm = TRUE)) / sx)
+}
+
+make_round_strength_scores <- function(
+  dat,
+  alpha_sig = 0.25,
+  alpha_tech = 0.25,
+  alpha_show = 0.50
+) {
+  dat %>%
+    group_by(series, round, episode) %>%
+    mutate(
+      sig_z = safe_z(sig),
+      tech_z = safe_z(tech_scaled),
+      show_z = safe_z(show_stopper),
+
+      # One-round strength signal.
+      # Default weights put more emphasis on showstopper performance.
+      round_strength =
+        alpha_sig * sig_z +
+        alpha_tech * tech_z +
+        alpha_show * show_z
+    ) %>%
+    ungroup()
+}
+
+gbbo_strength_dat <- make_round_strength_scores(gbbo_dat)
+
+
+# ------------------------------------------------------------
+# 3. Sequential softmax tracker for one series
+# ------------------------------------------------------------
+# lambda controls how strongly strength affects the probabilities.
+# rho controls memory:
+#   rho = 1   means all previous rounds count equally.
+#   rho < 1   discounts older rounds.
+#
+# Eliminated bakers have their active indicator set to FALSE. Their probability
+# becomes zero, and the remaining probabilities are renormalized over active
+# bakers. So their probability mass is redistributed automatically.
+
+softmax_active <- function(log_score, active) {
+  probs <- rep(0, length(log_score))
+  names(probs) <- names(log_score)
+
+  if (!any(active)) {
+    probs[] <- NA_real_
+    return(probs)
+  }
+
+  max_score <- max(log_score[active], na.rm = TRUE)
+
+  probs[active] <- exp(log_score[active] - max_score)
+  probs[active] <- probs[active] / sum(probs[active], na.rm = TRUE)
+
+  probs
+}
+
+track_one_series <- function(dat_s, lambda = 0.20, rho = 0.85) {
+  s <- unique(dat_s$series)
+
+  contestants <- dat_s %>%
+    distinct(baker_id, contestant) %>%
+    arrange(contestant)
+
+  n_c <- nrow(contestants)
+
+  # Evidence starts at zero. The uniform prior is represented by the initial
+  # equal probabilities at round 0.
+  evidence <- rep(0, n_c)
+  names(evidence) <- contestants$baker_id
+
+  active <- rep(TRUE, n_c)
+  names(active) <- contestants$baker_id
+
+  prior_probs <- rep(1 / n_c, n_c)
+  names(prior_probs) <- contestants$baker_id
+
+  out <- contestants %>%
+    transmute(
+      series = s,
+      round = 0L,
+      baker_id,
+      contestant,
+      sig_z = NA_real_,
+      tech_z = NA_real_,
+      show_z = NA_real_,
+      round_strength = 0,
+      evidence = 0,
+      log_score = 0,
+      win_prob = prior_probs[baker_id],
+      eliminated = 0L,
+      star_baker = 0L,
+      still_alive = 1L,
+      lambda = lambda,
+      rho = rho
+    )
+
+  for (k in sort(unique(dat_s$round))) {
+    dat_k <- dat_s %>%
+      filter(round == k) %>%
+      distinct(
+        series,
+        round,
+        baker_id,
+        contestant,
+        sig_z,
+        tech_z,
+        show_z,
+        round_strength,
+        eliminated,
+        star_baker
+      )
+
+    # Discount previous evidence, then add this round's strength signal.
+    evidence[active] <- rho * evidence[active]
+
+    for (id in dat_k$baker_id) {
+      if (isTRUE(active[id])) {
+        s_ik <- dat_k %>%
+          filter(baker_id == id) %>%
+          pull(round_strength)
+
+        if (length(s_ik) == 0 || is.na(s_ik)) {
+          s_ik <- 0
+        }
+
+        evidence[id] <- evidence[id] + s_ik
+      }
+    }
+
+    # Elimination happens after the round. Set eliminated bakers inactive.
+    eliminated_now <- dat_k %>%
+      filter(eliminated == 1) %>%
+      pull(baker_id)
+
+    active[eliminated_now] <- FALSE
+
+    # In round 10, Star Baker is the winner. Force final probabilities.
+    if (k == 10 && any(dat_k$star_baker == 1, na.rm = TRUE)) {
+      winner_now <- dat_k %>%
+        filter(star_baker == 1) %>%
+        pull(baker_id)
+
+      active[] <- FALSE
+      active[winner_now] <- TRUE
+      evidence[] <- 0
+      evidence[winner_now] <- 1
+    }
+
+    log_score <- lambda * evidence
+    probs <- softmax_active(log_score, active)
+
+    out_k <- contestants %>%
+      left_join(
+        dat_k %>%
+          select(
+            baker_id,
+            sig_z,
+            tech_z,
+            show_z,
+            round_strength,
+            eliminated,
+            star_baker
+          ),
+        by = "baker_id"
+      ) %>%
+      mutate(
+        series = s,
+        round = k,
+        sig_z = coalesce(sig_z, 0),
+        tech_z = coalesce(tech_z, 0),
+        show_z = coalesce(show_z, 0),
+        round_strength = coalesce(round_strength, 0),
+        evidence = as.numeric(evidence[baker_id]),
+        log_score = as.numeric(log_score[baker_id]),
+        win_prob = as.numeric(probs[baker_id]),
+        eliminated = coalesce(eliminated, 0L),
+        star_baker = coalesce(star_baker, 0L),
+        still_alive = as.integer(active[baker_id]),
+        lambda = lambda,
+        rho = rho
+      ) %>%
+      select(
+        series,
+        round,
+        baker_id,
+        contestant,
+        sig_z,
+        tech_z,
+        show_z,
+        round_strength,
+        evidence,
+        log_score,
+        win_prob,
+        eliminated,
+        star_baker,
+        still_alive,
+        lambda,
+        rho
+      )
+
+    out <- bind_rows(out, out_k)
+  }
+
+  out
+}
+
+
+# ------------------------------------------------------------
+# 4. Run tracker for a set of series
+# ------------------------------------------------------------
+
+run_tracker_for_series_set <- function(series_set, lambda, rho = 0.85) {
+  gbbo_strength_dat %>%
+    filter(series %in% series_set) %>%
+    group_by(series) %>%
+    group_split() %>%
+    map_dfr(
+      ~ track_one_series(
+        dat_s = .x,
+        lambda = lambda,
+        rho = rho
+      )
+    ) %>%
+    mutate(lambda = lambda, rho = rho)
+}
+
+
+# ------------------------------------------------------------
+# 5. Score running probabilities
+# ------------------------------------------------------------
+# Scores evaluate whether the eventual winner is getting probability mass
+# before the final.
+
+score_running_win_probs <- function(running_probs, eps = 1e-8) {
+  running_probs %>%
+    group_by(series) %>%
+    mutate(
+      final_round = max(round, na.rm = TRUE),
+      eventual_winner = contestant[round == final_round & star_baker == 1][1]
+    ) %>%
+    ungroup() %>%
+    filter(round >= 1, round <= 9) %>%
+    mutate(
+      is_winner = contestant == eventual_winner,
+      win_prob_clipped = pmin(pmax(win_prob, eps), 1 - eps)
+    ) %>%
+    group_by(series, round) %>%
+    summarise(
+      winner_prob = win_prob_clipped[is_winner][1],
+      log_loss = -log(winner_prob),
+      brier = sum((as.integer(is_winner) - win_prob)^2, na.rm = TRUE),
+      max_win_prob = max(win_prob, na.rm = TRUE),
+      entropy = -sum(win_prob * log(pmax(win_prob, eps)), na.rm = TRUE),
+      .groups = "drop"
+    )
+}
+
+
+# ------------------------------------------------------------
+# 6. Expanding historical tuning
+# ------------------------------------------------------------
+# For target series s:
+#   1. tune lambda using only series < s;
+#   2. run the tracker on series s using the selected lambda.
+#
+# The first available series uses a conservative default.
+
+lambda_grid <- c(
+  0.025, 0.05, 0.075, 0.10,
+  0.15, 0.20, 0.25, 0.30,
+  0.40, 0.50
+)
+
+rho <- 0.85
+default_lambda <- 0.20
+
+series_ids <- sort(unique(gbbo_strength_dat$series))
+
+tune_lambda_using_past_series <- function(
+  target_series,
+  lambda_grid,
+  rho = 0.85,
+  default_lambda = 0.20
+) {
+  past_series <- series_ids[series_ids < target_series]
+
+  if (length(past_series) == 0) {
+    target_probs <- run_tracker_for_series_set(
+      series_set = target_series,
+      lambda = default_lambda,
+      rho = rho
+    )
+
+    return(
+      list(
+        target_series = target_series,
+        past_series = past_series,
+        selected_lambda = default_lambda,
+        selected_rho = rho,
+        tuning_scores = tibble(),
+        target_probs = target_probs
+      )
+    )
+  }
+
+  tuning_scores <- map_dfr(lambda_grid, function(lam) {
+    probs <- run_tracker_for_series_set(
+      series_set = past_series,
+      lambda = lam,
+      rho = rho
+    )
+
+    score_running_win_probs(probs) %>%
+      summarise(
+        mean_log_loss = mean(log_loss, na.rm = TRUE),
+        mean_brier = mean(brier, na.rm = TRUE),
+        mean_winner_prob = mean(winner_prob, na.rm = TRUE),
+        mean_max_win_prob = mean(max_win_prob, na.rm = TRUE),
+        mean_entropy = mean(entropy, na.rm = TRUE),
+        .groups = "drop"
+      ) %>%
+      mutate(lambda = lam, rho = rho, .before = 1)
+  }) %>%
+    arrange(mean_log_loss, mean_brier)
+
+  best <- tuning_scores %>%
+    slice(1)
+
+  selected_lambda <- best$lambda[1]
+
+  target_probs <- run_tracker_for_series_set(
+    series_set = target_series,
+    lambda = selected_lambda,
+    rho = rho
+  )
+
+  list(
+    target_series = target_series,
+    past_series = past_series,
+    selected_lambda = selected_lambda,
+    selected_rho = rho,
+    tuning_scores = tuning_scores,
+    target_probs = target_probs
+  )
+}
+
+expanding_tuned_results <- map(
+  series_ids,
+  tune_lambda_using_past_series,
+  lambda_grid = lambda_grid,
+  rho = rho,
+  default_lambda = default_lambda
+)
+
+
+# ------------------------------------------------------------
+# 7. Collect selected lambdas and running win probabilities
+# ------------------------------------------------------------
+
+expanding_selected_lambdas <- map_dfr(expanding_tuned_results, function(x) {
+  tibble(
+    target_series = x$target_series,
+    n_past_series = length(x$past_series),
+    past_series = paste(x$past_series, collapse = ", "),
+    selected_lambda = x$selected_lambda,
+    selected_rho = x$selected_rho
+  )
+})
+
+running_win_probs_expanding_tuned <- map_dfr(
+  expanding_tuned_results,
+  "target_probs"
+) %>%
+  arrange(series, round, desc(win_prob))
+
+
+# ------------------------------------------------------------
+# 8. Checks
+# ------------------------------------------------------------
+
+running_win_prob_checks <- running_win_probs_expanding_tuned %>%
+  group_by(series, round) %>%
+  summarise(
+    n_bakers = n(),
+    prob_sum = sum(win_prob, na.rm = TRUE),
+    n_alive = sum(still_alive, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+running_win_prob_checks
+expanding_selected_lambdas
+
+
+# ------------------------------------------------------------
+# 9. Plot running probabilities
+# ------------------------------------------------------------
+
+plot_running_win_probs_after_round <- function(
+  s,
+  lambda = NULL,
+  rho = NULL,
+  dat = NULL
+) {
+if (is.null(dat)) {
+  if (!is.null(lambda) || !is.null(rho)) {
+    lambda_use <- if (is.null(lambda)) 0.20 else lambda
+    rho_use <- if (is.null(rho)) 0.85 else rho
+
+    dat <- run_tracker_for_series_set(
+      series_set = s,
+      lambda = lambda_use,
+      rho = rho_use
+    )
+  } else {
+    dat <- running_win_probs_expanding_tuned
+  }
+}
+
+  dat_s <- dat %>%
+    filter(series == s, round <= 9)
+
+  if (nrow(dat_s) == 0) {
+    stop("No rows to plot. Check that `dat` contains this series.")
+  }
+
+  selected <- dat_s %>%
+    distinct(lambda, rho) %>%
+    summarise(
+      lambda = paste(unique(lambda), collapse = ", "),
+      rho = paste(unique(rho), collapse = ", "),
+      .groups = "drop"
+    )
+
+  elim_dat <- dat_s %>%
+    filter(eliminated == 1)
+
+  winner_lookup <- dat %>%
+    filter(series == s, round == 10, star_baker == 1) %>%
+    distinct(series, contestant)
+
+  winner_dat <- dat_s %>%
+    semi_join(winner_lookup, by = c("series", "contestant")) %>%
+    filter(round == 9)
+
+  label_dat <- dat_s %>%
+    group_by(contestant) %>%
+    slice_max(round, n = 1, with_ties = FALSE) %>%
+    ungroup()
+
+  ggplot(
+    dat_s,
+    aes(
+      x = round,
+      y = win_prob,
+      group = contestant,
+      color = contestant
+    )
+  ) +
+    geom_line(linewidth = 0.9, alpha = 0.85) +
+    geom_point(size = 2, alpha = 0.85) +
+    geom_point(
+      data = elim_dat,
+      aes(x = round, y = win_prob),
+      shape = 4,
+      size = 4,
+      stroke = 1.4,
+      show.legend = FALSE
+    ) +
+    geom_point(
+      data = winner_dat,
+      aes(x = round, y = win_prob),
+      shape = 8,
+      size = 5,
+      stroke = 1.5,
+      show.legend = FALSE
+    ) +
+    geom_text(
+      data = label_dat,
+      aes(label = contestant),
+      hjust = -0.08,
+      size = 3,
+      show.legend = FALSE
+    ) +
+    scale_x_continuous(
+      breaks = 0:9,
+      limits = c(0, 9.8)
+    ) +
+    scale_y_continuous(
+      labels = percent_format(accuracy = 1),
+      limits = c(0, 1)
+    ) +
+    labs(
+      x = "After round",
+      y = "Running win probability",
+      title = paste("Running win probabilities: Series", s),
+      subtitle = paste0(
+        "Final point is after round 9 / before the final. ",
+        "lambda = ", selected$lambda,
+        ", rho = ", selected$rho
+      ),
+      color = "Contestant"
+    ) +
+    theme_minimal(base_size = 13) +
+    theme(
+      legend.position = "none"
+    )
+}
+
+
+# ------------------------------------------------------------
+# 10. Print all plots
+# ------------------------------------------------------------
+
+walk(
+  sort(unique(running_win_probs_expanding_tuned$series)),
+  ~ print(plot_running_win_probs_after_round(.x))
+)
+```
+
+These all show the overall winning probabilities as we move across rounds to round 9, just before the finale. The models failed to predict series 6, Rahul series 7 David and series 9 Giuseppes eventual win.
+
+# [fix to cv, it is naiver in sample now] Combining Star Baker Model and Overall Win Prob Model
+
+We only built the sequential overall win probability model up to round 9 because the final episode that determines the series winner is determined by some weighting of performance up to the finale (from the sequential softmax model based on random effects) and performance in the actual finale. I want to estimate that weighting using a conditional logit model restricted to Round 10 finalists. This model is similar to the Star Baker model, but adds each baker’s sequential win probability entering the finale as a covariate. It is fit using all the data from the finales first then we evaluate it using LOOCV (leave one finale out) and sequential CV of finales
+
+```{r}
+# ------------------------------------------------------------
+# Finale weighting model
+# Uses Round 10 finalist data + Round 9 sequential win probabilities
+# Goal: estimate how much the final winner reflects finale performance
+# versus pre-finale sequential win probability
+# ------------------------------------------------------------
+
+library(tidyverse)
+library(survival)
+library(scales)
+
+# ------------------------------------------------------------
+# Helper functions
+# ------------------------------------------------------------
+
+logit_safe <- function(p, eps = 1e-6) {
+  p <- pmin(pmax(p, eps), 1 - eps)
+  log(p / (1 - p))
+}
+
+standardize_within <- function(x) {
+  s <- sd(x, na.rm = TRUE)
+
+  if (is.na(s) || s == 0) {
+    return(rep(0, length(x)))
+  }
+
+  as.numeric((x - mean(x, na.rm = TRUE)) / s)
+}
+
+# ------------------------------------------------------------
+# 1. Extract Round 9 sequential win probabilities
+# ------------------------------------------------------------
+# In your code, these come from running_win_probs_expanding_tuned,
+# not sequential_win_probs.
+# ------------------------------------------------------------
+
+pre_final_probs <- running_win_probs_expanding_tuned %>%
+  filter(round == 9) %>%
+  transmute(
+    series,
+    baker_id,
+    contestant,
+    pre_final_win_prob = win_prob,
+    pre_final_logit = logit_safe(win_prob)
+  )
+
+# ------------------------------------------------------------
+# 2. Build finale-only model data
+# ------------------------------------------------------------
+# Prefer joining by baker_id if judging_sb has baker_id.
+# Otherwise fall back to series + contestant.
+# ------------------------------------------------------------
+
+if ("baker_id" %in% names(judging_sb)) {
+
+  finale_model_data <- judging_sb %>%
+    filter(round == 10) %>%
+    left_join(
+      pre_final_probs,
+      by = c("series", "baker_id", "contestant")
+    )
+
+} else {
+
+  finale_model_data <- judging_sb %>%
+    filter(round == 10) %>%
+    left_join(
+      pre_final_probs %>%
+        select(series, contestant, pre_final_win_prob, pre_final_logit),
+      by = c("series", "contestant")
+    )
+}
+
+finale_model_data <- finale_model_data %>%
+  mutate(
+    final_winner = star_baker == 1
+  ) %>%
+  group_by(series, episode) %>%
+  mutate(
+    sig_sum_z = standardize_within(sig_sum),
+    showstopper_sum_z = standardize_within(showstopper_sum),
+    tech_rank_z = standardize_within(tech_rank),
+    pre_final_logit_z = standardize_within(pre_final_logit)
+  ) %>%
+  ungroup()
+
+# ------------------------------------------------------------
+# 3. Check for missing joins
+# ------------------------------------------------------------
+
+missing_prefinal_probs <- finale_model_data %>%
+  filter(is.na(pre_final_win_prob)) %>%
+  distinct(series, episode, contestant)
+
+missing_prefinal_probs
+
+# ------------------------------------------------------------
+# 4. Finale model:
+#    Round 10 signature + showstopper + technical rank
+#    plus Round 9 sequential win probability
+# ------------------------------------------------------------
+
+fit_finale_with_prefinal <- clogit(
+  final_winner ~
+    sig_sum_z +
+    showstopper_sum_z +
+    tech_rank_z +
+    pre_final_logit_z +
+    strata(episode),
+  data = finale_model_data
+)
+
+summary(fit_finale_with_prefinal)
+
+exp(coef(fit_finale_with_prefinal))
+
+# ------------------------------------------------------------
+# 5. Approximate relative weights from full finale model
+# ------------------------------------------------------------
+# Because all predictors are standardized within finale,
+# absolute coefficient sizes are roughly comparable.
+# ------------------------------------------------------------
+
+finale_weighting_full <- tibble(
+  component = names(coef(fit_finale_with_prefinal)),
+  coefficient = as.numeric(coef(fit_finale_with_prefinal))
+) %>%
+  mutate(
+    abs_coefficient = abs(coefficient),
+    relative_weight = abs_coefficient / sum(abs_coefficient)
+  )
+
+finale_weighting_full %>%
+  mutate(
+    coefficient = round(coefficient, 3),
+    abs_coefficient = round(abs_coefficient, 3),
+    relative_weight = percent(relative_weight, accuracy = 0.1)
+  ) %>%
+  knitr::kable(
+    caption = "Approximate relative weighting in the finale model"
+  )
+
+# ------------------------------------------------------------
+# 6. More stable two-score model
+#    Collapse Round 10 performance into Star Baker linear predictor,
+#    then compare it to Round 9 sequential win probability.
+# ------------------------------------------------------------
+# Requires fit_sb_clogit to already exist.
+# ------------------------------------------------------------
+
+sb_coef <- coef(fit_sb_clogit)
+
+finale_model_data <- finale_model_data %>%
+  mutate(
+    finale_lp =
+      sb_coef["sig_sum"] * sig_sum +
+      sb_coef["showstopper_sum"] * showstopper_sum +
+      sb_coef["tech_rank"] * tech_rank
+  ) %>%
+  group_by(series, episode) %>%
+  mutate(
+    finale_lp_z = standardize_within(finale_lp),
+    pre_final_logit_z = standardize_within(pre_final_logit)
+  ) %>%
+  ungroup()
+
+fit_finale_two_score <- clogit(
+  final_winner ~
+    finale_lp_z +
+    pre_final_logit_z +
+    strata(episode),
+  data = finale_model_data
+)
+
+summary(fit_finale_two_score)
+
+exp(coef(fit_finale_two_score))
+
+# ------------------------------------------------------------
+# 7. Approximate relative weighting from two-score model
+# ------------------------------------------------------------
+
+theta <- coef(fit_finale_two_score)
+
+two_score_weighting <- tibble(
+  component = names(theta),
+  coefficient = as.numeric(theta)
+) %>%
+  mutate(
+    component = recode(
+      component,
+      finale_lp_z = "Round 10 finale performance",
+      pre_final_logit_z = "Pre-finale sequential win probability"
+    ),
+    abs_coefficient = abs(coefficient),
+    relative_weight = abs_coefficient / sum(abs_coefficient)
+  )
+
+two_score_weighting %>%
+  mutate(
+    coefficient = round(coefficient, 3),
+    abs_coefficient = round(abs_coefficient, 3),
+    relative_weight = percent(relative_weight, accuracy = 0.1)
+  ) %>%
+  knitr::kable(
+    caption = "Estimated relative weighting of pre-finale strength and finale performance"
+  )
+```
+
+## LOOCV
+
+```{r}
+loo_finale_predict <- function(finale_model_data) {
+
+  finale_ids <- finale_model_data %>%
+    distinct(series, episode) %>%
+    arrange(series, episode)
+
+  purrr::map_dfr(seq_len(nrow(finale_ids)), function(k) {
+
+    test_series <- finale_ids$series[k]
+    test_episode <- finale_ids$episode[k]
+
+    train <- finale_model_data %>%
+      filter(!(series == test_series & episode == test_episode))
+
+    test <- finale_model_data %>%
+      filter(series == test_series, episode == test_episode)
+
+    fit <- survival::clogit(
+      final_winner ~
+        finale_lp_z +
+        pre_final_logit_z +
+        strata(episode),
+      data = train
+    )
+
+    beta_hat <- coef(fit)
+
+    X_test <- model.matrix(
+      ~ finale_lp_z + pre_final_logit_z,
+      data = test
+    )
+
+    X_test <- X_test[, colnames(X_test) != "(Intercept)", drop = FALSE]
+    X_test <- X_test[, names(beta_hat), drop = FALSE]
+
+    test %>%
+      mutate(
+        finale_pred_lp = as.numeric(X_test %*% beta_hat)
+      ) %>%
+      group_by(series, episode) %>%
+      mutate(
+        finale_pred_prob =
+          exp(finale_pred_lp - max(finale_pred_lp, na.rm = TRUE)) /
+          sum(exp(finale_pred_lp - max(finale_pred_lp, na.rm = TRUE)), na.rm = TRUE),
+        finale_pred_rank = rank(-finale_pred_prob, ties.method = "min"),
+        predicted_winner = finale_pred_rank == 1
+      ) %>%
+      ungroup()
+  })
+}
+
+finale_two_score_predictions_loo <- loo_finale_predict(finale_model_data)
+
+
+finale_two_score_by_series_loo <- finale_two_score_predictions_loo %>%
+  group_by(series, episode) %>%
+  summarise(
+    predicted_winner = contestant[predicted_winner][1],
+    winner = contestant[final_winner][1],
+    winner_rank = finale_pred_rank[final_winner][1],
+    correct = winner_rank == 1,
+    .groups = "drop"
+  )
+
+finale_two_score_by_series_loo %>%
+  arrange(series) %>%
+  knitr::kable(
+    caption = "Leave-one-finale-out predictions from the finale two-score model"
+  )
+```
+
+so with this combination of models an using LOOCV we predict the winner $7/9$ times, improving just a slight bit over simply using the sequential model ($6/9$ final winners predicted) or using the star baker model in the finale (also getting $6/9$ correct on both LOOCV and sequential CV)
+
+## Sequential CV
+
+This does worse than the overall judging models because we have so little data on finales mainly
+
+```{r}
+# ============================================================
+# Fully prospective sequential finale cross-validation
+# ============================================================
+# For each target finale:
+#   1. Fit Star Baker model using only regular episodes available
+#      before that finale.
+#   2. Use that model to compute a Round 10 finale-performance score.
+#   3. Fit finale model using only earlier finales.
+#   4. Predict the target finale.
+#
+# Requires:
+#   - judging_sb
+#   - running_win_probs_expanding_tuned
+# ============================================================
+
+library(tidyverse)
+library(survival)
+library(scales)
+
+# ------------------------------------------------------------
+# Helper functions
+# ------------------------------------------------------------
+
+logit_safe <- function(p, eps = 1e-6) {
+  p <- pmin(pmax(p, eps), 1 - eps)
+  log(p / (1 - p))
+}
+
+standardize_within <- function(x) {
+  s <- sd(x, na.rm = TRUE)
+
+  if (is.na(s) || s == 0) {
+    return(rep(0, length(x)))
+  }
+
+  as.numeric((x - mean(x, na.rm = TRUE)) / s)
+}
+
+make_lp_from_rhs <- function(fit, newdata, rhs) {
+  beta_hat <- coef(fit)
+  beta_hat <- beta_hat[!is.na(beta_hat)]
+
+  X <- model.matrix(
+    as.formula(paste0("~ ", rhs)),
+    data = newdata
+  )
+
+  if ("(Intercept)" %in% colnames(X)) {
+    X <- X[, colnames(X) != "(Intercept)", drop = FALSE]
+  }
+
+  missing_cols <- setdiff(names(beta_hat), colnames(X))
+
+  if (length(missing_cols) > 0) {
+    missing_mat <- matrix(
+      0,
+      nrow = nrow(X),
+      ncol = length(missing_cols),
+      dimnames = list(NULL, missing_cols)
+    )
+
+    X <- cbind(X, missing_mat)
+  }
+
+  X <- X[, names(beta_hat), drop = FALSE]
+
+  as.numeric(X %*% beta_hat)
+}
+
+softmax_within_finale <- function(lp) {
+  exp(lp - max(lp, na.rm = TRUE)) /
+    sum(exp(lp - max(lp, na.rm = TRUE)), na.rm = TRUE)
+}
+
+# ------------------------------------------------------------
+# 1. Round 9 sequential win probabilities
+# ------------------------------------------------------------
+
+pre_final_probs <- running_win_probs_expanding_tuned %>%
+  filter(round == 9) %>%
+  transmute(
+    series,
+    baker_id,
+    contestant,
+    pre_final_win_prob = win_prob,
+    pre_final_logit = logit_safe(win_prob)
+  )
+
+# ------------------------------------------------------------
+# 2. Build base Round 10 finale data
+# ------------------------------------------------------------
+
+if ("baker_id" %in% names(judging_sb)) {
+
+  finale_base_data <- judging_sb %>%
+    filter(round == 10) %>%
+    left_join(
+      pre_final_probs,
+      by = c("series", "baker_id", "contestant")
+    )
+
+} else {
+
+  finale_base_data <- judging_sb %>%
+    filter(round == 10) %>%
+    left_join(
+      pre_final_probs %>%
+        select(series, contestant, pre_final_win_prob, pre_final_logit),
+      by = c("series", "contestant")
+    )
+}
+
+finale_base_data <- finale_base_data %>%
+  mutate(
+    final_winner = star_baker == 1
+  )
+
+# Check missing joins
+missing_prefinal_probs <- finale_base_data %>%
+  filter(is.na(pre_final_win_prob)) %>%
+  distinct(series, episode, contestant)
+
+missing_prefinal_probs
+
+# ------------------------------------------------------------
+# 3. Model formulas
+# ------------------------------------------------------------
+
+rhs_star_baker <- paste(
+  "sig_sum + showstopper_sum + tech_rank",
+  "sig_sum:round + showstopper_sum:round + tech_rank:round",
+  sep = " + "
+)
+
+rhs_finale <- "finale_lp_z + pre_final_logit_z"
+
+# ------------------------------------------------------------
+# 4. Fully prospective sequential finale CV
+# ------------------------------------------------------------
+
+prospective_sequential_finale_cv <- function(
+  judging_sb,
+  finale_base_data,
+  rhs_star_baker,
+  rhs_finale,
+  min_train_finals = 3,
+  min_train_episodes = 10
+) {
+
+  finale_index <- finale_base_data %>%
+    distinct(series, episode) %>%
+    arrange(series, episode) %>%
+    mutate(finale_order = row_number())
+
+  map_dfr(seq_len(nrow(finale_index)), function(k) {
+
+    target_series <- finale_index$series[k]
+    target_episode <- finale_index$episode[k]
+    target_order <- finale_index$finale_order[k]
+
+    # --------------------------------------------------------
+    # A. Star Baker training data available before target finale
+    # --------------------------------------------------------
+    # Includes regular episodes from prior series and rounds 1-9
+    # of the target series, because those are observed before the finale.
+    # Excludes all Round 10 finales.
+    # --------------------------------------------------------
+
+    sb_train <- judging_sb %>%
+      filter(
+        round <= 9,
+        series < target_series |
+          (series == target_series & round < 10)
+      )
+
+    if (
+      n_distinct(sb_train$episode) < min_train_episodes ||
+      sum(sb_train$star_baker == 1, na.rm = TRUE) == 0 ||
+      sum(sb_train$star_baker == 0, na.rm = TRUE) == 0
+    ) {
+      return(tibble())
+    }
+
+    sb_form <- as.formula(
+      paste0("star_baker ~ ", rhs_star_baker, " + strata(episode)")
+    )
+
+    fit_sb_past <- tryCatch(
+      survival::clogit(
+        sb_form,
+        data = sb_train,
+        method = "exact"
+      ),
+      error = function(e) NULL
+    )
+
+    if (is.null(fit_sb_past)) {
+      return(tibble())
+    }
+
+    # --------------------------------------------------------
+    # B. Score all finales up to the target using past Star Baker model
+    # --------------------------------------------------------
+
+    finale_scored <- finale_base_data %>%
+      filter(series <= target_series) %>%
+      mutate(
+        finale_lp = make_lp_from_rhs(
+          fit = fit_sb_past,
+          newdata = .,
+          rhs = rhs_star_baker
+        )
+      ) %>%
+      group_by(series, episode) %>%
+      mutate(
+        finale_lp_z = standardize_within(finale_lp),
+        pre_final_logit_z = standardize_within(pre_final_logit)
+      ) %>%
+      ungroup()
+
+    # --------------------------------------------------------
+    # C. Finale model training data: earlier finales only
+    # --------------------------------------------------------
+
+    train_finales <- finale_scored %>%
+      filter(series < target_series)
+
+    test_finale <- finale_scored %>%
+      filter(series == target_series, episode == target_episode)
+
+    if (
+      n_distinct(train_finales$episode) < min_train_finals ||
+      sum(train_finales$final_winner == 1, na.rm = TRUE) == 0 ||
+      sum(train_finales$final_winner == 0, na.rm = TRUE) == 0
+    ) {
+      return(tibble())
+    }
+
+    finale_form <- as.formula(
+      paste0("final_winner ~ ", rhs_finale, " + strata(episode)")
+    )
+
+    fit_finale_past <- tryCatch(
+      survival::clogit(
+        finale_form,
+        data = train_finales,
+        method = "exact"
+      ),
+      error = function(e) NULL
+    )
+
+    if (is.null(fit_finale_past)) {
+      return(tibble())
+    }
+
+    # --------------------------------------------------------
+    # D. Predict target finale
+    # --------------------------------------------------------
+
+    finale_pred_lp <- make_lp_from_rhs(
+      fit = fit_finale_past,
+      newdata = test_finale,
+      rhs = rhs_finale
+    )
+
+    test_finale %>%
+      mutate(
+        finale_pred_lp = finale_pred_lp
+      ) %>%
+      group_by(series, episode) %>%
+      mutate(
+        finale_pred_prob = softmax_within_finale(finale_pred_lp),
+        finale_pred_rank = rank(-finale_pred_prob, ties.method = "min"),
+        predicted_winner = finale_pred_rank == 1,
+        train_n_finals = n_distinct(train_finales$episode),
+        train_n_sb_episodes = n_distinct(sb_train$episode),
+        trained_on_series = paste(sort(unique(train_finales$series)), collapse = ", ")
+      ) %>%
+      ungroup()
+  })
+}
+
+# ------------------------------------------------------------
+# 5. Run fully prospective sequential finale CV
+# ------------------------------------------------------------
+
+finale_predictions_prospective_seqcv <- prospective_sequential_finale_cv(
+  judging_sb = judging_sb,
+  finale_base_data = finale_base_data,
+  rhs_star_baker = rhs_star_baker,
+  rhs_finale = rhs_finale,
+  min_train_finals = 3,
+  min_train_episodes = 10
+)
+
+# ------------------------------------------------------------
+# 6. Compact finalist-level table
+# ------------------------------------------------------------
+
+finale_predictions_prospective_seqcv %>%
+  arrange(series, finale_pred_rank) %>%
+  mutate(
+    winner_flag = case_when(
+      final_winner & predicted_winner ~ "Actual + predicted",
+      final_winner ~ "Actual",
+      predicted_winner ~ "Predicted",
+      TRUE ~ ""
+    ),
+    pre_final_win_prob = percent(pre_final_win_prob, accuracy = 0.1),
+    finale_lp_z = round(finale_lp_z, 2),
+    pre_final_logit_z = round(pre_final_logit_z, 2),
+    finale_pred_prob = percent(finale_pred_prob, accuracy = 0.1)
+  ) %>%
+  select(
+    series,
+    contestant,
+    sig_sum,
+    showstopper_sum,
+    tech_rank,
+    pre_final_win_prob,
+    finale_lp_z,
+    pre_final_logit_z,
+    finale_pred_prob,
+    finale_pred_rank,
+    winner_flag,
+    train_n_finals,
+    train_n_sb_episodes
+  ) %>%
+  knitr::kable(
+    caption = "Fully prospective sequential finale CV predictions by finalist"
+  )
+
+# ------------------------------------------------------------
+# 7. One-row-per-finale table
+# ------------------------------------------------------------
+
+finale_by_series_prospective_seqcv <- finale_predictions_prospective_seqcv %>%
+  group_by(series, episode) %>%
+  summarise(
+    train_n_finals = first(train_n_finals),
+    train_n_sb_episodes = first(train_n_sb_episodes),
+
+    predicted_winner = contestant[predicted_winner][1],
+    predicted_prob = finale_pred_prob[predicted_winner][1],
+
+    actual_winner = contestant[final_winner][1],
+    actual_prob = finale_pred_prob[final_winner][1],
+    actual_rank = finale_pred_rank[final_winner][1],
+
+    correct = actual_rank == 1,
+
+    .groups = "drop"
+  ) %>%
+  arrange(series)
+
+finale_by_series_prospective_seqcv %>%
+  mutate(
+    predicted_prob = percent(predicted_prob, accuracy = 0.1),
+    actual_prob = percent(actual_prob, accuracy = 0.1),
+    correct = if_else(correct, "Yes", "No")
+  ) %>%
+  select(
+    series,
+    train_n_finals,
+    train_n_sb_episodes,
+    predicted_winner,
+    predicted_prob,
+    actual_winner,
+    actual_prob,
+    actual_rank,
+    correct
+  ) %>%
+  knitr::kable(
+    caption = "Fully prospective sequential finale CV: predicted versus actual winners"
+  )
+
+# ------------------------------------------------------------
+# 8. Compact validation summary
+# ------------------------------------------------------------
+
+finale_by_series_prospective_seqcv %>%
+  summarise(
+    n_test_finals = n(),
+    n_correct = sum(correct, na.rm = TRUE),
+    accuracy = mean(correct, na.rm = TRUE),
+    median_actual_rank = median(actual_rank, na.rm = TRUE),
+    mean_actual_prob = mean(actual_prob, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    accuracy = percent(accuracy, accuracy = 0.1),
+    mean_actual_prob = round(mean_actual_prob, 3)
+  ) %>%
+  knitr::kable(
+    caption = "Fully prospective sequential finale CV summary"
+  )
+```
+
+# Limitations
+
+- The analysis is observational. The models estimate associations between performance and judging outcomes, not causal effects.
+
+- The data depend on score-coding decisions. A different cleaned version of the data could lead to slightly different estimates. Thanks to [Nathan Giusti](https://github.com/nathangiusti/BakeOff) (who in the linked performed their own analysis based on simple logistic regression - this ignores the round structure and risk set changing that the conditional logit handles) for preparing the underlying BakeOff data.
+
+- Technical performance is originally a rank, not an absolute score. The scaled technical variable makes ranks more comparable across episodes, but it remains a transformed relative measure. In particular, it preserves within-episode ordering but does not turn technical rank into an absolute measure of technical quality.
+
+- The conditional-logit Star Baker and elimination models correctly compare bakers within the episode-specific risk set. That is, they know who was actually competing each week. However, they do not explicitly model the fact that survival to later rounds is itself informative about latent ability. A baker appearing in round 8 is not exchangeable with a baker appearing only in round 1; survival is already a selection process.
+
+- The prediction evaluation is cross-validated by episode, not by series. It tests whether the model generalizes to held-out episodes within the same data set, not whether it generalizes to a completely unseen GBBO season. If season-level effects are strong, such as different judges, different standards, or era-specific scoring patterns, the model may partially learn series-level structure that would not generalize cleanly to a new season. A stricter future evaluation would use leave-one-series-out cross-validation or genuinely held-out newer seasons.
+
+- The latent baker-ability model treats each baker's random intercept as static. This summarizes each baker with a single average adjusted performance effect and ignores possible improvement, fatigue, adaptation, pressure effects, or round-specific trajectories over the course of the competition.
+
+- A more flexible latent-performance model could include baker-specific round trends, such as random slopes for round by baker or baker-by-round interactions. This would allow ability to evolve over the season rather than being summarized by a single average performance effect. I did not use that model here because it would add complexity to an already limited data set.
+
+- The baker random effects should be interpreted cautiously because later-round observations come from a selected sample of stronger bakers. Finalists are competing against other bakers who have already survived earlier rounds, so late-episode scores may compress estimated ability differences among strong bakers relative to bakers eliminated earlier. In other words, the model estimates adjusted scoring tendency from the observed competition path, not a fully selection-adjusted latent ability parameter.
+
+- Episode effects are not direct challenge-difficulty scores. They may reflect difficulty, judging harshness, collective underperformance, unusual conditions, or other episode-specific factors. Negative episode effects are best interpreted as adjusted episode-level underperformance after accounting for baker, series, and component type, not as definitive evidence that a challenge was objectively harder.
+
+# References
+
+- [Nathan Giusti](https://github.com/nathangiusti/BakeOff) for preparing the underlying BakeOff data
+
+- BARB for viewership data (I collected it via writing it down and trtanscribing)
+
+- Agresti, A. Categorical Data Analysis, 3rd ed., Chapter 7, Section 7.3.
