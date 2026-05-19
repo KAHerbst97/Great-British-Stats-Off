@@ -2,7 +2,7 @@
 
 > **Does what matters for winning Star Baker differ from what matters for avoiding elimination? Who were the strongest bakers?**
 
-This project is a statistical look at Netflix-era *Great British Bake Off* Series 5–13. The basic question is simple: do the judging patterns people argue about while watching the show actually show up in the data?
+These are the questions I hadf when watching GBBO on Netflix and this project is a statistical look at the Netflix-era *Great British Bake Off* Series 5–13. The basic question is simple: do the judging patterns people argue about while watching the show actually show up in the data?
 
 Using data prepared by [Nathan Giusti](https://github.com/nathangiusti/BakeOff), I focus on four questions:
 
@@ -11,7 +11,7 @@ Using data prepared by [Nathan Giusti](https://github.com/nathangiusti/BakeOff),
 3. How well can we predict weekly judging decisions within an episode?
 4. Which bakers and seasons stand out after adjustment?
 
-The cleaned dataset contains **678 baker-episode rows**, **9 Netflix-era series**, **90 episodes**, and **108 baker-season entries**.
+The cleaned dataset contains **678 baker-episode rows**, **9 Netflix-era series**, **90 episodes**, and **108 baker-season entries** and the main takeaways can be overviewed in the below one pager,
 
 <p align="center">
   <img src="gbbo_one_pager.png" alt="One-page summary of Great British Bake Off statistical analysis" width="950">
