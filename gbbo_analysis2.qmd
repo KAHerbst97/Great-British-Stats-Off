@@ -1604,6 +1604,16 @@ if (
 }
 ```
 
+Taking a look at Jurgen's elimination in particular,
+
+```{r}
+pred_elim_seqcv_interact %>% 
+  filter(series == 9, round == 9) %>%
+  dplyr::select(series, round, contestant, eliminated, pred_prob,pred_rank)
+```
+
+The model predicts giuseppe to be eliminated given performance in this epsidoe, but my boy Jurgen was.... Inn fact it predicted either chigs or giuseppe to go home over Jurgen
+
 # Model for baker's latent ability
 
 We track each baker's scores across judged categories and stack them into a

@@ -399,6 +399,41 @@ Series 9 has the tightest top group. Giuseppe ranked first, but Crystelle, Jürg
 
 ---
 
+## Jürgen's semi-final elimination
+
+Jürgen's semi-final elimination is where the model most clearly disagrees with the judges.
+
+He was not just strong over the full season. In the Series 9 semi-final itself, the episode-specific elimination model gave him the **lowest predicted probability of going home** among the four remaining bakers.
+
+<p align="center"><strong>Series 9, Round 9 elimination probabilities</strong></p>
+
+<table align="center" cellpadding="10" cellspacing="0" width="88%" style="border-collapse: collapse; margin: 0 auto 1.25rem auto; line-height: 1.35;">
+  <thead>
+    <tr>
+      <th align="left">Baker</th>
+      <th align="center">Eliminated?</th>
+      <th align="center">Predicted Elimination Probability</th>
+      <th align="center">Predicted Elimination Rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td align="left">Giuseppe</td><td align="center">No</td><td align="center"><strong>0.363</strong></td><td align="center">1</td></tr>
+    <tr><td align="left">Chigs</td><td align="center">No</td><td align="center"><strong>0.319</strong></td><td align="center">2</td></tr>
+    <tr><td align="left">Crystelle</td><td align="center">No</td><td align="center">0.163</td><td align="center">3</td></tr>
+    <tr><td align="left">Jürgen</td><td align="center"><strong>Yes</strong></td><td align="center"><strong>0.155</strong></td><td align="center"><strong>4</strong></td></tr>
+  </tbody>
+</table>
+
+These probabilities are within-episode probabilities: they compare only the four bakers still at risk in that semi-final. The model ranked Giuseppe as the most likely elimination, then Chigs, then Crystelle, and Jürgen last. So the point is not merely that Jürgen had a strong season-long profile. The model also thought he was the **least likely** baker to be eliminated in that specific episode.
+
+The proper interpretation is blunt:
+
+> **Given the encoded Signature, Technical, and Showstopper information, Jürgen's elimination is a model miss. The fitted judging pattern would have expected Giuseppe or Chigs to go home before Jürgen.**
+
+That does not prove the judges were wrong, because the model does not see every qualitative detail of the bakes, judge deliberation, editing, pressure, or narrative context. But statistically, this is exactly the kind of result that supports the viewer reaction that Jürgen's elimination felt surprising. It was not just surprising relative to his full-season strength; it was surprising relative to the model's episode-specific elimination probabilities.
+
+---
+
 ## How to read the results as a viewer
 
 The model should not be read as a claim that the judges follow a formula. They do not. It is better read as a structured summary of the patterns left behind by their decisions.
